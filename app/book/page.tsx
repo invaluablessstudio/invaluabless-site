@@ -6,24 +6,22 @@ export default function BookPage() {
     "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3L2SStwJf3zpwl82ZvB6qAw4D9mXAQTtqZMsE29CwZeF77TSLfCDD6KfsXACgRouvG_lge-6n5?gv=true";
 
   return (
-    <main className="relative min-h-[calc(100vh-72px)]">
+    <main className="relative min-h-[calc(100vh-72px)] overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-black" />
-        {/* Soft vignette / studio glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_25%_20%,rgba(255,255,255,0.10),transparent_55%),radial-gradient(800px_520px_at_70%_30%,rgba(176,141,46,0.12),transparent_60%)]" />
-        {/* Subtle grain */}
-        <div className="absolute inset-0 opacity-[0.08] [background-image:url('/images/noise.png')]" />
+        <div className="absolute inset-0 bg-[radial-gradient(800px_500px_at_30%_20%,rgba(255,255,255,0.06),transparent_60%),radial-gradient(700px_500px_at_70%_30%,rgba(176,141,46,0.10),transparent_60%)]" />
       </div>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-14 md:py-16">
+      <section className="mx-auto w-full max-w-6xl px-5 py-10 md:px-6 md:py-16">
+        
         {/* Header */}
         <div className="max-w-2xl">
-          <h1 className="text-6xl font-extrabold tracking-tight text-white md:text-7xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-7xl">
             Book<span className="text-[#b08d2e]">.</span>
           </h1>
 
-          <p className="mt-4 text-base leading-relaxed text-white/80 md:text-lg">
+          <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-lg">
             Choose an available session time below. Availability is updated in real-time.
             <br />
             <span className="text-white/70">
@@ -31,12 +29,12 @@ export default function BookPage() {
             </span>
           </p>
 
-          {/* ✅ Deposit banner */}
+          {/* Deposit banner */}
           <div className="mt-6">
-            <div className="rounded-2xl border border-[#b08d2e]/35 bg-white/[0.04] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.12),0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur">
+            <div className="rounded-2xl border border-[#b08d2e]/40 bg-white/[0.05] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.15),0_15px_50px_rgba(0,0,0,0.55)] backdrop-blur">
               <div className="flex items-start gap-3">
-                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#b08d2e] shadow-[0_0_18px_rgba(176,141,46,0.55)]" />
-                <div className="text-sm md:text-[15px]">
+                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#b08d2e]" />
+                <div className="text-sm">
                   <p className="font-semibold text-white">
                     Deposit required to lock your session.
                   </p>
@@ -49,11 +47,13 @@ export default function BookPage() {
           </div>
         </div>
 
-        {/* Split layout */}
-        <div className="mt-10 grid gap-6 md:grid-cols-12">
-          {/* Left: studio photo card */}
+        {/* Layout */}
+        <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-12">
+          
+          {/* Studio Image */}
           <div className="md:col-span-5">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_70px_rgba(0,0,0,0.6)]">
+              
               <div className="relative aspect-[4/5] md:aspect-[3/4]">
                 <Image
                   src="/images/hero-mic.jpg"
@@ -62,44 +62,44 @@ export default function BookPage() {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.62),rgba(0,0,0,0.15),rgba(0,0,0,0.35))]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40" />
                 <div className="absolute inset-0 ring-1 ring-[#b08d2e]/20" />
               </div>
 
-              <div className="p-5">
-                <p className="text-sm font-semibold tracking-wide text-white/90">
+              <div className="p-4">
+                <p className="text-sm font-semibold text-white">
                   Studio Sessions • Recording • Mix • Master
                 </p>
                 <p className="mt-2 text-sm text-white/70">
-                  Book a time that fits your schedule. What you see here is exactly what’s available.
+                  Book a time that fits your schedule.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right: calendar card */}
+          {/* Calendar */}
           <div className="md:col-span-7">
-            <div className="rounded-3xl border border-[#b08d2e]/25 bg-white/[0.04] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.10),0_24px_90px_rgba(0,0,0,0.55)] backdrop-blur">
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-                <div className="overflow-hidden rounded-xl bg-white">
-                  <iframe
-                    title="Book a session"
-                    src={scheduleUrl}
-                    style={{ border: 0 }}
-                    width="100%"
-                    height="720"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
+            <div className="rounded-3xl border border-[#b08d2e]/30 bg-white/[0.05] p-3 md:p-5 shadow-[0_0_0_1px_rgba(176,141,46,0.15),0_25px_80px_rgba(0,0,0,0.65)] backdrop-blur">
+              
+              <div className="overflow-hidden rounded-2xl bg-white">
+                <iframe
+                  title="Book a session"
+                  src={scheduleUrl}
+                  style={{ border: 0 }}
+                  width="100%"
+                  height="650"
+                  loading="lazy"
+                />
               </div>
 
-              <div className="mt-4 flex flex-col gap-2 text-xs text-white/65 md:flex-row md:items-center md:justify-between">
+              <div className="mt-4 text-center text-xs text-white/60 md:flex md:justify-between">
                 <span>Times shown in your local timezone.</span>
                 <span>Horarios en tu zona horaria.</span>
               </div>
+
             </div>
           </div>
+
         </div>
       </section>
     </main>
