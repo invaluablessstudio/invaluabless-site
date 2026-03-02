@@ -23,11 +23,6 @@ export default function BookPage() {
             Book<span className="text-[#b08d2e]">.</span>
           </h1>
 
-          {/* 🔴 DEBUG LINE ADDED */}
-          <p className="mt-2 text-red-400 font-bold">
-            DEBUG: NEW BOOK PAGE LOADED
-          </p>
-
           <p className="mt-4 text-base leading-relaxed text-white/80 md:text-lg">
             Choose an available session time below. Availability is updated in real-time.
             <br />
