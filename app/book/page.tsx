@@ -2,13 +2,13 @@
 "use client";
 
 import Image from "next/image";
+import Script from "next/script";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function BookPage() {
   const scheduleUrl =
     "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3L2SStwJf3zpwl82ZvB6qAw4D9mXAQTtqZMsE29CwZeF77TSLfCDD6KfsXACgRouvG_lge-6n5?gv=true";
 
-  // ✅ Your Deposit Payment Info
   const deposit = useMemo(
     () => ({
       cashAppUrl: "https://cash.app/$invaluabless",
@@ -19,7 +19,6 @@ export default function BookPage() {
     []
   );
 
-  // ✅ Your phone number in E.164 format
   const phoneE164 = "12106086422";
 
   const whatsappUrl = `https://wa.me/${phoneE164}?text=${encodeURIComponent(
@@ -32,7 +31,6 @@ export default function BookPage() {
 
   const [depositOpen, setDepositOpen] = useState(false);
 
-  // ✅ Step 3: hide sticky banner once calendar is in view (mobile only)
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const [calendarInView, setCalendarInView] = useState(false);
 
@@ -42,10 +40,7 @@ export default function BookPage() {
 
     const observer = new IntersectionObserver(
       ([entry]) => setCalendarInView(entry.isIntersecting),
-      {
-        threshold: 0.15,
-        rootMargin: "-20% 0px -55% 0px",
-      }
+      { threshold: 0.15, rootMargin: "-20% 0px -55% 0px" }
     );
 
     observer.observe(el);
@@ -54,6 +49,12 @@ export default function BookPage() {
 
   return (
     <main className="relative min-h-dvh">
+      {/* Elfsight Script Loader */}
+      <Script
+        src="https://elfsightcdn.com/platform.js"
+        strategy="afterInteractive"
+      />
+
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-black" />
@@ -65,7 +66,7 @@ export default function BookPage() {
         {/* Header */}
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-white/75 backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#b08d2e] shadow-[0_0_18px_rgba(176,141,46,0.55)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#b08d2e]" />
             Live availability • Secure deposit
           </div>
 
@@ -80,110 +81,60 @@ export default function BookPage() {
               Elige un horario disponible. La disponibilidad se actualiza en tiempo real.
             </span>
           </p>
+
+          {/* Trust Chips */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            <TrustChip label="Secure booking" />
+            <TrustChip label="Deposit confirms slot" />
+            <TrustChip label="Live availability" />
+          </div>
         </div>
 
-        {/* ✅ Deposit Banner (sticky on mobile; hides once calendar is in view) */}
+        {/* Deposit Banner */}
         <div className="mt-6 md:mt-7">
           <div
             className={[
-              // Desktop: always visible, normal flow
               "md:static md:mx-0 md:px-0 md:pb-0 md:opacity-100 md:pointer-events-auto md:max-h-none md:translate-y-0",
-              // Mobile: sticky + animated hide
               calendarInView
                 ? "pointer-events-none opacity-0 max-h-0 -translate-y-2 overflow-hidden"
                 : "sticky top-0 z-20 -mx-5 px-5 pb-3 opacity-100 max-h-40 translate-y-0",
               "transition-all duration-300 ease-out",
             ].join(" ")}
           >
-            <div className="rounded-2xl border border-[#b08d2e]/35 bg-[#0a0a0f]/70 p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.12),0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur">
-              <div className="flex items-start gap-3">
-                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#b08d2e] shadow-[0_0_18px_rgba(176,141,46,0.55)]" />
-                <div className="flex-1 text-sm md:text-[15px]">
-                  <p className="font-semibold text-white">
-                    Deposit required to lock your session.
-                  </p>
-                  <p className="mt-1 text-white/75">
-                    Your booking is only confirmed once the deposit is paid.
-                  </p>
-
-                  <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
-                    <button
-                      type="button"
-                      onClick={() => setDepositOpen(true)}
-                      className="inline-flex items-center justify-center rounded-xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-2.5 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
-                    >
-                      Pay Deposit
-                    </button>
-                    <span className="text-xs text-white/60">
-                      Cash App • PayPal • Zelle • Apple Pay
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <div className="rounded-2xl border border-[#b08d2e]/35 bg-[#0a0a0f]/70 p-4 backdrop-blur">
+              <p className="font-semibold text-white">
+                Deposit required to lock your session.
+              </p>
+              <button
+                type="button"
+                onClick={() => setDepositOpen(true)}
+                className="mt-3 inline-flex items-center justify-center rounded-xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-2 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
+              >
+                Pay Deposit
+              </button>
             </div>
-
-            <div className="mt-3 h-px bg-white/10 md:hidden" />
           </div>
         </div>
 
-        {/* Split layout (calendar first on mobile) */}
-        <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-12">
-          {/* Calendar */}
-          <div ref={calendarRef} className="order-1 md:order-none md:col-span-7">
-            <div className="rounded-3xl border border-[#b08d2e]/25 bg-white/[0.04] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.10),0_24px_90px_rgba(0,0,0,0.55)] backdrop-blur">
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-                <div className="overflow-hidden rounded-xl bg-white">
-                  <div className="relative h-[72vh] min-h-[560px] w-full md:h-[720px] md:min-h-[720px]">
-                    <iframe
-                      title="Book a session"
-                      src={scheduleUrl}
-                      className="absolute inset-0 h-full w-full"
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
+        {/* Calendar + Image Layout */}
+        <div className="mt-8 grid gap-6 md:grid-cols-12">
+          <div ref={calendarRef} className="md:col-span-7">
+            <div className="rounded-3xl border border-[#b08d2e]/25 bg-white/[0.04] p-4 backdrop-blur">
+              <div className="overflow-hidden rounded-xl bg-white">
+                <div className="relative h-[72vh] min-h-[560px] w-full md:h-[720px]">
+                  <iframe
+                    title="Book a session"
+                    src={scheduleUrl}
+                    className="absolute inset-0 h-full w-full"
+                    loading="lazy"
+                  />
                 </div>
-              </div>
-
-              <div className="mt-4 flex flex-col gap-2 text-xs text-white/65 md:flex-row md:items-center md:justify-between">
-                <span>Times shown in your local timezone.</span>
-                <span>Horarios en tu zona horaria.</span>
-              </div>
-
-              {/* Mobile contact buttons */}
-              <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
-                <a
-                  href={smsUrl}
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-white/85 hover:bg-white/10"
-                >
-                  Text
-                </a>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-3 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
-                >
-                  WhatsApp
-                </a>
-              </div>
-
-              {/* Clean fallback link to deposit modal when banner is hidden */}
-              <div className="mt-4 hidden md:block">
-                <button
-                  type="button"
-                  onClick={() => setDepositOpen(true)}
-                  className="text-xs font-semibold text-[#d7bb63] underline decoration-[#b08d2e]/40 underline-offset-4 hover:decoration-[#b08d2e]/70"
-                >
-                  Need to pay your deposit? Click here.
-                </button>
               </div>
             </div>
           </div>
 
-          {/* Studio image */}
-          <div className="order-2 md:order-none md:col-span-5">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
+          <div className="md:col-span-5">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]">
               <div className="relative aspect-[16/10] md:aspect-[3/4]">
                 <Image
                   src="/images/hero-mic.jpg"
@@ -192,34 +143,26 @@ export default function BookPage() {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.62),rgba(0,0,0,0.15),rgba(0,0,0,0.35))]" />
-                <div className="absolute inset-0 ring-1 ring-[#b08d2e]/20" />
-              </div>
-
-              <div className="p-5">
-                <p className="text-sm font-semibold tracking-wide text-white/90">
-                  Studio Sessions • Recording • Mix • Master
-                </p>
-                <p className="mt-2 text-sm text-white/70">
-                  Book a time that fits your schedule. What you see here is exactly what’s available.
-                </p>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Desktop-only note */}
-            <div className="mt-4 hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 text-sm text-white/70 md:block">
-              <p className="font-semibold text-white/85">Before you book</p>
-              <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>Arrive 10 minutes early to maximize your session time.</li>
-                <li>Bring beats or reference tracks (MP3/WAV recommended).</li>
-                <li>Deposit confirms and reserves your slot.</li>
-              </ul>
-            </div>
+        {/* Google Reviews ⭐ (forced change so Git detects update) */}
+        <div className="mt-12">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+            <p className="text-sm font-semibold text-white/90">
+              Google Reviews ⭐
+            </p>
+
+            <div
+              className="elfsight-app-1b7dac44-ab99-4496-b1d8-0dc850f88094"
+              data-elfsight-app-lazy
+            />
           </div>
         </div>
       </section>
 
-      {/* Deposit Modal */}
       {depositOpen && (
         <DepositModal
           onClose={() => setDepositOpen(false)}
@@ -233,12 +176,17 @@ export default function BookPage() {
   );
 }
 
+function TrustChip({ label }: { label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-white/70">
+      <span className="h-1.5 w-1.5 rounded-full bg-[#b08d2e]" />
+      {label}
+    </span>
+  );
+}
+
 function DepositModal({
   onClose,
-  cashAppUrl,
-  paypalUrl,
-  zelleRecipient,
-  applePayRecipient,
 }: {
   onClose: () => void;
   cashAppUrl: string;
@@ -247,120 +195,11 @@ function DepositModal({
   applePayRecipient: string;
 }) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Pay deposit"
-    >
-      <button
-        type="button"
-        onClick={onClose}
-        className="absolute inset-0 bg-black/70"
-        aria-label="Close"
-      />
-
-      <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b10] shadow-[0_30px_120px_rgba(0,0,0,0.75)]">
-        <div className="border-b border-white/10 p-5">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-base font-semibold text-white">
-                Pay your deposit
-              </p>
-              <p className="mt-1 text-sm text-white/70">
-                Choose a method below. Your booking is confirmed after deposit is received.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-
-        <div className="grid gap-3 p-5">
-          <a
-            href={cashAppUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-[#b08d2e]/25 bg-[#b08d2e]/10 p-4 text-left hover:bg-[#b08d2e]/15"
-          >
-            <div>
-              <p className="text-sm font-semibold text-[#d7bb63]">Cash App</p>
-              <p className="mt-0.5 text-xs text-white/65">Open Cash App link</p>
-            </div>
-            <span className="text-xs text-white/60">↗</span>
-          </a>
-
-          <a
-            href={paypalUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4 text-left hover:bg-white/10"
-          >
-            <div>
-              <p className="text-sm font-semibold text-white/90">PayPal</p>
-              <p className="mt-0.5 text-xs text-white/65">Open PayPal link</p>
-            </div>
-            <span className="text-xs text-white/60">↗</span>
-          </a>
-
-          <CopyCard title="Zelle" value={zelleRecipient} helper="Send to this phone number." />
-          <CopyCard
-            title="Apple Pay / Apple Cash"
-            value={applePayRecipient}
-            helper="Send to this phone number (Apple Cash)."
-          />
-
-          <p className="pt-2 text-xs text-white/55">
-            After you pay, keep the receipt screenshot (just in case). If you need help, text us.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CopyCard({
-  title,
-  value,
-  helper,
-}: {
-  title: string;
-  value: string;
-  helper: string;
-}) {
-  const [copied, setCopied] = useState(false);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1200);
-    } catch {
-      // ignore
-    }
-  }
-
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-sm font-semibold text-white/90">{title}</p>
-          <p className="mt-0.5 text-xs text-white/65">{helper}</p>
-          <p className="mt-2 select-all break-all rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80">
-            {value}
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={copy}
-          className="h-fit rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-black/30"
-        >
-          {copied ? "Copied" : "Copy"}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+      <div className="rounded-3xl bg-[#0b0b10] p-6 text-white">
+        <p>Deposit Modal</p>
+        <button onClick={onClose} className="mt-4">
+          Close
         </button>
       </div>
     </div>
