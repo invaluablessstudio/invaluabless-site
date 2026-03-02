@@ -2,13 +2,13 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function BookPage() {
   const scheduleUrl =
     "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3L2SStwJf3zpwl82ZvB6qAw4D9mXAQTtqZMsE29CwZeF77TSLfCDD6KfsXACgRouvG_lge-6n5?gv=true";
 
-  // ✅ Your Deposit Payment Info (already added)
+  // ✅ Your Deposit Payment Info
   const deposit = useMemo(
     () => ({
       cashAppUrl: "https://cash.app/$invaluabless",
@@ -19,7 +19,7 @@ export default function BookPage() {
     []
   );
 
-  // ✅ Your phone number in E.164 format (already added)
+  // ✅ Your phone number in E.164 format
   const phoneE164 = "12106086422";
 
   const whatsappUrl = `https://wa.me/${phoneE164}?text=${encodeURIComponent(
@@ -31,6 +31,30 @@ export default function BookPage() {
   )}`;
 
   const [depositOpen, setDepositOpen] = useState(false);
+
+  // ✅ Step 3: hide sticky banner once calendar is in view (mobile only)
+  const calendarRef = useRef<HTMLDivElement | null>(null);
+  const [calendarInView, setCalendarInView] = useState(false);
+
+  useEffect(() => {
+    const el = calendarRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setCalendarInView(entry.isIntersecting);
+      },
+      {
+        // When the calendar starts entering the viewport, hide sticky banner
+        threshold: 0.15,
+        // Trigger a bit earlier for a premium feel
+        rootMargin: "-20% 0px -55% 0px",
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <main className="relative min-h-dvh">
@@ -66,66 +90,70 @@ export default function BookPage() {
           </p>
         </div>
 
-        {/* Deposit Banner */}
+        {/* ✅ Deposit Banner (Sticky on mobile, auto-hides once calendar in view) */}
         <div className="mt-6 md:mt-7">
-          <div className="rounded-2xl border border-[#b08d2e]/35 bg-[#0a0a0f]/70 p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.12),0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur">
-            <div className="flex items-start gap-3">
-              <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#b08d2e] shadow-[0_0_18px_rgba(176,141,46,0.55)]" />
-              <div className="flex-1 text-sm md:text-[15px]">
-                <p className="font-semibold text-white">
-                  Deposit required to lock your session.
-                </p>
-                <p className="mt-1 text-white/75">
-                  Your booking is only confirmed once the deposit is paid.
-                </p>
+          {/* Mobile sticky wrapper: only sticky when calendar NOT in view */}
+          <div
+            className={[
+              "md:static md:mx-0 md:px-0",
+              // Keep banner visible on desktop always:
+              "md:opacity-100 md:pointer-events-auto md:h-auto md:overflow-visible",
+              // Mobile sticky behavior + hide animation:
+              calendarInView
+                ? "opacity-0 pointer-events-none h-0 overflow-hidden md:opacity-100 md:pointer-events-auto md:h-auto md:overflow-visible"
+                : "sticky top-0 z-20 -mx-5 px-5 pb-3 opacity-100",
+              "transition-all duration-300 ease-out",
+            ].join(" ")}
+          >
+            <div className="rounded-2xl border border-[#b08d2e]/35 bg-[#0a0a0f]/70 p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.12),0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#b08d2e] shadow-[0_0_18px_rgba(176,141,46,0.55)]" />
+                <div className="flex-1 text-sm md:text-[15px]">
+                  <p className="font-semibold text-white">
+                    Deposit required to lock your session.
+                  </p>
+                  <p className="mt-1 text-white/75">
+                    Your booking is only confirmed once the deposit is paid.
+                  </p>
 
-                <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
-                  <button
-                    type="button"
-                    onClick={() => setDepositOpen(true)}
-                    className="inline-flex items-center justify-center rounded-xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-2.5 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
-                  >
-                    Pay Deposit
-                  </button>
-                  <span className="text-xs text-white/60">
-                    Cash App • PayPal • Zelle • Apple Pay
-                  </span>
+                  <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
+                    <button
+                      type="button"
+                      onClick={() => setDepositOpen(true)}
+                      className="inline-flex items-center justify-center rounded-xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-2.5 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
+                    >
+                      Pay Deposit
+                    </button>
+                    <span className="text-xs text-white/60">
+                      Cash App • PayPal • Zelle • Apple Pay
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* subtle divider under sticky bar on mobile */}
+            <div className="mt-3 h-px bg-white/10 md:hidden" />
           </div>
+
+          {/* When banner hides on mobile, show a tiny floating “Pay Deposit” pill (optional premium touch) */}
+          {calendarInView && (
+            <div className="fixed bottom-4 left-1/2 z-40 w-[92%] max-w-md -translate-x-1/2 md:hidden">
+              <button
+                type="button"
+                onClick={() => setDepositOpen(true)}
+                className="w-full rounded-2xl border border-[#b08d2e]/35 bg-[#0a0a0f]/80 px-4 py-3 text-sm font-semibold text-[#d7bb63] shadow-[0_18px_60px_rgba(0,0,0,0.55)] backdrop-blur hover:bg-[#0a0a0f]/90"
+              >
+                Pay Deposit (required to confirm)
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Layout */}
+        {/* Split layout */}
         <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-12">
-          {/* Left */}
-          <div className="md:col-span-5">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
-              <div className="relative aspect-[16/10] md:aspect-[3/4]">
-                <Image
-                  src="/images/hero-mic.jpg"
-                  alt="Studio microphone"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.62),rgba(0,0,0,0.15),rgba(0,0,0,0.35))]" />
-                <div className="absolute inset-0 ring-1 ring-[#b08d2e]/20" />
-              </div>
-
-              <div className="p-5">
-                <p className="text-sm font-semibold tracking-wide text-white/90">
-                  Studio Sessions • Recording • Mix • Master
-                </p>
-                <p className="mt-2 text-sm text-white/70">
-                  Book a time that fits your schedule.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right */}
-          <div className="md:col-span-7">
+          {/* Mobile: Calendar first for faster conversion */}
+          <div ref={calendarRef} className="order-1 md:order-none md:col-span-7">
             <div className="rounded-3xl border border-[#b08d2e]/25 bg-white/[0.04] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.10),0_24px_90px_rgba(0,0,0,0.55)] backdrop-blur">
               <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
                 <div className="overflow-hidden rounded-xl bg-white">
@@ -141,7 +169,12 @@ export default function BookPage() {
                 </div>
               </div>
 
-              {/* Mobile quick contact buttons */}
+              <div className="mt-4 flex flex-col gap-2 text-xs text-white/65 md:flex-row md:items-center md:justify-between">
+                <span>Times shown in your local timezone.</span>
+                <span>Horarios en tu zona horaria.</span>
+              </div>
+
+              {/* Mobile contact buttons */}
               <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
                 <a
                   href={smsUrl}
@@ -160,10 +193,47 @@ export default function BookPage() {
               </div>
             </div>
           </div>
+
+          {/* Studio image card */}
+          <div className="order-2 md:order-none md:col-span-5">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
+              <div className="relative aspect-[16/10] md:aspect-[3/4]">
+                <Image
+                  src="/images/hero-mic.jpg"
+                  alt="Studio microphone"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.62),rgba(0,0,0,0.15),rgba(0,0,0,0.35))]" />
+                <div className="absolute inset-0 ring-1 ring-[#b08d2e]/20" />
+              </div>
+
+              <div className="p-5">
+                <p className="text-sm font-semibold tracking-wide text-white/90">
+                  Studio Sessions • Recording • Mix • Master
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  Book a time that fits your schedule. What you see here is
+                  exactly what’s available.
+                </p>
+              </div>
+            </div>
+
+            {/* Desktop-only note */}
+            <div className="mt-4 hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 text-sm text-white/70 md:block">
+              <p className="font-semibold text-white/85">Before you book</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                <li>Arrive 10 minutes early to maximize your session time.</li>
+                <li>Bring beats or reference tracks (MP3/WAV recommended).</li>
+                <li>Deposit confirms and reserves your slot.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ✅ Deposit Modal (this was missing in your deployed file) */}
+      {/* Deposit Modal */}
       {depositOpen && (
         <DepositModal
           onClose={() => setDepositOpen(false)}
@@ -293,7 +363,7 @@ function CopyCard({
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1200);
     } catch {
-      // If clipboard fails, do nothing (still shows value)
+      // If clipboard fails, do nothing
     }
   }
 
