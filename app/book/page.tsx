@@ -8,7 +8,7 @@ export default function BookPage() {
   const scheduleUrl =
     "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3L2SStwJf3zpwl82ZvB6qAw4D9mXAQTtqZMsE29CwZeF77TSLfCDD6KfsXACgRouvG_lge-6n5?gv=true";
 
-  // ✅ Your Deposit Payment Info
+  // ✅ Your Deposit Payment Info (already added)
   const deposit = useMemo(
     () => ({
       cashAppUrl: "https://cash.app/$invaluabless",
@@ -37,7 +37,9 @@ export default function BookPage() {
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-black" />
+        {/* Soft vignette / studio glow */}
         <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_25%_20%,rgba(255,255,255,0.10),transparent_55%),radial-gradient(800px_520px_at_70%_30%,rgba(176,141,46,0.12),transparent_60%)]" />
+        {/* Subtle grain */}
         <div className="absolute inset-0 opacity-[0.08] [background-image:url('/images/noise.png')]" />
       </div>
 
@@ -96,6 +98,7 @@ export default function BookPage() {
 
         {/* Layout */}
         <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-12">
+          {/* Left */}
           <div className="md:col-span-5">
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
               <div className="relative aspect-[16/10] md:aspect-[3/4]">
@@ -121,6 +124,7 @@ export default function BookPage() {
             </div>
           </div>
 
+          {/* Right */}
           <div className="md:col-span-7">
             <div className="rounded-3xl border border-[#b08d2e]/25 bg-white/[0.04] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.10),0_24px_90px_rgba(0,0,0,0.55)] backdrop-blur">
               <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
@@ -137,6 +141,7 @@ export default function BookPage() {
                 </div>
               </div>
 
+              {/* Mobile quick contact buttons */}
               <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
                 <a
                   href={smsUrl}
@@ -158,6 +163,7 @@ export default function BookPage() {
         </div>
       </section>
 
+      {/* ✅ Deposit Modal (this was missing in your deployed file) */}
       {depositOpen && (
         <DepositModal
           onClose={() => setDepositOpen(false)}
@@ -168,5 +174,147 @@ export default function BookPage() {
         />
       )}
     </main>
+  );
+}
+
+function DepositModal({
+  onClose,
+  cashAppUrl,
+  paypalUrl,
+  zelleRecipient,
+  applePayRecipient,
+}: {
+  onClose: () => void;
+  cashAppUrl: string;
+  paypalUrl: string;
+  zelleRecipient: string;
+  applePayRecipient: string;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center p-4 sm:items-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Pay deposit"
+    >
+      {/* overlay */}
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute inset-0 bg-black/70"
+        aria-label="Close"
+      />
+
+      {/* panel */}
+      <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b10] shadow-[0_30px_120px_rgba(0,0,0,0.75)]">
+        <div className="border-b border-white/10 p-5">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-base font-semibold text-white">
+                Pay your deposit
+              </p>
+              <p className="mt-1 text-sm text-white/70">
+                Choose a method below. Your booking is confirmed after deposit
+                is received.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div className="grid gap-3 p-5">
+          <a
+            href={cashAppUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between rounded-2xl border border-[#b08d2e]/25 bg-[#b08d2e]/10 p-4 text-left hover:bg-[#b08d2e]/15"
+          >
+            <div>
+              <p className="text-sm font-semibold text-[#d7bb63]">Cash App</p>
+              <p className="mt-0.5 text-xs text-white/65">Open Cash App link</p>
+            </div>
+            <span className="text-xs text-white/60">↗</span>
+          </a>
+
+          <a
+            href={paypalUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4 text-left hover:bg-white/10"
+          >
+            <div>
+              <p className="text-sm font-semibold text-white/90">PayPal</p>
+              <p className="mt-0.5 text-xs text-white/65">Open PayPal link</p>
+            </div>
+            <span className="text-xs text-white/60">↗</span>
+          </a>
+
+          <CopyCard
+            title="Zelle"
+            value={zelleRecipient}
+            helper="Send to this phone number."
+          />
+          <CopyCard
+            title="Apple Pay / Apple Cash"
+            value={applePayRecipient}
+            helper="Send to this phone number (Apple Cash)."
+          />
+
+          <p className="pt-2 text-xs text-white/55">
+            After you pay, keep the receipt screenshot (just in case). If you
+            need help, text us.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CopyCard({
+  title,
+  value,
+  helper,
+}: {
+  title: string;
+  value: string;
+  helper: string;
+}) {
+  const [copied, setCopied] = useState(false);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1200);
+    } catch {
+      // If clipboard fails, do nothing (still shows value)
+    }
+  }
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold text-white/90">{title}</p>
+          <p className="mt-0.5 text-xs text-white/65">{helper}</p>
+          <p className="mt-2 select-all break-all rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80">
+            {value}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={copy}
+          className="h-fit rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-black/30"
+        >
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+    </div>
   );
 }
