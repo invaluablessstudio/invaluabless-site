@@ -41,13 +41,9 @@ export default function BookPage() {
     if (!el) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setCalendarInView(entry.isIntersecting);
-      },
+      ([entry]) => setCalendarInView(entry.isIntersecting),
       {
-        // When the calendar starts entering the viewport, hide sticky banner
         threshold: 0.15,
-        // Trigger a bit earlier for a premium feel
         rootMargin: "-20% 0px -55% 0px",
       }
     );
@@ -61,9 +57,7 @@ export default function BookPage() {
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-black" />
-        {/* Soft vignette / studio glow */}
         <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_25%_20%,rgba(255,255,255,0.10),transparent_55%),radial-gradient(800px_520px_at_70%_30%,rgba(176,141,46,0.12),transparent_60%)]" />
-        {/* Subtle grain */}
         <div className="absolute inset-0 opacity-[0.08] [background-image:url('/images/noise.png')]" />
       </div>
 
@@ -80,28 +74,24 @@ export default function BookPage() {
           </h1>
 
           <p className="mt-4 text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
-            Choose an available session time below. Availability is updated in
-            real-time.
+            Choose an available session time below. Availability is updated in real-time.
             <br />
             <span className="text-white/70">
-              Elige un horario disponible. La disponibilidad se actualiza en
-              tiempo real.
+              Elige un horario disponible. La disponibilidad se actualiza en tiempo real.
             </span>
           </p>
         </div>
 
-        {/* ✅ Deposit Banner (Sticky on mobile, auto-hides once calendar in view) */}
+        {/* ✅ Deposit Banner (sticky on mobile; hides once calendar is in view) */}
         <div className="mt-6 md:mt-7">
-          {/* Mobile sticky wrapper: only sticky when calendar NOT in view */}
           <div
             className={[
-              "md:static md:mx-0 md:px-0",
-              // Keep banner visible on desktop always:
-              "md:opacity-100 md:pointer-events-auto md:h-auto md:overflow-visible",
-              // Mobile sticky behavior + hide animation:
+              // Desktop: always visible, normal flow
+              "md:static md:mx-0 md:px-0 md:pb-0 md:opacity-100 md:pointer-events-auto md:max-h-none md:translate-y-0",
+              // Mobile: sticky + animated hide
               calendarInView
-                ? "opacity-0 pointer-events-none h-0 overflow-hidden md:opacity-100 md:pointer-events-auto md:h-auto md:overflow-visible"
-                : "sticky top-0 z-20 -mx-5 px-5 pb-3 opacity-100",
+                ? "pointer-events-none opacity-0 max-h-0 -translate-y-2 overflow-hidden"
+                : "sticky top-0 z-20 -mx-5 px-5 pb-3 opacity-100 max-h-40 translate-y-0",
               "transition-all duration-300 ease-out",
             ].join(" ")}
           >
@@ -132,27 +122,13 @@ export default function BookPage() {
               </div>
             </div>
 
-            {/* subtle divider under sticky bar on mobile */}
             <div className="mt-3 h-px bg-white/10 md:hidden" />
           </div>
-
-          {/* When banner hides on mobile, show a tiny floating “Pay Deposit” pill (optional premium touch) */}
-          {calendarInView && (
-            <div className="fixed bottom-4 left-1/2 z-40 w-[92%] max-w-md -translate-x-1/2 md:hidden">
-              <button
-                type="button"
-                onClick={() => setDepositOpen(true)}
-                className="w-full rounded-2xl border border-[#b08d2e]/35 bg-[#0a0a0f]/80 px-4 py-3 text-sm font-semibold text-[#d7bb63] shadow-[0_18px_60px_rgba(0,0,0,0.55)] backdrop-blur hover:bg-[#0a0a0f]/90"
-              >
-                Pay Deposit (required to confirm)
-              </button>
-            </div>
-          )}
         </div>
 
-        {/* Split layout */}
+        {/* Split layout (calendar first on mobile) */}
         <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-12">
-          {/* Mobile: Calendar first for faster conversion */}
+          {/* Calendar */}
           <div ref={calendarRef} className="order-1 md:order-none md:col-span-7">
             <div className="rounded-3xl border border-[#b08d2e]/25 bg-white/[0.04] p-4 shadow-[0_0_0_1px_rgba(176,141,46,0.10),0_24px_90px_rgba(0,0,0,0.55)] backdrop-blur">
               <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
@@ -191,10 +167,21 @@ export default function BookPage() {
                   WhatsApp
                 </a>
               </div>
+
+              {/* Clean fallback link to deposit modal when banner is hidden */}
+              <div className="mt-4 hidden md:block">
+                <button
+                  type="button"
+                  onClick={() => setDepositOpen(true)}
+                  className="text-xs font-semibold text-[#d7bb63] underline decoration-[#b08d2e]/40 underline-offset-4 hover:decoration-[#b08d2e]/70"
+                >
+                  Need to pay your deposit? Click here.
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Studio image card */}
+          {/* Studio image */}
           <div className="order-2 md:order-none md:col-span-5">
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
               <div className="relative aspect-[16/10] md:aspect-[3/4]">
@@ -214,8 +201,7 @@ export default function BookPage() {
                   Studio Sessions • Recording • Mix • Master
                 </p>
                 <p className="mt-2 text-sm text-white/70">
-                  Book a time that fits your schedule. What you see here is
-                  exactly what’s available.
+                  Book a time that fits your schedule. What you see here is exactly what’s available.
                 </p>
               </div>
             </div>
@@ -267,7 +253,6 @@ function DepositModal({
       aria-modal="true"
       aria-label="Pay deposit"
     >
-      {/* overlay */}
       <button
         type="button"
         onClick={onClose}
@@ -275,7 +260,6 @@ function DepositModal({
         aria-label="Close"
       />
 
-      {/* panel */}
       <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b10] shadow-[0_30px_120px_rgba(0,0,0,0.75)]">
         <div className="border-b border-white/10 p-5">
           <div className="flex items-start justify-between gap-4">
@@ -284,8 +268,7 @@ function DepositModal({
                 Pay your deposit
               </p>
               <p className="mt-1 text-sm text-white/70">
-                Choose a method below. Your booking is confirmed after deposit
-                is received.
+                Choose a method below. Your booking is confirmed after deposit is received.
               </p>
             </div>
             <button
@@ -325,11 +308,7 @@ function DepositModal({
             <span className="text-xs text-white/60">↗</span>
           </a>
 
-          <CopyCard
-            title="Zelle"
-            value={zelleRecipient}
-            helper="Send to this phone number."
-          />
+          <CopyCard title="Zelle" value={zelleRecipient} helper="Send to this phone number." />
           <CopyCard
             title="Apple Pay / Apple Cash"
             value={applePayRecipient}
@@ -337,8 +316,7 @@ function DepositModal({
           />
 
           <p className="pt-2 text-xs text-white/55">
-            After you pay, keep the receipt screenshot (just in case). If you
-            need help, text us.
+            After you pay, keep the receipt screenshot (just in case). If you need help, text us.
           </p>
         </div>
       </div>
@@ -363,7 +341,7 @@ function CopyCard({
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1200);
     } catch {
-      // If clipboard fails, do nothing
+      // ignore
     }
   }
 
