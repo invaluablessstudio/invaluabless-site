@@ -1,3 +1,4 @@
+// app/work/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -24,11 +25,6 @@ const videos = [
     title: "2 Pastillas",
     artist: "Melchory Gang",
     videoId: "50sVJeIHiKw",
-  },
-  {
-    title: "Sin Ti",
-    artist: "Chelo Moreno",
-    videoId: "lmgEkEQD8Hk",
   },
   {
     title: "Maquina del Tiempo",
@@ -65,9 +61,6 @@ const videos = [
     artist: "Lil Tree",
     videoId: "CrLnsJNBKBk",
   },
-
-  // 👉 ADD MORE VIDEOS HERE
-  // { title: "New Song", artist: "Artist", videoId: "XXXX" },
 ];
 
 export default function WorkPage() {
@@ -108,7 +101,7 @@ export default function WorkPage() {
 
           <Link
             href="/book"
-            className="px-6 py-3 bg-[#8b0b17] rounded-xl font-semibold hover:opacity-90 transition"
+            className="px-6 py-3 bg-[#8b0b17] rounded-xl font-semibold hover:opacity-90 transition-opacity"
           >
             Book Session
           </Link>
@@ -125,13 +118,13 @@ export default function WorkPage() {
         </div>
       </div>
 
-      {/* VIDEO MODAL (lazy iframe load only when active) */}
+      {/* VIDEO MODAL */}
       {activeVideo && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="relative w-[95%] md:w-[70%] aspect-video bg-black rounded-xl overflow-hidden">
             <button
               onClick={closeVideo}
-              className="absolute top-4 right-4 z-50 text-white bg-black/60 px-3 py-1 rounded-full"
+              className="absolute top-4 right-4 z-50 text-white bg-black/60 px-3 py-1 rounded-full hover:bg-black/80 transition-colors"
             >
               ✕
             </button>
@@ -159,7 +152,7 @@ export default function WorkPage() {
               </h2>
 
               <p className="mt-6 text-gray-300 text-lg">
-                Submit your booking request and we’ll confirm availability.
+                Submit your booking request and we&apos;ll confirm availability.
                 <br />
                 <span className="text-gray-400">
                   Envía tu solicitud y confirmamos disponibilidad.
@@ -169,7 +162,7 @@ export default function WorkPage() {
               <div className="mt-10">
                 <Link
                   href="/book"
-                  className="inline-block px-8 py-4 bg-[#8b0b17] rounded-xl font-semibold hover:opacity-90 transition"
+                  className="inline-block px-8 py-4 bg-[#8b0b17] rounded-xl font-semibold hover:opacity-90 transition-opacity"
                 >
                   BOOK A SESSION
                 </Link>
@@ -196,7 +189,7 @@ function WorkCard({
   return (
     <div
       onClick={() => openVideo(videoId)}
-      className="group cursor-pointer rounded-2xl overflow-hidden border border-white/10 bg-[#111116] transition hover:border-[#8b0b17]"
+      className="group cursor-pointer rounded-2xl overflow-hidden border border-white/10 bg-[#111116] transition-all duration-300 hover:border-[#8b0b17] hover:shadow-[0_0_30px_rgba(139,11,23,0.2)]"
     >
       {/* Optimized Thumbnail */}
       <div className="relative h-60 w-full overflow-hidden">
@@ -205,20 +198,20 @@ function WorkCard({
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover group-hover:scale-105 transition duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-        <div className="absolute inset-0 bg-black/45 group-hover:bg-black/20 transition" />
+        <div className="absolute inset-0 bg-black/45 group-hover:bg-black/20 transition-colors" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-[#8b0b17]/80 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
+          <div className="w-16 h-16 rounded-full bg-[#8b0b17]/80 flex items-center justify-center text-white text-2xl group-hover:scale-110 group-hover:bg-[#8b0b17] transition-all">
             ▶
           </div>
         </div>
       </div>
 
       <div className="p-6">
-        <h3 className="text-lg font-extrabold group-hover:text-[#c8a44b] transition">
+        <h3 className="text-lg font-extrabold group-hover:text-[#c8a44b] transition-colors">
           {title}
         </h3>
         <p className="mt-1 text-sm text-gray-400">{artist}</p>

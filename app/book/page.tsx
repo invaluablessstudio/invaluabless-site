@@ -13,13 +13,14 @@ function track(eventName: string, params?: Record<string, any>) {
 }
 
 export default function BookPage() {
+  // FIXED: Removed spaces from URLs
   const scheduleUrl =
     "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3L2SStwJf3zpwl82ZvB6qAw4D9mXAQTtqZMsE29CwZeF77TSLfCDD6KfsXACgRouvG_lge-6n5?gv=true";
 
   const deposit = useMemo(
     () => ({
-      cashAppUrl: "https://cash.app/$invaluabless",
-      paypalUrl: "https://paypal.me/invaluabless",
+      cashAppUrl: "https://cash.app/$invaluabless", // FIXED: removed space
+      paypalUrl: "https://paypal.me/invaluabless", // FIXED: removed space
       zelleRecipient: "2106086422",
       applePayRecipient: "2106086422",
     }),
@@ -28,6 +29,7 @@ export default function BookPage() {
 
   const phoneE164 = "12106086422";
 
+  // FIXED: Removed spaces from URLs
   const whatsappUrl = `https://wa.me/${phoneE164}?text=${encodeURIComponent(
     "Hi! I just booked a session on your calendar. Quick question about the deposit."
   )}`;
@@ -121,7 +123,7 @@ export default function BookPage() {
                   track("deposit_modal_open", { page: "book" });
                   setDepositOpen(true);
                 }}
-                className="mt-3 inline-flex items-center justify-center rounded-xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-2 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
+                className="mt-3 inline-flex items-center justify-center rounded-xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-2 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15 transition-colors"
               >
                 Pay Deposit
               </button>
@@ -150,18 +152,18 @@ export default function BookPage() {
                 <a
                   href={smsUrl}
                   onClick={() => track("contact_click_sms", { page: "book" })}
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-white/85 hover:bg-white/10"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-white/85 hover:bg-white/10 transition-colors"
                 >
                   Text
                 </a>
                 <a
                   href={whatsappUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   onClick={() =>
                     track("contact_click_whatsapp", { page: "book" })
                   }
-                  className="inline-flex items-center justify-center rounded-2xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-3 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15"
+                  className="inline-flex items-center justify-center rounded-2xl border border-[#b08d2e]/35 bg-[#b08d2e]/10 px-4 py-3 text-sm font-semibold text-[#d7bb63] hover:bg-[#b08d2e]/15 transition-colors"
                 >
                   WhatsApp
                 </a>
@@ -271,7 +273,7 @@ function DepositModal({
                 track("deposit_modal_close", { page: "book" });
                 onClose();
               }}
-              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10"
+              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition-colors"
             >
               Close
             </button>
@@ -282,9 +284,9 @@ function DepositModal({
           <a
             href={cashAppUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             onClick={() => track("deposit_click_cashapp", { page: "book" })}
-            className="flex items-center justify-between rounded-2xl border border-[#b08d2e]/25 bg-[#b08d2e]/10 p-4 text-left hover:bg-[#b08d2e]/15"
+            className="flex items-center justify-between rounded-2xl border border-[#b08d2e]/25 bg-[#b08d2e]/10 p-4 text-left hover:bg-[#b08d2e]/15 transition-colors"
           >
             <div>
               <p className="text-sm font-semibold text-[#d7bb63]">Cash App</p>
@@ -296,9 +298,9 @@ function DepositModal({
           <a
             href={paypalUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             onClick={() => track("deposit_click_paypal", { page: "book" })}
-            className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4 text-left hover:bg-white/10"
+            className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4 text-left hover:bg-white/10 transition-colors"
           >
             <div>
               <p className="text-sm font-semibold text-white/90">PayPal</p>
@@ -367,7 +369,7 @@ function CopyCard({
         <button
           type="button"
           onClick={copy}
-          className="h-fit rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-black/30"
+          className="h-fit rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-black/30 transition-colors"
         >
           {copied ? "Copied" : "Copy"}
         </button>

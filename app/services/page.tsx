@@ -1,3 +1,6 @@
+// app/services/page.tsx
+"use client"; // ADDED: Required for smooth hover effects
+
 import Link from "next/link";
 
 export default function ServicesPage() {
@@ -11,7 +14,7 @@ export default function ServicesPage() {
 
           <Link
             href="/book"
-            className="px-6 py-3 bg-[#8b0b17] rounded-xl font-semibold smooth glow-red hover:opacity-90"
+            className="px-6 py-3 bg-[#8b0b17] rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(139,11,23,0.3)]"
           >
             Book Session
           </Link>
@@ -75,9 +78,9 @@ function ServiceCard({
   note: string;
 }) {
   return (
-    <div className="p-8 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md smooth card-hover glow-gold-hover">
+    <div className="group p-8 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md transition-all duration-300 hover:border-[#c8a44b]/30 hover:bg-black/50 hover:shadow-[0_0_30px_rgba(200,164,75,0.15)]">
       <div className="flex items-start justify-between gap-4">
-        <h3 className="text-xl font-semibold text-[#c8a44b]">{title}</h3>
+        <h3 className="text-xl font-semibold text-[#c8a44b] group-hover:text-[#d7bb63] transition-colors">{title}</h3>
         <div className="text-right">
           <div className="text-lg font-extrabold text-white">{price}</div>
           <div className="text-xs text-gray-400">{note}</div>
