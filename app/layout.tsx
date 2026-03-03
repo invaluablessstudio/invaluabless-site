@@ -8,47 +8,55 @@ import PageTransition from "./components/PageTransition";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
+  "https://invaluablessproduction.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
     default: "Invaluabless Productions",
     template: "%s • Invaluabless Productions",
   },
-  description: "Recording, Mixing, Mastering Studio",
+
+  description:
+    "Professional recording, mixing, and mastering studio in San Antonio, Texas.",
+
   applicationName: "Invaluabless Productions",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
+
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
+
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: "Invaluabless Productions",
     title: "Invaluabless Productions",
-    description: "Recording, Mixing, Mastering Studio",
+    description:
+      "Professional recording, mixing, and mastering studio in San Antonio, Texas.",
     images: [
       {
-        url: "/og.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Invaluabless Productions",
+        alt: "Invaluabless Productions Logo",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Invaluabless Productions",
-    description: "Recording, Mixing, Mastering Studio",
-    images: ["/og.jpg"],
+    description:
+      "Professional recording, mixing, and mastering studio in San Antonio, Texas.",
+    images: ["/logo.png"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -61,8 +69,15 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="bg-[#07070a] text-white">
-        {/* ✅ Google Analytics 4 */}
+      <head>
+        {/* Performance Preconnect */}
+        <link rel="preconnect" href="https://img.youtube.com" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+      </head>
+
+      <body className="bg-[#07070a] text-white antialiased">
+
+        {/* Google Analytics 4 */}
         {GA_ID && (
           <>
             <Script
@@ -81,7 +96,7 @@ export default function RootLayout({
           </>
         )}
 
-        {/* ✅ Local Business Structured Data (VALID Schema.org) */}
+        {/* Structured Data (Local Business) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -93,34 +108,17 @@ export default function RootLayout({
               description:
                 "Recording, mixing, and mastering studio in San Antonio, Texas.",
               telephone: "+1-210-608-6422",
-              areaServed: "San Antonio, TX",
-              image: [`${siteUrl}/images/hero-mic.jpg`],
+              image: `${siteUrl}/logo.png`,
               logo: `${siteUrl}/logo.png`,
-              keywords:
-                "recording studio, mixing, mastering, music production, San Antonio",
-              makesOffer: [
-                {
-                  "@type": "Offer",
-                  name: "Recording Session",
-                  category: "Recording",
-                },
-                {
-                  "@type": "Offer",
-                  name: "Mixing",
-                  category: "Mixing",
-                },
-                {
-                  "@type": "Offer",
-                  name: "Mastering",
-                  category: "Mastering",
-                },
-              ],
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "San Antonio",
                 addressRegion: "TX",
                 addressCountry: "US",
               },
+              areaServed: "San Antonio, TX",
+              keywords:
+                "recording studio, mixing, mastering, music production, San Antonio",
             }),
           }}
         />
