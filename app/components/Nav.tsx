@@ -1,47 +1,38 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Nav() {
-  const pathname = usePathname();
-
-  const isActive = (path: string) => pathname === path;
-
-  const navLink = (path: string, label: string) => (
-    <Link
-      href={path}
-      className={`relative px-2 py-2 text-sm md:text-base font-semibold transition ${
-        isActive(path) ? "text-white" : "text-gray-300 hover:text-white"
-      }`}
-    >
-      {label}
-      <span
-        className={`absolute left-0 -bottom-1 h-[2px] w-full transition ${
-          isActive(path) ? "bg-[#c8a44b] opacity-100" : "bg-transparent opacity-0"
-        }`}
-      />
-    </Link>
-  );
-
   return (
-    <nav className="sticky top-0 z-50 bg-[#07070a]/80 backdrop-blur border-b border-[#1a1a1f]">
-      <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex items-center justify-between gap-6">
-        {/* Brand */}
-        <Link href="/" className="font-extrabold tracking-wide text-base md:text-lg">
-          INVALUABLESS <span className="text-[#c8a44b]">PRODUCTIONS</span>
+    <nav className="w-full border-b border-white/10 bg-[#07070a]/90 backdrop-blur sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex items-center justify-between">
+
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="Invaluabless Productions"
+            width={40}
+            height={40}
+            priority
+          />
+          <span className="font-extrabold tracking-wide text-white text-lg">
+            Invaluabless
+          </span>
         </Link>
 
-        {/* Links */}
-        <div className="flex items-center gap-5">
-          {navLink("/", "Home")}
-          {navLink("/services", "Services")}
-          {navLink("/work", "Work")}
-
+        {/* NAV LINKS */}
+        <div className="flex items-center gap-8 text-sm font-medium text-gray-300">
+          <Link href="/" className="hover:text-white transition">
+            Home
+          </Link>
+          <Link href="/work" className="hover:text-white transition">
+            Work
+          </Link>
           <Link
             href="/book"
-            className={`ml-2 px-5 py-2 rounded-lg font-semibold transition smooth glow-red
-              ${isActive("/book") ? "bg-[#8b0b17] text-white" : "bg-[#8b0b17] text-white hover:opacity-90"}`}
+            className="px-4 py-2 bg-[#8b0b17] rounded-lg text-white hover:opacity-90 transition"
           >
             Book
           </Link>
