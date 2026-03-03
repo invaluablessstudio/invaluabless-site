@@ -81,31 +81,46 @@ export default function RootLayout({
           </>
         )}
 
-        {/* ✅ Local Business Structured Data (SEO BOOST) */}
+        {/* ✅ Local Business Structured Data (VALID Schema.org) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "MusicStudio",
+              "@type": "LocalBusiness",
               name: "Invaluabless Productions",
               url: siteUrl,
-              logo: `${siteUrl}/logo.png`,
-              image: `${siteUrl}/images/hero-mic.jpg`,
               description:
-                "Recording, Mixing, and Mastering Studio in San Antonio, Texas.",
+                "Recording, mixing, and mastering studio in San Antonio, Texas.",
               telephone: "+1-210-608-6422",
-              areaServed: "San Antonio, Texas",
+              areaServed: "San Antonio, TX",
+              image: [`${siteUrl}/images/hero-mic.jpg`],
+              logo: `${siteUrl}/logo.png`,
+              keywords:
+                "recording studio, mixing, mastering, music production, San Antonio",
+              makesOffer: [
+                {
+                  "@type": "Offer",
+                  name: "Recording Session",
+                  category: "Recording",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Mixing",
+                  category: "Mixing",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Mastering",
+                  category: "Mastering",
+                },
+              ],
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "San Antonio",
                 addressRegion: "TX",
                 addressCountry: "US",
               },
-              sameAs: [
-                "https://www.instagram.com/YOUR_INSTAGRAM",
-                "https://www.youtube.com/YOUR_YOUTUBE"
-              ],
             }),
           }}
         />
