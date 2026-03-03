@@ -60,6 +60,11 @@ const videos = [
     artist: "Ryan Rivera",
     videoId: "Jw07s7OvUks",
   },
+  {
+    title: "Aparentas",
+    artist: "Lil Tree",
+    videoId: "CrLnsJNBKBk",
+  },
 
   // 👉 ADD MORE VIDEOS HERE
   // { title: "New Song", artist: "Artist", videoId: "XXXX" },
