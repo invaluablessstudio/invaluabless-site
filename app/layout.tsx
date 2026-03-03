@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "Invaluabless Productions",
+    default: "Invaluabless Productions | Recording Studio San Antonio",
     template: "%s • Invaluabless Productions",
   },
 
   description:
-    "Professional recording, mixing, and mastering studio in San Antonio, Texas.",
+    "Professional recording, mixing, and mastering studio in San Antonio, Texas. Studio-level sound for artists who move with intention.",
 
   applicationName: "Invaluabless Productions",
 
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Invaluabless Productions",
-    title: "Invaluabless Productions",
+    title: "Invaluabless Productions | Recording Studio San Antonio",
     description:
       "Professional recording, mixing, and mastering studio in San Antonio, Texas.",
     images: [
@@ -60,6 +60,26 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data as a separate object for type safety
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Invaluabless Productions",
+  url: "https://invaluablessproduction.com",
+  description: "Recording, mixing, and mastering studio in San Antonio, Texas.",
+  telephone: "+1-210-608-6422",
+  image: "https://invaluablessproduction.com/logo.png",
+  logo: "https://invaluablessproduction.com/logo.png",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Antonio",
+    addressRegion: "TX",
+    addressCountry: "US",
+  },
+  areaServed: "San Antonio, TX",
+  keywords: "recording studio, mixing, mastering, music production, San Antonio",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -73,10 +93,17 @@ export default function RootLayout({
         {/* Performance Preconnect */}
         <link rel="preconnect" href="https://img.youtube.com" />
         <link rel="preconnect" href="https://www.youtube.com" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
       </head>
 
       <body className="bg-[#07070a] text-white antialiased">
-
         {/* Google Analytics 4 */}
         {GA_ID && (
           <>
@@ -95,33 +122,6 @@ export default function RootLayout({
             </Script>
           </>
         )}
-
-        {/* Structured Data (Local Business) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Invaluabless Productions",
-              url: siteUrl,
-              description:
-                "Recording, mixing, and mastering studio in San Antonio, Texas.",
-              telephone: "+1-210-608-6422",
-              image: `${siteUrl}/logo.png`,
-              logo: `${siteUrl}/logo.png`,
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "San Antonio",
-                addressRegion: "TX",
-                addressCountry: "US",
-              },
-              areaServed: "San Antonio, TX",
-              keywords:
-                "recording studio, mixing, mastering, music production, San Antonio",
-            }),
-          }}
-        />
 
         <Nav />
         <PageTransition>{children}</PageTransition>

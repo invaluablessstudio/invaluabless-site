@@ -1,6 +1,9 @@
+// app/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
@@ -12,20 +15,24 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen text-white">
-      {/* FULL PAGE BACKGROUND */}
-      <div
-        className="fixed inset-0 bg-cover bg-center -z-10"
-        style={{
-          backgroundImage: "url('/images/hero-mic.jpg')",
-          filter: "brightness(0.82) contrast(1.05)",
-        }}
-      />
+      {/* FULL PAGE BACKGROUND - Using Next.js Image for optimization */}
+      <div className="fixed inset-0 -z-20">
+        <Image
+          src="/images/hero-mic.jpg"
+          alt="Studio microphone background"
+          fill
+          className="object-cover"
+          style={{ filter: "brightness(0.82) contrast(1.05)" }}
+          priority
+          quality={90}
+        />
+      </div>
 
       {/* Global Overlay */}
       <div className="fixed inset-0 bg-black/50 -z-10" />
 
       {/* Subtle Atmosphere */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
+      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#c8a44b]/10 blur-3xl" />
         <div className="absolute top-24 right-[-120px] w-[480px] h-[480px] rounded-full bg-[#8b0b17]/10 blur-3xl" />
       </div>
@@ -56,19 +63,19 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
+              <Link
                 href="/book"
-                className="px-6 py-3 bg-[#c8a44b] text-black font-semibold rounded-md hover:opacity-90 transition"
+                className="px-6 py-3 bg-[#c8a44b] text-black font-semibold rounded-md hover:opacity-90 transition-opacity"
               >
                 Book a Session
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/services"
-                className="px-6 py-3 border border-white/30 text-white rounded-md hover:bg-white/10 transition"
+                className="px-6 py-3 border border-white/30 text-white rounded-md hover:bg-white/10 transition-colors"
               >
                 View Services
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -94,9 +101,9 @@ export default function Home() {
               Recent Work <span className="text-[#c8a44b]">.</span>
             </h2>
 
-            <a href="/work" className="text-[#c8a44b] font-semibold hover:opacity-90 transition">
+            <Link href="/work" className="text-[#c8a44b] font-semibold hover:opacity-90 transition-opacity">
               View all →
-            </a>
+            </Link>
           </div>
 
           <p className="mt-6 text-gray-200 max-w-3xl">
@@ -117,36 +124,36 @@ export default function Home() {
             <WorkCard
               title="Sugar Water – Sammy D"
               note="YouTube"
-              href="https://www.youtube.com/watch?v=vhGVhiP-W-g&list=OLAK5uy_lkMxqPDO7h8sgeIq3Hh5OSt8QyWGitre4"
+              href="https://www.youtube.com/watch?v=vhGVhiP-W-g"
             />
           </div>
         </div>
       </section>
 
-     {/* ================= SERVICES ================= */}
-<section className="py-24">
-  <div className="max-w-7xl mx-auto px-6 md:px-16">
-    <div className="flex items-end justify-between gap-6 flex-wrap">
-      <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left">
-        Our Services
-      </h2>
+      {/* ================= SERVICES ================= */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="flex items-end justify-between gap-6 flex-wrap">
+            <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left">
+              Our Services
+            </h2>
 
-      <a
-        href="/services"
-        className="text-[#c8a44b] font-semibold hover:opacity-90 transition"
-      >
-        View full details →
-      </a>
-    </div>
+            <Link
+              href="/services"
+              className="text-[#c8a44b] font-semibold hover:opacity-90 transition-opacity"
+            >
+              View full details →
+            </Link>
+          </div>
 
-    <div className="mt-16 grid md:grid-cols-4 gap-8">
-      <ServiceMini title="Recording" desc="Professional vocal & instrumental tracking." />
-      <ServiceMini title="Mixing" desc="Clarity, punch, and translation across systems." />
-      <ServiceMini title="Mastering" desc="Final polish and industry-ready loudness." />
-      <ServiceMini title="Beat Leasing / Purchase" desc="Custom and licensed production options." />
-    </div>
-  </div>
-</section>
+          <div className="mt-16 grid md:grid-cols-4 gap-8">
+            <ServiceMini title="Recording" desc="Professional vocal & instrumental tracking." />
+            <ServiceMini title="Mixing" desc="Clarity, punch, and translation across systems." />
+            <ServiceMini title="Mastering" desc="Final polish and industry-ready loudness." />
+            <ServiceMini title="Beat Leasing / Purchase" desc="Custom and licensed production options." />
+          </div>
+        </div>
+      </section>
 
       {/* ================= FINAL CTA ================= */}
       <section className="py-24">
@@ -155,16 +162,16 @@ export default function Home() {
             Ready to lock in your sound?
           </h2>
           <p className="mt-6 text-gray-200 text-lg">
-            Submit your booking request and we’ll confirm availability.
+            Submit your booking request and we&apos;ll confirm availability.
           </p>
 
           <div className="mt-10">
-            <a
+            <Link
               href="/book"
-              className="inline-block px-8 py-4 bg-[#8b0b17] rounded-xl font-semibold smooth glow-red hover:opacity-90"
+              className="inline-block px-8 py-4 bg-[#8b0b17] rounded-xl font-semibold text-white hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(139,11,23,0.3)]"
             >
               BOOK A SESSION
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -185,12 +192,16 @@ function WorkCard({
     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
-      className="p-8 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md smooth card-hover glow-gold-hover block"
+      rel="noopener noreferrer"
+      className="group p-8 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md block transition-all duration-300 hover:border-[#c8a44b]/30 hover:bg-black/50 hover:shadow-[0_0_30px_rgba(200,164,75,0.15)]"
     >
-      <div className="text-lg font-semibold text-white">{title}</div>
+      <div className="text-lg font-semibold text-white group-hover:text-[#c8a44b] transition-colors">
+        {title}
+      </div>
       <div className="mt-2 text-sm text-gray-300">{note}</div>
-      <div className="mt-6 text-sm font-semibold text-[#c8a44b]">Open →</div>
+      <div className="mt-6 text-sm font-semibold text-[#c8a44b] flex items-center gap-1">
+        Open <span className="transition-transform group-hover:translate-x-1">→</span>
+      </div>
     </a>
   );
 }
@@ -203,8 +214,8 @@ function ServiceMini({
   desc: string;
 }) {
   return (
-    <div className="p-7 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md smooth card-hover glow-gold-hover">
-      <div className="text-sm tracking-[0.25em] uppercase text-gray-300">
+    <div className="group p-7 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md transition-all duration-300 hover:border-[#c8a44b]/30 hover:bg-black/50 hover:shadow-[0_0_30px_rgba(200,164,75,0.15)]">
+      <div className="text-sm tracking-[0.25em] uppercase text-gray-300 group-hover:text-[#c8a44b] transition-colors">
         {title}
       </div>
       <div className="mt-4 text-gray-200 text-sm leading-relaxed">

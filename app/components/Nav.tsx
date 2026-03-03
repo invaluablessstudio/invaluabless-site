@@ -1,6 +1,7 @@
+// app/components/Nav.tsx
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,8 +9,9 @@ import { usePathname } from "next/navigation";
 type NavItem = { label: string; href: string };
 
 export default function Nav() {
-  const pathname = usePathname();
+  const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const items: NavItem[] = useMemo(
     () => [
@@ -19,6 +21,11 @@ export default function Nav() {
     ],
     []
   );
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close drawer on route change
   useEffect(() => {
@@ -35,10 +42,19 @@ export default function Nav() {
     };
   }, [open]);
 
-  function isActive(href: string) {
+  // Close on ESC key
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  const isActive = useCallback((href: string) => {
     if (href === "/") return pathname === "/";
-    return pathname?.startsWith(href);
-  }
+    return pathname.startsWith(href);
+  }, [pathname]);
 
   return (
     <>
@@ -70,12 +86,11 @@ export default function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={[
-                  "text-sm font-medium transition",
-                  isActive(item.href)
+                className={`text-sm font-medium transition-colors ${
+                  mounted && isActive(item.href)
                     ? "text-white"
-                    : "text-white/70 hover:text-white",
-                ].join(" ")}
+                    : "text-white/70 hover:text-white"
+                }`}
               >
                 {item.label}
               </Link>
@@ -83,7 +98,7 @@ export default function Nav() {
 
             <Link
               href="/book"
-              className="rounded-xl bg-[#8b0b17] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition"
+              className="rounded-xl bg-[#8b0b17] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
             >
               Book
             </Link>
@@ -93,7 +108,7 @@ export default function Nav() {
           <div className="flex items-center gap-3 md:hidden">
             <Link
               href="/book"
-              className="rounded-xl bg-[#8b0b17] px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition"
+              className="rounded-xl bg-[#8b0b17] px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
             >
               Book
             </Link>
@@ -102,12 +117,20 @@ export default function Nav() {
               type="button"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:bg-white/10"
+              aria-expanded={open}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:bg-white/10 transition-colors"
             >
-              {/* hamburger icon */}
-              <span className="block h-[2px] w-5 bg-current mb-1" />
-              <span className="block h-[2px] w-5 bg-current mb-1" />
-              <span className="block h-[2px] w-5 bg-current" />
+              {/* Proper hamburger icon using SVG */}
+              <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 20 20" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              >
+                <path d="M3 6h14M3 10h14M3 14h14" strokeLinecap="round" />
+              </svg>
             </button>
           </div>
         </div>
@@ -117,15 +140,16 @@ export default function Nav() {
       {open && (
         <div className="fixed inset-0 z-[60] md:hidden">
           {/* Backdrop */}
-          <button
-            type="button"
-            className="absolute inset-0 bg-black/70"
-            aria-label="Close menu"
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setOpen(false)}
+            role="button"
+            tabIndex={-1}
+            aria-label="Close menu"
           />
 
           {/* Panel */}
-          <div className="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-white/10 bg-[#0b0b10] shadow-[0_30px_120px_rgba(0,0,0,0.75)]">
+          <div className="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-white/10 bg-[#0b0b10] shadow-[0_30px_120px_rgba(0,0,0,0.75)] animate-in slide-in-from-right duration-300">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
               <div className="flex items-center gap-3">
                 <div className="relative h-9 w-9 overflow-hidden rounded-lg border border-white/10 bg-black/20">
@@ -145,29 +169,30 @@ export default function Nav() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:bg-white/10"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:bg-white/10 transition-colors"
               >
-                ✕
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
+                </svg>
               </button>
             </div>
 
             <div className="px-4 py-5">
-              <div className="grid gap-2">
+              <nav className="grid gap-2">
                 {items.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={[
-                      "rounded-xl px-4 py-3 text-lg font-semibold transition",
-                      isActive(item.href)
+                    className={`rounded-xl px-4 py-3 text-lg font-semibold transition-colors ${
+                      mounted && isActive(item.href)
                         ? "bg-white/[0.06] text-white"
-                        : "text-white/85 hover:bg-white/[0.06]",
-                    ].join(" ")}
+                        : "text-white/85 hover:bg-white/[0.06]"
+                    }`}
                   >
                     {item.label}
                   </Link>
                 ))}
-              </div>
+              </nav>
 
               <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                 <p className="text-sm font-semibold text-white/90">
