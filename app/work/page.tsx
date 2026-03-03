@@ -20,6 +20,47 @@ const videos = [
     artist: "Sammy D",
     videoId: "vhGVhiP-W-g",
   },
+  {
+    title: "2 Pastillas",
+    artist: "Melchory Gang",
+    videoId: "50sVJeIHiKw",
+  },
+  {
+    title: "Sin Ti",
+    artist: "Chelo Moreno",
+    videoId: "lmgEkEQD8Hk",
+  },
+  {
+    title: "Maquina del Tiempo",
+    artist: "Carli",
+    videoId: "I-Ji_p-Ox4o",
+  },
+  {
+    title: "Recuerdo",
+    artist: "Baby Killa La Amenaza",
+    videoId: "Y0Op6re9_hY",
+  },
+  {
+    title: "Color Cafe",
+    artist: "Jay Lex",
+    videoId: "-HyD3ms4q1o",
+  },
+  {
+    title: "Contigo",
+    artist: "Marco Antonio Lopez",
+    videoId: "YpRWYVYolOI",
+  },
+  {
+    title: "Perreo Violento",
+    artist: "J King",
+    videoId: "Nb5f_eudIQY",
+  },
+  {
+    title: "Misteriosa",
+    artist: "Ryan Rivera",
+    videoId: "Jw07s7OvUks",
+  },
+
   // 👉 ADD MORE VIDEOS HERE
   // { title: "New Song", artist: "Artist", videoId: "XXXX" },
 ];
@@ -45,7 +86,6 @@ export default function WorkPage() {
 
   return (
     <main className="min-h-screen bg-[#07070a] text-white px-6 md:px-16 py-20 relative overflow-hidden">
-
       {/* Grain Overlay */}
       <div
         className="pointer-events-none fixed inset-0 opacity-[0.04] mix-blend-overlay"
@@ -73,13 +113,9 @@ export default function WorkPage() {
           Proof of clarity. Proof of presence.
         </p>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-10">
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {videos.map((video) => (
-            <WorkCard
-              key={video.videoId}
-              {...video}
-              openVideo={openVideo}
-            />
+            <WorkCard key={video.videoId} {...video} openVideo={openVideo} />
           ))}
         </div>
       </div>
@@ -88,7 +124,6 @@ export default function WorkPage() {
       {activeVideo && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="relative w-[95%] md:w-[70%] aspect-video bg-black rounded-xl overflow-hidden">
-
             <button
               onClick={closeVideo}
               className="absolute top-4 right-4 z-50 text-white bg-black/60 px-3 py-1 rounded-full"
@@ -111,7 +146,6 @@ export default function WorkPage() {
       <section className="mt-24">
         <div className="max-w-5xl mx-auto px-6 md:px-16">
           <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#111116] p-12 text-center">
-
             <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-[#8b0b17] via-transparent to-[#8b0b17]" />
 
             <div className="relative z-10">
@@ -139,7 +173,6 @@ export default function WorkPage() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }
