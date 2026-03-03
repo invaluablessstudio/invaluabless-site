@@ -163,7 +163,7 @@ function WorkCard({
       {/* Optimized Thumbnail */}
       <div className="relative h-60 w-full overflow-hidden">
         <Image
-          src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+          src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
