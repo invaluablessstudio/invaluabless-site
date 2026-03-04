@@ -183,7 +183,7 @@ export default function Home() {
 
 <p>
   2013: <strong className="text-white">Propiedad Urbana & Unstopable Studios</strong>. 
-  San Juan was the next level. Real Professional studios. Real pressure.  
+  San Juan was the next level. Real professional studios. Real pressure.  
   Sessions with <strong className="text-[#ff0040]">YOMO</strong>, <strong className="text-[#ff0040]">El Larax</strong>, <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>, <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and many others.  
   I earned my certification as a Recording Engineer — but more importantly, I earned trust in the room.
 </p>
@@ -197,7 +197,7 @@ export default function Home() {
 
               <div className="border-l-4 border-[#ff0040] pl-6 py-2">
                 <p className="text-lg font-bold italic text-white">
-                  "Clean vocals. Heavy low end; If it don’t hit in the car at night, it’s not done."
+                  "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
                 </p>
               </div>
 
