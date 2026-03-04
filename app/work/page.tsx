@@ -83,8 +83,8 @@ export default function WorkPage() {
           </Link>
         </div>
 
-        <p className="text-gray-400 text-lg max-w-2xl border-l-2 border-[#ff0040] pl-6 mb-16">
-          Proof of clarity. Proof of presence. Reggaeton, trap, and Latin hits that slap.
+        <p className="text-gray-400 text-lg max-w-2xl border-l-2 border-[#ff0040] pl-6 mb-16 font-urban text-2xl uppercase tracking-wide">
+          Play it loud. That&apos;s the test.
         </p>
 
         {/* Video Grid */}
