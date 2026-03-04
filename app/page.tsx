@@ -9,6 +9,7 @@ import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setShowHero(true), 100);
@@ -20,7 +21,17 @@ export default function Home() {
       setMousePos({ x: e.clientX / 50, y: e.clientY / 50 });
     };
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    
+    // Add scroll listener for nav background
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -55,18 +66,20 @@ export default function Home() {
         }}
       />
 
-      {/* NAVIGATION WITH LOGO */}
-      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/10">
+      {/* NAVIGATION - FIXED TO SHOW ON HOMEPAGE */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+      }`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* YOUR LOGO */}
-          <Link href="/" className="text-2xl font-black tracking-tighter uppercase">
+          {/* LOGO - ALWAYS VISIBLE */}
+          <Link href="/" className="text-2xl font-black tracking-tighter uppercase text-white hover:text-[#ff0040] transition-colors">
             Invaluabless<span className="text-[#ff0040]">.</span>
           </Link>
           <div className="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-            <a href="#producer" className="hover:text-[#ff0040] transition-colors uppercase">The Producer</a>
-            <a href="#credits" className="hover:text-[#ff0040] transition-colors uppercase">Credits</a>
-            <a href="#studio" className="hover:text-[#ff0040] transition-colors uppercase">Studio</a>
-            <a href="#contact" className="hover:text-[#ff0040] transition-colors uppercase">Contact</a>
+            <a href="#producer" className="text-white hover:text-[#ff0040] transition-colors uppercase">The Producer</a>
+            <a href="#credits" className="text-white hover:text-[#ff0040] transition-colors uppercase">Credits</a>
+            <a href="#studio" className="text-white hover:text-[#ff0040] transition-colors uppercase">Studio</a>
+            <a href="#contact" className="text-white hover:text-[#ff0040] transition-colors uppercase">Contact</a>
           </div>
         </div>
       </nav>
@@ -155,13 +168,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             
-            {/* Image with fallback */}
+            {/* Image with fallback - CHANGED ALT TEXT */}
             <div className="relative group">
               <div className="absolute -inset-4 bg-[#ff0040]/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity" />
               <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-[#0f0f14]">
                 <Image 
                   src="/images/producer-portrait.jpg" 
-                  alt="Invaluabless - Music Producer"
+                  alt="Invaluabless - Music Producer" // Changed from "Jeovanne Diaz - InvaluaBless"
                   fill
                   className="object-cover"
                   onError={(e) => {
@@ -180,7 +193,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Story Content */}
+            {/* Story Content - UPDATED FIRST PARAGRAPH */}
             <div className="space-y-8">
               <div>
                 <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">The Producer</p>
@@ -190,8 +203,9 @@ export default function Home() {
               </div>
 
               <div className="space-y-6 text-gray-300 leading-relaxed">
+                {/* UPDATED: Added Camuy, PR home studio detail */}
                 <p>
-                  Started in '09. Small studio in my hometown, cutting demos for local artists. Learned fast—if the 808 don't hit on a phone speaker, you did it wrong.
+                  Started in '09 in Camuy, PR. Built a home studio in my hometown, cutting demos for local artists. Learned fast—if the 808 don't hit on a phone speaker, you did it wrong.
                 </p>
                 
                 <p>
@@ -221,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= SELECTED CREDITS - FIXED LOCATIONS ================= */}
+      {/* ================= SELECTED CREDITS ================= */}
       <section id="credits" className="py-24 bg-[#0f0f14] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4 text-center">Selected Credits</p>
@@ -230,7 +244,7 @@ export default function Home() {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 mb-16">
-            {/* Puerto Rico - UPDATED WITH NEW ARTISTS */}
+            {/* Puerto Rico */}
             <div className="space-y-6">
               <h3 className="text-xl font-bold flex items-center gap-3 uppercase tracking-wider">
                 <span className="w-2 h-2 bg-[#ff0040] rounded-full" />
@@ -251,7 +265,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* USA - UPDATED WITH NEW ARTISTS */}
+            {/* USA */}
             <div className="space-y-6">
               <h3 className="text-xl font-bold flex items-center gap-3 uppercase tracking-wider">
                 <span className="w-2 h-2 bg-[#00f0ff] rounded-full" />
@@ -309,7 +323,7 @@ export default function Home() {
                   target.style.display = 'none';
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10 pointer-events-none">
                 <span className="text-gray-600 font-mono text-sm uppercase tracking-widest">Studio Control Room</span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -329,7 +343,7 @@ export default function Home() {
                   target.style.display = 'none';
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#00f0ff]/10 to-[#ff0040]/10">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#00f0ff]/10 to-[#ff0040]/10 pointer-events-none">
                 <span className="text-gray-600 font-mono text-sm uppercase tracking-widest">Vocal Booth Sessions</span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -355,7 +369,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= CONTACT - CHANGED FROM "PULL UP" ================= */}
+      {/* ================= CONTACT ================= */}
       <section id="contact" className="py-32 relative bg-[#0f0f14]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
         
@@ -414,7 +428,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTA - FIXED LINK */}
+          {/* CTA */}
           <Link
             href="/book"
             className="inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
