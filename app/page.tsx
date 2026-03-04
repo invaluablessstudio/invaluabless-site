@@ -108,15 +108,15 @@ export default function Home() {
             {/* Stats */}
             <div className="mt-16 flex gap-12 text-sm">
               <div>
-                <div className="font-urban text-3xl text-[#ff0040]">500+</div>
+                <div className="font-urban text-3xl text-[#ff0040]">300+</div>
                 <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Tracks Mixed</div>
               </div>
               <div>
-                <div className="font-urban text-3xl text-[#00f0ff]">50+</div>
+                <div className="font-urban text-3xl text-[#00f0ff]">20+</div>
                 <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Artists</div>
               </div>
               <div>
-                <div className="font-urban text-3xl text-white">5</div>
+                <div className="font-urban text-3xl text-white">+10</div>
                 <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Years</div>
               </div>
             </div>
