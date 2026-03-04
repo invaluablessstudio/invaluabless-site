@@ -170,32 +170,41 @@ export default function Home() {
 
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
-  Started in Puerto Rico in '09. No blueprint. No investors. Just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers.
+  Started in Puerto Rico in '09. Just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers. 
+  A few months later; what began as a home setup turned into real sessions, real artists, and real pressure.
 </p>
 
 <p>
   2010: <strong className="text-white">La Caldera Records</strong>.  
-  Built inside a barber shop in Quebradillas with Josue Tosado (MR KUSH).  
-  Clippers buzzing in the front. 808s shaking the back room.  
-  Reggaeton, trap, rap, Latin — whatever walked in, left different.
+  Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).  
+  It wasn’t glamorous — but it worked. Artists came in, records got made, and the sound kept improving.  
+  Reggaeton, trap, rap, R&B, Latin — whatever walked in, left different.
 </p>
 
 <p>
-  San Juan sharpened the blade. Real studios. Real pressure.  
-  Sessions with <strong className="text-[#ff0040]">YOMO</strong>, <strong className="text-[#ff0040]">El Larax</strong>, <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>.  
-  Certified engineer — but the streets taught first.
+  2013: <strong className="text-white">Propiedad Urbana & Unstopable Studios</strong>. 
+  San Juan was the next level. Real Professional studios. Real pressure.  
+  Sessions with <strong className="text-[#ff0040]">YOMO</strong>, <strong className="text-[#ff0040]">El Larax</strong>, <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>, <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and many others.  
+  I earned my certification as a Recording Engineer — but more importantly, I earned trust in the room.
 </p>
 
 <p>
+  2016: <strong className="text-white">The Transition</strong>. 
   Texas became the bridge. Island energy. Mainland punch.  
   Private sessions turned public demand.  
   Now the sound travels further than the room it was made in.
+</p>
+
+<p>
+  2026: <strong className="text-white">NOW</strong>. 
+  Now based in San Antonio, I focus on one thing:
+  making records that sound clean, heavy, and ready for release.
 </p>
               </div>
 
               <div className="border-l-4 border-[#ff0040] pl-6 py-2">
                 <p className="text-lg font-bold italic text-white">
-                  "If it don’t hit in the car at night, it’s not done."
+                  "Clean vocals. Heavy low end; If it don’t hit in the car at night, it’s not done."
                 </p>
               </div>
 
