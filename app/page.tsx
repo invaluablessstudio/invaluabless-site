@@ -159,11 +159,11 @@ export default function Home() {
             <div className="space-y-8">
               <div>
                 <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">The Producer</p>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight uppercase leading-tight">
+                <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight uppercase">
   Jeovanne Diaz
-                </h2>
+</h2>
 
-<p className="text-[#00f0ff] font-mono uppercase tracking-widest text-sm mt-3">
+<p className="text-white/60 uppercase tracking-[0.3em] text-xs mt-4">
   InvaluaBless Productions
 </p>
               </div>
@@ -279,7 +279,7 @@ export default function Home() {
                 src="/images/studio-wide-led.jpeg" 
                 alt="Invaluabless Productions Studio - San Antonio"
                 fill
-                className="object-contain transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -299,7 +299,7 @@ export default function Home() {
                 src="/images/artist-in-booth.jpeg" 
                 alt="Artist recording session"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-contain transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
