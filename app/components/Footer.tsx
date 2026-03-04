@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="font-urban text-4xl uppercase mb-4">
-              Invaluabless<span className="text-[#ff0040]">.</span>
+              Invaluabless Production<span className="text-[#ff0040]">.</span>
             </h3>
             <p className="text-gray-400 max-w-md leading-relaxed">
               Urban recording studio in San Antonio, TX. Specializing in reggaeton, 

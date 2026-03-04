@@ -43,7 +43,7 @@ export default function Home() {
           }}
         />
         {/* FIXED: Changed .jpg to .jpeg */}
-        <div className="absolute inset-0 bg-[url('/images/hero-mic.jpeg')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-[url('/images/hero-mic.jpg')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/80 to-[#0a0a0f]" />
       </div>
 
