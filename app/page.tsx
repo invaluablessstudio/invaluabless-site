@@ -9,7 +9,6 @@ import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setShowHero(true), 100);
@@ -21,17 +20,7 @@ export default function Home() {
       setMousePos({ x: e.clientX / 50, y: e.clientY / 50 });
     };
     window.addEventListener("mousemove", handleMouseMove);
-    
-    // Add scroll listener for nav background
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
@@ -39,11 +28,11 @@ export default function Home() {
       {/* Global Effects */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 mix-blend-overlay"
         style={{
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")"
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")"
         }}
       />
 
-      {/* Animated Background - ORIGINAL MIC BACKGROUND */}
+      {/* Animated Background */}
       <div className="fixed inset-0 -z-20">
         <div 
           className="absolute inset-0 opacity-30"
@@ -53,8 +42,8 @@ export default function Home() {
             transition: "transform 0.3s ease-out"
           }}
         />
-        {/* ORIGINAL MIC BACKGROUND IMAGE */}
-        <div className="absolute inset-0 bg-[url('/images/hero-mic.jpg')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
+        {/* FIXED: Changed .jpg to .jpeg */}
+        <div className="absolute inset-0 bg-[url('/images/hero-mic.jpeg')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/80 to-[#0a0a0f]" />
       </div>
 
@@ -66,27 +55,8 @@ export default function Home() {
         }}
       />
 
-      {/* NAVIGATION - FIXED TO SHOW ON HOMEPAGE */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* LOGO - ALWAYS VISIBLE */}
-          <Link href="/" className="text-2xl font-black tracking-tighter uppercase text-white hover:text-[#ff0040] transition-colors">
-            Invaluabless<span className="text-[#ff0040]">.</span>
-          </Link>
-          <div className="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-            <a href="#producer" className="text-white hover:text-[#ff0040] transition-colors uppercase">The Producer</a>
-            <a href="#credits" className="text-white hover:text-[#ff0040] transition-colors uppercase">Credits</a>
-            <a href="#studio" className="text-white hover:text-[#ff0040] transition-colors uppercase">Studio</a>
-            <a href="#contact" className="text-white hover:text-[#ff0040] transition-colors uppercase">Contact</a>
-          </div>
-        </div>
-      </nav>
-
-      {/* ================= HERO - ORIGINAL STYLE ================= */}
+      {/* ================= HERO ================= */}
       <section className="h-screen flex items-center relative pt-20">
-        {/* Side accent lines */}
         <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:block">
           <div className="w-[2px] h-32 bg-gradient-to-b from-transparent via-[#ff0040] to-transparent" />
         </div>
@@ -100,7 +70,6 @@ export default function Home() {
               showHero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            {/* Tagline */}
             <div className="flex items-center gap-4 mb-6">
               <div className="h-[1px] w-12 bg-[#ff0040]" />
               <p className="text-xs tracking-[0.4em] uppercase text-[#00f0ff] font-semibold">
@@ -108,7 +77,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Main Headline - BACK TO ORIGINAL STYLE */}
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.85] uppercase tracking-tighter">
               <span className="block text-white">Make</span>
               <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">Noise</span>
@@ -120,7 +88,6 @@ export default function Home() {
               Heavy 808s. Clean vocals. Industry-ready mixes that slap.
             </p>
 
-            {/* CTA Buttons - FIXED LINKS */}
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/book"
@@ -138,7 +105,6 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Stats */}
             <div className="mt-16 flex gap-12 text-sm">
               <div>
                 <div className="text-3xl font-bold text-[#ff0040]">300+</div>
@@ -156,7 +122,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
           <span className="text-[10px] uppercase tracking-widest">Scroll</span>
           <div className="w-[1px] h-8 bg-gradient-to-b from-[#ff0040] to-transparent" />
@@ -167,14 +132,13 @@ export default function Home() {
       <section id="producer" className="py-24 relative bg-[#0a0a0f]/80">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            
-            {/* Image with fallback - CHANGED ALT TEXT */}
             <div className="relative group">
               <div className="absolute -inset-4 bg-[#ff0040]/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity" />
               <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-[#0f0f14]">
+                {/* FIXED: Changed .jpg to .jpeg */}
                 <Image 
-                  src="/images/producer-portrait.jpg" 
-                  alt="Invaluabless - Music Producer" // Changed from "Jeovanne Diaz - InvaluaBless"
+                  src="/images/producer-portrait.jpeg" 
+                  alt="Invaluabless - Music Producer"
                   fill
                   className="object-cover"
                   onError={(e) => {
@@ -182,7 +146,6 @@ export default function Home() {
                     target.style.display = 'none';
                   }}
                 />
-                {/* Fallback if image fails */}
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/20 to-[#00f0ff]/20">
                   <span className="text-6xl font-black text-white/20">INV</span>
                 </div>
@@ -193,7 +156,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Story Content - UPDATED FIRST PARAGRAPH */}
             <div className="space-y-8">
               <div>
                 <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">The Producer</p>
@@ -203,7 +165,6 @@ export default function Home() {
               </div>
 
               <div className="space-y-6 text-gray-300 leading-relaxed">
-                {/* UPDATED: Added Camuy, PR home studio detail */}
                 <p>
                   Started in '09 in Camuy, PR. Built a home studio in my hometown, cutting demos for local artists. Learned fast—if the 808 don't hit on a phone speaker, you did it wrong.
                 </p>
@@ -244,7 +205,6 @@ export default function Home() {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 mb-16">
-            {/* Puerto Rico */}
             <div className="space-y-6">
               <h3 className="text-xl font-bold flex items-center gap-3 uppercase tracking-wider">
                 <span className="w-2 h-2 bg-[#ff0040] rounded-full" />
@@ -265,7 +225,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* USA */}
             <div className="space-y-6">
               <h3 className="text-xl font-bold flex items-center gap-3 uppercase tracking-wider">
                 <span className="w-2 h-2 bg-[#00f0ff] rounded-full" />
@@ -285,7 +244,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Studios & Certification */}
           <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-400 border-t border-white/10 pt-12">
             <div>
               <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-xs">Studios</h4>
@@ -311,10 +269,10 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Wide studio shot with fallback */}
+            {/* FIXED: Changed .jpg to .jpeg */}
             <div className="relative group overflow-hidden border border-white/10 aspect-video bg-[#0f0f14]">
               <Image 
-                src="/images/studio-wide-led.jpg" 
+                src="/images/studio-wide-led.jpeg" 
                 alt="Invaluabless Productions Studio - San Antonio"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -331,10 +289,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Artist in booth with fallback */}
+            {/* FIXED: Changed .jpg to .jpeg */}
             <div className="relative group overflow-hidden border border-white/10 aspect-video bg-[#0f0f14]">
               <Image 
-                src="/images/artist-in-booth.jpg" 
+                src="/images/artist-in-booth.jpeg" 
                 alt="Artist recording session"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -381,7 +339,6 @@ export default function Home() {
           <p className="text-xl text-gray-400 mb-16">Ready to make records that last? Let's build your sound.</p>
 
           <div className="grid md:grid-cols-2 gap-12 text-left mb-16">
-            {/* Location */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
@@ -404,23 +361,22 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Socials */}
             <div className="space-y-6">
               <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
               <div className="grid grid-cols-2 gap-4">
-                <a href="https://instagram.com/invaluablessproduction" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group">
+                <a href="https://instagram.com/invaluablessproduction " target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group">
                   <Instagram className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
                   <span className="text-sm font-medium">Instagram</span>
                 </a>
-                <a href="https://youtube.com/@InvaluaBlessProductions" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group">
+                <a href="https://youtube.com/@InvaluaBlessProductions " target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group">
                   <Youtube className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
                   <span className="text-sm font-medium">YouTube</span>
                 </a>
-                <a href="https://facebook.com/invaluablessproduction" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group">
+                <a href="https://facebook.com/invaluablessproduction " target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group">
                   <Facebook className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
                   <span className="text-sm font-medium">Facebook</span>
                 </a>
-                <a href="https://tiktok.com/@invaluablessproductions" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group">
+                <a href="https://tiktok.com/@invaluablessproductions " target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group">
                   <Music2 className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
                   <span className="text-sm font-medium">TikTok</span>
                 </a>
@@ -428,7 +384,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTA */}
           <Link
             href="/book"
             className="inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
@@ -438,17 +393,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= FOOTER ================= */}
-      <footer className="bg-black py-8 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © 2024 Invaluabless Productions. All rights reserved.
-          </p>
-          <p className="text-gray-600 text-xs font-mono uppercase tracking-widest">
-            Play it loud. That's the test.
-          </p>
-        </div>
-      </footer>
+      {/* FOOTER REMOVED - Now handled by footer.tsx component */}
     </main>
   );
 }

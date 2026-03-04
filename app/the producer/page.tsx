@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 const ProducerSection = () => {
   return (
     <section className="bg-black text-white py-16 px-4 md:px-8">

@@ -17,7 +17,7 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex gap-4">
               <SocialLink href="https://instagram.com/invaluablessproduction" label="IG" />
-              <SocialLink href="https://youtube.com" label="YT" />
+              <SocialLink href="https://youtube.com/@InvaluaBlessProductions" label="YT" />
               <SocialLink href="mailto:invaluabless.studio@gmail.com" label="Email" />
             </div>
           </div>
