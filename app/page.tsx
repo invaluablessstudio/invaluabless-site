@@ -123,7 +123,7 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-          <span className="text-[10px] uppercase tracking-widest">Scroll</span>
+          <span className="text-[10px] uppercase tracking-widest"></span>
           <div className="w-[1px] h-8 bg-gradient-to-b from-[#ff0040] to-transparent" />
         </div>
       </section>
@@ -171,7 +171,7 @@ export default function Home() {
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
   Started in Puerto Rico in '09. Just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers. 
-  A few months later; what began as a home setup turned into real sessions, real artists, and real pressure.
+  A few months later, what began as a home setup turned into real sessions, real artists, and real pressure.
 </p>
 
 <p>
