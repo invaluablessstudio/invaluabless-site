@@ -1,64 +1,120 @@
-// app/services/page.tsx
-"use client"; // ADDED: Required for smooth hover effects
+"use client";
 
 import Link from "next/link";
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#07070a] text-white px-6 md:px-16 py-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between gap-6 flex-wrap">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            Services <span className="text-[#c8a44b]">.</span>
-          </h1>
+    <main className="relative min-h-screen text-white overflow-hidden">
+      {/* Global Effects */}
+      <div className="grain" />
+      <div className="scanlines" />
+
+      {/* Background */}
+      <div className="fixed inset-0 -z-20 bg-[#0a0a0f]">
+        <div className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "radial-gradient(circle at 80% 20%, #ff0040 0%, transparent 40%), radial-gradient(circle at 20% 80%, #00f0ff 0%, transparent 40%)"
+          }}
+        />
+      </div>
+
+      {/* Grid Overlay */}
+      <div className="fixed inset-0 -z-10 opacity-[0.03]" 
+        style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px"
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-16 py-24 pt-32">
+        {/* Header */}
+        <div className="flex items-end justify-between gap-6 flex-wrap mb-16">
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-[1px] w-12 bg-[#ff0040]" />
+              <p className="text-xs tracking-[0.4em] uppercase text-[#00f0ff] font-semibold">
+                What We Do
+              </p>
+            </div>
+            <h1 className="font-urban text-6xl md:text-8xl uppercase leading-[0.85]">
+              Services<span className="text-[#ff0040] text-glow-red">.</span>
+            </h1>
+          </div>
 
           <Link
             href="/book"
-            className="px-6 py-3 bg-[#8b0b17] rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(139,11,23,0.3)]"
+            className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
           >
-            Book Session
+            <span className="relative z-10">Book Session</span>
+            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </Link>
         </div>
 
-        <p className="mt-6 text-gray-300 text-lg max-w-3xl">
-          Clear workflow. Clean engineering. Built for serious artists.
+        <p className="text-gray-400 text-lg max-w-2xl border-l-2 border-[#ff0040] pl-6 mb-16">
+          Heavy 808s. Clean vocals. Industry-ready mixes that slap. 
+          Built for reggaeton, trap, and Latin artists.
         </p>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-8">
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
           <ServiceCard
             title="Recording"
-            desc="Professional vocal & instrumental tracking in a controlled studio environment."
-            price="$50 / hour"
-            note="Minimum time can be set on booking."
+            desc="Vocal booths optimized for Latin vocals. Clean takes, tight comping. Professional tracking for vocals and instruments."
+            price="$50/hr"
+            note="Minimum booking required"
+            icon="🎤"
           />
           <ServiceCard
             title="Mixing"
-            desc="Clarity, punch, and professional balance that translates everywhere."
+            desc="808s that hit. Vocals that cut. Radio-ready balance with clarity and punch that translates everywhere."
             price="$100"
-            note="Per song."
+            note="Per song"
+            icon="🎚️"
           />
           <ServiceCard
             title="Mastering"
-            desc="Final polish and platform-ready loudness with clean dynamics."
+            desc="Final polish and platform-ready loudness. Clean dynamics optimized for streaming services."
             price="$50"
-            note="Per song."
+            note="Per song"
+            icon="📀"
           />
           <ServiceCard
-            title="Beat Leasing / Purchase"
-            desc="High-quality beats available for lease or purchase. Pricing varies by license."
-            price="Starting at $200"
-            note="Licensing terms provided after request."
+            title="Beat Leasing"
+            desc="High-quality beats available for lease or purchase. Exclusive and non-exclusive licenses available."
+            price="$200+"
+            note="Pricing varies by license"
+            icon="🥁"
           />
         </div>
 
-        <div className="mt-14 p-8 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md">
-          <h2 className="text-2xl font-semibold">How booking works</h2>
-          <p className="mt-4 text-gray-300">
-            Submit the booking form → we confirm availability → deposit locks your session.
-            <br />
-            <span className="text-gray-400">
-              Envía el formulario → confirmamos disponibilidad → el depósito asegura tu sesión.
-            </span>
+        {/* Process Section */}
+        <div className="mt-20 street-card p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#ff0040] to-transparent" />
+          
+          <h2 className="font-urban text-4xl uppercase mb-6">
+            How It Works <span className="text-[#00f0ff]">.</span>
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative">
+              <span className="font-urban text-6xl text-[#ff0040]/20 absolute -top-4 -left-2">01</span>
+              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">Book</h3>
+              <p className="text-gray-400 text-sm">Submit the booking form with your preferred time slot.</p>
+            </div>
+            <div className="relative">
+              <span className="font-urban text-6xl text-[#00f0ff]/20 absolute -top-4 -left-2">02</span>
+              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">Confirm</h3>
+              <p className="text-gray-400 text-sm">We confirm availability and send deposit details.</p>
+            </div>
+            <div className="relative">
+              <span className="font-urban text-6xl text-[#ff0040]/20 absolute -top-4 -left-2">03</span>
+              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">Create</h3>
+              <p className="text-gray-400 text-sm">Deposit locks your session. Time to make noise.</p>
+            </div>
+          </div>
+
+          <p className="mt-8 text-gray-500 text-sm uppercase tracking-wider border-t border-white/10 pt-6">
+            Envía el formulario → confirmamos disponibilidad → el depósito asegura tu sesión.
           </p>
         </div>
       </div>
@@ -71,23 +127,35 @@ function ServiceCard({
   desc,
   price,
   note,
+  icon,
 }: {
   title: string;
   desc: string;
   price: string;
   note: string;
+  icon: string;
 }) {
   return (
-    <div className="group p-8 rounded-2xl border border-white/10 bg-black/35 backdrop-blur-md transition-all duration-300 hover:border-[#c8a44b]/30 hover:bg-black/50 hover:shadow-[0_0_30px_rgba(200,164,75,0.15)]">
-      <div className="flex items-start justify-between gap-4">
-        <h3 className="text-xl font-semibold text-[#c8a44b] group-hover:text-[#d7bb63] transition-colors">{title}</h3>
+    <div className="street-card p-8 group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+      <div className="flex items-start justify-between mb-6">
+        <span className="text-4xl opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+          {icon}
+        </span>
         <div className="text-right">
-          <div className="text-lg font-extrabold text-white">{price}</div>
-          <div className="text-xs text-gray-400">{note}</div>
+          <div className="font-urban text-3xl text-[#ff0040] group-hover:text-glow-red transition-all">{price}</div>
+          <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">{note}</div>
         </div>
       </div>
 
-      <p className="mt-4 text-gray-200 leading-relaxed">{desc}</p>
+      <h3 className="font-urban text-3xl uppercase mb-3 group-hover:text-[#ff0040] transition-colors">
+        {title}
+      </h3>
+      
+      <p className="text-gray-400 leading-relaxed text-sm">
+        {desc}
+      </p>
+
+      <div className="mt-6 h-[2px] w-12 bg-gray-700 group-hover:w-full group-hover:bg-[#ff0040] transition-all duration-500" />
     </div>
   );
 }
