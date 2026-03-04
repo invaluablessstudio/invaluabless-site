@@ -5,7 +5,42 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
+import { useRef } from "react"
 
+function FadeInSection({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.15 }
+    )
+
+    if (ref.current) observer.observe(ref.current)
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current)
+    }
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-out ${
+        isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-12"
+      }`}
+    >
+      {children}
+    </div>
+  )
+}
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -137,6 +172,7 @@ export default function Home() {
 
       {/* ================= THE PRODUCER ================= */}
       <section id="producer" className="py-20">
+        <FadeInSection>
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative group">
@@ -213,11 +249,13 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
+       </div>
+  </FadeInSection>
+</section>
 
       {/* ================= SELECTED CREDITS ================= */}
       <section id="credits" className="py-20 border-y border-white/5">
+       <FadeInSection>
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4 text-center">Selected Credits</p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase text-center mb-16">
@@ -274,11 +312,13 @@ export default function Home() {
               <p>Recording Engineer — CCAT, Bayamón, Puerto Rico</p>
             </div>
           </div>
-        </div>
-      </section>
+       </div>
+  </FadeInSection>
+</section>
 
       {/* ================= THE STUDIO ================= */}
       <section id="studio" className="py-20">
+          <FadeInSection>
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="text-center mb-16">
             <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">The Studio</p>
@@ -344,11 +384,13 @@ export default function Home() {
               <p className="text-gray-400 text-sm leading-relaxed">Original production. Reggaeton, trap, rap, Latin. Custom or licensed.</p>
             </div>
           </div>
-        </div>
-      </section>
+    </div>
+  </FadeInSection>
+</section>
 
       {/* ================= CONTACT ================= */}
       <section id="contact" className="py-20">
+        <FadeInSection>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
         
         <div className="max-w-4xl mx-auto px-6 md:px-16 text-center relative">
@@ -410,8 +452,9 @@ export default function Home() {
           >
             Book Your Session
           </Link>
-        </div>
-      </section>
+      </div>
+  </FadeInSection>
+</section>
 
       {/* FOOTER REMOVED - Now handled by footer.tsx component */}
     </main>
