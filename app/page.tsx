@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* ================= THE PRODUCER ================= */}
-      <section id="producer" className="py-32">
+      <section id="producer" className="py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative group">
@@ -217,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* ================= SELECTED CREDITS ================= */}
-      <section id="credits" className="py-32 border-y border-white/5">
+      <section id="credits" className="py-20 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4 text-center">Selected Credits</p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase text-center mb-16">
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* ================= THE STUDIO ================= */}
-      <section id="studio" className="py-32">
+      <section id="studio" className="py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="text-center mb-16">
             <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">The Studio</p>
@@ -348,7 +348,7 @@ export default function Home() {
       </section>
 
       {/* ================= CONTACT ================= */}
-      <section id="contact" className="py-32">
+      <section id="contact" className="py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
         
         <div className="max-w-4xl mx-auto px-6 md:px-16 text-center relative">
