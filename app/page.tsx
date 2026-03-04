@@ -159,9 +159,13 @@ export default function Home() {
             <div className="space-y-8">
               <div>
                 <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">The Producer</p>
-                <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase leading-[0.95]">
-                  Jeovanne Diaz - InvaluaBless 
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight uppercase leading-tight">
+  Jeovanne Diaz
                 </h2>
+
+<p className="text-[#00f0ff] font-mono uppercase tracking-widest text-sm mt-3">
+  InvaluaBless Productions
+</p>
               </div>
 
               <div className="space-y-6 text-gray-300 leading-relaxed">
