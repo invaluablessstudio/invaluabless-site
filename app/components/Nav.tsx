@@ -1,213 +1,109 @@
 // app/components/Nav.tsx
 "use client";
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-type NavItem = { label: string; href: string };
-
 export default function Nav() {
-  const pathname = usePathname() || "/";
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const items: NavItem[] = useMemo(
-    () => [
-      { label: "Home", href: "/" },
-      { label: "Services", href: "/services" },
-      { label: "Work", href: "/work" },
-    ],
-    []
-  );
-
-  // Prevent hydration mismatch
   useEffect(() => {
-    setMounted(true);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close drawer on route change
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when drawer is open
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [open]);
-
-  // Close on ESC key
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
-
-  const isActive = useCallback((href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  }, [pathname]);
+  const navItems = [
+    { label: "Work", href: "/work" },
+    { label: "Services", href: "/services" },
+    { label: "Book", href: "/book", highlight: true },
+  ];
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07070a]/75 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
-          {/* Left: Logo + Name */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative h-9 w-9 overflow-hidden rounded-lg border border-white/10 bg-black/20">
-              <Image
-                src="/logo.png"
-                alt="Invaluabless Productions"
-                fill
-                className="object-contain p-1"
-                priority
-              />
-            </div>
-
-            <div className="leading-tight">
-              <div className="text-sm font-extrabold tracking-wide text-white">
-                INVALUABLESS{" "}
-                <span className="text-[#c8a44b]">PRODUCTIONS</span>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#0a0a0f]/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"
+      }`}>
+        <div className="mx-auto max-w-7xl px-6 md:px-16">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative h-10 w-10 overflow-hidden border border-[#ff0040]/50 bg-black/50">
+                <Image
+                  src="/logo.png"
+                  alt="Invaluabless"
+                  fill
+                  className="object-contain p-1 group-hover:scale-110 transition-transform"
+                  priority
+                />
               </div>
-            </div>
-          </Link>
-
-          {/* Right: Desktop links */}
-          <nav className="hidden items-center gap-8 md:flex">
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-medium transition-colors ${
-                  mounted && isActive(item.href)
-                    ? "text-white"
-                    : "text-white/70 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            <Link
-              href="/book"
-              className="rounded-xl bg-[#8b0b17] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
-            >
-              Book
-            </Link>
-          </nav>
-
-          {/* Right: Mobile - Book always visible + Hamburger */}
-          <div className="flex items-center gap-3 md:hidden">
-            <Link
-              href="/book"
-              className="rounded-xl bg-[#8b0b17] px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
-            >
-              Book
+              <div className="hidden sm:block">
+                <div className="font-urban text-xl uppercase tracking-wider leading-none">
+                  Invaluabless<span className="text-[#ff0040]">.</span>
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.3em] text-gray-500">Productions</div>
+              </div>
             </Link>
 
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative text-sm uppercase tracking-wider font-medium transition-all ${
+                    item.highlight 
+                      ? "px-6 py-2.5 bg-[#ff0040] text-black hover:glow-red" 
+                      : "text-gray-300 hover:text-white"
+                  } ${pathname === item.href && !item.highlight ? "text-white" : ""}`}
+                >
+                  {item.label}
+                  {!item.highlight && pathname === item.href && (
+                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#ff0040]" />
+                  )}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Mobile Menu Button */}
             <button
-              type="button"
-              onClick={() => setOpen(true)}
-              aria-label="Open menu"
-              aria-expanded={open}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:bg-white/10 transition-colors"
+              onClick={() => setOpen(!open)}
+              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              aria-label="Toggle menu"
             >
-              {/* Proper hamburger icon using SVG */}
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2"
-              >
-                <path d="M3 6h14M3 10h14M3 14h14" strokeLinecap="round" />
-              </svg>
+              <span className={`w-6 h-[2px] bg-white transition-all ${open ? "rotate-45 translate-y-[5px]" : ""}`} />
+              <span className={`w-6 h-[2px] bg-[#ff0040] transition-all ${open ? "opacity-0" : ""}`} />
+              <span className={`w-6 h-[2px] bg-white transition-all ${open ? "-rotate-45 -translate-y-[5px]" : ""}`} />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu */}
       {open && (
-        <div className="fixed inset-0 z-[60] md:hidden">
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-            role="button"
-            tabIndex={-1}
-            aria-label="Close menu"
-          />
-
-          {/* Panel */}
-          <div className="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-white/10 bg-[#0b0b10] shadow-[0_30px_120px_rgba(0,0,0,0.75)] animate-in slide-in-from-right duration-300">
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
-              <div className="flex items-center gap-3">
-                <div className="relative h-9 w-9 overflow-hidden rounded-lg border border-white/10 bg-black/20">
-                  <Image
-                    src="/logo.png"
-                    alt="Invaluabless Productions"
-                    fill
-                    className="object-contain p-1"
-                  />
-                </div>
-                <div className="text-sm font-extrabold text-white">
-                  Menu
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label="Close menu"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:bg-white/10 transition-colors"
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-lg" onClick={() => setOpen(false)} />
+          <nav className="absolute top-20 left-0 right-0 bg-[#0a0a0f] border-b border-[#ff0040]/20 p-6 flex flex-col gap-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-2xl font-urban uppercase tracking-wider ${
+                  item.highlight ? "text-[#ff0040]" : "text-white"
+                }`}
               >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-
-            <div className="px-4 py-5">
-              <nav className="grid gap-2">
-                {items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`rounded-xl px-4 py-3 text-lg font-semibold transition-colors ${
-                      mounted && isActive(item.href)
-                        ? "bg-white/[0.06] text-white"
-                        : "text-white/85 hover:bg-white/[0.06]"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <p className="text-sm font-semibold text-white/90">
-                  Deposit required
-                </p>
-                <p className="mt-1 text-sm text-white/65">
-                  Booking is confirmed after deposit is received.
-                </p>
-              </div>
-
-              <div className="mt-6 text-xs text-white/50">
-                © {new Date().getFullYear()} Invaluabless Productions
-              </div>
-            </div>
-          </div>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </>
