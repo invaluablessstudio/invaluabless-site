@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex items-center gap-4 mb-6">
               <div className="h-[1px] w-12 bg-[#ff0040]" />
               <p className="text-xs tracking-[0.4em] uppercase text-[#00f0ff] font-semibold">
-                San Antonio, TX
+                San Antonio, TX • Since 2021
               </p>
             </div>
 
@@ -164,7 +164,7 @@ export default function Home() {
 </h2>
 
 <p className="text-white/60 uppercase tracking-[0.3em] text-xs mt-4">
-  InvaluaBless Productions
+  Founder • Recording Engineer • Producer
 </p>
               </div>
 
@@ -189,14 +189,7 @@ export default function Home() {
 </p>
 
 <p>
-  2016: <strong className="text-white">The Transition</strong>. 
-  Texas became the bridge. Island energy. Mainland punch.  
-  Private sessions turned public demand.  
-  Now the sound travels further than the room it was made in.
-</p>
-
-<p>
-  2026: <strong className="text-white">NOW</strong>. 
+  <strong className="text-white">NOW</strong>: 
   Now based in San Antonio, I focus on one thing:
   making records that sound clean, heavy, and ready for release.
 </p>
