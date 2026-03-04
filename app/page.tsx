@@ -159,7 +159,7 @@ export default function Home() {
             <div className="space-y-8">
               <div>
                 <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">The Producer</p>
-                <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight uppercase">
+                <h2 className="text-3xl md:text-4xl font-extrabold tracking-wider uppercase">
   Jeovanne Diaz
 </h2>
 
@@ -170,25 +170,32 @@ export default function Home() {
 
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
-                  Started in '09 in Camuy, PR. Built a home studio in my hometown, cutting demos for local artists. Learned fast—if the 808 don't hit on a phone speaker, you did it wrong.
-                </p>
-                
-                <p>
-                  2010: <strong className="text-white">La Caldera Records</strong>. Me and my friend Josue Tosado (MR KUSH) opened the studio inside his barber shop in Quebradillas, PR. Pure hustle. Reggaeton, trap, rap, latin—whatever came through, we made it knock.
-                </p>
+  Started in Puerto Rico in '09. No blueprint. No investors. Just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers.
+</p>
 
-                <p>
-                  2013: <strong className="text-white">San Juan</strong>. That's where I leveled up. Worked <strong className="text-white">Propiedad Urbana</strong>, <strong className="text-white">Unstopable Studio</strong>—real studios, real pressure, real artists. Sessions with <strong className="text-[#ff0040]">YOMO</strong>, <strong className="text-[#ff0040]">El Larax</strong>, <strong className="text-[#ff0040]">Nencho el León Salvaje</strong> and more. Got certified as a Recording Engineer at CCAT in Bayamón—formal training to back up the ear I already had.
-                </p>
+<p>
+  2010: <strong className="text-white">La Caldera Records</strong>.  
+  Built inside a barber shop in Quebradillas with Josue Tosado (MR KUSH).  
+  Clippers buzzing in the front. 808s shaking the back room.  
+  Reggaeton, trap, rap, Latin — whatever walked in, left different.
+</p>
 
-                <p>
-                  2016: Texas. Built private in San Antonio first, word spread. 2021: opened doors to the public. Now working with artists from PR, Mexico, Colombia, all over the U.S.—bridging that island energy with mainland punch.
-                </p>
+<p>
+  San Juan sharpened the blade. Real studios. Real pressure.  
+  Sessions with <strong className="text-[#ff0040]">YOMO</strong>, <strong className="text-[#ff0040]">El Larax</strong>, <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>.  
+  Certified engineer — but the streets taught first.
+</p>
+
+<p>
+  Texas became the bridge. Island energy. Mainland punch.  
+  Private sessions turned public demand.  
+  Now the sound travels further than the room it was made in.
+</p>
               </div>
 
               <div className="border-l-4 border-[#ff0040] pl-6 py-2">
                 <p className="text-lg font-bold italic text-white">
-                  "My sound: Clean. Heavy. Street-ready. I don't do 'demo quality.' I do playlist-ready, DJ-approved, algorithm-fed."
+                  "If it don’t hit in the car at night, it’s not done."
                 </p>
               </div>
 
