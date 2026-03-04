@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex items-center gap-4 mb-6">
               <div className="h-[1px] w-12 bg-[#ff0040]" />
               <p className="text-xs tracking-[0.4em] uppercase text-[#00f0ff] font-semibold">
-                San Antonio, TX • Since 2009
+                San Antonio, TX
               </p>
             </div>
 
@@ -138,7 +138,7 @@ export default function Home() {
                 {/* FIXED: Changed .jpg to .jpeg */}
                 <Image 
                   src="/images/producer-portrait.jpeg" 
-                  alt="Invaluabless - Music Producer"
+                  alt="Jeovanne Diaz - Invaluabless Productions Music Producer"
                   fill
                   className="object-cover"
                   onError={(e) => {
@@ -160,7 +160,7 @@ export default function Home() {
               <div>
                 <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">The Producer</p>
                 <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase leading-[0.95]">
-                  Camuy, PR → Quebradillas → San Juan → San Antonio, TX
+                  Jeovanne Diaz - InvaluaBless 
                 </h2>
               </div>
 
@@ -170,7 +170,7 @@ export default function Home() {
                 </p>
                 
                 <p>
-                  2010: <strong className="text-white">La Caldera Records</strong>. Me and my brother opened shop in Quebradillas. Pure hustle. Reggaeton, trap, rap, latin—whatever came through, we made it knock.
+                  2010: <strong className="text-white">La Caldera Records</strong>. Me and my friend Josue Tosado (MR KUSH) opened the studio inside his barber shop in Quebradillas, PR. Pure hustle. Reggaeton, trap, rap, latin—whatever came through, we made it knock.
                 </p>
 
                 <p>
@@ -275,7 +275,7 @@ export default function Home() {
                 src="/images/studio-wide-led.jpeg" 
                 alt="Invaluabless Productions Studio - San Antonio"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-contain transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -316,7 +316,7 @@ export default function Home() {
               <p className="text-gray-400 text-sm leading-relaxed">Vocals, instruments, full bands. Clean signal chain, pro environment.</p>
             </div>
             <div className="p-8 border border-white/10 bg-white/[0.02] hover:border-[#00f0ff]/50 transition-all group">
-              <h4 className="text-2xl font-bold mb-3 uppercase group-hover:text-[#00f0ff] transition-colors">Mixing</h4>
+              <h4 className="text-2xl font-bold mb-3 uppercase group-hover:text-[#00f0ff] transition-colors">Mix & Master</h4>
               <p className="text-gray-400 text-sm leading-relaxed">Radio-ready, club-tested, headphone-approved. Your sound, elevated.</p>
             </div>
             <div className="p-8 border border-white/10 bg-white/[0.02] hover:border-[#ff0040]/50 transition-all group">
