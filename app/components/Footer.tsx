@@ -3,7 +3,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative z-50 border-t border-white/10 bg-[#0a0a0f]/95 backdrop-blur supports-[backdrop-filter]:bg-[#0a0a0f]/75 pt-20 pb-10">
+    <footer className="relative z-50 border-t border-white/10 bg-transparent pt-20 pb-10">
+      {/* subtle glass layer so text stays readable but background continues */}
+      <div className="absolute inset-0 -z-10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
@@ -15,7 +18,6 @@ export default function Footer() {
               Urban recording studio in San Antonio, TX. Specializing in reggaeton,
               trap, rap, and Latin music production.
             </p>
-
             <div className="mt-6 flex gap-4">
               <SocialLink href="https://instagram.com/invaluablessproduction" label="IG" />
               <SocialLink href="https://youtube.com/@InvaluaBlessProductions" label="YT" />
@@ -50,10 +52,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               <li>San Antonio, TX</li>
               <li>
-                <a
-                  href="tel:2106086422"
-                  className="hover:text-[#ff0040] transition-colors"
-                >
+                <a href="tel:2106086422" className="hover:text-[#ff0040] transition-colors">
                   (210) 608-6422
                 </a>
               </li>
