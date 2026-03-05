@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
 const ProducerSection = () => {
   return (
@@ -30,7 +32,7 @@ const ProducerSection = () => {
 
         {/* Main Grid */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* LEFT: Portrait + Sound Statement */}
+          {/* LEFT: Portrait + Statement */}
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10">
               <div className="relative aspect-[4/5]">
@@ -39,13 +41,11 @@ const ProducerSection = () => {
                   alt="Jeovanne Diaz - Invaluabless Productions Music Producer"
                   fill
                   className="object-cover"
-                  priority={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="font-urban text-2xl md:text-3xl uppercase text-white">
-                    Clean. Heavy.
-                    <span className="text-[#ff0040]"> Street-ready.</span>
+                    Clean vocals. Heavy low end<span className="text-[#ff0040]">.</span>
                   </p>
                   <p className="mt-2 text-xs text-[#00f0ff] uppercase tracking-widest">
                     Play it loud. That&apos;s the test.
@@ -60,62 +60,62 @@ const ProducerSection = () => {
               </p>
               <p className="text-gray-400 leading-relaxed">
                 I don&apos;t do “demo quality.” I do{" "}
-                <span className="text-white font-semibold">
-                  playlist-ready, DJ-approved, algorithm-fed
-                </span>
-                . Whether you&apos;re laying your first trap track or your next reggaeton anthem,
-                you get the same focus I gave those sessions in San Juan.
+                <span className="text-white font-semibold">release-ready</span>. If it doesn&apos;t
+                hit in the car at night, it&apos;s not done.
               </p>
             </div>
           </div>
 
-          {/* RIGHT: Story + Credits + Pull Up */}
+          {/* RIGHT: Story + Credits + Lets Work */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Journey */}
+            {/* Story (MATCHES HOME PAGE VERSION) */}
             <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
               <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
-                The Journey<span className="text-[#ff0040]">.</span>
+                The Story<span className="text-[#ff0040]">.</span>
               </h3>
 
               <div className="mt-6 space-y-5 text-gray-300 leading-relaxed">
                 <p>
-                  Started in &apos;09. Small studio in my hometown, cutting demos for local artists.
-                  Learned fast—if the 808 don&apos;t hit on a phone speaker, you did it wrong.
+                  Started in Puerto Rico in &apos;09. Just speakers, hunger, and an ear for low-end
+                  that had to translate everywhere — cars, clubs, phone speakers. A few months later,
+                  what began as a home setup turned into real sessions, real artists, and real
+                  pressure.
                 </p>
 
                 <p>
-                  <span className="text-white font-bold">2010: La Caldera Records.</span> Me and my
-                  brother opened shop in Quebradillas. Pure hustle. Reggaeton, trap, rap, latin—
-                  whatever came through, we made it knock.
+                  2010: <strong className="text-white">La Caldera Records</strong>. Built inside a
+                  barber shop in Quebradillas with my friend Josue Tosado (MR KUSH). It wasn&apos;t
+                  glamorous — but it worked. Artists came in, records got made, and the sound kept
+                  improving. Reggaeton, trap, rap, R&amp;B, Latin — whatever walked in, left
+                  different.
                 </p>
 
                 <p>
-                  <span className="text-white font-bold">2013: San Juan.</span> That&apos;s where I
-                  leveled up. Worked{" "}
-                  <span className="text-white">Propiedad Urbana, Unstopable Studio</span>—real
-                  studios, real pressure, real artists. Sessions with{" "}
-                  <span className="text-white font-bold">
-                    El Larax, Nencho el León Salvaje, Bimbo el Oso Mañoso, YOMO, Xander el Imaginario
-                  </span>{" "}
-                  and more. While running those rooms, I got certified as a Recording Engineer at{" "}
-                  <span className="text-white">CCAT in Bayamón</span>—formal training to back up the
-                  ear I already had.
+                  2013: <strong className="text-white">Propiedad Urbana &amp; Unstopable Studios</strong>.
+                  San Juan was the next level. Real professional studios. Real pressure. Sessions with{" "}
+                  <strong className="text-[#ff0040]">YOMO</strong>,{" "}
+                  <strong className="text-[#ff0040]">El Larax</strong>,{" "}
+                  <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>,{" "}
+                  <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and many others.
+                  I earned my certification as a Recording Engineer — but more importantly, I earned
+                  trust in the room.
                 </p>
 
                 <p>
-                  <span className="text-white font-bold">2016: Texas.</span> Built private in San
-                  Antonio first, word spread.{" "}
-                  <span className="text-white font-bold">2021: opened doors to the public.</span>{" "}
-                  Now working with artists from PR, Mexico, Colombia, all over the U.S.—bridging
-                  that island energy with mainland punch.
+                  <strong className="text-white">NOW</strong>: Now based in San Antonio, I focus on one
+                  thing: making records that sound clean, heavy, and ready for release.
                 </p>
               </div>
 
               <div className="mt-8 border-l-4 border-[#ff0040] pl-5 py-2">
                 <p className="text-white font-bold italic">
-                  “If it don’t hit in the car at night, it’s not done.”
+                  “Clean vocals. Heavy low end — If it don&apos;t hit in the car at night, it&apos;s not done.”
                 </p>
               </div>
+
+              <p className="mt-6 font-mono text-[#ff0040] uppercase tracking-widest text-sm">
+                Play it loud. That&apos;s the test.
+              </p>
             </div>
 
             {/* Credits */}
@@ -154,23 +154,24 @@ const ProducerSection = () => {
 
                 <div>
                   <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-3">
-                    San Antonio / Texas
+                    USA / Texas
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {[
                       "Sammy D",
                       "Jay Lex",
-                      "Baby Killa La Amenaza",
                       "NinoPR",
                       "Johnny West",
-                      "Xziel The One and Only",
                       "Xuniel & El JJJavi",
                       "J Kings",
                       "Marco Antonio Lopez",
                       "Carli",
                       "Ryan Rivera",
-                      "Lil Tree",
                       "Solo Deyvi",
+                      "Melchory Gang",
+                      "Jancy La Potencia",
+                      "Haitian Crook",
+                      "Leonelson",
                     ].map((name) => (
                       <span
                         key={name}
@@ -203,65 +204,97 @@ const ProducerSection = () => {
               </div>
             </div>
 
-            {/* Pull Up */}
+            {/* LET'S WORK (matches home page vibe) */}
             <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
-              <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider text-[#ff0040]">
-                Pull Up<span className="text-white">.</span>
-              </h3>
-
-              <div className="mt-6 grid gap-6 md:grid-cols-2 text-gray-300">
-                <div>
-                  <p className="text-white font-bold uppercase tracking-wider text-xs mb-2">
-                    Studio
-                  </p>
-                  <p className="leading-relaxed text-sm text-gray-400">
-                    3200 Wright Carpenter Rd
-                    <br />
-                    San Antonio, Texas 78221
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-white font-bold uppercase tracking-wider text-xs mb-2">
-                    Email
-                  </p>
-                  <div className="space-y-1 text-sm text-gray-400">
-                    <p>
-                      Bookings:{" "}
-                      <a
-                        className="text-[#00f0ff] hover:text-white transition-colors"
-                        href="mailto:bookings@invaluablessproduction.com"
-                      >
-                        bookings@invaluablessproduction.com
-                      </a>
-                    </p>
-                    <p>
-                      Beats:{" "}
-                      <a
-                        className="text-[#00f0ff] hover:text-white transition-colors"
-                        href="mailto:beats@invaluablessproduction.com"
-                      >
-                        beats@invaluablessproduction.com
-                      </a>
-                    </p>
-                    <p>
-                      General:{" "}
-                      <a
-                        className="text-[#00f0ff] hover:text-white transition-colors"
-                        href="mailto:support@invaluablessproduction.com"
-                      >
-                        support@invaluablessproduction.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-[#ff0040]">★</span>
+                <p className="font-urban text-xl uppercase tracking-wider">Let&apos;s Work</p>
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-4">
-                <SocialLink href="https://www.instagram.com/invaluablessproduction" label="Instagram" />
-                <SocialLink href="https://www.youtube.com/@InvaluaBlessProductions" label="YouTube" />
-                <SocialLink href="https://www.tiktok.com/@invaluablessproductions" label="TikTok" />
-                <SocialLink href="https://www.facebook.com/invaluablessproduction/" label="Facebook" />
+              <div className="grid md:grid-cols-2 gap-10 text-left">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
+                    <div>
+                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Studio</h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        3200 Wright Carpenter Rd
+                        <br />
+                        San Antonio, Texas 78221
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Mail className="w-6 h-6 text-[#00f0ff] mt-1" />
+                    <div>
+                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Email</h4>
+                      <div className="space-y-1 text-gray-400 text-sm">
+                        <p>
+                          <span className="text-white">Bookings:</span> bookings@invaluablessproduction.com
+                        </p>
+                        <p>
+                          <span className="text-white">Beats:</span> beats@invaluablessproduction.com
+                        </p>
+                        <p>
+                          <span className="text-white">General:</span> support@invaluablessproduction.com
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/book"
+                    className="inline-block px-10 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
+                  >
+                    Book Your Session
+                  </Link>
+                </div>
+
+                <div className="space-y-6">
+                  <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <a
+                      href="https://instagram.com/invaluablessproduction"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
+                    >
+                      <Instagram className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">Instagram</span>
+                    </a>
+
+                    <a
+                      href="https://youtube.com/@InvaluaBlessProductions"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
+                    >
+                      <Youtube className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">YouTube</span>
+                    </a>
+
+                    <a
+                      href="https://facebook.com/invaluablessproduction"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
+                    >
+                      <Facebook className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">Facebook</span>
+                    </a>
+
+                    <a
+                      href="https://tiktok.com/@invaluablessproductions"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
+                    >
+                      <Music2 className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">TikTok</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -272,5 +305,3 @@ const ProducerSection = () => {
 };
 
 export default ProducerSection;
-
-function SocialLink({ href, label }: { href:
