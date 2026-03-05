@@ -6,6 +6,20 @@ import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
+function handleCardMouseMove(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  const r = el.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  el.style.setProperty("--mx", `${x}px`);
+  el.style.setProperty("--my", `${y}px`);
+}
+function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  el.style.setProperty("--mx", `50%`);
+  el.style.setProperty("--my", `50%`);
+}
+
 export default function ProducerPage() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -17,16 +31,11 @@ export default function ProducerPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // 🔧 CONTROL PANEL (adjust these if you want tighter/looser)
   const sizes = useMemo(
     () => ({
-      // Reduce photo height so stats move UP
-      photoH: "h-[420px] sm:h-[460px] md:h-[470px] lg:h-[490px]",
-      // Stats card height is controlled by padding; keep consistent
+      photoH: "h-[360px] sm:h-[400px] md:h-[410px] lg:h-[430px]",
       statsPad: "p-6",
-      // Total "stack height" on desktop (photo + stats + gap).
-      // We match story card to this by using h-full with grid stretch AND explicit story height.
-      storyH: "md:h-[600px] lg:h-[630px]", // story ends exactly at the red line
+      storyH: "md:h-[600px] lg:h-[630px]",
     }),
     []
   );
@@ -76,12 +85,17 @@ export default function ProducerPage() {
           </h1>
         </div>
 
-        {/* ===== HERO ROW (this is the red-line alignment row) ===== */}
+        {/* HERO ROW */}
         <div className="mt-10 grid gap-6 md:grid-cols-12 items-stretch">
-          {/* LEFT COLUMN */}
+          {/* LEFT */}
           <div className="md:col-span-5 flex flex-col gap-6">
-            {/* Photo card (reduced height) */}
-            <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur">
+            {/* Photo card */}
+            <div
+              className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur street-card street-hover"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+            >
+              <div className="mouse-glow" />
               <div className={`relative ${sizes.photoH}`}>
                 <Image
                   src="/images/producer-portrait.jpeg"
@@ -93,7 +107,6 @@ export default function ProducerPage() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/10" />
 
-                {/* Bottom text on photo */}
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="font-urban text-3xl uppercase text-white">
                     Clean Vocals. Heavy Low End.
@@ -111,8 +124,13 @@ export default function ProducerPage() {
               </div>
             </div>
 
-            {/* Stats card (now sits ABOVE the red line because photo is shorter) */}
-            <div className={`border border-white/10 bg-white/[0.03] backdrop-blur ${sizes.statsPad}`}>
+            {/* Stats card */}
+            <div
+              className={`border border-white/10 bg-white/[0.03] backdrop-blur street-card street-hover ${sizes.statsPad}`}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+            >
+              <div className="mouse-glow" />
               <div className="flex items-end justify-between gap-6">
                 <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
                 <Stat value="20+" label="Artists" color="text-[#00f0ff]" />
@@ -121,21 +139,20 @@ export default function ProducerPage() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN (Story card ends exactly at red line) */}
+          {/* RIGHT: Story card */}
           <div className="md:col-span-7">
             <div
               className={[
-                "border border-white/10 bg-white/[0.03] backdrop-blur",
+                "border border-white/10 bg-white/[0.03] backdrop-blur street-card street-hover",
                 "p-6 md:p-8",
-                // ✅ This height is what forces the bottom to align to the red line
                 sizes.storyH,
-                // ✅ If the text is longer, it scrolls INSIDE (card stays aligned)
                 "overflow-hidden",
               ].join(" ")}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
-              {/* Scroll area inside so the card itself stops at the red line */}
+              <div className="mouse-glow" />
               <div className="h-full overflow-y-auto pr-2">
-                {/* Intro blurb (no repeats) */}
                 <div className="border-l-2 border-[#ff0040] pl-6 mb-8">
                   <p className="text-gray-300 leading-relaxed">
                     Started in Puerto Rico in{" "}
@@ -153,33 +170,31 @@ export default function ProducerPage() {
                 <div className="space-y-6 text-gray-300 leading-relaxed">
                   <p>
                     Started with just speakers, hunger, and an ear for low-end that had to translate
-                    everywhere — cars, clubs, phone speakers. What began as a home setup turned into
-                    real sessions, real artists, and real pressure.
+                    everywhere — cars, clubs, phone speakers.
                   </p>
 
                   <p>
                     <span className="text-white font-bold">2010: La Caldera Records.</span>{" "}
                     Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).
-                    It wasn&apos;t glamorous — but it worked. Artists came in, records got made, and the sound
-                    kept improving.
+                    Artists came in, records got made, and the sound kept improving.
                   </p>
 
                   <p>
                     <span className="text-white font-bold">
                       2013: Propiedad Urbana &amp; Unstopable Studios.
                     </span>{" "}
-                    San Juan was the next level. Real professional studios. Real pressure. Sessions with{" "}
+                    San Juan was the next level. Sessions with{" "}
                     <span className="text-[#ff0040] font-semibold">YOMO</span>,{" "}
                     <span className="text-[#ff0040] font-semibold">El Larax</span>,{" "}
                     <span className="text-[#ff0040] font-semibold">Nencho el León Salvaje</span>,{" "}
-                    <span className="text-[#ff0040] font-semibold">Bimbo El Oso Mañoso</span>, and many
-                    others. I earned my certification as a Recording Engineer — but more importantly,
+                    <span className="text-[#ff0040] font-semibold">Bimbo El Oso Mañoso</span>, and more.
+                    I earned my certification as a Recording Engineer — but more importantly,
                     I earned trust in the room.
                   </p>
 
                   <p>
-                    <span className="text-white font-bold">NOW:</span> Now based in San Antonio, I focus
-                    on one thing: making records that sound clean, heavy, and ready for release.
+                    <span className="text-white font-bold">NOW:</span> Based in San Antonio — focused on
+                    clean, heavy, release-ready records.
                   </p>
                 </div>
               </div>
@@ -187,8 +202,13 @@ export default function ProducerPage() {
           </div>
         </div>
 
-        {/* My Sound — centered above credits */}
-        <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-8 text-center">
+        {/* My Sound */}
+        <div
+          className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur street-card street-hover p-8 text-center"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
+        >
+          <div className="mouse-glow" />
           <p className="text-lg md:text-xl font-bold text-white">
             “Clean vocals. Heavy low end — If it don’t hit in the car at night, it’s not done.”
           </p>
@@ -198,7 +218,12 @@ export default function ProducerPage() {
         </div>
 
         {/* Selected Credits */}
-        <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-8">
+        <div
+          className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur street-card street-hover p-8"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
+        >
+          <div className="mouse-glow" />
           <div className="flex items-center justify-between gap-6 flex-wrap">
             <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
               Selected Credits<span className="text-[#ff0040]">.</span>
@@ -275,7 +300,13 @@ export default function ProducerPage() {
         </div>
 
         {/* LET'S WORK */}
-        <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-10 text-center">
+        <div
+          className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur street-card street-hover p-10 text-center"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
+        >
+          <div className="mouse-glow" />
+
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="w-2 h-2 bg-[#ff0040] animate-pulse" />
             <p className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
@@ -319,30 +350,10 @@ export default function ProducerPage() {
             <div className="space-y-6">
               <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
               <div className="grid grid-cols-2 gap-4">
-                <SocialCard
-                  href="https://instagram.com/invaluablessproduction"
-                  label="Instagram"
-                  icon={<Instagram className="w-5 h-5" />}
-                  accent="red"
-                />
-                <SocialCard
-                  href="https://youtube.com/@InvaluaBlessProductions"
-                  label="YouTube"
-                  icon={<Youtube className="w-5 h-5" />}
-                  accent="red"
-                />
-                <SocialCard
-                  href="https://facebook.com/invaluablessproduction"
-                  label="Facebook"
-                  icon={<Facebook className="w-5 h-5" />}
-                  accent="cyan"
-                />
-                <SocialCard
-                  href="https://tiktok.com/@invaluablessproductions"
-                  label="TikTok"
-                  icon={<Music2 className="w-5 h-5" />}
-                  accent="cyan"
-                />
+                <SocialCard href="https://instagram.com/invaluablessproduction" label="Instagram" icon={<Instagram className="w-5 h-5" />} accent="red" />
+                <SocialCard href="https://youtube.com/@InvaluaBlessProductions" label="YouTube" icon={<Youtube className="w-5 h-5" />} accent="red" />
+                <SocialCard href="https://facebook.com/invaluablessproduction" label="Facebook" icon={<Facebook className="w-5 h-5" />} accent="cyan" />
+                <SocialCard href="https://tiktok.com/@invaluablessproductions" label="TikTok" icon={<Music2 className="w-5 h-5" />} accent="cyan" />
               </div>
             </div>
           </div>
@@ -350,9 +361,10 @@ export default function ProducerPage() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/book"
-              className="inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
+              className="group relative inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm overflow-hidden transition-all hover:glow-red"
             >
-              Book Your Session
+              <span className="relative z-10">Book Your Session</span>
+              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </Link>
           </div>
         </div>
@@ -373,9 +385,7 @@ function Stat({
   return (
     <div>
       <div className={`text-4xl md:text-5xl font-black ${color}`}>{value}</div>
-      <div className="text-gray-500 uppercase tracking-wider text-xs mt-2">
-        {label}
-      </div>
+      <div className="text-gray-500 uppercase tracking-wider text-xs mt-2">{label}</div>
     </div>
   );
 }
@@ -403,10 +413,13 @@ function SocialCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex items-center gap-3 p-4 bg-white/5 border border-white/10 transition-all ${accentClasses}`}
+      className={`relative overflow-hidden flex items-center gap-3 p-4 bg-white/5 border border-white/10 transition-all ${accentClasses} street-hover`}
+      onMouseMove={handleCardMouseMove}
+      onMouseLeave={handleCardMouseLeave}
     >
-      <span className={iconClasses}>{icon}</span>
-      <span className="text-sm font-medium">{label}</span>
+      <div className="mouse-glow" />
+      <span className={`${iconClasses} relative z-10`}>{icon}</span>
+      <span className="text-sm font-medium relative z-10">{label}</span>
     </a>
   );
 }
