@@ -30,9 +30,13 @@ export default function Nav() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#0a0a0f]/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-      }`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0a0a0f]/95 backdrop-blur-md border-b border-white/5"
+            : "bg-transparent"
+        }`}
+      >
         <div className="mx-auto max-w-7xl px-6 md:px-16">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -50,28 +54,39 @@ export default function Nav() {
                 <div className="font-urban text-xl uppercase tracking-wider leading-none">
                   Invaluabless<span className="text-[#ff0040]">.</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.3em] text-gray-500">Productions</div>
+                <div className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
+                  Productions
+                </div>
               </div>
             </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`relative text-sm uppercase tracking-wider font-medium transition-all ${
-                    item.highlight 
-                      ? "px-6 py-2.5 bg-[#ff0040] text-black hover:glow-red" 
-                      : "text-gray-300 hover:text-white"
-                  } ${pathname === item.href && !item.highlight ? "text-white" : ""}`}
-                >
-                  {item.label}
-                  {!item.highlight && pathname === item.href && (
-                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#ff0040]" />
-                  )}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.highlight ? (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`group relative px-6 py-2.5 bg-[#ff0040] text-black text-sm uppercase tracking-wider font-medium overflow-hidden transition-all hover:glow-red`}
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  </Link>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`relative text-sm uppercase tracking-wider font-medium transition-all ${
+                      pathname === item.href ? "text-white" : "text-gray-300 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                    {pathname === item.href && (
+                      <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#ff0040]" />
+                    )}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* Mobile Menu Button */}
@@ -80,9 +95,17 @@ export default function Nav() {
               className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
               aria-label="Toggle menu"
             >
-              <span className={`w-6 h-[2px] bg-white transition-all ${open ? "rotate-45 translate-y-[5px]" : ""}`} />
+              <span
+                className={`w-6 h-[2px] bg-white transition-all ${
+                  open ? "rotate-45 translate-y-[5px]" : ""
+                }`}
+              />
               <span className={`w-6 h-[2px] bg-[#ff0040] transition-all ${open ? "opacity-0" : ""}`} />
-              <span className={`w-6 h-[2px] bg-white transition-all ${open ? "-rotate-45 -translate-y-[5px]" : ""}`} />
+              <span
+                className={`w-6 h-[2px] bg-white transition-all ${
+                  open ? "-rotate-45 -translate-y-[5px]" : ""
+                }`}
+              />
             </button>
           </div>
         </div>

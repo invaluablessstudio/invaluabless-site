@@ -56,23 +56,18 @@ export default function Home() {
   }, []);
 
   return (
-    // ✅ IMPORTANT: transparent so it doesn't cover the negative-z backgrounds
     <main className="relative min-h-screen text-white bg-transparent">
       {/* ===== BACKGROUND STACK (fixed, behind everything) ===== */}
       <div className="fixed inset-0 -z-20 pointer-events-none">
-        {/* ✅ Base color layer (replaces main bg) */}
         <div className="absolute inset-0 bg-[#0a0a0f]" />
 
-        {/* Mic Image */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{ backgroundImage: "url('/images/hero-mic.jpg')" }}
         />
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50" />
 
-        {/* Animated Glow */}
         <div
           className="absolute inset-0 opacity-25"
           style={{
@@ -83,7 +78,6 @@ export default function Home() {
           }}
         />
 
-        {/* Bottom Fade */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/70 to-[#0a0a0f]" />
       </div>
 
@@ -106,7 +100,7 @@ export default function Home() {
         }}
       />
 
-      {/* ===== CONTENT WRAPPER (always above overlays) ===== */}
+      {/* ===== CONTENT WRAPPER ===== */}
       <div className="relative z-20">
         {/* ================= HERO ================= */}
         <section className="h-screen flex items-center relative pt-20">
@@ -132,23 +126,26 @@ export default function Home() {
               </h1>
 
               <p className="mt-8 text-gray-400 max-w-xl text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6">
-                Studio-level recording for reggaeton, trap, and Latin artists.
-                Heavy 808s. Clean vocals. Industry-ready mixes that slap.
+                Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean
+                vocals. Industry-ready mixes that slap.
               </p>
 
+              {/* ✅ Buttons updated to match Services hover effects */}
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="/book"
-                  className="px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm hover:shadow-[0_0_30px_rgba(255,0,64,0.5)] transition-all"
+                  className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
                 >
-                  Book Session
+                  <span className="relative z-10">Book Session</span>
+                  <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Link>
 
                 <Link
                   href="/work"
-                  className="px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm hover:bg-[#00f0ff]/10 transition-all"
+                  className="group relative px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-cyan"
                 >
-                  Hear the Work
+                  <span className="relative z-10">Hear the Work</span>
+                  <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Link>
               </div>
 
@@ -161,15 +158,11 @@ export default function Home() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-[#00f0ff]">20+</div>
-                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">
-                    Artists
-                  </div>
+                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Artists</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-white">13+</div>
-                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">
-                    Years
-                  </div>
+                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Years</div>
                 </div>
               </div>
             </div>
@@ -249,8 +242,8 @@ export default function Home() {
                     </p>
 
                     <p>
-                      <strong className="text-white">NOW</strong>: Now based in San Antonio, I focus on one
-                      thing: making records that sound clean, heavy, and ready for release.
+                      <strong className="text-white">NOW</strong>: Now based in San Antonio, I focus
+                      on one thing: making records that sound clean, heavy, and ready for release.
                     </p>
                   </div>
 
@@ -355,8 +348,8 @@ export default function Home() {
                     Studios
                   </h4>
                   <p className="leading-relaxed">
-                    La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable
-                    Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
+                    La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) •
+                    Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
                   </p>
                 </div>
                 <div>
@@ -469,9 +462,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent pointer-events-none" />
 
             <div className="max-w-4xl mx-auto px-6 md:px-16 text-center relative">
-              <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
-                Get In Touch
-              </p>
+              <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">Get In Touch</p>
               <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-6">
                 Let's Work<span className="text-[#ff0040]">.</span>
               </h2>
@@ -484,9 +475,7 @@ export default function Home() {
                   <div className="flex items-start gap-4">
                     <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
                     <div>
-                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">
-                        Studio
-                      </h4>
+                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Studio</h4>
                       <p className="text-gray-400 text-sm leading-relaxed">
                         3200 Wright Carpenter Rd
                         <br />
@@ -498,21 +487,16 @@ export default function Home() {
                   <div className="flex items-start gap-4">
                     <Mail className="w-6 h-6 text-[#00f0ff] mt-1" />
                     <div>
-                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">
-                        Email
-                      </h4>
+                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Email</h4>
                       <div className="space-y-1 text-gray-400 text-sm">
                         <p>
-                          <span className="text-white">Bookings:</span>{" "}
-                          bookings@invaluablessproduction.com
+                          <span className="text-white">Bookings:</span> bookings@invaluablessproduction.com
                         </p>
                         <p>
-                          <span className="text-white">Beats:</span>{" "}
-                          beats@invaluablessproduction.com
+                          <span className="text-white">Beats:</span> beats@invaluablessproduction.com
                         </p>
                         <p>
-                          <span className="text-white">General:</span>{" "}
-                          support@invaluablessproduction.com
+                          <span className="text-white">General:</span> support@invaluablessproduction.com
                         </p>
                       </div>
                     </div>
@@ -562,11 +546,13 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* ✅ Button updated to match Services hover effects */}
               <Link
                 href="/book"
-                className="inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
+                className="group relative inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm overflow-hidden transition-all hover:glow-red"
               >
-                Book Your Session
+                <span className="relative z-10">Book Your Session</span>
+                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </Link>
             </div>
           </FadeInSection>
