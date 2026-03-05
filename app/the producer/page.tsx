@@ -19,11 +19,11 @@ export default function ProducerPage() {
 
   return (
     <main className="relative min-h-screen text-white">
-      {/* Global Effects (if you already use .grain/.scanlines in globals.css) */}
+      {/* Optional global overlays (if these exist in your globals.css) */}
       <div className="grain" />
       <div className="scanlines" />
 
-      {/* Animated Background (same vibe as Book page) */}
+      {/* Background (match Book page) */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0f]">
         <div
           className="absolute inset-0 opacity-30"
@@ -38,7 +38,7 @@ export default function ProducerPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-transparent to-[#0a0a0f]" />
       </div>
 
-      {/* Grid Overlay */}
+      {/* Grid overlay */}
       <div
         className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none"
         style={{
@@ -48,7 +48,6 @@ export default function ProducerPage() {
         }}
       />
 
-      {/* Content */}
       <section className="mx-auto w-full max-w-6xl px-5 pb-16 pt-24 sm:px-6">
         {/* Header */}
         <div className="max-w-3xl">
@@ -62,15 +61,13 @@ export default function ProducerPage() {
           <h1 className="font-urban text-6xl md:text-8xl uppercase leading-[0.85]">
             Jeovanne Diaz<span className="text-[#ff0040] text-glow-red">.</span>
           </h1>
-
-          {/* NOTE: We removed the repeating blurb here (per your screenshot request).
-              The tighter, rephrased blurb is now inside the Story card. */}
         </div>
 
-        {/* Image + Story */}
+        {/* ====== ROW: LEFT (photo + stats) | RIGHT (story card) ====== */}
         <div className="mt-10 grid gap-6 md:grid-cols-12 items-stretch">
-          {/* Left: Image card */}
-          <div className="md:col-span-5">
+          {/* LEFT COLUMN: photo card + stats card (THIS IS YOUR RED BOX AREA) */}
+          <div className="md:col-span-5 flex flex-col gap-6">
+            {/* Photo card (unchanged size) */}
             <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur">
               <div className="relative aspect-[3/4]">
                 <Image
@@ -81,10 +78,9 @@ export default function ProducerPage() {
                   priority
                 />
 
-                {/* Subtle overlay for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/10" />
 
-                {/* Bottom text (like your screenshot) */}
+                {/* Bottom text on photo */}
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="font-urban text-3xl uppercase text-white">
                     Clean Vocals. Heavy Low End.
@@ -101,16 +97,26 @@ export default function ProducerPage() {
                 </div>
               </div>
             </div>
+
+            {/* ✅ STATS: INSIDE THE RED BOX SPACE (under photo) */}
+            <div className="border border-white/10 bg-white/[0.03] backdrop-blur p-6">
+              <div className="flex items-end justify-between gap-6">
+                <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
+                <Stat value="20+" label="Artists" color="text-[#00f0ff]" />
+                <Stat value="13+" label="Years" color="text-white" />
+              </div>
+            </div>
           </div>
 
-          {/* Right: Story card */}
+          {/* RIGHT COLUMN: story card (height is NOT forced by image; we align by layout) */}
           <div className="md:col-span-7">
             <div className="h-full border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8">
-              {/* Rephrased intro blurb (moved here) */}
+              {/* Rephrased intro blurb (no repeating) */}
               <div className="border-l-2 border-[#ff0040] pl-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
-                  Started in Puerto Rico in <span className="text-white font-semibold">&apos;09</span>.
-                  Built through real rooms, real pressure, and real records — now based in{" "}
+                  Started in Puerto Rico in{" "}
+                  <span className="text-white font-semibold">&apos;09</span>. Built through real rooms,
+                  real pressure, and real records — now based in{" "}
                   <span className="text-white font-semibold">San Antonio</span>, focused on one thing:
                   making mixes that sound clean, heavy, and ready for release.
                 </p>
@@ -156,14 +162,7 @@ export default function ProducerPage() {
           </div>
         </div>
 
-        {/* ✅ STATS ROW — moved DOWN to align with the bottom of the story card (yellow line) */}
-        <div className="mt-8 md:mt-10 flex flex-wrap gap-10 md:gap-14 items-end">
-          <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
-          <Stat value="20+" label="Artists" color="text-[#00f0ff]" />
-          <Stat value="13+" label="Years" color="text-white" />
-        </div>
-
-        {/* My Sound — centered above credits (match home-page vibe) */}
+        {/* My Sound — centered above credits */}
         <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-8 text-center">
           <p className="text-lg md:text-xl font-bold text-white">
             “Clean vocals. Heavy low end — If it don’t hit in the car at night, it’s not done.”
@@ -173,7 +172,7 @@ export default function ProducerPage() {
           </p>
         </div>
 
-        {/* Selected Credits — centered container */}
+        {/* Selected Credits */}
         <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-8">
           <div className="flex items-center justify-between gap-6 flex-wrap">
             <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
@@ -250,7 +249,7 @@ export default function ProducerPage() {
           </div>
         </div>
 
-        {/* LET'S WORK — centered title + centered button */}
+        {/* LET'S WORK */}
         <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-10 text-center">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="w-2 h-2 bg-[#ff0040] animate-pulse" />
@@ -295,10 +294,30 @@ export default function ProducerPage() {
             <div className="space-y-6">
               <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
               <div className="grid grid-cols-2 gap-4">
-                <SocialCard href="https://instagram.com/invaluablessproduction" label="Instagram" icon={<Instagram className="w-5 h-5" />} accent="red" />
-                <SocialCard href="https://youtube.com/@InvaluaBlessProductions" label="YouTube" icon={<Youtube className="w-5 h-5" />} accent="red" />
-                <SocialCard href="https://facebook.com/invaluablessproduction" label="Facebook" icon={<Facebook className="w-5 h-5" />} accent="cyan" />
-                <SocialCard href="https://tiktok.com/@invaluablessproductions" label="TikTok" icon={<Music2 className="w-5 h-5" />} accent="cyan" />
+                <SocialCard
+                  href="https://instagram.com/invaluablessproduction"
+                  label="Instagram"
+                  icon={<Instagram className="w-5 h-5" />}
+                  accent="red"
+                />
+                <SocialCard
+                  href="https://youtube.com/@InvaluaBlessProductions"
+                  label="YouTube"
+                  icon={<Youtube className="w-5 h-5" />}
+                  accent="red"
+                />
+                <SocialCard
+                  href="https://facebook.com/invaluablessproduction"
+                  label="Facebook"
+                  icon={<Facebook className="w-5 h-5" />}
+                  accent="cyan"
+                />
+                <SocialCard
+                  href="https://tiktok.com/@invaluablessproductions"
+                  label="TikTok"
+                  icon={<Music2 className="w-5 h-5" />}
+                  accent="cyan"
+                />
               </div>
             </div>
           </div>
@@ -361,7 +380,7 @@ function SocialCard({
       rel="noopener noreferrer"
       className={`flex items-center gap-3 p-4 bg-white/5 border border-white/10 transition-all ${accentClasses}`}
     >
-      <span className={`${iconClasses}`}>{icon}</span>
+      <span className={iconClasses}>{icon}</span>
       <span className="text-sm font-medium">{label}</span>
     </a>
   );
