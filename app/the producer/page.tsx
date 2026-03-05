@@ -1,3 +1,4 @@
+// app/producer/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -5,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
-export default function ProducerSection() {
+export default function ProducerPage() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -18,11 +19,11 @@ export default function ProducerSection() {
 
   return (
     <main className="relative min-h-screen text-white">
-      {/* Same global effects used on /book */}
+      {/* Global Effects (if you already use .grain/.scanlines in globals.css) */}
       <div className="grain" />
       <div className="scanlines" />
 
-      {/* SAME background stack as /book */}
+      {/* Animated Background (same vibe as Book page) */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0f]">
         <div
           className="absolute inset-0 opacity-30"
@@ -37,7 +38,7 @@ export default function ProducerSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-transparent to-[#0a0a0f]" />
       </div>
 
-      {/* Grid overlay */}
+      {/* Grid Overlay */}
       <div
         className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none"
         style={{
@@ -47,34 +48,31 @@ export default function ProducerSection() {
         }}
       />
 
-      {/* Page */}
+      {/* Content */}
       <section className="mx-auto w-full max-w-6xl px-5 pb-16 pt-24 sm:px-6">
-        {/* Top label */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-[1px] w-12 bg-[#ff0040]" />
-          <p className="text-xs tracking-[0.4em] uppercase text-[#00f0ff] font-semibold">
-            The Producer
-          </p>
-        </div>
+        {/* Header */}
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-[1px] w-12 bg-[#ff0040]" />
+            <p className="text-xs tracking-[0.4em] uppercase text-[#00f0ff] font-semibold">
+              The Producer
+            </p>
+          </div>
 
-        {/* Title */}
-        <h1 className="font-urban text-5xl md:text-7xl uppercase leading-[0.95] tracking-tight">
-          Jeovanne Diaz<span className="text-[#ff0040]">.</span>
-        </h1>
+          <h1 className="font-urban text-6xl md:text-8xl uppercase leading-[0.85]">
+            Jeovanne Diaz<span className="text-[#ff0040] text-glow-red">.</span>
+          </h1>
 
-        {/* Stats row (like your screenshot) */}
-        <div className="mt-8 flex flex-wrap gap-10">
-          <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
-          <Stat value="20+" label="Artists" color="text-[#00f0ff]" />
-          <Stat value="13+" label="Years" color="text-white" />
+          {/* NOTE: We removed the repeating blurb here (per your screenshot request).
+              The tighter, rephrased blurb is now inside the Story card. */}
         </div>
 
         {/* Image + Story */}
-        <div className="mt-10 grid gap-6 md:grid-cols-12 items-start">
-          {/* Photo */}
+        <div className="mt-10 grid gap-6 md:grid-cols-12 items-stretch">
+          {/* Left: Image card */}
           <div className="md:col-span-5">
             <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur">
-              <div className="relative aspect-[4/5]">
+              <div className="relative aspect-[3/4]">
                 <Image
                   src="/images/producer-portrait.jpeg"
                   alt="Jeovanne Diaz - Invaluabless Productions Music Producer"
@@ -82,104 +80,116 @@ export default function ProducerSection() {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-                {/* Bottom text like your screenshot vibe */}
+                {/* Subtle overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/10" />
+
+                {/* Bottom text (like your screenshot) */}
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="font-urban text-2xl md:text-3xl uppercase text-white">
-                    Clean vocals. Heavy low end.
+                  <p className="font-urban text-3xl uppercase text-white">
+                    Clean Vocals. Heavy Low End.
                   </p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.35em] text-[#00f0ff]">
+                  <p className="mt-2 text-xs text-[#00f0ff] uppercase tracking-widest">
                     Play it loud. That&apos;s the test.
                   </p>
                 </div>
 
                 {/* 13+ sticker */}
-                <div className="absolute -bottom-6 -right-6 bg-[#ff0040] text-black p-6 font-mono border border-black/20 shadow-[0_25px_80px_rgba(0,0,0,0.65)]">
-                  <p className="font-black text-4xl leading-none">13+</p>
-                  <p className="uppercase tracking-wider text-sm mt-1">Years</p>
+                <div className="absolute -bottom-4 right-6 bg-[#ff0040] text-black p-5 font-mono shadow-[0_30px_120px_rgba(0,0,0,0.8)]">
+                  <p className="font-bold text-3xl leading-none">13+</p>
+                  <p className="uppercase tracking-wider text-sm mt-2">Years</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Story card */}
+          {/* Right: Story card */}
           <div className="md:col-span-7">
-            <div className="border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8">
-              {/* Moved + rephrased intro (no repetition) */}
-              <p className="text-gray-300 leading-relaxed border-l-2 border-[#ff0040] pl-6">
-                Built through real rooms, real pressure, and real records — now based in San Antonio,
-                focused on one thing: making mixes that sound clean, heavy, and ready for release.
+            <div className="h-full border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8">
+              {/* Rephrased intro blurb (moved here) */}
+              <div className="border-l-2 border-[#ff0040] pl-6 mb-8">
+                <p className="text-gray-300 leading-relaxed">
+                  Started in Puerto Rico in <span className="text-white font-semibold">&apos;09</span>.
+                  Built through real rooms, real pressure, and real records — now based in{" "}
+                  <span className="text-white font-semibold">San Antonio</span>, focused on one thing:
+                  making mixes that sound clean, heavy, and ready for release.
+                </p>
+              </div>
+
+              <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">
+                The Story
               </p>
 
-              <div className="mt-8">
-                <p className="text-xs tracking-[0.35em] uppercase text-[#ff0040] font-semibold">
-                  The Story
+              <div className="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                  Started with just speakers, hunger, and an ear for low-end that had to translate
+                  everywhere — cars, clubs, phone speakers. What began as a home setup turned into
+                  real sessions, real artists, and real pressure.
                 </p>
 
-                <div className="mt-4 space-y-6 text-gray-300 leading-relaxed">
-                  <p>
-                    Started in Puerto Rico in &apos;09. Just speakers, hunger, and an ear for low-end
-                    that had to translate everywhere — cars, clubs, phone speakers. A few months later,
-                    what began as a home setup turned into real sessions, real artists, and real pressure.
-                  </p>
+                <p>
+                  <span className="text-white font-bold">2010: La Caldera Records.</span>{" "}
+                  Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).
+                  It wasn&apos;t glamorous — but it worked. Artists came in, records got made, and the sound
+                  kept improving.
+                </p>
 
-                  <p>
-                    <strong className="text-white">2010: La Caldera Records.</strong> Built inside a barber
-                    shop in Quebradillas with my friend Josue Tosado (MR KUSH). It wasn&apos;t glamorous —
-                    but it worked. Artists came in, records got made, and the sound kept improving.
-                  </p>
+                <p>
+                  <span className="text-white font-bold">
+                    2013: Propiedad Urbana &amp; Unstopable Studios.
+                  </span>{" "}
+                  San Juan was the next level. Real professional studios. Real pressure. Sessions with{" "}
+                  <span className="text-[#ff0040] font-semibold">YOMO</span>,{" "}
+                  <span className="text-[#ff0040] font-semibold">El Larax</span>,{" "}
+                  <span className="text-[#ff0040] font-semibold">Nencho el León Salvaje</span>,{" "}
+                  <span className="text-[#ff0040] font-semibold">Bimbo El Oso Mañoso</span>, and many
+                  others. I earned my certification as a Recording Engineer — but more importantly,
+                  I earned trust in the room.
+                </p>
 
-                  <p>
-                    <strong className="text-white">2013: Propiedad Urbana &amp; Unstopable Studios.</strong>{" "}
-                    San Juan was the next level. Real professional studios. Real pressure. Sessions with{" "}
-                    <strong className="text-[#ff0040]">YOMO</strong>,{" "}
-                    <strong className="text-[#ff0040]">El Larax</strong>,{" "}
-                    <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>,{" "}
-                    <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and many others.
-                    I earned my certification as a Recording Engineer — but more importantly, I earned trust in the room.
-                  </p>
-
-                  <p>
-                    <strong className="text-white">NOW:</strong> Now based in San Antonio, I focus on one thing:
-                    making records that sound clean, heavy, and ready for release.
-                  </p>
-                </div>
+                <p>
+                  <span className="text-white font-bold">NOW:</span> Now based in San Antonio, I focus
+                  on one thing: making records that sound clean, heavy, and ready for release.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Centered “My sound” block (short + above credits) */}
-        <div className="mt-10">
-          <div className="mx-auto max-w-4xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8 text-center">
-            <p className="text-lg md:text-xl font-bold italic text-white">
-              “Clean vocals. Heavy low end — If it don&apos;t hit in the car at night, it&apos;s not done.”
-            </p>
-            <p className="mt-4 font-mono text-[#ff0040] uppercase tracking-widest text-xs">
-              Play it loud. That&apos;s the test.
-            </p>
-          </div>
+        {/* ✅ STATS ROW — moved DOWN to align with the bottom of the story card (yellow line) */}
+        <div className="mt-8 md:mt-10 flex flex-wrap gap-10 md:gap-14 items-end">
+          <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
+          <Stat value="20+" label="Artists" color="text-[#00f0ff]" />
+          <Stat value="13+" label="Years" color="text-white" />
         </div>
 
-        {/* Selected Credits (centered + same vibe) */}
-        <section className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8">
-          <div className="text-center">
-            <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-3">
-              Selected Credits
-            </p>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight uppercase">
-              Heavy Hitters <span className="text-[#ff0040]">.</span>
+        {/* My Sound — centered above credits (match home-page vibe) */}
+        <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-8 text-center">
+          <p className="text-lg md:text-xl font-bold text-white">
+            “Clean vocals. Heavy low end — If it don’t hit in the car at night, it’s not done.”
+          </p>
+          <p className="mt-4 font-mono text-[#ff0040] uppercase tracking-widest text-sm">
+            Play it loud. That&apos;s the test.
+          </p>
+        </div>
+
+        {/* Selected Credits — centered container */}
+        <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-8">
+          <div className="flex items-center justify-between gap-6 flex-wrap">
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
+              Selected Credits<span className="text-[#ff0040]">.</span>
             </h2>
+            <p className="text-xs uppercase tracking-[0.4em] text-gray-500">
+              PR • Texas • Worldwide
+            </p>
           </div>
 
-          <div className="mt-10 grid md:grid-cols-2 gap-10">
-            <div className="space-y-5">
-              <h3 className="text-lg font-bold flex items-center justify-center md:justify-start gap-3 uppercase tracking-wider">
-                <span className="w-2 h-2 bg-[#ff0040] rounded-full" />
+          <div className="mt-8 grid md:grid-cols-2 gap-10">
+            <div>
+              <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
                 Puerto Rico
-              </h3>
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              </p>
+              <div className="flex flex-wrap gap-3">
                 {["YOMO", "El Larax", "Nencho el León Salvaje", "Bimbo el Oso Mañoso", "Xander el Imaginario"].map(
                   (artist) => (
                     <span
@@ -193,12 +203,11 @@ export default function ProducerSection() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              <h3 className="text-lg font-bold flex items-center justify-center md:justify-start gap-3 uppercase tracking-wider">
-                <span className="w-2 h-2 bg-[#00f0ff] rounded-full" />
+            <div>
+              <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
                 USA / Texas
-              </h3>
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              </p>
+              <div className="flex flex-wrap gap-3">
                 {[
                   "Sammy D",
                   "Jay Lex",
@@ -228,28 +237,29 @@ export default function ProducerSection() {
 
           <div className="mt-10 grid md:grid-cols-2 gap-8 text-sm text-gray-400 border-t border-white/10 pt-8">
             <div>
-              <h4 className="text-white font-bold mb-2 uppercase tracking-wider text-xs">Studios</h4>
+              <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-xs">Studios</h4>
               <p className="leading-relaxed">
-                La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
+                La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable
+                Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
               </p>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-2 uppercase tracking-wider text-xs">Certification</h4>
+              <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-xs">Certification</h4>
               <p>Recording Engineer — CCAT, Bayamón, Puerto Rico</p>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* LET'S WORK (centered title + centered button, glassy) */}
-        <section className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-10">
-          <div className="text-center">
-            <p className="text-[#ff0040] text-xs uppercase tracking-[0.35em] mb-3">Let&apos;s Work</p>
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
-              Ready to make records that last<span className="text-[#ff0040]">.</span>
-            </h3>
+        {/* LET'S WORK — centered title + centered button */}
+        <div className="mt-12 border border-white/10 bg-white/[0.03] backdrop-blur p-10 text-center">
+          <div className="inline-flex items-center gap-3 mb-8">
+            <span className="w-2 h-2 bg-[#ff0040] animate-pulse" />
+            <p className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
+              Let&apos;s Work
+            </p>
           </div>
 
-          <div className="mt-10 grid md:grid-cols-2 gap-10 text-left">
+          <div className="grid md:grid-cols-2 gap-10 text-left max-w-5xl mx-auto">
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
@@ -283,55 +293,16 @@ export default function ProducerSection() {
             </div>
 
             <div className="space-y-6">
-              <h4 className="font-bold text-lg uppercase tracking-wider text-center md:text-left">
-                Follow the Work
-              </h4>
-
+              <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
               <div className="grid grid-cols-2 gap-4">
-                <a
-                  href="https://instagram.com/invaluablessproduction"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
-                >
-                  <Instagram className="w-5 h-5 text-[#ff0040]" />
-                  <span className="text-sm font-medium">Instagram</span>
-                </a>
-
-                <a
-                  href="https://youtube.com/@InvaluaBlessProductions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
-                >
-                  <Youtube className="w-5 h-5 text-[#ff0040]" />
-                  <span className="text-sm font-medium">YouTube</span>
-                </a>
-
-                <a
-                  href="https://facebook.com/invaluablessproduction"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
-                >
-                  <Facebook className="w-5 h-5 text-[#00f0ff]" />
-                  <span className="text-sm font-medium">Facebook</span>
-                </a>
-
-                <a
-                  href="https://tiktok.com/@invaluablessproductions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
-                >
-                  <Music2 className="w-5 h-5 text-[#00f0ff]" />
-                  <span className="text-sm font-medium">TikTok</span>
-                </a>
+                <SocialCard href="https://instagram.com/invaluablessproduction" label="Instagram" icon={<Instagram className="w-5 h-5" />} accent="red" />
+                <SocialCard href="https://youtube.com/@InvaluaBlessProductions" label="YouTube" icon={<Youtube className="w-5 h-5" />} accent="red" />
+                <SocialCard href="https://facebook.com/invaluablessproduction" label="Facebook" icon={<Facebook className="w-5 h-5" />} accent="cyan" />
+                <SocialCard href="https://tiktok.com/@invaluablessproductions" label="TikTok" icon={<Music2 className="w-5 h-5" />} accent="cyan" />
               </div>
             </div>
           </div>
 
-          {/* Center button */}
           <div className="mt-10 flex justify-center">
             <Link
               href="/book"
@@ -340,9 +311,7 @@ export default function ProducerSection() {
               Book Your Session
             </Link>
           </div>
-        </section>
-
-        {/* Footer is handled globally by layout.tsx */}
+        </div>
       </section>
     </main>
   );
@@ -364,5 +333,36 @@ function Stat({
         {label}
       </div>
     </div>
+  );
+}
+
+function SocialCard({
+  href,
+  label,
+  icon,
+  accent,
+}: {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+  accent: "red" | "cyan";
+}) {
+  const accentClasses =
+    accent === "red"
+      ? "hover:bg-[#ff0040]/15 hover:border-[#ff0040]/50"
+      : "hover:bg-[#00f0ff]/10 hover:border-[#00f0ff]/40";
+
+  const iconClasses = accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex items-center gap-3 p-4 bg-white/5 border border-white/10 transition-all ${accentClasses}`}
+    >
+      <span className={`${iconClasses}`}>{icon}</span>
+      <span className="text-sm font-medium">{label}</span>
+    </a>
   );
 }
