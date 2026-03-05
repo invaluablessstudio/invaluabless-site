@@ -32,7 +32,7 @@ const ProducerSection = () => {
 
         {/* Main Grid */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* LEFT: Portrait + Statement */}
+          {/* LEFT: Portrait */}
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10">
               <div className="relative aspect-[4/5]">
@@ -53,20 +53,9 @@ const ProducerSection = () => {
                 </div>
               </div>
             </div>
-
-            <div className="mt-6 border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6">
-              <p className="text-lg font-bold text-white mb-2">
-                My sound: <span className="text-[#ff0040]">Clean. Heavy. Street-ready.</span>
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                I don&apos;t do “demo quality.” I do{" "}
-                <span className="text-white font-semibold">release-ready</span>. If it doesn&apos;t
-                hit in the car at night, it&apos;s not done.
-              </p>
-            </div>
           </div>
 
-          {/* RIGHT: Story + Credits + Lets Work */}
+          {/* RIGHT: Story + Sound Quote (center) + Credits + Let's Work */}
           <div className="lg:col-span-7 space-y-6">
             {/* Story (MATCHES HOME PAGE VERSION) */}
             <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
@@ -106,16 +95,21 @@ const ProducerSection = () => {
                   thing: making records that sound clean, heavy, and ready for release.
                 </p>
               </div>
+            </div>
 
-              <div className="mt-8 border-l-4 border-[#ff0040] pl-5 py-2">
-                <p className="text-white font-bold italic">
-                  “Clean vocals. Heavy low end — If it don&apos;t hit in the car at night, it&apos;s not done.”
+            {/* ✅ SOUND QUOTE (CENTERED, HOME-PAGE STYLE) */}
+            <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
+              <div className="max-w-3xl mx-auto">
+                <div className="border-l-4 border-[#ff0040] pl-6 py-2">
+                  <p className="text-lg md:text-xl font-bold italic text-white">
+                    "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
+                  </p>
+                </div>
+
+                <p className="mt-6 text-center font-mono text-[#ff0040] uppercase tracking-widest text-sm">
+                  Play it loud. That&apos;s the test.
                 </p>
               </div>
-
-              <p className="mt-6 font-mono text-[#ff0040] uppercase tracking-widest text-sm">
-                Play it loud. That&apos;s the test.
-              </p>
             </div>
 
             {/* Credits */}
@@ -135,20 +129,16 @@ const ProducerSection = () => {
                     Puerto Rico
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {[
-                      "YOMO",
-                      "El Larax",
-                      "Nencho el León Salvaje",
-                      "Bimbo el Oso Mañoso",
-                      "Xander el Imaginario",
-                    ].map((name) => (
-                      <span
-                        key={name}
-                        className="px-3 py-1.5 text-xs uppercase tracking-wider border border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#ff0040]/50 hover:bg-[#ff0040]/10 transition-all"
-                      >
-                        {name}
-                      </span>
-                    ))}
+                    {["YOMO", "El Larax", "Nencho el León Salvaje", "Bimbo el Oso Mañoso", "Xander el Imaginario"].map(
+                      (name) => (
+                        <span
+                          key={name}
+                          className="px-3 py-1.5 text-xs uppercase tracking-wider border border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#ff0040]/50 hover:bg-[#ff0040]/10 transition-all"
+                        >
+                          {name}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -298,7 +288,7 @@ const ProducerSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>{/* end grid */}
       </div>
     </section>
   );
