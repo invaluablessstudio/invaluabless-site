@@ -77,7 +77,7 @@ export default function Home() {
             transition: "transform 0.3s ease-out"
           }}
         />
-        {/* FIXED: Changed .jpg to .jpeg */}
+        {/* FIXED: Changed .jpeg to .jpg */}
         <div
   className="absolute inset-0 bg-cover bg-center"
   style={{
