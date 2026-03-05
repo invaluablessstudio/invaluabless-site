@@ -18,6 +18,22 @@ const videos = [
   { title: "Aparentas", artist: "Lil Tree", videoId: "CrLnsJNBKBk" },
 ];
 
+// ✅ Mouse-follow glow helper (uses --mx / --my CSS variables)
+function handleCardMouseMove(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  const r = el.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  el.style.setProperty("--mx", `${x}px`);
+  el.style.setProperty("--my", `${y}px`);
+}
+
+function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  el.style.setProperty("--mx", `50%`);
+  el.style.setProperty("--my", `50%`);
+}
+
 export default function WorkPage() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
@@ -43,19 +59,23 @@ export default function WorkPage() {
 
       {/* Background */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0f]">
-        <div className="absolute inset-0 opacity-20"
+        <div
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: "radial-gradient(circle at 50% 50%, #ff0040 0%, transparent 30%), radial-gradient(circle at 80% 20%, #00f0ff 0%, transparent 25%)"
+            backgroundImage:
+              "radial-gradient(circle at 50% 50%, #ff0040 0%, transparent 30%), radial-gradient(circle at 80% 20%, #00f0ff 0%, transparent 25%)",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-transparent to-[#0a0a0f]" />
       </div>
 
       {/* Grid Overlay */}
-      <div className="fixed inset-0 -z-10 opacity-[0.03]" 
+      <div
+        className="fixed inset-0 -z-10 opacity-[0.03]"
         style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "50px 50px"
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
         }}
       />
 
@@ -90,9 +110,9 @@ export default function WorkPage() {
         {/* Video Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {videos.map((video, i) => (
-            <WorkCard 
-              key={video.videoId} 
-              {...video} 
+            <WorkCard
+              key={video.videoId}
+              {...video}
               openVideo={openVideo}
               index={i}
             />
@@ -101,14 +121,22 @@ export default function WorkPage() {
 
         {/* Final CTA */}
         <section className="mt-24 relative">
-          <div className="street-card p-12 md:p-16 text-center relative overflow-hidden">
+          <div
+            className="street-card street-hover p-12 md:p-16 text-center relative overflow-hidden"
+            onMouseMove={handleCardMouseMove}
+            onMouseLeave={handleCardMouseLeave}
+          >
+            {/* ✅ mouse glow */}
+            <div className="mouse-glow" />
+
             <div className="absolute inset-0 bg-gradient-to-r from-[#ff0040]/10 via-transparent to-[#00f0ff]/10" />
-            
+
             <div className="relative z-10">
               <h2 className="font-urban text-5xl md:text-7xl uppercase leading-[0.9]">
-                Ready to <span className="text-[#ff0040] text-glow-red">Create</span>?
+                Ready to{" "}
+                <span className="text-[#ff0040] text-glow-red">Create</span>?
               </h2>
-              
+
               <p className="mt-6 text-gray-400 text-lg max-w-xl mx-auto">
                 Stop waiting. Start recording. Your sound is waiting.
                 <br />
@@ -120,9 +148,10 @@ export default function WorkPage() {
               <div className="mt-10">
                 <Link
                   href="/book"
-                  className="inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm glow-red hover:bg-[#ff3366] transition-colors"
+                  className="group relative inline-block px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm overflow-hidden transition-all hover:glow-red"
                 >
-                  Lock In Your Session
+                  <span className="relative z-10">Lock In Your Session</span>
+                  <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Link>
               </div>
             </div>
@@ -169,12 +198,17 @@ function WorkCard({
   index: number;
 }) {
   const accentColor = index % 2 === 0 ? "#ff0040" : "#00f0ff";
-  
+
   return (
     <div
       onClick={() => openVideo(videoId)}
-      className="group cursor-pointer street-card overflow-hidden transition-all duration-300 hover:scale-[1.02]"
+      onMouseMove={handleCardMouseMove}
+      onMouseLeave={handleCardMouseLeave}
+      className="group cursor-pointer street-card street-hover overflow-hidden transition-all duration-300 hover:scale-[1.02]"
     >
+      {/* ✅ mouse glow */}
+      <div className="mouse-glow" />
+
       {/* Thumbnail */}
       <div className="relative h-48 overflow-hidden">
         <Image
@@ -184,16 +218,16 @@ function WorkCard({
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        
+
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
-        
+
         {/* Play Button */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div 
+          <div
             className="w-16 h-16 flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-            style={{ 
+            style={{
               backgroundColor: accentColor,
-              boxShadow: `0 0 30px ${accentColor}40`
+              boxShadow: `0 0 30px ${accentColor}40`,
             }}
           >
             <span className="text-black text-xl ml-1">▶</span>
@@ -202,7 +236,7 @@ function WorkCard({
 
         {/* Index Number */}
         <div className="absolute top-3 right-3 font-mono text-xs text-white/50">
-          {String(index + 1).padStart(2, '0')}
+          {String(index + 1).padStart(2, "0")}
         </div>
       </div>
 
@@ -214,8 +248,8 @@ function WorkCard({
         <p className="text-sm text-gray-500 uppercase tracking-wider mt-1">
           {artist}
         </p>
-        
-        <div 
+
+        <div
           className="mt-4 h-[2px] w-8 transition-all duration-500 group-hover:w-full"
           style={{ backgroundColor: accentColor }}
         />
