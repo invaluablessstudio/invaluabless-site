@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
 export default function ProducerPage() {
@@ -17,9 +17,22 @@ export default function ProducerPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // 🔧 CONTROL PANEL (adjust these if you want tighter/looser)
+  const sizes = useMemo(
+    () => ({
+      // Reduce photo height so stats move UP
+      photoH: "h-[420px] sm:h-[460px] md:h-[470px] lg:h-[490px]",
+      // Stats card height is controlled by padding; keep consistent
+      statsPad: "p-6",
+      // Total "stack height" on desktop (photo + stats + gap).
+      // We match story card to this by using h-full with grid stretch AND explicit story height.
+      storyH: "md:h-[600px] lg:h-[630px]", // story ends exactly at the red line
+    }),
+    []
+  );
+
   return (
     <main className="relative min-h-screen text-white">
-      {/* Optional global overlays (if you have these in globals.css) */}
       <div className="grain" />
       <div className="scanlines" />
 
@@ -63,14 +76,13 @@ export default function ProducerPage() {
           </h1>
         </div>
 
-        {/* ROW: LEFT (photo+stats) | RIGHT (story card) */}
+        {/* ===== HERO ROW (this is the red-line alignment row) ===== */}
         <div className="mt-10 grid gap-6 md:grid-cols-12 items-stretch">
           {/* LEFT COLUMN */}
           <div className="md:col-span-5 flex flex-col gap-6">
-            {/* Photo card (REDUCED HEIGHT so stats end at story bottom) */}
+            {/* Photo card (reduced height) */}
             <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur">
-              {/* ✅ FIXED HEIGHT: control total stack height */}
-              <div className="relative h-[460px] sm:h-[520px] md:h-[540px]">
+              <div className={`relative ${sizes.photoH}`}>
                 <Image
                   src="/images/producer-portrait.jpeg"
                   alt="Jeovanne Diaz - Invaluabless Productions Music Producer"
@@ -99,8 +111,8 @@ export default function ProducerPage() {
               </div>
             </div>
 
-            {/* Stats card (same as before) */}
-            <div className="border border-white/10 bg-white/[0.03] backdrop-blur p-6">
+            {/* Stats card (now sits ABOVE the red line because photo is shorter) */}
+            <div className={`border border-white/10 bg-white/[0.03] backdrop-blur ${sizes.statsPad}`}>
               <div className="flex items-end justify-between gap-6">
                 <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
                 <Stat value="20+" label="Artists" color="text-[#00f0ff]" />
@@ -109,55 +121,67 @@ export default function ProducerPage() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: story card */}
+          {/* RIGHT COLUMN (Story card ends exactly at red line) */}
           <div className="md:col-span-7">
-            <div className="h-full border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8">
-              {/* Intro blurb (no repeating) */}
-              <div className="border-l-2 border-[#ff0040] pl-6 mb-8">
-                <p className="text-gray-300 leading-relaxed">
-                  Started in Puerto Rico in{" "}
-                  <span className="text-white font-semibold">&apos;09</span>. Built through real rooms,
-                  real pressure, and real records — now based in{" "}
-                  <span className="text-white font-semibold">San Antonio</span>, focused on one thing:
-                  making mixes that sound clean, heavy, and ready for release.
-                </p>
-              </div>
+            <div
+              className={[
+                "border border-white/10 bg-white/[0.03] backdrop-blur",
+                "p-6 md:p-8",
+                // ✅ This height is what forces the bottom to align to the red line
+                sizes.storyH,
+                // ✅ If the text is longer, it scrolls INSIDE (card stays aligned)
+                "overflow-hidden",
+              ].join(" ")}
+            >
+              {/* Scroll area inside so the card itself stops at the red line */}
+              <div className="h-full overflow-y-auto pr-2">
+                {/* Intro blurb (no repeats) */}
+                <div className="border-l-2 border-[#ff0040] pl-6 mb-8">
+                  <p className="text-gray-300 leading-relaxed">
+                    Started in Puerto Rico in{" "}
+                    <span className="text-white font-semibold">&apos;09</span>. Built through real rooms,
+                    real pressure, and real records — now based in{" "}
+                    <span className="text-white font-semibold">San Antonio</span>, focused on one thing:
+                    making mixes that sound clean, heavy, and ready for release.
+                  </p>
+                </div>
 
-              <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">
-                The Story
-              </p>
-
-              <div className="space-y-6 text-gray-300 leading-relaxed">
-                <p>
-                  Started with just speakers, hunger, and an ear for low-end that had to translate
-                  everywhere — cars, clubs, phone speakers. What began as a home setup turned into
-                  real sessions, real artists, and real pressure.
-                </p>
-
-                <p>
-                  <span className="text-white font-bold">2010: La Caldera Records.</span>{" "}
-                  Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).
-                  It wasn&apos;t glamorous — but it worked. Artists came in, records got made, and the sound
-                  kept improving.
+                <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">
+                  The Story
                 </p>
 
-                <p>
-                  <span className="text-white font-bold">
-                    2013: Propiedad Urbana &amp; Unstopable Studios.
-                  </span>{" "}
-                  San Juan was the next level. Real professional studios. Real pressure. Sessions with{" "}
-                  <span className="text-[#ff0040] font-semibold">YOMO</span>,{" "}
-                  <span className="text-[#ff0040] font-semibold">El Larax</span>,{" "}
-                  <span className="text-[#ff0040] font-semibold">Nencho el León Salvaje</span>,{" "}
-                  <span className="text-[#ff0040] font-semibold">Bimbo El Oso Mañoso</span>, and many
-                  others. I earned my certification as a Recording Engineer — but more importantly,
-                  I earned trust in the room.
-                </p>
+                <div className="space-y-6 text-gray-300 leading-relaxed">
+                  <p>
+                    Started with just speakers, hunger, and an ear for low-end that had to translate
+                    everywhere — cars, clubs, phone speakers. What began as a home setup turned into
+                    real sessions, real artists, and real pressure.
+                  </p>
 
-                <p>
-                  <span className="text-white font-bold">NOW:</span> Now based in San Antonio, I focus
-                  on one thing: making records that sound clean, heavy, and ready for release.
-                </p>
+                  <p>
+                    <span className="text-white font-bold">2010: La Caldera Records.</span>{" "}
+                    Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).
+                    It wasn&apos;t glamorous — but it worked. Artists came in, records got made, and the sound
+                    kept improving.
+                  </p>
+
+                  <p>
+                    <span className="text-white font-bold">
+                      2013: Propiedad Urbana &amp; Unstopable Studios.
+                    </span>{" "}
+                    San Juan was the next level. Real professional studios. Real pressure. Sessions with{" "}
+                    <span className="text-[#ff0040] font-semibold">YOMO</span>,{" "}
+                    <span className="text-[#ff0040] font-semibold">El Larax</span>,{" "}
+                    <span className="text-[#ff0040] font-semibold">Nencho el León Salvaje</span>,{" "}
+                    <span className="text-[#ff0040] font-semibold">Bimbo El Oso Mañoso</span>, and many
+                    others. I earned my certification as a Recording Engineer — but more importantly,
+                    I earned trust in the room.
+                  </p>
+
+                  <p>
+                    <span className="text-white font-bold">NOW:</span> Now based in San Antonio, I focus
+                    on one thing: making records that sound clean, heavy, and ready for release.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
