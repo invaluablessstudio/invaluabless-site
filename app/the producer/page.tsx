@@ -30,7 +30,7 @@ const ProducerSection = () => {
           </p>
         </div>
 
-        {/* Main Grid */}
+        {/* ===== TOP GRID (portrait + story) ===== */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* LEFT: Portrait */}
           <div className="lg:col-span-5">
@@ -55,9 +55,8 @@ const ProducerSection = () => {
             </div>
           </div>
 
-          {/* RIGHT: Story + Sound Quote (center) + Credits + Let's Work */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Story (MATCHES HOME PAGE VERSION) */}
+          {/* RIGHT: Story */}
+          <div className="lg:col-span-7">
             <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
               <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
                 The Story<span className="text-[#ff0040]">.</span>
@@ -96,199 +95,194 @@ const ProducerSection = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* ✅ SOUND QUOTE (CENTERED, HOME-PAGE STYLE) */}
-            <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
-              <div className="max-w-3xl mx-auto">
-                <div className="border-l-4 border-[#ff0040] pl-6 py-2">
-                  <p className="text-lg md:text-xl font-bold italic text-white">
-                    "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
-                  </p>
-                </div>
-
-                <p className="mt-6 text-center font-mono text-[#ff0040] uppercase tracking-widest text-sm">
-                  Play it loud. That&apos;s the test.
+        {/* ===== FULL-WIDTH STACK (matches purple box) ===== */}
+        <div className="mt-8 space-y-6">
+          {/* ✅ My Sound (SHORTER — ends near your yellow line) */}
+          <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 px-6 py-5 md:px-10 md:py-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="border-l-4 border-[#ff0040] pl-6 py-1">
+                <p className="text-lg md:text-xl font-bold italic text-white">
+                  "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
                 </p>
               </div>
+
+              <p className="mt-4 text-center font-mono text-[#ff0040] uppercase tracking-widest text-sm">
+                Play it loud. That&apos;s the test.
+              </p>
+            </div>
+          </div>
+
+          {/* ✅ Selected Credits (CENTERED FULL WIDTH like purple box) */}
+          <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-10">
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
+                Selected Credits<span className="text-[#ff0040]">.</span>
+              </h3>
+              <p className="text-xs uppercase tracking-[0.35em] text-gray-500">
+                PR • Texas • Worldwide
+              </p>
             </div>
 
-            {/* Credits */}
-            <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
-              <div className="flex items-center justify-between gap-4 flex-wrap">
-                <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
-                  Selected Credits<span className="text-[#ff0040]">.</span>
-                </h3>
-                <p className="text-xs uppercase tracking-[0.35em] text-gray-500">
-                  PR • Texas • Worldwide
-                </p>
-              </div>
-
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
-                <div>
-                  <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-3">
-                    Puerto Rico
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {["YOMO", "El Larax", "Nencho el León Salvaje", "Bimbo el Oso Mañoso", "Xander el Imaginario"].map(
-                      (name) => (
-                        <span
-                          key={name}
-                          className="px-3 py-1.5 text-xs uppercase tracking-wider border border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#ff0040]/50 hover:bg-[#ff0040]/10 transition-all"
-                        >
-                          {name}
-                        </span>
-                      )
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-3">
-                    USA / Texas
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Sammy D",
-                      "Jay Lex",
-                      "NinoPR",
-                      "Johnny West",
-                      "Xuniel & El JJJavi",
-                      "J Kings",
-                      "Marco Antonio Lopez",
-                      "Carli",
-                      "Ryan Rivera",
-                      "Solo Deyvi",
-                      "Melchory Gang",
-                      "Jancy La Potencia",
-                      "Haitian Crook",
-                      "Leonelson",
-                    ].map((name) => (
+            <div className="mt-6 grid gap-6 md:grid-cols-2">
+              <div>
+                <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-3">Puerto Rico</p>
+                <div className="flex flex-wrap gap-2">
+                  {["YOMO", "El Larax", "Nencho el León Salvaje", "Bimbo el Oso Mañoso", "Xander el Imaginario"].map(
+                    (name) => (
                       <span
                         key={name}
-                        className="px-3 py-1.5 text-xs uppercase tracking-wider border border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#00f0ff]/50 hover:bg-[#00f0ff]/10 transition-all"
+                        className="px-3 py-1.5 text-xs uppercase tracking-wider border border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#ff0040]/50 hover:bg-[#ff0040]/10 transition-all"
                       >
                         {name}
                       </span>
-                    ))}
-                  </div>
+                    )
+                  )}
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-6 md:grid-cols-2 text-sm text-gray-400 border-t border-white/10 pt-6">
-                <div>
-                  <p className="text-white font-bold uppercase tracking-wider text-xs mb-2">
-                    Studios
-                  </p>
-                  <p className="leading-relaxed">
-                    La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) •
-                    Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-white font-bold uppercase tracking-wider text-xs mb-2">
-                    Certification
-                  </p>
-                  <p>Recording Engineer — CCAT, Bayamón, Puerto Rico</p>
+              <div>
+                <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-3">USA / Texas</p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Sammy D",
+                    "Jay Lex",
+                    "NinoPR",
+                    "Johnny West",
+                    "Xuniel & El JJJavi",
+                    "J Kings",
+                    "Marco Antonio Lopez",
+                    "Carli",
+                    "Ryan Rivera",
+                    "Solo Deyvi",
+                    "Melchory Gang",
+                    "Jancy La Potencia",
+                    "Haitian Crook",
+                    "Leonelson",
+                  ].map((name) => (
+                    <span
+                      key={name}
+                      className="px-3 py-1.5 text-xs uppercase tracking-wider border border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#00f0ff]/50 hover:bg-[#00f0ff]/10 transition-all"
+                    >
+                      {name}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* LET'S WORK (matches home page vibe) */}
-            <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-[#ff0040]">★</span>
-                <p className="font-urban text-xl uppercase tracking-wider">Let&apos;s Work</p>
+            <div className="mt-8 grid gap-6 md:grid-cols-2 text-sm text-gray-400 border-t border-white/10 pt-6">
+              <div>
+                <p className="text-white font-bold uppercase tracking-wider text-xs mb-2">Studios</p>
+                <p className="leading-relaxed">
+                  La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable Studio
+                  (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
+                </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-10 text-left">
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
-                    <div>
-                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Studio</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">
-                        3200 Wright Carpenter Rd
-                        <br />
-                        San Antonio, Texas 78221
+              <div>
+                <p className="text-white font-bold uppercase tracking-wider text-xs mb-2">Certification</p>
+                <p>Recording Engineer — CCAT, Bayamón, Puerto Rico</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ✅ Let's Work (continues same centered/full-width layout) */}
+          <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-[#ff0040]">★</span>
+              <p className="font-urban text-xl uppercase tracking-wider">Let&apos;s Work</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-10 text-left">
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
+                  <div>
+                    <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Studio</h4>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      3200 Wright Carpenter Rd
+                      <br />
+                      San Antonio, Texas 78221
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <Mail className="w-6 h-6 text-[#00f0ff] mt-1" />
+                  <div>
+                    <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Email</h4>
+                    <div className="space-y-1 text-gray-400 text-sm">
+                      <p>
+                        <span className="text-white">Bookings:</span> bookings@invaluablessproduction.com
+                      </p>
+                      <p>
+                        <span className="text-white">Beats:</span> beats@invaluablessproduction.com
+                      </p>
+                      <p>
+                        <span className="text-white">General:</span> support@invaluablessproduction.com
                       </p>
                     </div>
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <Mail className="w-6 h-6 text-[#00f0ff] mt-1" />
-                    <div>
-                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">Email</h4>
-                      <div className="space-y-1 text-gray-400 text-sm">
-                        <p>
-                          <span className="text-white">Bookings:</span> bookings@invaluablessproduction.com
-                        </p>
-                        <p>
-                          <span className="text-white">Beats:</span> beats@invaluablessproduction.com
-                        </p>
-                        <p>
-                          <span className="text-white">General:</span> support@invaluablessproduction.com
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/book"
-                    className="inline-block px-10 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
-                  >
-                    Book Your Session
-                  </Link>
                 </div>
 
-                <div className="space-y-6">
-                  <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <a
-                      href="https://instagram.com/invaluablessproduction"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
-                    >
-                      <Instagram className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
-                      <span className="text-sm font-medium">Instagram</span>
-                    </a>
+                <Link
+                  href="/book"
+                  className="inline-block px-10 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
+                >
+                  Book Your Session
+                </Link>
+              </div>
 
-                    <a
-                      href="https://youtube.com/@InvaluaBlessProductions"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
-                    >
-                      <Youtube className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
-                      <span className="text-sm font-medium">YouTube</span>
-                    </a>
+              <div className="space-y-6">
+                <h4 className="font-bold text-lg uppercase tracking-wider">Follow the Work</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <a
+                    href="https://instagram.com/invaluablessproduction"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
+                  >
+                    <Instagram className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">Instagram</span>
+                  </a>
 
-                    <a
-                      href="https://facebook.com/invaluablessproduction"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
-                    >
-                      <Facebook className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
-                      <span className="text-sm font-medium">Facebook</span>
-                    </a>
+                  <a
+                    href="https://youtube.com/@InvaluaBlessProductions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
+                  >
+                    <Youtube className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">YouTube</span>
+                  </a>
 
-                    <a
-                      href="https://tiktok.com/@invaluablessproductions"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
-                    >
-                      <Music2 className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
-                      <span className="text-sm font-medium">TikTok</span>
-                    </a>
-                  </div>
+                  <a
+                    href="https://facebook.com/invaluablessproduction"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
+                  >
+                    <Facebook className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">Facebook</span>
+                  </a>
+
+                  <a
+                    href="https://tiktok.com/@invaluablessproductions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
+                  >
+                    <Music2 className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">TikTok</span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </div>{/* end grid */}
+        </div>{/* end stack */}
       </div>
     </section>
   );
