@@ -71,9 +71,6 @@ function InteractiveCard({
   );
 }
 
-function WaveDivider({ className = "" }: { className?: string }) {
-  return <div className={`wave-divider ${className}`} aria-hidden="true" />;
-}
 
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
@@ -213,7 +210,7 @@ export default function Home() {
         </section>
 
         {/* ✅ Wave divider */}
-        <WaveDivider />
+    
 
         {/* ================= THE PRODUCER ================= */}
         <section id="producer" className="py-20">
@@ -306,7 +303,7 @@ export default function Home() {
         </section>
 
         {/* ✅ Wave divider */}
-        <WaveDivider />
+
 
         {/* ================= CONTACT ================= */}
         <section id="contact" className="py-20 relative">
