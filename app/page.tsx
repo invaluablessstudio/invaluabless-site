@@ -56,10 +56,13 @@ export default function Home() {
   }, []);
 
   return (
-    // IMPORTANT: remove overflow-hidden so the bottom/footers can't be clipped
-    <main className="relative min-h-screen text-white bg-[#0a0a0f]">
-      {/* ===== BACKGROUND STACK (fixed) ===== */}
+    // ✅ IMPORTANT: transparent so it doesn't cover the negative-z backgrounds
+    <main className="relative min-h-screen text-white bg-transparent">
+      {/* ===== BACKGROUND STACK (fixed, behind everything) ===== */}
       <div className="fixed inset-0 -z-20 pointer-events-none">
+        {/* ✅ Base color layer (replaces main bg) */}
+        <div className="absolute inset-0 bg-[#0a0a0f]" />
+
         {/* Mic Image */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -236,7 +239,8 @@ export default function Home() {
                     </p>
 
                     <p>
-                      2013: <strong className="text-white">Propiedad Urbana & Unstopable Studios</strong>.
+                      2013:{" "}
+                      <strong className="text-white">Propiedad Urbana & Unstopable Studios</strong>.
                       San Juan was the next level. Real professional studios. Real pressure. Sessions
                       with <strong className="text-[#ff0040]">YOMO</strong>,{" "}
                       <strong className="text-[#ff0040]">El Larax</strong>,{" "}
@@ -460,7 +464,6 @@ export default function Home() {
         </section>
 
         {/* ================= CONTACT ================= */}
-        {/* FIX: make contact section RELATIVE so its absolute overlay doesn't cover the whole page */}
         <section id="contact" className="py-20 relative">
           <FadeInSection>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent pointer-events-none" />

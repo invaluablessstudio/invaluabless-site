@@ -12,23 +12,18 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-
   title: {
     default: "Invaluabless Productions | Recording Studio San Antonio",
     template: "%s • Invaluabless Productions",
   },
-
   description:
     "Professional recording, mixing, and mastering studio in San Antonio, Texas. Studio-level sound for artists who move with intention.",
-
   applicationName: "Invaluabless Productions",
-
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
-
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -45,7 +40,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Invaluabless Productions",
@@ -53,14 +47,12 @@ export const metadata: Metadata = {
       "Professional recording, mixing, and mastering studio in San Antonio, Texas.",
     images: ["/logo.png"],
   },
-
   robots: {
     index: true,
     follow: true,
   },
 };
 
-// Structured data as a separate object for type safety
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -90,11 +82,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Performance Preconnect */}
         <link rel="preconnect" href="https://img.youtube.com" />
         <link rel="preconnect" href="https://www.youtube.com" />
-        
-        {/* Structured Data */}
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -103,8 +93,8 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="bg-[#07070a] text-white antialiased">
-        {/* Google Analytics 4 */}
+      {/* IMPORTANT: body must be transparent so page-level backgrounds can show */}
+      <body className="bg-transparent text-white antialiased">
         {GA_ID && (
           <>
             <Script
@@ -123,9 +113,16 @@ export default function RootLayout({
           </>
         )}
 
-        <Nav />
+        {/* Nav + footer must sit above any fixed overlays inside pages */}
+        <div className="relative z-50">
+          <Nav />
+        </div>
+
         <PageTransition>{children}</PageTransition>
-        <Footer />
+
+        <div className="relative z-50">
+          <Footer />
+        </div>
       </body>
     </html>
   );
