@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import PageTransition from "./components/PageTransition";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -123,6 +124,9 @@ export default function RootLayout({
         <div className="relative z-50">
           <Footer />
         </div>
+
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );
