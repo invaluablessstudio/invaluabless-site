@@ -1,7 +1,7 @@
 // app/page.tsx
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
@@ -35,42 +35,20 @@ function FadeInSection({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Interactive wrapper: neon corner brackets + mouse-follow glow */
-function InteractiveCard({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  function onMove(e: React.MouseEvent) {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width) * 100;
-    const y = ((e.clientY - r.top) / r.height) * 100;
-    el.style.setProperty("--mx", `${x}%`);
-    el.style.setProperty("--my", `${y}%`);
-  }
-
-  return (
-    <div
-      ref={ref}
-      onMouseMove={onMove}
-      className={`street-card interactive-card neon-corners ${className}`}
-    >
-      {/* corner brackets */}
-      <span className="corner tl" />
-      <span className="corner tr" />
-      <span className="corner bl" />
-      <span className="corner br" />
-      {children}
-    </div>
-  );
+// ✅ mouse-follow glow for any card using street-hover
+function handleCardMouseMove(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  const r = el.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  el.style.setProperty("--mx", `${x}px`);
+  el.style.setProperty("--my", `${y}px`);
 }
-
+function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  el.style.setProperty("--mx", `50%`);
+  el.style.setProperty("--my", `50%`);
+}
 
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
@@ -90,7 +68,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen text-white bg-transparent overflow-hidden">
+    <main className="relative min-h-screen text-white bg-transparent">
       {/* ===== BACKGROUND STACK (fixed, behind everything) ===== */}
       <div className="fixed inset-0 -z-20 pointer-events-none">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
@@ -154,27 +132,20 @@ export default function Home() {
                 <span className="block text-white/90">That Hits</span>
               </h1>
 
-              {/* ✅ Intro paragraph in interactive container */}
-              <div className="mt-8 max-w-2xl">
-                <InteractiveCard className="p-6 md:p-7">
-                  <p className="text-gray-400 text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6">
-                    Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean
-                    vocals. Industry-ready mixes that slap.
-                  </p>
-                </InteractiveCard>
-              </div>
+              <p className="mt-8 text-gray-400 max-w-xl text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6">
+                Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean
+                vocals. Industry-ready mixes that slap.
+              </p>
 
-              {/* ✅ CTA buttons (Book button wrapped in a card container) */}
-              <div className="mt-10 flex flex-wrap gap-4 items-stretch">
-                <InteractiveCard className="p-2">
-                  <Link
-                    href="/book"
-                    className="group relative block px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
-                  >
-                    <span className="relative z-10">Book Session</span>
-                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  </Link>
-                </InteractiveCard>
+              {/* Buttons (already upgraded) */}
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="/book"
+                  className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
+                >
+                  <span className="relative z-10">Book Session</span>
+                  <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                </Link>
 
                 <Link
                   href="/work"
@@ -205,209 +176,411 @@ export default function Home() {
           </div>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+            <span className="text-[10px] uppercase tracking-widest"></span>
             <div className="w-[1px] h-8 bg-gradient-to-b from-[#ff0040] to-transparent" />
           </div>
         </section>
-
-        {/* ✅ Wave divider */}
-    
 
         {/* ================= THE PRODUCER ================= */}
         <section id="producer" className="py-20">
           <FadeInSection>
             <div className="max-w-7xl mx-auto px-6 md:px-16">
               <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Left visual card becomes interactive */}
-                <InteractiveCard className="p-0">
-                  <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-[#0f0f14]">
+                {/* PHOTO CARD */}
+                <div
+                  className="relative group street-card street-hover border border-white/10 bg-white/[0.03] backdrop-blur"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <div className="relative aspect-[4/5] overflow-hidden">
                     <Image
                       src="/images/producer-portrait.jpeg"
                       alt="Jeovanne Diaz - Invaluabless Productions Music Producer"
                       fill
                       className="object-cover"
+                      priority
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.display = "none";
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10 pointer-events-none" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/20 to-[#00f0ff]/20">
+                      <span className="text-6xl font-black text-white/20">INV</span>
+                    </div>
                   </div>
 
-                  <div className="absolute -bottom-6 -right-6 bg-[#ff0040] text-black p-6 font-mono shadow-[0_30px_120px_rgba(0,0,0,0.8)]">
+                  {/* 13+ sticker */}
+                  <div className="absolute -bottom-6 -right-6 bg-[#ff0040] text-black p-6 font-mono">
                     <p className="font-bold text-3xl">13+</p>
                     <p className="uppercase tracking-wider text-sm">Years</p>
                   </div>
-                </InteractiveCard>
+                </div>
 
-                <div className="space-y-8">
-                  <div>
-                    <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">
-                      The Producer
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-wider uppercase">
-                      Jeovanne Diaz
-                    </h2>
+                {/* STORY CARD */}
+                <div
+                  className="street-card street-hover p-8"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
 
-                    <p className="text-white/60 uppercase tracking-[0.3em] text-xs mt-4">
-                      Founder • Recording Engineer • Producer
-                    </p>
-                  </div>
+                  <div className="space-y-8 relative">
+                    <div>
+                      <p className="text-[#ff0040] text-xs uppercase tracking-[0.3em] mb-4">
+                        The Producer
+                      </p>
+                      <h2 className="text-3xl md:text-4xl font-extrabold tracking-wider uppercase">
+                        Jeovanne Diaz
+                      </h2>
 
-                  {/* ✅ Bio in interactive container */}
-                  <InteractiveCard className="p-6 md:p-7">
+                      <p className="text-white/60 uppercase tracking-[0.3em] text-xs mt-4">
+                        Founder • Recording Engineer • Producer
+                      </p>
+                    </div>
+
                     <div className="space-y-6 text-gray-300 leading-relaxed">
                       <p>
-                        Started in Puerto Rico in '09. Just speakers, hunger, and an ear for low-end
-                        that had to translate everywhere — cars, clubs, phone speakers. A few months
-                        later, what began as a home setup turned into real sessions, real artists,
-                        and real pressure.
+                        Started in Puerto Rico in &apos;09. Just speakers, hunger, and an ear for low-end
+                        that had to translate everywhere — cars, clubs, phone speakers.
                       </p>
 
                       <p>
                         2010: <strong className="text-white">La Caldera Records</strong>. Built inside
-                        a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH). It wasn’t
-                        glamorous — but it worked. Artists came in, records got made, and the sound
-                        kept improving.
+                        a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).
                       </p>
 
                       <p>
                         2013:{" "}
                         <strong className="text-white">Propiedad Urbana & Unstopable Studios</strong>.
-                        San Juan was the next level. Real professional studios. Real pressure. Sessions
-                        with <strong className="text-[#ff0040]">YOMO</strong>,{" "}
+                        San Juan was the next level. Sessions with{" "}
+                        <strong className="text-[#ff0040]">YOMO</strong>,{" "}
                         <strong className="text-[#ff0040]">El Larax</strong>,{" "}
                         <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>,{" "}
-                        <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and many others.
+                        <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and more.
                       </p>
 
                       <p>
-                        <strong className="text-white">NOW</strong>: Now based in San Antonio, I focus
-                        on one thing: making records that sound clean, heavy, and ready for release.
+                        <strong className="text-white">NOW</strong>: Based in San Antonio — focused on
+                        clean, heavy, release-ready records.
                       </p>
                     </div>
-                  </InteractiveCard>
 
-                  <div className="border-l-4 border-[#ff0040] pl-6 py-2">
-                    <p className="text-lg font-bold italic text-white">
-                      "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
+                    <div className="border-l-4 border-[#ff0040] pl-6 py-2">
+                      <p className="text-lg font-bold italic text-white">
+                        "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
+                      </p>
+                    </div>
+
+                    <p className="font-mono text-[#ff0040] uppercase tracking-widest text-sm">
+                      Play it loud. That's the test.
                     </p>
                   </div>
-
-                  <p className="font-mono text-[#ff0040] uppercase tracking-widest text-sm">
-                    Play it loud. That&apos;s the test.
-                  </p>
                 </div>
               </div>
             </div>
           </FadeInSection>
         </section>
 
-        {/* ✅ Wave divider */}
+        {/* ================= SELECTED CREDITS ================= */}
+        <section id="credits" className="py-20 border-y border-white/5">
+          <FadeInSection>
+            <div className="max-w-7xl mx-auto px-6 md:px-16">
+              <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4 text-center">
+                Selected Credits
+              </p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase text-center mb-16">
+                Heavy Hitters <span className="text-[#ff0040]">.</span>
+              </h2>
 
+              <div className="grid md:grid-cols-2 gap-12 mb-16">
+                <div
+                  className="street-card street-hover p-8"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <h3 className="text-xl font-bold flex items-center gap-3 uppercase tracking-wider mb-6">
+                    <span className="w-2 h-2 bg-[#ff0040] rounded-full" />
+                    Puerto Rico
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {[
+                      "YOMO",
+                      "El Larax",
+                      "Nencho el León Salvaje",
+                      "Bimbo el Oso Mañoso",
+                      "Xander el Imaginario",
+                      "Xziel The One and Only",
+                      "Baby Killa La Amenaza",
+                      "Lil Tree",
+                      "Young Tyago",
+                      "Young Abel",
+                      "Bruze Wave",
+                      "JLyan",
+                      "Kimo 7PDC",
+                      "Krys El Lapiz Pesao",
+                      "Luigi La Mente Celeste",
+                      "Sionel El de la Melodia",
+                      "Tety La Destreza",
+                    ].map((artist) => (
+                      <span
+                        key={artist}
+                        className="bg-white/5 border border-white/10 px-4 py-2 text-sm font-medium hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all cursor-default"
+                      >
+                        {artist}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  className="street-card street-hover p-8"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <h3 className="text-xl font-bold flex items-center gap-3 uppercase tracking-wider mb-6">
+                    <span className="w-2 h-2 bg-[#00f0ff] rounded-full" />
+                    USA / Texas
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {[
+                      "Sammy D",
+                      "Jay Lex",
+                      "NinoPR",
+                      "Johnny West",
+                      "Xuniel & El JJJavi",
+                      "J Kings",
+                      "Marco Antonio Lopez",
+                      "Carli",
+                      "Ryan Rivera",
+                      "Solo Deyvi",
+                      "Melchory Gang",
+                      "Jancy La Potencia",
+                      "Haitian Crook",
+                      "Leonelson",
+                    ].map((artist) => (
+                      <span
+                        key={artist}
+                        className="bg-white/5 border border-white/10 px-4 py-2 text-sm font-medium hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all cursor-default"
+                      >
+                        {artist}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-400 border-t border-white/10 pt-12">
+                <div
+                  className="street-card street-hover p-6"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-xs">
+                    Studios
+                  </h4>
+                  <p className="leading-relaxed">
+                    La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable
+                    Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
+                  </p>
+                </div>
+                <div
+                  className="street-card street-hover p-6"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-xs">
+                    Certification
+                  </h4>
+                  <p>Recording Engineer — CCAT, Bayamón, Puerto Rico</p>
+                </div>
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
+
+        {/* ================= THE STUDIO ================= */}
+        <section id="studio" className="py-20">
+          <FadeInSection>
+            <div className="max-w-7xl mx-auto px-6 md:px-16">
+              <div className="text-center mb-16">
+                <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
+                  The Studio
+                </p>
+                <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">
+                  Built for Sound.
+                  <br />
+                  <span className="text-[#ff0040]">Designed for Sessions.</span>
+                </h2>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div
+                  className="relative group overflow-hidden border border-white/10 aspect-video bg-[#0f0f14] street-hover"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <Image
+                    src="/images/studio-wide-led.jpeg"
+                    alt="Invaluabless Productions Studio - San Antonio"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10 pointer-events-none">
+                    <span className="text-gray-600 font-mono text-sm uppercase tracking-widest">
+                      Studio Control Room
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  className="relative group overflow-hidden border border-white/10 aspect-video bg-[#0f0f14] street-hover"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <Image
+                    src="/images/artist-in-booth.jpeg"
+                    alt="Artist recording session"
+                    fill
+                    className="object-contain transition-transform duration-700 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#00f0ff]/10 to-[#ff0040]/10 pointer-events-none">
+                    <span className="text-gray-600 font-mono text-sm uppercase tracking-widest">
+                      Vocal Booth Sessions
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: "Recording",
+                    desc: "Vocals, instruments, full bands. Clean signal chain, pro environment.",
+                    accent: "red",
+                  },
+                  {
+                    title: "Mix & Master",
+                    desc: "Radio-ready, club-tested, headphone-approved. Your sound, elevated.",
+                    accent: "cyan",
+                  },
+                  {
+                    title: "Beats",
+                    desc: "Original production. Reggaeton, trap, rap, Latin. Custom or licensed.",
+                    accent: "red",
+                  },
+                ].map((c) => (
+                  <div
+                    key={c.title}
+                    className="p-8 border border-white/10 bg-white/[0.02] transition-all group street-hover"
+                    onMouseMove={handleCardMouseMove}
+                    onMouseLeave={handleCardMouseLeave}
+                  >
+                    <div className="mouse-glow" />
+                    <h4
+                      className={`text-2xl font-bold mb-3 uppercase transition-colors ${
+                        c.accent === "red"
+                          ? "group-hover:text-[#ff0040]"
+                          : "group-hover:text-[#00f0ff]"
+                      }`}
+                    >
+                      {c.title}
+                    </h4>
+                    <p className="text-gray-400 text-sm leading-relaxed">{c.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
 
         {/* ================= CONTACT ================= */}
         <section id="contact" className="py-20 relative">
           <FadeInSection>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent pointer-events-none" />
 
-            <div className="max-w-4xl mx-auto px-6 md:px-16 text-center relative">
+            <div
+              className="max-w-4xl mx-auto px-6 md:px-16 text-center relative street-card street-hover p-10"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+            >
+              <div className="mouse-glow" />
+
               <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
                 Get In Touch
               </p>
               <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-6">
-                Let&apos;s Work<span className="text-[#ff0040]">.</span>
+                Let's Work<span className="text-[#ff0040]">.</span>
               </h2>
               <p className="text-xl text-gray-400 mb-16">
-                Ready to make records that last? Let&apos;s build your sound.
+                Ready to make records that last? Let's build your sound.
               </p>
 
               <div className="grid md:grid-cols-2 gap-12 text-left mb-16">
-                <InteractiveCard className="p-6 md:p-7">
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
-                      <div>
-                        <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">
-                          Studio
-                        </h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          3200 Wright Carpenter Rd
-                          <br />
-                          San Antonio, Texas 78221
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <MapPin className="w-6 h-6 text-[#ff0040] mt-1" />
+                    <div>
+                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">
+                        Studio
+                      </h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        3200 Wright Carpenter Rd
+                        <br />
+                        San Antonio, Texas 78221
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Mail className="w-6 h-6 text-[#00f0ff] mt-1" />
+                    <div>
+                      <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">
+                        Email
+                      </h4>
+                      <div className="space-y-1 text-gray-400 text-sm">
+                        <p>
+                          <span className="text-white">Bookings:</span>{" "}
+                          bookings@invaluablessproduction.com
+                        </p>
+                        <p>
+                          <span className="text-white">Beats:</span>{" "}
+                          beats@invaluablessproduction.com
+                        </p>
+                        <p>
+                          <span className="text-white">General:</span>{" "}
+                          support@invaluablessproduction.com
                         </p>
                       </div>
                     </div>
-
-                    <div className="flex items-start gap-4">
-                      <Mail className="w-6 h-6 text-[#00f0ff] mt-1" />
-                      <div>
-                        <h4 className="font-bold text-lg mb-1 uppercase tracking-wider">
-                          Email
-                        </h4>
-                        <div className="space-y-1 text-gray-400 text-sm">
-                          <p>
-                            <span className="text-white">Bookings:</span>{" "}
-                            bookings@invaluablessproduction.com
-                          </p>
-                          <p>
-                            <span className="text-white">Beats:</span>{" "}
-                            beats@invaluablessproduction.com
-                          </p>
-                          <p>
-                            <span className="text-white">General:</span>{" "}
-                            support@invaluablessproduction.com
-                          </p>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                </InteractiveCard>
+                </div>
 
-                <InteractiveCard className="p-6 md:p-7">
-                  <div className="space-y-6">
-                    <h4 className="font-bold text-lg uppercase tracking-wider">
-                      Follow the Work
-                    </h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <a
-                        href="https://instagram.com/invaluablessproduction"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
-                      >
-                        <Instagram className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">Instagram</span>
-                      </a>
-                      <a
-                        href="https://youtube.com/@InvaluaBlessProductions"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50 transition-all group"
-                      >
-                        <Youtube className="w-5 h-5 text-[#ff0040] group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">YouTube</span>
-                      </a>
-                      <a
-                        href="https://facebook.com/invaluablessproduction"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
-                      >
-                        <Facebook className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">Facebook</span>
-                      </a>
-                      <a
-                        href="https://tiktok.com/@invaluablessproductions"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all group"
-                      >
-                        <Music2 className="w-5 h-5 text-[#00f0ff] group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">TikTok</span>
-                      </a>
-                    </div>
+                <div className="space-y-6">
+                  <h4 className="font-bold text-lg uppercase tracking-wider">
+                    Follow the Work
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <SocialCard href="https://instagram.com/invaluablessproduction" label="Instagram" icon={<Instagram className="w-5 h-5" />} accent="red" />
+                    <SocialCard href="https://youtube.com/@InvaluaBlessProductions" label="YouTube" icon={<Youtube className="w-5 h-5" />} accent="red" />
+                    <SocialCard href="https://facebook.com/invaluablessproduction" label="Facebook" icon={<Facebook className="w-5 h-5" />} accent="cyan" />
+                    <SocialCard href="https://tiktok.com/@invaluablessproductions" label="TikTok" icon={<Music2 className="w-5 h-5" />} accent="cyan" />
                   </div>
-                </InteractiveCard>
+                </div>
               </div>
 
               <Link
@@ -422,5 +595,39 @@ export default function Home() {
         </section>
       </div>
     </main>
+  );
+}
+
+function SocialCard({
+  href,
+  label,
+  icon,
+  accent,
+}: {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+  accent: "red" | "cyan";
+}) {
+  const accentClasses =
+    accent === "red"
+      ? "hover:bg-[#ff0040]/15 hover:border-[#ff0040]/50"
+      : "hover:bg-[#00f0ff]/10 hover:border-[#00f0ff]/40";
+
+  const iconClasses = accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`relative overflow-hidden flex items-center gap-3 p-4 bg-white/5 border border-white/10 transition-all ${accentClasses} street-hover`}
+      onMouseMove={handleCardMouseMove}
+      onMouseLeave={handleCardMouseLeave}
+    >
+      <div className="mouse-glow" />
+      <span className={`${iconClasses} relative z-10`}>{icon}</span>
+      <span className="text-sm font-medium relative z-10">{label}</span>
+    </a>
   );
 }
