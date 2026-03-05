@@ -1,6 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import React from "react";
+
+// ✅ Mouse-follow glow helper (uses --mx / --my CSS variables)
+function handleCardMouseMove(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  const r = el.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  el.style.setProperty("--mx", `${x}px`);
+  el.style.setProperty("--my", `${y}px`);
+}
+
+function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget as HTMLElement;
+  el.style.setProperty("--mx", `50%`);
+  el.style.setProperty("--my", `50%`);
+}
 
 export default function ServicesPage() {
   return (
@@ -11,18 +28,22 @@ export default function ServicesPage() {
 
       {/* Background */}
       <div className="fixed inset-0 -z-20 bg-[#0a0a0f]">
-        <div className="absolute inset-0 opacity-20"
+        <div
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: "radial-gradient(circle at 80% 20%, #ff0040 0%, transparent 40%), radial-gradient(circle at 20% 80%, #00f0ff 0%, transparent 40%)"
+            backgroundImage:
+              "radial-gradient(circle at 80% 20%, #ff0040 0%, transparent 40%), radial-gradient(circle at 20% 80%, #00f0ff 0%, transparent 40%)",
           }}
         />
       </div>
 
       {/* Grid Overlay */}
-      <div className="fixed inset-0 -z-10 opacity-[0.03]" 
+      <div
+        className="fixed inset-0 -z-10 opacity-[0.03]"
         style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "50px 50px"
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
         }}
       />
 
@@ -51,8 +72,8 @@ export default function ServicesPage() {
         </div>
 
         <p className="text-gray-400 text-lg max-w-2xl border-l-2 border-[#ff0040] pl-6 mb-16">
-          Heavy 808s. Clean vocals. Industry-ready mixes that slap. 
-          Built for reggaeton, trap, and Latin artists.
+          Heavy 808s. Clean vocals. Industry-ready mixes that slap. Built for reggaeton, trap, and
+          Latin artists.
         </p>
 
         {/* Services Grid */}
@@ -87,8 +108,15 @@ export default function ServicesPage() {
           />
         </div>
 
-                {/* Process Section */}
-        <div className="mt-20 street-card p-8 md:p-12 relative overflow-hidden">
+        {/* Process Section */}
+        <div
+          className="mt-20 street-card street-hover p-8 md:p-12 relative overflow-hidden"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
+        >
+          {/* ✅ mouse glow */}
+          <div className="mouse-glow" />
+
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#ff0040] to-transparent" />
 
           <div className="flex items-start justify-between gap-6 flex-wrap">
@@ -97,7 +125,8 @@ export default function ServicesPage() {
                 How It Works <span className="text-[#00f0ff]">.</span>
               </h2>
               <p className="text-gray-400 text-sm max-w-2xl">
-                Real-time calendar booking. Deposit locks the time. Automated confirmations handle the rest.
+                Real-time calendar booking. Deposit locks the time. Automated confirmations handle
+                the rest.
               </p>
             </div>
 
@@ -134,7 +163,8 @@ export default function ServicesPage() {
                 Pay Deposit
               </h3>
               <p className="text-gray-400 text-sm">
-                Follow the deposit instructions on the booking page. Deposit locks your session time.
+                Follow the deposit instructions on the booking page. Deposit locks your session
+                time.
               </p>
               <p className="mt-3 text-[11px] text-gray-500 uppercase tracking-wider">
                 No deposit = not locked
@@ -158,7 +188,8 @@ export default function ServicesPage() {
           </div>
 
           <p className="mt-8 text-gray-500 text-sm uppercase tracking-wider border-t border-white/10 pt-6">
-            Elige tu horario en el calendario → paga el depósito → recibes confirmación automática e instrucciones.
+            Elige tu horario en el calendario → paga el depósito → recibes confirmación automática e
+            instrucciones.
           </p>
         </div>
       </div>
@@ -180,24 +211,33 @@ function ServiceCard({
   icon: string;
 }) {
   return (
-    <div className="street-card p-8 group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+    <div
+      className="street-card street-hover p-8 group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+      onMouseMove={handleCardMouseMove}
+      onMouseLeave={handleCardMouseLeave}
+    >
+      {/* ✅ mouse glow */}
+      <div className="mouse-glow" />
+
       <div className="flex items-start justify-between mb-6">
         <span className="text-4xl opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
           {icon}
         </span>
         <div className="text-right">
-          <div className="font-urban text-3xl text-[#ff0040] group-hover:text-glow-red transition-all">{price}</div>
-          <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">{note}</div>
+          <div className="font-urban text-3xl text-[#ff0040] group-hover:text-glow-red transition-all">
+            {price}
+          </div>
+          <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">
+            {note}
+          </div>
         </div>
       </div>
 
       <h3 className="font-urban text-3xl uppercase mb-3 group-hover:text-[#ff0040] transition-colors">
         {title}
       </h3>
-      
-      <p className="text-gray-400 leading-relaxed text-sm">
-        {desc}
-      </p>
+
+      <p className="text-gray-400 leading-relaxed text-sm">{desc}</p>
 
       <div className="mt-6 h-[2px] w-12 bg-gray-700 group-hover:w-full group-hover:bg-[#ff0040] transition-all duration-500" />
     </div>
