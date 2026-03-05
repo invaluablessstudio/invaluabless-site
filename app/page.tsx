@@ -132,10 +132,18 @@ export default function Home() {
                 <span className="block text-white/90">That Hits</span>
               </h1>
 
-              <p className="mt-8 text-gray-400 max-w-xl text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6">
-                Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean
-                vocals. Industry-ready mixes that slap.
-              </p>
+              {/* ✅ Intro paragraph container restored (interactive) */}
+              <div
+                className="mt-8 max-w-xl street-card street-hover p-6"
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
+              >
+                <div className="mouse-glow" />
+                <p className="text-gray-300 text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6 relative z-10">
+                  Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean
+                  vocals. Industry-ready mixes that slap.
+                </p>
+              </div>
 
               {/* Buttons (already upgraded) */}
               <div className="mt-10 flex flex-wrap gap-4">
@@ -575,10 +583,30 @@ export default function Home() {
                     Follow the Work
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
-                    <SocialCard href="https://instagram.com/invaluablessproduction" label="Instagram" icon={<Instagram className="w-5 h-5" />} accent="red" />
-                    <SocialCard href="https://youtube.com/@InvaluaBlessProductions" label="YouTube" icon={<Youtube className="w-5 h-5" />} accent="red" />
-                    <SocialCard href="https://facebook.com/invaluablessproduction" label="Facebook" icon={<Facebook className="w-5 h-5" />} accent="cyan" />
-                    <SocialCard href="https://tiktok.com/@invaluablessproductions" label="TikTok" icon={<Music2 className="w-5 h-5" />} accent="cyan" />
+                    <SocialCard
+                      href="https://instagram.com/invaluablessproduction"
+                      label="Instagram"
+                      icon={<Instagram className="w-5 h-5" />}
+                      accent="red"
+                    />
+                    <SocialCard
+                      href="https://youtube.com/@InvaluaBlessProductions"
+                      label="YouTube"
+                      icon={<Youtube className="w-5 h-5" />}
+                      accent="red"
+                    />
+                    <SocialCard
+                      href="https://facebook.com/invaluablessproduction"
+                      label="Facebook"
+                      icon={<Facebook className="w-5 h-5" />}
+                      accent="cyan"
+                    />
+                    <SocialCard
+                      href="https://tiktok.com/@invaluablessproductions"
+                      label="TikTok"
+                      icon={<Music2 className="w-5 h-5" />}
+                      accent="cyan"
+                    />
                   </div>
                 </div>
               </div>
