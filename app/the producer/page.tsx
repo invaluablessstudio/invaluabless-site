@@ -6,6 +6,10 @@ import Link from "next/link";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
 const ProducerSection = () => {
+  // ✅ More transparent cards so the background glow shows through
+  const card =
+    "border border-white/10 bg-black/15 backdrop-blur-md supports-[backdrop-filter]:bg-black/10";
+
   return (
     <section className="relative py-20 px-4 md:px-8 text-white">
       {/* subtle section wash (transparent) */}
@@ -34,7 +38,7 @@ const ProducerSection = () => {
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* LEFT: Portrait */}
           <div className="lg:col-span-5">
-            <div className="relative overflow-hidden border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10">
+            <div className={`relative overflow-hidden ${card}`}>
               <div className="relative aspect-[4/5]">
                 <Image
                   src="/images/producer-portrait.jpeg"
@@ -57,7 +61,7 @@ const ProducerSection = () => {
 
           {/* RIGHT: Story */}
           <div className="lg:col-span-7">
-            <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-8">
+            <div className={`${card} p-6 md:p-8`}>
               <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
                 The Story<span className="text-[#ff0040]">.</span>
               </h3>
@@ -98,10 +102,10 @@ const ProducerSection = () => {
           </div>
         </div>
 
-        {/* ===== FULL-WIDTH STACK (matches purple box) ===== */}
+        {/* ===== FULL-WIDTH STACK ===== */}
         <div className="mt-8 space-y-6">
-          {/* ✅ My Sound (SHORTER — ends near your yellow line) */}
-          <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 px-6 py-5 md:px-10 md:py-6">
+          {/* My Sound (tight) */}
+          <div className={`${card} px-6 py-5 md:px-10 md:py-6`}>
             <div className="max-w-4xl mx-auto">
               <div className="border-l-4 border-[#ff0040] pl-6 py-1">
                 <p className="text-lg md:text-xl font-bold italic text-white">
@@ -115,8 +119,8 @@ const ProducerSection = () => {
             </div>
           </div>
 
-          {/* ✅ Selected Credits (CENTERED FULL WIDTH like purple box) */}
-          <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-10">
+          {/* Selected Credits (centered full width) */}
+          <div className={`${card} p-6 md:p-10`}>
             <div className="flex items-center justify-between gap-4 flex-wrap">
               <h3 className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
                 Selected Credits<span className="text-[#ff0040]">.</span>
@@ -189,11 +193,16 @@ const ProducerSection = () => {
             </div>
           </div>
 
-          {/* ✅ Let's Work (continues same centered/full-width layout) */}
-          <div className="border border-white/10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10 p-6 md:p-10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-[#ff0040]">★</span>
-              <p className="font-urban text-xl uppercase tracking-wider">Let&apos;s Work</p>
+          {/* ✅ LET'S WORK (TITLE + BUTTON CENTERED) */}
+          <div className={`${card} p-6 md:p-10`}>
+            {/* Centered title */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-3">
+                <span className="text-[#ff0040]">★</span>
+                <p className="font-urban text-2xl md:text-3xl uppercase tracking-wider">
+                  Let&apos;s Work
+                </p>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-10 text-left">
@@ -227,13 +236,6 @@ const ProducerSection = () => {
                     </div>
                   </div>
                 </div>
-
-                <Link
-                  href="/book"
-                  className="inline-block px-10 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
-                >
-                  Book Your Session
-                </Link>
               </div>
 
               <div className="space-y-6">
@@ -280,6 +282,16 @@ const ProducerSection = () => {
                   </a>
                 </div>
               </div>
+            </div>
+
+            {/* ✅ Centered button (under both columns) */}
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="/book"
+                className="inline-flex justify-center px-12 py-5 bg-[#ff0040] text-black font-bold uppercase tracking-[0.2em] text-sm hover:bg-[#ff3366] transition-all hover:shadow-[0_0_40px_rgba(255,0,64,0.5)]"
+              >
+                Book Your Session
+              </Link>
             </div>
           </div>
         </div>{/* end stack */}
