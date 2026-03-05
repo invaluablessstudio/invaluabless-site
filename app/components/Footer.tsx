@@ -1,6 +1,13 @@
 // app/components/Footer.tsx
 import Link from "next/link";
 
+const navLinks = [
+  { label: "Work", href: "/work" },
+  { label: "Producer", href: "/producer" }, // ✅ correct route
+  { label: "Services", href: "/services" },
+  { label: "Book", href: "/book" },
+];
+
 export default function Footer() {
   return (
     <footer className="relative z-50 border-t border-white/10 bg-transparent pt-20 pb-10">
@@ -9,35 +16,48 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
+          
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="font-urban text-4xl uppercase mb-4">
               Invaluabless Production<span className="text-[#ff0040]">.</span>
             </h3>
+
             <p className="text-gray-400 max-w-md leading-relaxed">
               Urban recording studio in San Antonio, TX. Specializing in reggaeton,
               trap, rap, and Latin music production.
             </p>
+
             <div className="mt-6 flex gap-4">
-              <SocialLink href="https://instagram.com/invaluablessproduction" label="IG" />
-              <SocialLink href="https://youtube.com/@InvaluaBlessProductions" label="YT" />
-              <SocialLink href="mailto:invaluabless.studio@gmail.com" label="Email" />
+              <SocialLink
+                href="https://instagram.com/invaluablessproduction"
+                label="IG"
+              />
+              <SocialLink
+                href="https://youtube.com/@InvaluaBlessProductions"
+                label="YT"
+              />
+              <SocialLink
+                href="mailto:invaluabless.studio@gmail.com"
+                label="Email"
+              />
             </div>
           </div>
 
-          {/* Links */}
+          {/* Navigation */}
           <div>
             <h4 className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-6">
               Navigate
             </h4>
+
             <ul className="space-y-3">
-              {["Work", "The Producer", "Services", "Book"].map((item) => (
-                <li key={item}>
+              {navLinks.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href={`/${item.toLowerCase()}`}
+                    href={item.href}
                     className="text-gray-400 hover:text-[#ff0040] transition-colors uppercase text-sm tracking-wider"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -49,13 +69,19 @@ export default function Footer() {
             <h4 className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-6">
               Contact
             </h4>
+
             <ul className="space-y-3 text-sm text-gray-400">
               <li>San Antonio, TX</li>
+
               <li>
-                <a href="tel:2106086422" className="hover:text-[#ff0040] transition-colors">
+                <a
+                  href="tel:2106086422"
+                  className="hover:text-[#ff0040] transition-colors"
+                >
                   (210) 608-6422
                 </a>
               </li>
+
               <li className="text-xs text-gray-600 mt-4">
                 bookings@invaluablessproduction.com
                 <br />
@@ -70,6 +96,7 @@ export default function Footer() {
           <p className="text-xs text-gray-600 uppercase tracking-widest">
             © {new Date().getFullYear()} Invaluabless Productions
           </p>
+
           <div className="flex items-center gap-2 text-xs text-gray-600">
             <span className="w-2 h-2 bg-[#ff0040] rounded-full animate-pulse" />
             <span className="uppercase tracking-widest">Now Booking</span>
