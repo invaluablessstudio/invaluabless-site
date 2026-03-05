@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
 export default function ProducerPage() {
@@ -19,7 +19,7 @@ export default function ProducerPage() {
 
   return (
     <main className="relative min-h-screen text-white">
-      {/* Optional global overlays (if these exist in your globals.css) */}
+      {/* Optional global overlays (if you have these in globals.css) */}
       <div className="grain" />
       <div className="scanlines" />
 
@@ -63,13 +63,14 @@ export default function ProducerPage() {
           </h1>
         </div>
 
-        {/* ====== ROW: LEFT (photo + stats) | RIGHT (story card) ====== */}
+        {/* ROW: LEFT (photo+stats) | RIGHT (story card) */}
         <div className="mt-10 grid gap-6 md:grid-cols-12 items-stretch">
-          {/* LEFT COLUMN: photo card + stats card (THIS IS YOUR RED BOX AREA) */}
+          {/* LEFT COLUMN */}
           <div className="md:col-span-5 flex flex-col gap-6">
-            {/* Photo card (unchanged size) */}
+            {/* Photo card (REDUCED HEIGHT so stats end at story bottom) */}
             <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur">
-              <div className="relative aspect-[3/4]">
+              {/* ✅ FIXED HEIGHT: control total stack height */}
+              <div className="relative h-[460px] sm:h-[520px] md:h-[540px]">
                 <Image
                   src="/images/producer-portrait.jpeg"
                   alt="Jeovanne Diaz - Invaluabless Productions Music Producer"
@@ -98,7 +99,7 @@ export default function ProducerPage() {
               </div>
             </div>
 
-            {/* ✅ STATS: INSIDE THE RED BOX SPACE (under photo) */}
+            {/* Stats card (same as before) */}
             <div className="border border-white/10 bg-white/[0.03] backdrop-blur p-6">
               <div className="flex items-end justify-between gap-6">
                 <Stat value="300+" label="Tracks Mixed" color="text-[#ff0040]" />
@@ -108,10 +109,10 @@ export default function ProducerPage() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: story card (height is NOT forced by image; we align by layout) */}
+          {/* RIGHT COLUMN: story card */}
           <div className="md:col-span-7">
             <div className="h-full border border-white/10 bg-white/[0.03] backdrop-blur p-6 md:p-8">
-              {/* Rephrased intro blurb (no repeating) */}
+              {/* Intro blurb (no repeating) */}
               <div className="border-l-2 border-[#ff0040] pl-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
                   Started in Puerto Rico in{" "}
