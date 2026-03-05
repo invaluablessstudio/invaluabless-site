@@ -87,34 +87,78 @@ export default function ServicesPage() {
           />
         </div>
 
-        {/* Process Section */}
+                {/* Process Section */}
         <div className="mt-20 street-card p-8 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#ff0040] to-transparent" />
-          
-          <h2 className="font-urban text-4xl uppercase mb-6">
-            How It Works <span className="text-[#00f0ff]">.</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="relative">
-              <span className="font-urban text-6xl text-[#ff0040]/20 absolute -top-4 -left-2">01</span>
-              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">Book</h3>
-              <p className="text-gray-400 text-sm">Submit the booking form with your preferred time slot.</p>
+
+          <div className="flex items-start justify-between gap-6 flex-wrap">
+            <div>
+              <h2 className="font-urban text-4xl uppercase mb-3">
+                How It Works <span className="text-[#00f0ff]">.</span>
+              </h2>
+              <p className="text-gray-400 text-sm max-w-2xl">
+                Real-time calendar booking. Deposit locks the time. Automated confirmations handle the rest.
+              </p>
             </div>
+
+            <Link
+              href="/book"
+              className="group relative px-6 py-3 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-xs overflow-hidden transition-all hover:glow-red"
+            >
+              <span className="relative z-10">Open Calendar</span>
+              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Link>
+          </div>
+
+          <div className="mt-10 grid md:grid-cols-3 gap-8">
             <div className="relative">
-              <span className="font-urban text-6xl text-[#00f0ff]/20 absolute -top-4 -left-2">02</span>
-              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">Confirm</h3>
-              <p className="text-gray-400 text-sm">We confirm availability and send deposit details.</p>
+              <span className="font-urban text-6xl text-[#ff0040]/20 absolute -top-4 -left-2">
+                01
+              </span>
+              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">
+                Book on Calendar
+              </h3>
+              <p className="text-gray-400 text-sm">
+                Choose an available time directly on our live calendar — no back-and-forth.
+              </p>
+              <p className="mt-3 text-[11px] text-gray-500 uppercase tracking-wider">
+                Live availability
+              </p>
             </div>
+
             <div className="relative">
-              <span className="font-urban text-6xl text-[#ff0040]/20 absolute -top-4 -left-2">03</span>
-              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">Create</h3>
-              <p className="text-gray-400 text-sm">Deposit locks your session. Time to make noise.</p>
+              <span className="font-urban text-6xl text-[#00f0ff]/20 absolute -top-4 -left-2">
+                02
+              </span>
+              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">
+                Pay Deposit
+              </h3>
+              <p className="text-gray-400 text-sm">
+                Follow the deposit instructions on the booking page. Deposit locks your session time.
+              </p>
+              <p className="mt-3 text-[11px] text-gray-500 uppercase tracking-wider">
+                No deposit = not locked
+              </p>
+            </div>
+
+            <div className="relative">
+              <span className="font-urban text-6xl text-[#ff0040]/20 absolute -top-4 -left-2">
+                03
+              </span>
+              <h3 className="font-urban text-xl uppercase text-white relative z-10 mb-2">
+                Auto Confirm
+              </h3>
+              <p className="text-gray-400 text-sm">
+                Once payment is received, you’ll get automated confirmation + session instructions.
+              </p>
+              <p className="mt-3 text-[11px] text-gray-500 uppercase tracking-wider">
+                Email confirmation
+              </p>
             </div>
           </div>
 
           <p className="mt-8 text-gray-500 text-sm uppercase tracking-wider border-t border-white/10 pt-6">
-            Envía el formulario → confirmamos disponibilidad → el depósito asegura tu sesión.
+            Elige tu horario en el calendario → paga el depósito → recibes confirmación automática e instrucciones.
           </p>
         </div>
       </div>
