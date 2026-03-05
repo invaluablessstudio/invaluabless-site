@@ -23,7 +23,7 @@ export default function Nav() {
 
 const navItems = [
   { label: "Work", href: "/work" },
-  { label: "The Producer", href: "/theproducer" }, // ✅ FIXED
+  { label: "The Producer", href: "/producer" }, // ✅ FIXED
   { label: "Services", href: "/services" },
   { label: "Book", href: "/book", highlight: true },
 ];

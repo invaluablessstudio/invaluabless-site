@@ -31,7 +31,7 @@ export default function Footer() {
               Navigate
             </h4>
             <ul className="space-y-3">
-              {["Work", "Services", "Book"].map((item) => (
+              {["Work", "The Producer", "Services", "Book"].map((item) => (
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase()}`}
