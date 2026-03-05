@@ -21,12 +21,12 @@ export default function Nav() {
     setOpen(false);
   }, [pathname]);
 
-  const navItems = [
-    { label: "Work", href: "/work" },
-    { label: "The Producer", href: "/producer" },
-    { label: "Services", href: "/services" },
-    { label: "Book", href: "/book", highlight: true },
-  ];
+const navItems = [
+  { label: "Work", href: "/work" },
+  { label: "The Producer", href: "/producer" }, // ✅ FIXED
+  { label: "Services", href: "/services" },
+  { label: "Book", href: "/book", highlight: true },
+];
 
   return (
     <>
