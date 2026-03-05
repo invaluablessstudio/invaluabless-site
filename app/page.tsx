@@ -59,7 +59,7 @@ export default function Home() {
     // IMPORTANT: remove overflow-hidden so the bottom/footers can't be clipped
     <main className="relative min-h-screen text-white bg-[#0a0a0f]">
       {/* ===== BACKGROUND STACK (fixed) ===== */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 -z-20 pointer-events-none">
         {/* Mic Image */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
