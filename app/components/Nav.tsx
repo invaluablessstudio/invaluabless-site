@@ -23,7 +23,7 @@ export default function Nav() {
 
   const navItems = [
     { label: "Work", href: "/work" },
-    { label: "The Producer", href: "/the%20producer" },
+    { label: "The Producer", href: "/producer" },
     { label: "Services", href: "/services" },
     { label: "Book", href: "/book", highlight: true },
   ];
@@ -50,11 +50,14 @@ export default function Nav() {
                   priority
                 />
               </div>
+
               <div className="hidden sm:block">
                 <div className="font-urban text-xl uppercase tracking-wider leading-none">
                   Invaluabless<span className="text-[#ff0040]">.</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
+
+                {/* ✅ changed from gray -> red */}
+                <div className="text-[10px] uppercase tracking-[0.3em] text-[#ff0040]">
                   Productions
                 </div>
               </div>
@@ -62,31 +65,22 @@ export default function Nav() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {navItems.map((item) =>
-                item.highlight ? (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`group relative px-6 py-2.5 bg-[#ff0040] text-black text-sm uppercase tracking-wider font-medium overflow-hidden transition-all hover:glow-red`}
-                  >
-                    <span className="relative z-10">{item.label}</span>
-                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  </Link>
-                ) : (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`relative text-sm uppercase tracking-wider font-medium transition-all ${
-                      pathname === item.href ? "text-white" : "text-gray-300 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    {pathname === item.href && (
-                      <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#ff0040]" />
-                    )}
-                  </Link>
-                )
-              )}
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative text-sm uppercase tracking-wider font-medium transition-all ${
+                    item.highlight
+                      ? "px-6 py-2.5 bg-[#ff0040] text-black hover:glow-red"
+                      : "text-gray-300 hover:text-white"
+                  } ${pathname === item.href && !item.highlight ? "text-white" : ""}`}
+                >
+                  {item.label}
+                  {!item.highlight && pathname === item.href && (
+                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#ff0040]" />
+                  )}
+                </Link>
+              ))}
             </nav>
 
             {/* Mobile Menu Button */}
@@ -100,7 +94,11 @@ export default function Nav() {
                   open ? "rotate-45 translate-y-[5px]" : ""
                 }`}
               />
-              <span className={`w-6 h-[2px] bg-[#ff0040] transition-all ${open ? "opacity-0" : ""}`} />
+              <span
+                className={`w-6 h-[2px] bg-[#ff0040] transition-all ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
               <span
                 className={`w-6 h-[2px] bg-white transition-all ${
                   open ? "-rotate-45 -translate-y-[5px]" : ""
@@ -114,7 +112,10 @@ export default function Nav() {
       {/* Mobile Menu */}
       {open && (
         <div className="fixed inset-0 z-40 md:hidden">
-          <div className="absolute inset-0 bg-black/90 backdrop-blur-lg" onClick={() => setOpen(false)} />
+          <div
+            className="absolute inset-0 bg-black/90 backdrop-blur-lg"
+            onClick={() => setOpen(false)}
+          />
           <nav className="absolute top-20 left-0 right-0 bg-[#0a0a0f] border-b border-[#ff0040]/20 p-6 flex flex-col gap-4">
             {navItems.map((item) => (
               <Link
