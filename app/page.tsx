@@ -85,7 +85,7 @@ export default function Home() {
   }}
 />
 
-<div className="absolute inset-0 bg-black/70" />
+<div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/80 to-[#0a0a0f]" />
       </div>
 
