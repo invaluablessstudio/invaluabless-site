@@ -50,9 +50,9 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-xs text-gray-600 mt-4">
-                Deposit required to book.
+                bookings@invaluablessproduction.com
                 <br />
-                Depósito requerido.
+                support@invaluablessproduction.com
               </li>
             </ul>
           </div>

@@ -1,46 +1,41 @@
 // app/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
-import { useRef } from "react"
 
 function FadeInSection({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.15 }
-    )
+    );
 
-    if (ref.current) observer.observe(ref.current)
-
+    if (ref.current) observer.observe(ref.current);
     return () => {
-      if (ref.current) observer.unobserve(ref.current)
-    }
-  }, [])
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1800 ease-out ${
-        isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-12"
+      className={`transition-all duration-[1800ms] ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       }`}
     >
       {children}
     </div>
-  )
+  );
 }
+
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -60,52 +55,54 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen text-white overflow-hidden bg-[#0a0a0f]">
-      {/* Global Effects */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 mix-blend-overlay"
-        style={{
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")"
-        }}
-      />
 
-      {/* Animated Background */}
-      <div className="fixed inset-0 -z-20">
-        <div 
-          className="absolute inset-0 opacity-30"
+      {/* ===== BACKGROUND STACK (FIXED PROPERLY) ===== */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+
+        {/* Mic Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
-            backgroundImage: "radial-gradient(circle at 20% 50%, #ff0040 0%, transparent 50%), radial-gradient(circle at 80% 80%, #00f0ff 0%, transparent 40%)",
+            backgroundImage: "url('/images/hero-mic.jpg')"
+          }}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Animated Glow */}
+        <div
+          className="absolute inset-0 opacity-25"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 50%, #ff0040 0%, transparent 50%), radial-gradient(circle at 80% 80%, #00f0ff 0%, transparent 40%)",
             transform: `translate(${mousePos.x}px, ${mousePos.y}px)`,
             transition: "transform 0.3s ease-out"
           }}
         />
-        {/* FIXED: Changed .jpeg to .jpg */}
-        <div
-  className="absolute inset-0 bg-cover bg-center"
-  style={{
-    backgroundImage: "url('/images/hero-mic.jpg')"
-  }}
-/>
 
-<div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/80 to-[#0a0a0f]" />
+        {/* Bottom Fade */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/70 to-[#0a0a0f]" />
       </div>
 
-      {/* Grid Overlay */}
-      <div className="fixed inset-0 -z-10 opacity-[0.03]" 
+      {/* Noise Overlay */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-10 mix-blend-overlay"
         style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")"
+        }}
+      />
+
+      {/* Grid Overlay */}
+      <div className="fixed inset-0 opacity-[0.03] z-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
           backgroundSize: "50px 50px"
         }}
       />
 
       {/* ================= HERO ================= */}
-      <section className="h-screen flex items-center relative pt-20">
-        <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:block">
-          <div className="w-[2px] h-32 bg-gradient-to-b from-transparent via-[#ff0040] to-transparent" />
-        </div>
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block">
-          <div className="w-[2px] h-32 bg-gradient-to-b from-transparent via-[#00f0ff] to-transparent" />
-        </div>
-
+      <section className="h-screen flex items-center relative pt-20 z-20">
         <div className="max-w-7xl mx-auto px-6 md:px-16 w-full">
           <div
             className={`transition-all duration-1000 ease-out ${
@@ -126,26 +123,26 @@ export default function Home() {
             </h1>
 
             <p className="mt-8 text-gray-400 max-w-xl text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6">
-              Studio-level recording for reggaeton, trap, and Latin artists. 
+              Studio-level recording for reggaeton, trap, and Latin artists.
               Heavy 808s. Clean vocals. Industry-ready mixes that slap.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/book"
-                className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(255,0,64,0.5)]"
+                className="px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm hover:shadow-[0_0_30px_rgba(255,0,64,0.5)] transition-all"
               >
-                <span className="relative z-10">Book Session</span>
-                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                Book Session
               </Link>
 
               <Link
                 href="/work"
-                className="px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm hover:bg-[#00f0ff]/10 transition-all hover:shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+                className="px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm hover:bg-[#00f0ff]/10 transition-all"
               >
                 Hear the Work
               </Link>
             </div>
+
 
             <div className="mt-16 flex gap-12 text-sm">
               <div>
