@@ -22,7 +22,7 @@ export default function Nav() {
 
   const navItems = [
     { label: "Work", href: "/work" },
-    { label: "The Producer", href: "/producer" },
+    { label: "The Producer", mobileLabel: "Producer", href: "/producer" },
     { label: "Services", href: "/services" },
     { label: "Artists", href: "/artists" },
     { label: "Book", href: "/book", highlight: true },
