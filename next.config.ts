@@ -5,9 +5,9 @@ const nextConfig: NextConfig = {
   // Uncomment if deploying to static hosting (Vercel handles this automatically)
   // output: 'export',
   // distDir: 'dist',
-  
+
   trailingSlash: true,
-  
+
   images: {
     remotePatterns: [
       {
@@ -18,11 +18,15 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.youtube.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
     // If using static export, you need this:
     // unoptimized: true,
   },
-  
+
   // Security headers
   async headers() {
     return [
@@ -45,7 +49,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  
+
   // Redirects for SEO (optional)
   async redirects() {
     return [
