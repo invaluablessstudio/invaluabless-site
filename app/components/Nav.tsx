@@ -38,8 +38,8 @@ export default function Nav() {
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 md:px-16">
-          <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex h-20 items-center justify-between">
+            <Link href="/" className="group flex items-center gap-3">
               <div className="relative h-10 w-10 overflow-hidden border border-[#ff0040]/50 bg-black/50">
                 <Image
                   src="/logo.png"
@@ -51,7 +51,7 @@ export default function Nav() {
               </div>
 
               <div className="hidden sm:block">
-                <div className="font-urban text-xl uppercase tracking-wider leading-none">
+                <div className="font-urban text-xl leading-none uppercase tracking-wider">
                   Invaluabless<span className="text-[#ff0040]">.</span>
                 </div>
                 <div className="text-[10px] uppercase tracking-[0.3em] text-[#ff0040]">
@@ -60,20 +60,20 @@ export default function Nav() {
               </div>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden items-center gap-8 md:flex">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative text-sm uppercase tracking-wider font-medium transition-all ${
+                  className={`relative text-sm font-medium uppercase tracking-wider transition-all ${
                     item.highlight
-                      ? "px-6 py-2.5 bg-[#ff0040] text-black hover:glow-red"
+                      ? "bg-[#ff0040] px-6 py-2.5 text-black hover:glow-red"
                       : "text-gray-300 hover:text-white"
                   } ${pathname === item.href && !item.highlight ? "text-white" : ""}`}
                 >
                   {item.label}
                   {!item.highlight && pathname === item.href && (
-                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#ff0040]" />
+                    <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-[#ff0040]" />
                   )}
                 </Link>
               ))}
@@ -81,22 +81,22 @@ export default function Nav() {
 
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
               aria-label="Toggle menu"
             >
               <span
-                className={`w-6 h-[2px] bg-white transition-all ${
-                  open ? "rotate-45 translate-y-[5px]" : ""
+                className={`h-[2px] w-6 bg-white transition-all ${
+                  open ? "translate-y-[5px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`w-6 h-[2px] bg-[#ff0040] transition-all ${
+                className={`h-[2px] w-6 bg-[#ff0040] transition-all ${
                   open ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`w-6 h-[2px] bg-white transition-all ${
-                  open ? "-rotate-45 -translate-y-[5px]" : ""
+                className={`h-[2px] w-6 bg-white transition-all ${
+                  open ? "-translate-y-[5px] -rotate-45" : ""
                 }`}
               />
             </button>
@@ -110,7 +110,7 @@ export default function Nav() {
             className="absolute inset-0 bg-black/90 backdrop-blur-lg"
             onClick={() => setOpen(false)}
           />
-          <nav className="absolute top-20 left-0 right-0 border-b border-[#ff0040]/20 bg-[#0a0a0f] p-6 flex flex-col gap-4">
+          <nav className="absolute top-20 left-0 right-0 flex flex-col gap-4 border-b border-[#ff0040]/20 bg-[#0a0a0f] p-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -119,7 +119,7 @@ export default function Nav() {
                   item.highlight ? "text-[#ff0040]" : "text-white"
                 } ${pathname === item.href && !item.highlight ? "text-[#00f0ff]" : ""}`}
               >
-                {item.label}
+                {item.mobileLabel ?? item.label}
               </Link>
             ))}
           </nav>
