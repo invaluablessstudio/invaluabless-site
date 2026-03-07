@@ -1,4 +1,3 @@
-// app/components/Nav.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -21,12 +20,13 @@ export default function Nav() {
     setOpen(false);
   }, [pathname]);
 
-const navItems = [
-  { label: "Work", href: "/work" },
-  { label: "The Producer", href: "/producer" }, // ✅ FIXED
-  { label: "Services", href: "/services" },
-  { label: "Book", href: "/book", highlight: true },
-];
+  const navItems = [
+    { label: "Work", href: "/work" },
+    { label: "The Producer", href: "/producer" },
+    { label: "Services", href: "/services" },
+    { label: "Artists", href: "/artists" },
+    { label: "Book", href: "/book", highlight: true },
+  ];
 
   return (
     <>
@@ -39,14 +39,13 @@ const navItems = [
       >
         <div className="mx-auto max-w-7xl px-6 md:px-16">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative h-10 w-10 overflow-hidden border border-[#ff0040]/50 bg-black/50">
                 <Image
                   src="/logo.png"
                   alt="Invaluabless"
                   fill
-                  className="object-contain p-1 group-hover:scale-110 transition-transform"
+                  className="object-contain p-1 transition-transform group-hover:scale-110"
                   priority
                 />
               </div>
@@ -55,15 +54,12 @@ const navItems = [
                 <div className="font-urban text-xl uppercase tracking-wider leading-none">
                   Invaluabless<span className="text-[#ff0040]">.</span>
                 </div>
-
-                {/* ✅ changed from gray -> red */}
                 <div className="text-[10px] uppercase tracking-[0.3em] text-[#ff0040]">
                   Productions
                 </div>
               </div>
             </Link>
 
-            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
                 <Link
@@ -83,7 +79,6 @@ const navItems = [
               ))}
             </nav>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setOpen(!open)}
               className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
@@ -109,21 +104,20 @@ const navItems = [
         </div>
       </header>
 
-      {/* Mobile Menu */}
       {open && (
         <div className="fixed inset-0 z-40 md:hidden">
           <div
             className="absolute inset-0 bg-black/90 backdrop-blur-lg"
             onClick={() => setOpen(false)}
           />
-          <nav className="absolute top-20 left-0 right-0 bg-[#0a0a0f] border-b border-[#ff0040]/20 p-6 flex flex-col gap-4">
+          <nav className="absolute top-20 left-0 right-0 border-b border-[#ff0040]/20 bg-[#0a0a0f] p-6 flex flex-col gap-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`text-2xl font-urban uppercase tracking-wider ${
                   item.highlight ? "text-[#ff0040]" : "text-white"
-                }`}
+                } ${pathname === item.href && !item.highlight ? "text-[#00f0ff]" : ""}`}
               >
                 {item.label}
               </Link>
