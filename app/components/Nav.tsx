@@ -25,6 +25,7 @@ export default function Nav() {
     { label: "The Producer", mobileLabel: "Producer", href: "/producer" },
     { label: "Services", href: "/services" },
     { label: "Artists", href: "/artists" },
+    { label: "Studio", href: "/recording-studio-san-antonio" },
     { label: "Contact", href: "/contact" },
     { label: "Book", href: "/book", highlight: true },
   ];

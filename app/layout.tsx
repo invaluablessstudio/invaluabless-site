@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     default: "Invaluabless Productions | Recording Studio San Antonio",
     template: "%s • Invaluabless Productions",
   },
-  description:
-    "Professional recording, mixing, and mastering studio in San Antonio, Texas. Studio-level sound for artists who move with intention.",
+ description:
+  "Invaluabless Productions is a professional recording studio in San Antonio, TX specializing in reggaeton, Latin, rap, trap, and Christian music. Book recording sessions, mixing, mastering, and beat production.",
   applicationName: "Invaluabless Productions",
   icons: {
     icon: "/logo.png",
@@ -62,11 +62,11 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Invaluabless Productions",
-  url: "https://invaluablessproduction.com",
+  url: "https://www.invaluablessproduction.com",
   description: "Recording, mixing, and mastering studio in San Antonio, Texas.",
   telephone: "+1-210-608-6422",
-  image: "https://invaluablessproduction.com/logo.png",
-  logo: "https://invaluablessproduction.com/logo.png",
+  image: "https://www.invaluablessproduction.com/logo.png",
+  logo: "https://www.invaluablessproduction.com/logo.png",
   address: {
     "@type": "PostalAddress",
     addressLocality: "San Antonio",
@@ -74,7 +74,8 @@ const structuredData = {
     addressCountry: "US",
   },
   areaServed: "San Antonio, TX",
-  keywords: "recording studio, mixing, mastering, music production, San Antonio",
+keywords:
+  "recording studio San Antonio, music studio San Antonio, reggaeton studio San Antonio, Latin recording studio, rap studio San Antonio, mixing mastering San Antonio",
 };
 
 export default function RootLayout({
