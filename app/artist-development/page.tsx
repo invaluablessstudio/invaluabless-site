@@ -73,9 +73,7 @@ export default function ArtistDevelopmentPage() {
       {/* ===== BACKGROUND STACK ===== */}
       <div className="pointer-events-none fixed inset-0 -z-20">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
-
         <div className="absolute inset-0 bg-black/60" />
-
         <div
           className="absolute inset-0 opacity-25"
           style={{
@@ -85,7 +83,6 @@ export default function ArtistDevelopmentPage() {
             transition: "transform 0.3s ease-out",
           }}
         />
-
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/70 to-[#0a0a0f]" />
       </div>
 
@@ -106,7 +103,7 @@ export default function ArtistDevelopmentPage() {
       <div className="relative z-20">
         {/* HERO */}
         <section className="relative flex min-h-[92vh] items-center pt-24">
-          <div className="mx-auto max-w-7xl px-6 md:px-16 w-full">
+          <div className="mx-auto w-full max-w-7xl px-6 md:px-16">
             <div
               className={`transition-all duration-1000 ease-out ${
                 showHero ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
@@ -119,7 +116,7 @@ export default function ArtistDevelopmentPage() {
                 </p>
               </div>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.88] uppercase tracking-tighter">
+              <h1 className="text-5xl font-black leading-[0.88] uppercase tracking-tighter md:text-7xl lg:text-8xl">
                 <span className="block text-white">Build</span>
                 <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.45)]">
                   Momentum
@@ -140,6 +137,10 @@ export default function ArtistDevelopmentPage() {
                   creative direction.
                 </p>
               </div>
+
+              <p className="mt-5 text-sm uppercase tracking-[0.25em] text-gray-500">
+                13+ years of recording and production experience
+              </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
@@ -191,7 +192,7 @@ export default function ArtistDevelopmentPage() {
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                   The Problem
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+                <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
                   Talent Isn&apos;t Enough<span className="text-[#ff0040]">.</span>
                 </h2>
               </div>
@@ -239,13 +240,13 @@ export default function ArtistDevelopmentPage() {
         </section>
 
         {/* WHAT THE PROGRAM IS */}
-        <section className="border-y border-white/5 py-20">
+        <section className="py-20">
           <FadeInSection>
             <div className="mx-auto max-w-5xl px-6 text-center md:px-16">
               <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                 What This Is
               </p>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+              <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
                 Structured Artist
                 <br />
                 <span className="text-[#ff0040]">Development</span>
@@ -257,7 +258,7 @@ export default function ArtistDevelopmentPage() {
                 onMouseLeave={handleCardMouseLeave}
               >
                 <div className="mouse-glow" />
-                <div className="relative z-10 space-y-5 text-gray-300 leading-relaxed">
+                <div className="relative z-10 space-y-5 leading-relaxed text-gray-300">
                   <p>
                     This program combines professional recording support,
                     creative direction, release strategy guidance, and
@@ -284,7 +285,7 @@ export default function ArtistDevelopmentPage() {
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                   Artist Transformation
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+                <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
                   From Random
                   <span className="text-[#ff0040]"> To Strategic</span>
                 </h2>
@@ -334,14 +335,14 @@ export default function ArtistDevelopmentPage() {
         </section>
 
         {/* ROADMAP */}
-        <section className="border-y border-white/5 py-20">
+        <section className="py-20">
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <div className="mb-14 text-center">
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                   3-Month Growth Roadmap
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+                <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
                   Direction. Development.
                   <span className="text-[#ff0040]"> Momentum.</span>
                 </h2>
@@ -389,6 +390,134 @@ export default function ArtistDevelopmentPage() {
           </FadeInSection>
         </section>
 
+        {/* WHO THIS IS FOR / NOT FOR */}
+        <section className="py-20">
+          <FadeInSection>
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
+              <div className="mb-14 text-center">
+                <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
+                  Who This Is For
+                </p>
+                <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
+                  Built for Serious
+                  <span className="text-[#ff0040]"> Artists</span>
+                </h2>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                <div
+                  className="street-card street-hover p-8"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <div className="relative z-10">
+                    <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
+                      Why This Is For You
+                    </p>
+
+                    <h3 className="mb-6 text-2xl font-bold uppercase text-white">
+                      You&apos;re a Strong Fit If You:
+                    </h3>
+
+                    <ul className="space-y-4 text-sm leading-relaxed text-gray-300">
+                      <li>• Are actively creating music and want more structure</li>
+                      <li>• Want help finishing stronger songs</li>
+                      <li>• Need consistent recording and accountability</li>
+                      <li>• Want guidance on release strategy and branding</li>
+                      <li>• Are open to honest feedback and direction</li>
+                      <li>• Want long-term growth, not random sessions</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div
+                  className="street-card street-hover p-8"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
+                  <div className="relative z-10">
+                    <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#ff0040]">
+                      Why This Is Not For You
+                    </p>
+
+                    <h3 className="mb-6 text-2xl font-bold uppercase text-white">
+                      This Program May Not Be For You If:
+                    </h3>
+
+                    <ul className="space-y-4 text-sm leading-relaxed text-gray-400">
+                      <li>• You only want one quick session with no long-term plan</li>
+                      <li>• You are not ready to record consistently</li>
+                      <li>• You do not want feedback or creative direction</li>
+                      <li>• You are looking for instant results without real work</li>
+                      <li>• You are not ready for a 3-month commitment</li>
+                      <li>• You want management or label services instead of development support</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
+
+        {/* WHAT HAPPENS AFTER YOU APPLY */}
+        <section className="border-y border-white/5 py-20">
+          <FadeInSection>
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
+              <div className="mb-14 text-center">
+                <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
+                  Application Process
+                </p>
+
+                <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
+                  What Happens
+                  <span className="text-[#ff0040]"> After You Apply</span>
+                </h2>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-3">
+                {[
+                  {
+                    title: "Step 1",
+                    desc: "Your application is reviewed to understand your music, goals, and current stage as an artist.",
+                    accent: "red",
+                  },
+                  {
+                    title: "Step 2",
+                    desc: "If the program looks like a strong fit, we schedule a short call to discuss your music and development goals.",
+                    accent: "cyan",
+                  },
+                  {
+                    title: "Step 3",
+                    desc: "If accepted, we begin building your recording plan, creative direction, and release strategy.",
+                    accent: "red",
+                  },
+                ].map((step) => (
+                  <div
+                    key={step.title}
+                    className="street-card street-hover p-8"
+                    onMouseMove={handleCardMouseMove}
+                    onMouseLeave={handleCardMouseLeave}
+                  >
+                    <div className="mouse-glow" />
+                    <h3
+                      className={`relative z-10 mb-4 text-xl font-bold uppercase ${
+                        step.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]"
+                      }`}
+                    >
+                      {step.title}
+                    </h3>
+                    <p className="relative z-10 text-sm leading-relaxed text-gray-400">
+                      {step.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
+
         {/* PACKAGES */}
         <section className="py-20">
           <FadeInSection>
@@ -397,7 +526,7 @@ export default function ArtistDevelopmentPage() {
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                   Program Packages
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+                <h2 className="text-4xl font-black uppercase tracking-tight md:text-5xl">
                   Choose Your
                   <span className="text-[#ff0040]"> Level</span>
                 </h2>
@@ -494,7 +623,7 @@ export default function ArtistDevelopmentPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 relative">
+        <section className="relative py-20">
           <FadeInSection>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
 
@@ -507,13 +636,17 @@ export default function ArtistDevelopmentPage() {
               <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                 Apply Now
               </p>
-              <h2 className="mb-6 text-5xl md:text-7xl font-black uppercase tracking-tighter">
+              <h2 className="mb-6 text-5xl font-black uppercase tracking-tighter md:text-7xl">
                 Build With
                 <span className="text-[#ff0040]"> Intent.</span>
               </h2>
-              <p className="mb-10 text-lg text-gray-400">
+              <p className="mb-4 text-lg text-gray-400">
                 This program is for artists serious about growth, consistency,
                 and long-term momentum.
+              </p>
+              <p className="mb-10 text-xs uppercase tracking-[0.25em] text-gray-500">
+                Applications are reviewed manually to ensure the program is the
+                right fit.
               </p>
 
               <Link
@@ -526,6 +659,9 @@ export default function ArtistDevelopmentPage() {
 
               <p className="mt-6 text-xs uppercase tracking-[0.25em] text-gray-500">
                 Minimum Commitment • 3 Months
+              </p>
+              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-gray-500">
+                Limited artist slots available
               </p>
             </div>
           </FadeInSection>

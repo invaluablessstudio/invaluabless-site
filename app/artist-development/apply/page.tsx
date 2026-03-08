@@ -87,7 +87,6 @@ export default function ArtistDevelopmentApplyPage() {
 
     const params = new URLSearchParams();
 
-    // Google Form field mappings
     params.set("entry.565350748", artistName);
     params.set("entry.1294412534", email);
     params.set("entry.161146201", phone);
@@ -128,11 +127,9 @@ export default function ArtistDevelopmentApplyPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/70 to-[#0a0a0f]" />
       </div>
 
-      {/* Global Effects */}
       <div className="grain" />
       <div className="scanlines" />
 
-      {/* Grid Overlay */}
       <div
         className="pointer-events-none fixed inset-0 -z-10 opacity-[0.03]"
         style={{
@@ -201,7 +198,6 @@ export default function ArtistDevelopmentApplyPage() {
                 <div className="mouse-glow" />
 
                 <form onSubmit={handleSubmit} className="relative z-10 space-y-10">
-                  {/* Basic info */}
                   <div>
                     <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                       Basic Information / Información básica
@@ -279,7 +275,6 @@ export default function ArtistDevelopmentApplyPage() {
 
                   <div className="h-px w-full bg-white/10" />
 
-                  {/* Artist profile */}
                   <div>
                     <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                       Artist Profile / Perfil artístico
@@ -311,7 +306,6 @@ export default function ArtistDevelopmentApplyPage() {
                         <select
                           className={`${inputClass} cursor-pointer`}
                           required
-                          defaultValue=""
                           value={packageInterest}
                           onChange={(e) => setPackageInterest(e.target.value)}
                         >
@@ -327,7 +321,10 @@ export default function ArtistDevelopmentApplyPage() {
                           <option value="Artist Partner" className="text-black">
                             Artist Partner
                           </option>
-                          <option value="Not sure yet / Aún no estoy seguro(a)" className="text-black">
+                          <option
+                            value="Not sure yet / Aún no estoy seguro(a)"
+                            className="text-black"
+                          >
                             Not sure yet / Aún no estoy seguro(a)
                           </option>
                         </select>

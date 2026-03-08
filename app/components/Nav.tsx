@@ -25,6 +25,11 @@ export default function Nav() {
     { label: "The Producer", mobileLabel: "Producer", href: "/producer" },
     { label: "Services", href: "/services" },
     { label: "Artists", href: "/artists" },
+    {
+      label: "Artist Development",
+      mobileLabel: "Development",
+      href: "/artist-development",
+    },
     { label: "Studio", href: "/recording-studio-san-antonio" },
     { label: "Contact", href: "/contact" },
     { label: "Book", href: "/book", highlight: true },
@@ -35,7 +40,7 @@ export default function Nav() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0a0a0f]/95 backdrop-blur-md border-b border-white/5"
+            ? "border-b border-white/5 bg-[#0a0a0f]/95 backdrop-blur-md"
             : "bg-transparent"
         }`}
       >
@@ -62,7 +67,7 @@ export default function Nav() {
               </div>
             </Link>
 
-            <nav className="hidden items-center gap-8 md:flex">
+            <nav className="hidden items-center gap-6 md:flex lg:gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
