@@ -144,11 +144,11 @@ const resourceLinks = [
     external: true,
   },
   {
-    title: "Artist Support",
-    description: "Need help with your next step? Reach out and we will guide you.",
-    href: "/contact",
+    title: "Vocal Recording Guide",
+    description: "Simple tips to help artists record stronger vocals in the studio.",
+    href: "/downloads/vocal-recording-guide.pdf",
     accent: "cyan",
-    external: false,
+    external: true,
   },
 ] as const;
 

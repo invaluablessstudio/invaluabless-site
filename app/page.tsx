@@ -4,7 +4,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
+import { Instagram, Youtube, Facebook, Music2, MapPin, Mail, FileText } from "lucide-react";
 
 function FadeInSection({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -515,7 +515,91 @@ export default function Home() {
             </div>
           </FadeInSection>
         </section>
+{/* ================= ARTIST RESOURCES ================= */}
+<section id="artist-resources" className="py-20 border-y border-white/5">
+  <FadeInSection>
+    <div className="max-w-7xl mx-auto px-6 md:px-16">
+      <div className="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
+            Free Tools for Artists
+          </p>
 
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">
+            Resource Hub For
+            <br />
+            <span className="text-[#ff0040]">Serious Artists.</span>
+          </h2>
+
+          <p className="text-gray-400 mt-6 max-w-xl leading-relaxed">
+            Download studio checklists, split sheet templates, and release tools
+            to help you prepare better, stay organized, and move more professionally.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/artists"
+              className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
+            >
+              <span className="relative z-10">Explore Artist Resources</span>
+              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Link>
+
+            <Link
+              href="/downloads/studio-session-checklist.pdf"
+              target="_blank"
+              className="group relative px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-cyan"
+            >
+              <span className="relative z-10">Download Free Checklist</span>
+              <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Link>
+          </div>
+        </div>
+
+        <div
+          className="street-card street-hover p-8"
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
+        >
+          <div className="mouse-glow" />
+
+          <div className="flex items-center gap-3 mb-6">
+            <FileText className="w-6 h-6 text-[#ff0040]" />
+            <p className="text-white font-bold uppercase tracking-wider text-sm">
+              Included Resources
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              "Studio Session Checklist",
+              "Split Sheet Template",
+              "Song Release Checklist",
+            ].map((item, i) => (
+              <div
+                key={item}
+                className="flex items-center gap-3 border border-white/10 bg-white/[0.03] px-4 py-4"
+              >
+                <span
+                  className={`w-2.5 h-2.5 rounded-full ${
+                    i % 2 === 0 ? "bg-[#ff0040]" : "bg-[#00f0ff]"
+                  }`}
+                />
+                <span className="text-sm uppercase tracking-wider text-gray-300">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-gray-500 uppercase tracking-[0.25em] mt-6">
+            Built for artists who want to move right.
+          </p>
+        </div>
+      </div>
+    </div>
+  </FadeInSection>
+</section>
         {/* ================= CONTACT ================= */}
         <section id="contact" className="py-20 relative">
           <FadeInSection>
