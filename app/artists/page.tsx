@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   Headphones,
-  Sparkles,
   ClipboardList,
   BadgeDollarSign,
   HelpCircle,
@@ -87,7 +86,7 @@ const prepCards = [
     icon: Mic2,
     accent: "red",
   },
-];
+] as const;
 
 const policyCards = [
   {
@@ -109,7 +108,7 @@ const policyCards = [
     icon: ShieldCheck,
     accent: "red",
   },
-];
+] as const;
 
 const releaseChecklist = [
   "Record your song",
@@ -125,28 +124,32 @@ const resourceLinks = [
   {
     title: "Studio Session Checklist",
     description: "A simple guide to help artists show up prepared and ready to record.",
-    href: "/book",
+    href: "/downloads/studio-session-checklist.pdf",
     accent: "red",
+    external: true,
   },
   {
     title: "Split Sheet Template",
     description: "Make sure everyone involved in the song agrees on ownership before release.",
-    href: "/contact",
+    href: "/downloads/split-sheet-template.pdf",
     accent: "cyan",
+    external: true,
   },
   {
     title: "Song Release Checklist",
     description: "Use this checklist to move from recording to distribution with more confidence.",
-    href: "/contact",
+    href: "/downloads/song-release-checklist.pdf",
     accent: "red",
+    external: true,
   },
   {
     title: "Artist Support",
     description: "Need help with your next step? Reach out and we will guide you.",
     href: "/contact",
     accent: "cyan",
+    external: false,
   },
-];
+] as const;
 
 const faqs = [
   {
@@ -242,7 +245,7 @@ export default function ArtistsPage() {
       <div className="scanlines" />
 
       <div
-        className="fixed inset-0 opacity-[0.03] -z-10 pointer-events-none"
+        className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -252,9 +255,9 @@ export default function ArtistsPage() {
 
       <div className="relative z-20">
         <section className="relative flex min-h-screen items-center pt-20">
-          <div className="max-w-7xl mx-auto w-full px-6 md:px-16">
+          <div className="mx-auto w-full max-w-7xl px-6 md:px-16">
             <div
-              className={`grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] transition-all duration-1000 ease-out ${
+              className={`grid items-center gap-12 transition-all duration-1000 ease-out lg:grid-cols-[1.1fr_0.9fr] ${
                 showHero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
@@ -275,7 +278,7 @@ export default function ArtistsPage() {
                 </h1>
 
                 <div
-                  className="mt-8 max-w-xl street-card street-hover p-6"
+                  className="street-card street-hover mt-8 max-w-xl p-6"
                   onMouseMove={handleCardMouseMove}
                   onMouseLeave={handleCardMouseLeave}
                 >
@@ -327,7 +330,7 @@ export default function ArtistsPage() {
               </div>
 
               <div
-                className="relative street-card street-hover border border-white/10 bg-white/[0.03] backdrop-blur"
+                className="street-card street-hover relative border border-white/10 bg-white/[0.03] backdrop-blur"
                 onMouseMove={handleCardMouseMove}
                 onMouseLeave={handleCardMouseLeave}
               >
@@ -337,7 +340,7 @@ export default function ArtistsPage() {
                     src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80"
                     alt="Artist recording in studio"
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700"
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-[#ff0040]/20 to-[#00f0ff]/20" />
@@ -370,7 +373,7 @@ export default function ArtistsPage() {
 
         <section className="py-20">
           <FadeInSection>
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
                 eyebrow="Before Your Session"
                 title="Show up ready"
@@ -380,10 +383,7 @@ export default function ArtistsPage() {
               <div className="grid gap-6 md:grid-cols-3">
                 {prepCards.map((card) => {
                   const Icon = card.icon;
-                  const accentClasses =
-                    card.accent === "red"
-                      ? "text-[#ff0040]"
-                      : "text-[#00f0ff]";
+                  const accentClasses = card.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
 
                   return (
                     <div
@@ -410,7 +410,7 @@ export default function ArtistsPage() {
 
         <section className="border-y border-white/5 py-20">
           <FadeInSection>
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
                 eyebrow="Studio Policies"
                 title="Respect the process"
@@ -420,10 +420,7 @@ export default function ArtistsPage() {
               <div className="grid gap-6 md:grid-cols-3">
                 {policyCards.map((card) => {
                   const Icon = card.icon;
-                  const accentClasses =
-                    card.accent === "red"
-                      ? "text-[#ff0040]"
-                      : "text-[#00f0ff]";
+                  const accentClasses = card.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
 
                   return (
                     <div
@@ -450,7 +447,7 @@ export default function ArtistsPage() {
 
         <section className="py-20">
           <FadeInSection>
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
               <div className="grid gap-8 lg:grid-cols-2">
                 <div
                   className="street-card street-hover p-8"
@@ -495,7 +492,7 @@ export default function ArtistsPage() {
                     Useful next steps
                   </h2>
                   <p className="mt-5 text-sm leading-7 text-gray-400">
-                    Later you can swap these for downloadable PDFs, lead magnets, or client tools tied into your booking system.
+                    Download these tools to help your artists prepare, organize ownership, and release music more professionally.
                   </p>
 
                   <div className="mt-8 space-y-4">
@@ -508,11 +505,43 @@ export default function ArtistsPage() {
                       const iconClasses =
                         resource.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
 
+                      const commonClassName = `group relative block overflow-hidden border border-white/10 bg-white/5 p-5 transition-all ${accentClasses}`;
+
+                      if (resource.external) {
+                        return (
+                          <a
+                            key={resource.title}
+                            href={resource.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={commonClassName}
+                            onMouseMove={handleCardMouseMove}
+                            onMouseLeave={handleCardMouseLeave}
+                          >
+                            <div className="mouse-glow" />
+                            <div className="relative z-10 flex items-start gap-4">
+                              <FileText className={`mt-1 h-5 w-5 ${iconClasses}`} />
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <h3 className="text-base font-bold uppercase tracking-wide text-white">
+                                    {resource.title}
+                                  </h3>
+                                  <ArrowRight className="h-4 w-4 text-white/40 transition-transform group-hover:translate-x-1" />
+                                </div>
+                                <p className="mt-2 text-sm leading-7 text-gray-400">
+                                  {resource.description}
+                                </p>
+                              </div>
+                            </div>
+                          </a>
+                        );
+                      }
+
                       return (
                         <Link
                           key={resource.title}
                           href={resource.href}
-                          className={`group relative block overflow-hidden border border-white/10 bg-white/5 p-5 transition-all ${accentClasses}`}
+                          className={commonClassName}
                           onMouseMove={handleCardMouseMove}
                           onMouseLeave={handleCardMouseLeave}
                         >
@@ -543,7 +572,7 @@ export default function ArtistsPage() {
 
         <section className="py-20">
           <FadeInSection>
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
               <div
                 className="street-card street-hover p-10"
                 onMouseMove={handleCardMouseMove}
@@ -591,9 +620,9 @@ export default function ArtistsPage() {
           </FadeInSection>
         </section>
 
-        <section className="py-20 border-y border-white/5">
+        <section className="border-y border-white/5 py-20">
           <FadeInSection>
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
+            <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
                 eyebrow="FAQ"
                 title="Questions artists ask"
@@ -627,11 +656,11 @@ export default function ArtistsPage() {
           </FadeInSection>
         </section>
 
-        <section className="py-20 relative">
+        <section className="relative py-20">
           <FadeInSection>
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
 
-            <div className="max-w-5xl mx-auto px-6 md:px-16">
+            <div className="mx-auto max-w-5xl px-6 md:px-16">
               <div
                 className="street-card street-hover relative p-10 text-center"
                 onMouseMove={handleCardMouseMove}
@@ -639,10 +668,10 @@ export default function ArtistsPage() {
               >
                 <div className="mouse-glow" />
 
-                <p className="text-xs uppercase tracking-[0.3em] text-[#00f0ff] mb-4">
+                <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                   Lock In
                 </p>
-                <h2 className="font-urban text-6xl uppercase tracking-tighter md:text-8xl mb-6">
+                <h2 className="font-urban mb-6 text-6xl uppercase tracking-tighter md:text-8xl">
                   Ready To Work<span className="text-[#ff0040]">?</span>
                 </h2>
                 <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-400">
