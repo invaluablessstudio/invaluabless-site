@@ -559,36 +559,37 @@ export default function ArtistDevelopmentPage() {
                 </div>
 
                 <div
-                  className="street-card street-hover relative border border-[#ff0040]/50 p-8"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#ff0040] px-4 py-1 text-xs font-bold uppercase tracking-wider text-black">
-                    Most Popular
-                  </span>
+  className="street-card street-hover relative border border-[#ff0040]/50 p-8 pt-14"
+  onMouseMove={handleCardMouseMove}
+  onMouseLeave={handleCardMouseLeave}
+>
+  <div className="mouse-glow" />
 
-                  <div className="relative z-10">
-                    <h3 className="mb-4 text-2xl font-bold uppercase">Elevation</h3>
-                    <p className="mb-6 text-gray-300">
-                      For artists ready to actively build their catalog and brand.
-                    </p>
+  <span className="absolute top-4 left-1/2 -translate-x-1/2 bg-[#ff0040] px-4 py-1 text-xs font-bold uppercase tracking-wider text-black whitespace-nowrap z-20">
+    Most Popular
+  </span>
 
-                    <ul className="mb-8 space-y-3 text-sm text-gray-200">
-                      <li>• Recording for 2 songs</li>
-                      <li>• 1 original beat included</li>
-                      <li>• 1 mix & master included</li>
-                      <li>• Creative direction during recording</li>
-                      <li>• Song selection guidance</li>
-                      <li>• Release strategy guidance</li>
-                      <li>• Song registration help</li>
-                      <li>• Branding & rollout feedback</li>
-                      <li>• Monthly development session</li>
-                    </ul>
+  <div className="relative z-10">
+    <h3 className="mb-4 text-2xl font-bold uppercase">Elevation</h3>
+    <p className="mb-6 text-gray-300">
+      For artists ready to actively build their catalog and brand.
+    </p>
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$699 / month</p>
-                  </div>
-                </div>
+    <ul className="mb-8 space-y-3 text-sm text-gray-200">
+      <li>• Recording for 2 songs</li>
+      <li>• 1 original beat included</li>
+      <li>• 1 mix & master included</li>
+      <li>• Creative direction during recording</li>
+      <li>• Song selection guidance</li>
+      <li>• Release strategy guidance</li>
+      <li>• Song registration help</li>
+      <li>• Branding & rollout feedback</li>
+      <li>• Monthly development session</li>
+    </ul>
+
+    <p className="text-3xl font-bold text-[#ff0040]">$699 / month</p>
+  </div>
+</div>
 
                 <div
                   className="street-card street-hover p-8"
