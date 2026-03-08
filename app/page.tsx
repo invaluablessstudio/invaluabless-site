@@ -226,9 +226,7 @@ export default function Home() {
                         target.style.display = "none";
                       }}
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/20 to-[#00f0ff]/20">
-                      <span className="text-6xl font-black text-white/20">INV</span>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10 pointer-events-none" />
                   </div>
 
                   <div className="absolute -bottom-6 -right-6 bg-[#ff0040] text-black p-6 font-mono">
@@ -461,11 +459,7 @@ export default function Home() {
                       target.style.display = "none";
                     }}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10 pointer-events-none">
-                    <span className="text-gray-600 font-mono text-sm uppercase tracking-widest">
-                      Studio Control Room
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#ff0040]/10 to-[#00f0ff]/10 pointer-events-none" />
                 </div>
 
                 <div
@@ -484,11 +478,7 @@ export default function Home() {
                       target.style.display = "none";
                     }}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#00f0ff]/10 to-[#ff0040]/10 pointer-events-none">
-                    <span className="text-gray-600 font-mono text-sm uppercase tracking-widest">
-                      Vocal Booth Sessions
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00f0ff]/10 to-[#ff0040]/10 pointer-events-none" />
                 </div>
               </div>
 
@@ -600,45 +590,16 @@ export default function Home() {
                       <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                     </Link>
                   </div>
-                </div>
 
-                <div
-                  className="street-card street-hover p-8"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-
-                  <p className="text-white font-bold uppercase tracking-wider text-sm mb-6">
-                    What Artists Search For
-                  </p>
-
-                  <div className="flex flex-wrap gap-3">
-                    {[
-                      "Recording Studio San Antonio",
-                      "Reggaeton Studio San Antonio",
-                      "Latin Recording Studio San Antonio",
-                      "Rap Studio San Antonio",
-                      "Mixing and Mastering San Antonio",
-                      "Music Production San Antonio",
-                    ].map((term, i) => (
-                      <span
-                        key={term}
-                        className={`px-4 py-2 text-sm font-medium border transition-all cursor-default ${
-                          i % 2 === 0
-                            ? "bg-white/5 border-white/10 text-gray-300 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50"
-                            : "bg-white/5 border-white/10 text-gray-300 hover:bg-[#00f0ff]/10 hover:border-[#00f0ff]/40"
-                        }`}
-                      >
-                        {term}
-                      </span>
-                    ))}
+                  {/* SEO keywords kept invisible */}
+                  <div className="sr-only">
+                    Recording Studio San Antonio. Reggaeton Studio San Antonio. Latin
+                    Recording Studio San Antonio. Rap Studio San Antonio. Mixing and
+                    Mastering San Antonio. Music Production San Antonio.
                   </div>
-
-                  <p className="text-xs text-gray-500 uppercase tracking-[0.25em] mt-6">
-                    Stronger local relevance. Better search visibility.
-                  </p>
                 </div>
+
+                <div className="hidden md:block" aria-hidden="true" />
               </div>
             </div>
           </FadeInSection>
