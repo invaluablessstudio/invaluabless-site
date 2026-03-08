@@ -84,6 +84,7 @@ export default function ArtistDevelopmentApplyPage() {
 
   return (
     <main className="relative min-h-screen bg-transparent text-white">
+      {/* Background */}
       <div className="pointer-events-none fixed inset-0 -z-20">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
         <div className="absolute inset-0 bg-black/65" />
@@ -99,9 +100,11 @@ export default function ArtistDevelopmentApplyPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/70 to-[#0a0a0f]" />
       </div>
 
+      {/* Global Effects */}
       <div className="grain" />
       <div className="scanlines" />
 
+      {/* Grid Overlay */}
       <div
         className="pointer-events-none fixed inset-0 -z-10 opacity-[0.03]"
         style={{
@@ -112,6 +115,7 @@ export default function ArtistDevelopmentApplyPage() {
       />
 
       <div className="relative z-20">
+        {/* Hero */}
         <section className="pt-24 pb-10">
           <div className="mx-auto max-w-5xl px-6 md:px-16">
             <div
@@ -133,7 +137,7 @@ export default function ArtistDevelopmentApplyPage() {
                 </p>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black leading-[0.88] uppercase tracking-tighter">
+              <h1 className="text-5xl font-black leading-[0.88] uppercase tracking-tighter md:text-7xl">
                 <span className="block text-white">Artist</span>
                 <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.45)]">
                   Development
@@ -149,13 +153,15 @@ export default function ArtistDevelopmentApplyPage() {
                 <div className="mouse-glow" />
                 <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
                   Fill out the quick pre-application below, then continue to the
-                  full Google Form submission.
+                  full application. / Completa la pre-solicitud rápida abajo y
+                  luego continúa a la solicitud completa.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Form */}
         <section className="pb-20">
           <FadeInSection>
             <div className="mx-auto max-w-5xl px-6 md:px-16">
@@ -167,47 +173,87 @@ export default function ArtistDevelopmentApplyPage() {
                 <div className="mouse-glow" />
 
                 <form onSubmit={handleSubmit} className="relative z-10 space-y-10">
+                  {/* Basic info */}
                   <div>
                     <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                      Basic Information
+                      Basic Information / Información básica
                     </p>
+
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="md:col-span-2">
-                        <label className={labelClass}>Artist Name</label>
-                        <input type="text" required placeholder="Your artist name" className={inputClass} />
+                        <label className={labelClass}>
+                          Artist Name / Nombre artístico
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="Your artist name / Tu nombre artístico"
+                          className={inputClass}
+                        />
                       </div>
 
                       <div>
-                        <label className={labelClass}>Email</label>
-                        <input type="email" required placeholder="you@example.com" className={inputClass} />
+                        <label className={labelClass}>
+                          Email / Correo electrónico
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          placeholder="you@example.com"
+                          className={inputClass}
+                        />
                       </div>
 
                       <div>
-                        <label className={labelClass}>Phone Number</label>
-                        <input type="tel" placeholder="Your phone number" className={inputClass} />
+                        <label className={labelClass}>
+                          Phone Number / Número de teléfono
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="Your phone number / Tu número"
+                          className={inputClass}
+                        />
                       </div>
 
                       <div>
-                        <label className={labelClass}>Instagram / Social Media</label>
-                        <input type="text" placeholder="@yourhandle" className={inputClass} />
+                        <label className={labelClass}>
+                          Instagram / Social Media / Redes sociales
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="@yourhandle"
+                          className={inputClass}
+                        />
                       </div>
 
                       <div>
-                        <label className={labelClass}>Music Link</label>
-                        <input type="url" placeholder="Spotify, YouTube, SoundCloud, etc." className={inputClass} />
+                        <label className={labelClass}>
+                          Music Link / Enlace de tu música
+                        </label>
+                        <input
+                          type="url"
+                          placeholder="Spotify, YouTube, SoundCloud, etc."
+                          className={inputClass}
+                        />
                       </div>
                     </div>
                   </div>
 
                   <div className="h-px w-full bg-white/10" />
 
+                  {/* Artist profile */}
                   <div>
                     <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                      Artist Profile
+                      Artist Profile / Perfil artístico
                     </p>
+
                     <div className="grid gap-6">
                       <div>
-                        <label className={labelClass}>What genre best describes your music?</label>
+                        <label className={labelClass}>
+                          What genre best describes your music?
+                          <br />
+                          ¿Qué género describe mejor tu música?
+                        </label>
                         <input
                           type="text"
                           placeholder="Reggaeton, Latin Rap, Urban, Christian, Singer, etc."
@@ -216,31 +262,55 @@ export default function ArtistDevelopmentApplyPage() {
                       </div>
 
                       <div>
-                        <label className={labelClass}>Which package are you most interested in?</label>
-                        <select className={inputClass}>
-                          <option>Momentum</option>
-                          <option>Elevation</option>
-                          <option>Artist Partner</option>
-                          <option>Not sure yet</option>
+                        <label className={labelClass}>
+                          Which package are you most interested in?
+                          <br />
+                          ¿Qué paquete te interesa más?
+                        </label>
+
+                        <select className={`${inputClass} cursor-pointer`} required defaultValue="">
+                          <option value="" className="text-black">
+                            Select a package / Selecciona un paquete
+                          </option>
+                          <option value="Momentum" className="text-black">
+                            Momentum
+                          </option>
+                          <option value="Elevation" className="text-black">
+                            Elevation
+                          </option>
+                          <option value="Artist Partner" className="text-black">
+                            Artist Partner
+                          </option>
+                          <option value="Not sure yet" className="text-black">
+                            Not sure yet / Aún no estoy seguro(a)
+                          </option>
                         </select>
                       </div>
 
                       <div>
-                        <label className={labelClass}>What are your goals for the next 6 months?</label>
+                        <label className={labelClass}>
+                          What are your goals for the next 6 months?
+                          <br />
+                          ¿Cuáles son tus metas para los próximos 6 meses?
+                        </label>
                         <textarea
                           required
                           rows={5}
-                          placeholder="Tell us what you want to accomplish with your music."
+                          placeholder="Tell us what you want to accomplish with your music. / Cuéntanos lo que quieres lograr con tu música."
                           className={textareaClass}
                         />
                       </div>
 
                       <div>
-                        <label className={labelClass}>Why do you want to join the Artist Development Program?</label>
+                        <label className={labelClass}>
+                          Why do you want to join the Artist Development Program?
+                          <br />
+                          ¿Por qué quieres unirte al Programa de Desarrollo Artístico?
+                        </label>
                         <textarea
                           required
                           rows={5}
-                          placeholder="Tell us why this program feels like the right next step."
+                          placeholder="Tell us why this program feels like the right next step. / Cuéntanos por qué este programa es el siguiente paso correcto para ti."
                           className={textareaClass}
                         />
                       </div>
