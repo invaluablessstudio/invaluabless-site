@@ -8,21 +8,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const now = new Date();
 
-  const routes = [
-    "/",
-    "/work",
-    "/producer",
-    "/services",
-    "/artists",
-    "/recording-studio-san-antonio",
-    "/book",
-    "/contact",
+  const routes: Array<{
+    path: string;
+    priority: number;
+    changeFrequency:
+      | "always"
+      | "hourly"
+      | "daily"
+      | "weekly"
+      | "monthly"
+      | "yearly"
+      | "never";
+  }> = [
+    { path: "/", priority: 1, changeFrequency: "weekly" },
+    { path: "/work", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/producer", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/services", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/artists", priority: 0.8, changeFrequency: "weekly" },
+    {
+      path: "/artist-development",
+      priority: 0.9,
+      changeFrequency: "weekly",
+    },
+    {
+      path: "/artist-development/apply",
+      priority: 0.6,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/recording-studio-san-antonio",
+      priority: 1,
+      changeFrequency: "weekly",
+    },
+    { path: "/book", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
   ];
 
-  return routes.map((path) => ({
+  return routes.map(({ path, priority, changeFrequency }) => ({
     url: `${siteUrl}${path}`,
     lastModified: now,
-    changeFrequency: "weekly",
-    priority: path === "/" ? 1 : 0.8,
+    changeFrequency,
+    priority,
   }));
 }
