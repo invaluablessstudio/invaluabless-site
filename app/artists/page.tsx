@@ -606,13 +606,9 @@ export default function ArtistsPage() {
                       <li>Creative direction</li>
                       <li>Release strategy support</li>
                     </ul>
-                    <Link
-                      href="/contact"
-                      className="group relative mt-8 inline-block overflow-hidden border border-[#00f0ff] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
-                    >
-                      <span className="relative z-10">Apply for Artist Development</span>
-                      <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
-                    </Link>
+                    <div className="relative mt-8 inline-block overflow-hidden border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white/70">
+  <span className="relative z-10">Artist Development — Coming Soon</span>
+</div>
                   </div>
                 </div>
               </div>
