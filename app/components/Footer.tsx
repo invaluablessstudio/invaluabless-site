@@ -3,46 +3,55 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "Work", href: "/work" },
-  { label: "Producer", href: "/producer" }, // ✅ correct route
+  { label: "Producer", href: "/producer" },
   { label: "Services", href: "/services" },
+  { label: "Artists", href: "/artists" },
+  { label: "Contact", href: "/contact" },
   { label: "Book", href: "/book" },
 ];
 
 export default function Footer() {
   return (
     <footer className="relative z-50 border-t border-white/10 bg-transparent pt-20 pb-10">
-      {/* subtle glass layer so text stays readable but background continues */}
+
+      {/* glass overlay */}
       <div className="absolute inset-0 -z-10 bg-black/25 backdrop-blur supports-[backdrop-filter]:bg-black/10" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-16">
+
         <div className="grid md:grid-cols-4 gap-12 mb-16">
-          
+
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="font-urban text-4xl uppercase mb-4">
-              Invaluabless Production<span className="text-[#ff0040]">.</span>
+              Invaluabless Productions<span className="text-[#ff0040]">.</span>
             </h3>
 
             <p className="text-gray-400 max-w-md leading-relaxed">
-              Urban recording studio in San Antonio, TX. Specializing in reggaeton,
-              trap, rap, and Latin music production.
+              Professional recording studio in San Antonio, Texas.
+              Specializing in reggaeton, Latin, rap, trap, and urban music production.
             </p>
 
             <div className="mt-6 flex gap-4">
+
               <SocialLink
                 href="https://instagram.com/invaluablessproduction"
                 label="IG"
               />
+
               <SocialLink
                 href="https://youtube.com/@InvaluaBlessProductions"
                 label="YT"
               />
+
               <SocialLink
-                href="mailto:invaluabless.studio@gmail.com"
+                href="mailto:bookings@invaluablessproduction.com"
                 label="Email"
               />
+
             </div>
           </div>
+
 
           {/* Navigation */}
           <div>
@@ -64,6 +73,7 @@ export default function Footer() {
             </ul>
           </div>
 
+
           {/* Contact */}
           <div>
             <h4 className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-6">
@@ -71,6 +81,7 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-3 text-sm text-gray-400">
+
               <li>San Antonio, TX</li>
 
               <li>
@@ -82,17 +93,21 @@ export default function Footer() {
                 </a>
               </li>
 
-              <li className="text-xs text-gray-600 mt-4">
+              <li className="text-xs text-gray-600 mt-4 leading-relaxed">
                 bookings@invaluablessproduction.com
                 <br />
                 support@invaluablessproduction.com
               </li>
+
             </ul>
           </div>
+
         </div>
 
-        {/* Bottom */}
+
+        {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+
           <p className="text-xs text-gray-600 uppercase tracking-widest">
             © {new Date().getFullYear()} Invaluabless Productions
           </p>
@@ -101,7 +116,9 @@ export default function Footer() {
             <span className="w-2 h-2 bg-[#ff0040] rounded-full animate-pulse" />
             <span className="uppercase tracking-widest">Now Booking</span>
           </div>
+
         </div>
+
       </div>
     </footer>
   );
