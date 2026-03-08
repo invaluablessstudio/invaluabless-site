@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ArtistDownloads from "../components/ArtistDownloads";
 import {
   Mic2,
   Music3,
@@ -696,6 +697,7 @@ export default function ArtistsPage() {
           </FadeInSection>
         </section>
       </div>
+      <ArtistDownloads />
     </main>
   );
 }

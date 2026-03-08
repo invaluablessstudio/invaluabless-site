@@ -2,9 +2,12 @@
 import "./globals.css";
 import Script from "next/script";
 import type { Metadata } from "next";
+
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import ArtistDownloads from "./components/ArtistDownloads";
 import PageTransition from "./components/PageTransition";
+
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
