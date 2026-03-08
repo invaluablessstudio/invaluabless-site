@@ -50,11 +50,23 @@ function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
   el.style.setProperty("--my", `50%`);
 }
 
-const GOOGLE_FORM_URL = "https://forms.gle/kiBksQxNqiKxmLZ17";
+const GOOGLE_FORM_BASE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdoHCIBu-l85TvwrBVgkUikZPRBv4xjkHOE0xupTWbXRbxDFg/viewform?usp=pp_url";
 
 export default function ArtistDevelopmentApplyPage() {
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const [artistName, setArtistName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [social, setSocial] = useState("");
+  const [musicLink, setMusicLink] = useState("");
+  const [genre, setGenre] = useState("");
+  const [packageInterest, setPackageInterest] = useState("");
+  const [goals, setGoals] = useState("");
+  const [whyJoin, setWhyJoin] = useState("");
+  const [commitment, setCommitment] = useState("Yes / Sí");
 
   useEffect(() => {
     const t = setTimeout(() => setShowHero(true), 100);
@@ -72,7 +84,23 @@ export default function ArtistDevelopmentApplyPage() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+
+    const params = new URLSearchParams();
+
+    // Google Form field mappings
+    params.set("entry.565350748", artistName);
+    params.set("entry.1294412534", email);
+    params.set("entry.161146201", phone);
+    params.set("entry.95497513", social);
+    params.set("entry.227987713", musicLink);
+    params.set("entry.1563573769", genre);
+    params.set("entry.1781686188", packageInterest);
+    params.set("entry.1191524806", goals);
+    params.set("entry.1337192697", whyJoin);
+    params.set("entry.910692495", commitment);
+
+    const finalUrl = `${GOOGLE_FORM_BASE_URL}&${params.toString()}`;
+    window.open(finalUrl, "_blank", "noopener,noreferrer");
   }
 
   const inputClass =
@@ -189,6 +217,8 @@ export default function ArtistDevelopmentApplyPage() {
                           required
                           placeholder="Your artist name / Tu nombre artístico"
                           className={inputClass}
+                          value={artistName}
+                          onChange={(e) => setArtistName(e.target.value)}
                         />
                       </div>
 
@@ -201,6 +231,8 @@ export default function ArtistDevelopmentApplyPage() {
                           required
                           placeholder="you@example.com"
                           className={inputClass}
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
 
@@ -212,6 +244,8 @@ export default function ArtistDevelopmentApplyPage() {
                           type="tel"
                           placeholder="Your phone number / Tu número"
                           className={inputClass}
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
                         />
                       </div>
 
@@ -223,6 +257,8 @@ export default function ArtistDevelopmentApplyPage() {
                           type="text"
                           placeholder="@yourhandle"
                           className={inputClass}
+                          value={social}
+                          onChange={(e) => setSocial(e.target.value)}
                         />
                       </div>
 
@@ -234,6 +270,8 @@ export default function ArtistDevelopmentApplyPage() {
                           type="url"
                           placeholder="Spotify, YouTube, SoundCloud, etc."
                           className={inputClass}
+                          value={musicLink}
+                          onChange={(e) => setMusicLink(e.target.value)}
                         />
                       </div>
                     </div>
@@ -258,6 +296,8 @@ export default function ArtistDevelopmentApplyPage() {
                           type="text"
                           placeholder="Reggaeton, Latin Rap, Urban, Christian, Singer, etc."
                           className={inputClass}
+                          value={genre}
+                          onChange={(e) => setGenre(e.target.value)}
                         />
                       </div>
 
@@ -268,7 +308,13 @@ export default function ArtistDevelopmentApplyPage() {
                           ¿Qué paquete te interesa más?
                         </label>
 
-                        <select className={`${inputClass} cursor-pointer`} required defaultValue="">
+                        <select
+                          className={`${inputClass} cursor-pointer`}
+                          required
+                          defaultValue=""
+                          value={packageInterest}
+                          onChange={(e) => setPackageInterest(e.target.value)}
+                        >
                           <option value="" className="text-black">
                             Select a package / Selecciona un paquete
                           </option>
@@ -281,7 +327,7 @@ export default function ArtistDevelopmentApplyPage() {
                           <option value="Artist Partner" className="text-black">
                             Artist Partner
                           </option>
-                          <option value="Not sure yet" className="text-black">
+                          <option value="Not sure yet / Aún no estoy seguro(a)" className="text-black">
                             Not sure yet / Aún no estoy seguro(a)
                           </option>
                         </select>
@@ -298,6 +344,8 @@ export default function ArtistDevelopmentApplyPage() {
                           rows={5}
                           placeholder="Tell us what you want to accomplish with your music. / Cuéntanos lo que quieres lograr con tu música."
                           className={textareaClass}
+                          value={goals}
+                          onChange={(e) => setGoals(e.target.value)}
                         />
                       </div>
 
@@ -312,7 +360,33 @@ export default function ArtistDevelopmentApplyPage() {
                           rows={5}
                           placeholder="Tell us why this program feels like the right next step. / Cuéntanos por qué este programa es el siguiente paso correcto para ti."
                           className={textareaClass}
+                          value={whyJoin}
+                          onChange={(e) => setWhyJoin(e.target.value)}
                         />
+                      </div>
+
+                      <div>
+                        <label className={labelClass}>
+                          Are you ready for a minimum 3-month commitment?
+                          <br />
+                          ¿Estás listo(a) para un compromiso mínimo de 3 meses?
+                        </label>
+
+                        <select
+                          className={`${inputClass} cursor-pointer`}
+                          value={commitment}
+                          onChange={(e) => setCommitment(e.target.value)}
+                        >
+                          <option value="Yes / Sí" className="text-black">
+                            Yes / Sí
+                          </option>
+                          <option
+                            value="I have questions first / Tengo preguntas primero"
+                            className="text-black"
+                          >
+                            I have questions first / Tengo preguntas primero
+                          </option>
+                        </select>
                       </div>
                     </div>
                   </div>
