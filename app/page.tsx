@@ -4,16 +4,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Youtube, Facebook, Music2, MapPin, Mail, FileText } from "lucide-react";
+import { Instagram, Youtube, Facebook, Music2, MapPin, Mail } from "lucide-react";
 
 function FadeInSection({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setIsVisible(true);
-    }, { threshold: 0.15 });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.15 }
+    );
 
     const el = ref.current;
     if (el) observer.observe(el);
@@ -35,7 +38,6 @@ function FadeInSection({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ✅ mouse-follow glow for any card using street-hover
 function handleCardMouseMove(e: React.MouseEvent<HTMLElement>) {
   const el = e.currentTarget as HTMLElement;
   const r = el.getBoundingClientRect();
@@ -44,6 +46,7 @@ function handleCardMouseMove(e: React.MouseEvent<HTMLElement>) {
   el.style.setProperty("--mx", `${x}px`);
   el.style.setProperty("--my", `${y}px`);
 }
+
 function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
   const el = e.currentTarget as HTMLElement;
   el.style.setProperty("--mx", `50%`);
@@ -132,7 +135,6 @@ export default function Home() {
                 <span className="block text-white/90">That Hits</span>
               </h1>
 
-              {/* ✅ Intro paragraph container restored (interactive) */}
               <div
                 className="mt-8 max-w-xl street-card street-hover p-6"
                 onMouseMove={handleCardMouseMove}
@@ -140,12 +142,12 @@ export default function Home() {
               >
                 <div className="mouse-glow" />
                 <p className="text-gray-300 text-lg leading-relaxed border-l-2 border-[#ff0040] pl-6 relative z-10">
-                  Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean
-                  vocals. Industry-ready mixes that slap.
+                  Studio-level recording for reggaeton, trap, and Latin artists. Heavy
+                  808s. Clean vocals. Industry-ready mixes that slap.
                 </p>
               </div>
 
-              {/* Buttons (already upgraded) */}
+              {/* Updated Hero Buttons */}
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="/book"
@@ -162,6 +164,14 @@ export default function Home() {
                   <span className="relative z-10">Hear the Work</span>
                   <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Link>
+
+                <Link
+                  href="/artist-development"
+                  className="group relative px-8 py-4 border border-white/15 text-white font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:border-[#ff0040] hover:text-white"
+                >
+                  <span className="relative z-10">Artist Development</span>
+                  <div className="absolute inset-0 bg-[#ff0040]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                </Link>
               </div>
 
               <div className="mt-16 flex gap-12 text-sm">
@@ -173,11 +183,15 @@ export default function Home() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-[#00f0ff]">20+</div>
-                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Artists</div>
+                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">
+                    Artists
+                  </div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-white">13+</div>
-                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">Years</div>
+                  <div className="text-gray-500 uppercase tracking-wider text-xs mt-1">
+                    Years
+                  </div>
                 </div>
               </div>
             </div>
@@ -194,7 +208,6 @@ export default function Home() {
           <FadeInSection>
             <div className="max-w-7xl mx-auto px-6 md:px-16">
               <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* PHOTO CARD */}
                 <div
                   className="relative group street-card street-hover border border-white/10 bg-white/[0.03] backdrop-blur"
                   onMouseMove={handleCardMouseMove}
@@ -218,14 +231,12 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 13+ sticker */}
                   <div className="absolute -bottom-6 -right-6 bg-[#ff0040] text-black p-6 font-mono">
                     <p className="font-bold text-3xl">13+</p>
                     <p className="uppercase tracking-wider text-sm">Years</p>
                   </div>
                 </div>
 
-                {/* STORY CARD */}
                 <div
                   className="street-card street-hover p-8"
                   onMouseMove={handleCardMouseMove}
@@ -249,34 +260,40 @@ export default function Home() {
 
                     <div className="space-y-6 text-gray-300 leading-relaxed">
                       <p>
-                        Started in Puerto Rico in &apos;09. Just speakers, hunger, and an ear for low-end
-                        that had to translate everywhere — cars, clubs, phone speakers.
+                        Started in Puerto Rico in &apos;09. Just speakers, hunger, and an ear
+                        for low-end that had to translate everywhere — cars, clubs, phone
+                        speakers.
                       </p>
 
                       <p>
-                        2010: <strong className="text-white">La Caldera Records</strong>. Built inside
-                        a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).
+                        2010: <strong className="text-white">La Caldera Records</strong>. Built
+                        inside a barber shop in Quebradillas with my friend Josue Tosado (MR
+                        KUSH).
                       </p>
 
                       <p>
                         2013:{" "}
-                        <strong className="text-white">Propiedad Urbana & Unstopable Studios</strong>.
-                        San Juan was the next level. Sessions with{" "}
+                        <strong className="text-white">
+                          Propiedad Urbana & Unstopable Studios
+                        </strong>
+                        . San Juan was the next level. Sessions with{" "}
                         <strong className="text-[#ff0040]">YOMO</strong>,{" "}
                         <strong className="text-[#ff0040]">El Larax</strong>,{" "}
                         <strong className="text-[#ff0040]">Nencho el León Salvaje</strong>,{" "}
-                        <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and more.
+                        <strong className="text-[#ff0040]">Bimbo El Oso Mañoso</strong>, and
+                        more.
                       </p>
 
                       <p>
-                        <strong className="text-white">NOW</strong>: Based in San Antonio — focused on
-                        clean, heavy, release-ready records.
+                        <strong className="text-white">NOW</strong>: Based in San Antonio —
+                        focused on clean, heavy, release-ready records.
                       </p>
                     </div>
 
                     <div className="border-l-4 border-[#ff0040] pl-6 py-2">
                       <p className="text-lg font-bold italic text-white">
-                        "Clean vocals. Heavy low end - If it don’t hit in the car at night, it’s not done."
+                        "Clean vocals. Heavy low end - If it don’t hit in the car at night,
+                        it’s not done."
                       </p>
                     </div>
 
@@ -391,8 +408,9 @@ export default function Home() {
                     Studios
                   </h4>
                   <p className="leading-relaxed">
-                    La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable
-                    Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)
+                    La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) •
+                    Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio,
+                    TX)
                   </p>
                 </div>
                 <div
@@ -474,33 +492,43 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-12 grid md:grid-cols-3 gap-6">
+              <div className="mt-12 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
                 {[
                   {
                     title: "Recording",
                     desc: "Vocals, instruments, full bands. Clean signal chain, pro environment.",
                     accent: "red",
+                    href: "/book",
                   },
                   {
                     title: "Mix & Master",
                     desc: "Radio-ready, club-tested, headphone-approved. Your sound, elevated.",
                     accent: "cyan",
+                    href: "/services",
                   },
                   {
                     title: "Beats",
                     desc: "Original production. Reggaeton, trap, rap, Latin. Custom or licensed.",
                     accent: "red",
+                    href: "/services",
+                  },
+                  {
+                    title: "Artist Development",
+                    desc: "Structured support for artists who want direction, accountability, release strategy, and long-term growth.",
+                    accent: "cyan",
+                    href: "/artist-development",
                   },
                 ].map((c) => (
-                  <div
+                  <Link
                     key={c.title}
-                    className="p-8 border border-white/10 bg-white/[0.02] transition-all group street-hover"
+                    href={c.href}
+                    className="p-8 border border-white/10 bg-white/[0.02] transition-all group street-hover block"
                     onMouseMove={handleCardMouseMove}
                     onMouseLeave={handleCardMouseLeave}
                   >
                     <div className="mouse-glow" />
                     <h4
-                      className={`text-2xl font-bold mb-3 uppercase transition-colors ${
+                      className={`text-2xl font-bold mb-3 uppercase transition-colors relative z-10 ${
                         c.accent === "red"
                           ? "group-hover:text-[#ff0040]"
                           : "group-hover:text-[#00f0ff]"
@@ -508,102 +536,113 @@ export default function Home() {
                     >
                       {c.title}
                     </h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">{c.desc}</p>
-                  </div>
+                    <p className="text-gray-400 text-sm leading-relaxed relative z-10">
+                      {c.desc}
+                    </p>
+
+                    <p
+                      className={`mt-5 text-xs uppercase tracking-[0.25em] relative z-10 ${
+                        c.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]"
+                      }`}
+                    >
+                      Learn More →
+                    </p>
+                  </Link>
                 ))}
               </div>
             </div>
           </FadeInSection>
         </section>
-{/* ================= LOCAL SEO ================= */}
-<section id="san-antonio-studio" className="py-20">
-  <FadeInSection>
-    <div className="max-w-7xl mx-auto px-6 md:px-16">
-      <div className="grid md:grid-cols-2 gap-10 items-start">
-        <div>
-          <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
-            Recording Studio in San Antonio
-          </p>
 
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">
-            Built for Artists in
-            <br />
-            <span className="text-[#ff0040]">San Antonio, TX</span>
-          </h2>
+        {/* ================= LOCAL SEO ================= */}
+        <section id="san-antonio-studio" className="py-20">
+          <FadeInSection>
+            <div className="max-w-7xl mx-auto px-6 md:px-16">
+              <div className="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                  <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
+                    Recording Studio in San Antonio
+                  </p>
 
-          <p className="text-gray-400 mt-6 max-w-xl leading-relaxed">
-            Invaluabless Productions is a San Antonio recording studio for artists who
-            want clean vocals, hard-hitting mixes, and a professional recording
-            experience. We work with reggaeton, Latin, rap, trap, urban, and Christian artists
-            ready to take their sound seriously.
-          </p>
+                  <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">
+                    Built for Artists in
+                    <br />
+                    <span className="text-[#ff0040]">San Antonio, TX</span>
+                  </h2>
 
-          <p className="text-gray-400 mt-4 max-w-xl leading-relaxed">
-            Whether you need recording, mixing, mastering, beat production, or artist
-            guidance, our studio is built to help you create music that sounds polished,
-            confident, and ready for release.
-          </p>
+                  <p className="text-gray-400 mt-6 max-w-xl leading-relaxed">
+                    Invaluabless Productions is a San Antonio recording studio for artists
+                    who want clean vocals, hard-hitting mixes, and a professional recording
+                    experience. We work with reggaeton, Latin, rap, trap, urban, and
+                    Christian artists ready to take their sound seriously.
+                  </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/book"
-              className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
-            >
-              <span className="relative z-10">Book San Antonio Session</span>
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </Link>
+                  <p className="text-gray-400 mt-4 max-w-xl leading-relaxed">
+                    Whether you need recording, mixing, mastering, beat production, or artist
+                    guidance, our studio is built to help you create music that sounds
+                    polished, confident, and ready for release.
+                  </p>
 
-            <Link
-              href="/contact"
-              className="group relative px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-cyan"
-            >
-              <span className="relative z-10">Contact the Studio</span>
-              <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </Link>
-          </div>
-        </div>
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <Link
+                      href="/book"
+                      className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
+                    >
+                      <span className="relative z-10">Book San Antonio Session</span>
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    </Link>
 
-        <div
-          className="street-card street-hover p-8"
-          onMouseMove={handleCardMouseMove}
-          onMouseLeave={handleCardMouseLeave}
-        >
-          <div className="mouse-glow" />
+                    <Link
+                      href="/contact"
+                      className="group relative px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-cyan"
+                    >
+                      <span className="relative z-10">Contact the Studio</span>
+                      <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    </Link>
+                  </div>
+                </div>
 
-          <p className="text-white font-bold uppercase tracking-wider text-sm mb-6">
-            What Artists Search For
-          </p>
+                <div
+                  className="street-card street-hover p-8"
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                >
+                  <div className="mouse-glow" />
 
-          <div className="flex flex-wrap gap-3">
-            {[
-              "Recording Studio San Antonio",
-              "Reggaeton Studio San Antonio",
-              "Latin Recording Studio San Antonio",
-              "Rap Studio San Antonio",
-              "Mixing and Mastering San Antonio",
-              "Music Production San Antonio",
-            ].map((term, i) => (
-              <span
-                key={term}
-                className={`px-4 py-2 text-sm font-medium border transition-all cursor-default ${
-                  i % 2 === 0
-                    ? "bg-white/5 border-white/10 text-gray-300 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50"
-                    : "bg-white/5 border-white/10 text-gray-300 hover:bg-[#00f0ff]/10 hover:border-[#00f0ff]/40"
-                }`}
-              >
-                {term}
-              </span>
-            ))}
-          </div>
+                  <p className="text-white font-bold uppercase tracking-wider text-sm mb-6">
+                    What Artists Search For
+                  </p>
 
-          <p className="text-xs text-gray-500 uppercase tracking-[0.25em] mt-6">
-            Stronger local relevance. Better search visibility.
-          </p>
-        </div>
-      </div>
-    </div>
-  </FadeInSection>
-</section>
+                  <div className="flex flex-wrap gap-3">
+                    {[
+                      "Recording Studio San Antonio",
+                      "Reggaeton Studio San Antonio",
+                      "Latin Recording Studio San Antonio",
+                      "Rap Studio San Antonio",
+                      "Mixing and Mastering San Antonio",
+                      "Music Production San Antonio",
+                    ].map((term, i) => (
+                      <span
+                        key={term}
+                        className={`px-4 py-2 text-sm font-medium border transition-all cursor-default ${
+                          i % 2 === 0
+                            ? "bg-white/5 border-white/10 text-gray-300 hover:bg-[#ff0040]/20 hover:border-[#ff0040]/50"
+                            : "bg-white/5 border-white/10 text-gray-300 hover:bg-[#00f0ff]/10 hover:border-[#00f0ff]/40"
+                        }`}
+                      >
+                        {term}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="text-xs text-gray-500 uppercase tracking-[0.25em] mt-6">
+                    Stronger local relevance. Better search visibility.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
 
         {/* ================= CONTACT ================= */}
         <section id="contact" className="py-20 relative">
