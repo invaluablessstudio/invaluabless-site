@@ -8,16 +8,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const now = new Date();
 
-const routes = [
-  "/",                         // homepage
-  "/work",                     // portfolio
-  "/producer",                 // about the producer
-  "/services",                 // studio services
-  "/artists",                  // artist resources
-  "/recording-studio-san-antonio", // SEO landing page
-  "/book",                     // booking page
-  "/contact",                  // contact page
-];
+  const routes = [
+    "/",
+    "/work",
+    "/producer",
+    "/services",
+    "/artists",
+    "/recording-studio-san-antonio",
+    "/book",
+    "/contact",
+  ];
 
   return routes.map((path) => ({
     url: `${siteUrl}${path}`,
