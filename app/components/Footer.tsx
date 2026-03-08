@@ -5,9 +5,9 @@ const navLinks = [
   { label: "Producer", href: "/producer" },
   { label: "Services", href: "/services" },
   { label: "Artists", href: "/artists" },
-  { label: "Artist Development", href: "/artist-development" },
   { label: "Studio", href: "/recording-studio-san-antonio" },
   { label: "Contact", href: "/contact" },
+  { label: "Artist Development", href: "/artist-development" },
   { label: "Book", href: "/book" },
 ];
 
