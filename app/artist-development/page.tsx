@@ -565,8 +565,8 @@ export default function ArtistDevelopmentPage() {
 >
   <div className="mouse-glow" />
 
-  <span className="absolute top-4 left-1/2 -translate-x-1/2 bg-[#ff0040] px-4 py-1 text-xs font-bold uppercase tracking-wider text-black whitespace-nowrap z-20">
-    Most Popular
+  <span className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#ff0040] px-4 py-1 text-xs font-bold uppercase tracking-wider text-black whitespace-nowrap z-20">
+  Most Popular
   </span>
 
   <div className="relative z-10">
