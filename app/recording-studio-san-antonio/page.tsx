@@ -115,17 +115,6 @@ const reasons = [
   "Release-ready sound approach",
 ];
 
-const genres = [
-  "Reggaeton Recording",
-  "Latin Music Production",
-  "Rap Recording",
-  "Trap Recording",
-  "Urban Music Production",
-  "Christian Artist Recording",
-  "Singer / Vocal Recording",
-  "Spanish & bilingual artists welcome",
-];
-
 const areas = [
   "South San Antonio",
   "Downtown San Antonio",
@@ -378,7 +367,7 @@ export default function RecordingStudioSanAntonioPage() {
         <section className="py-20">
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
-              <div className="grid gap-8 lg:grid-cols-2">
+              <div className="mx-auto max-w-4xl">
                 <div
                   className="street-card street-hover p-8"
                   onMouseMove={handleCardMouseMove}
@@ -404,34 +393,6 @@ export default function RecordingStudioSanAntonioPage() {
                         />
                         <p className="text-sm leading-7 text-gray-300">{item}</p>
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div
-                  className="street-card street-hover p-8"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-                  <p className="text-xs uppercase tracking-[0.3em] text-[#ff0040]">
-                    Genres We Work With
-                  </p>
-                  <h2 className="font-urban mt-4 text-4xl uppercase tracking-tight text-white md:text-5xl">
-                    Sound we understand
-                  </h2>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {genres.map((genre, i) => (
-                      <span
-                        key={genre}
-                        className={`cursor-default border px-4 py-2 text-sm font-medium transition-all ${
-                          i % 2 === 0
-                            ? "border-white/10 bg-white/5 text-gray-300 hover:border-[#ff0040]/50 hover:bg-[#ff0040]/20"
-                            : "border-white/10 bg-white/5 text-gray-300 hover:border-[#00f0ff]/40 hover:bg-[#00f0ff]/10"
-                        }`}
-                      >
-                        {genre}
-                      </span>
                     ))}
                   </div>
                 </div>
