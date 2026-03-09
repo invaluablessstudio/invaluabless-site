@@ -547,7 +547,7 @@ export default function Home() {
         <section id="san-antonio-studio" className="py-20">
           <FadeInSection>
             <div className="max-w-7xl mx-auto px-6 md:px-16">
-              <div className="mx-auto max-w-4xl text-left">
+              <div className="mx-auto max-w-5xl text-left">
                 <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
                   Recording Studio in San Antonio
                 </p>
@@ -558,14 +558,14 @@ export default function Home() {
                   <span className="text-[#ff0040]">San Antonio, TX</span>
                 </h2>
 
-                <p className="text-gray-400 mt-6 max-w-2xl leading-relaxed">
+                <p className="text-gray-400 mt-6 max-w-3xl leading-relaxed">
                   Invaluabless Productions is a San Antonio recording studio for artists
                   who want clean vocals, hard-hitting mixes, and a professional recording
                   experience. We work with reggaeton, Latin, rap, trap, urban, and
                   Christian artists ready to take their sound seriously.
                 </p>
 
-                <p className="text-gray-400 mt-4 max-w-2xl leading-relaxed">
+                <p className="text-gray-400 mt-4 max-w-3xl leading-relaxed">
                   Whether you need recording, mixing, mastering, beat production, or artist
                   guidance, our studio is built to help you create music that sounds
                   polished, confident, and ready for release.
