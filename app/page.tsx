@@ -708,16 +708,6 @@ export default function Home() {
                         <br />
                         San Antonio, Texas 78221
                       </p>
-
-                      <div className="mt-4 overflow-hidden rounded-lg border border-white/10">
-                        <iframe
-                          src="https://www.google.com/maps?q=3200+Wright+Carpenter+Rd+San+Antonio+TX&output=embed"
-                          width="100%"
-                          height="220"
-                          style={{ border: 0 }}
-                          loading="lazy"
-                        ></iframe>
-                      </div>
                     </div>
                   </div>
 
