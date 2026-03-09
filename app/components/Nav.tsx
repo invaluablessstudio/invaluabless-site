@@ -25,7 +25,7 @@ export default function Nav() {
   { label: "Producer", mobileLabel: "Producer", href: "/producer" },
   { label: "Services", href: "/services" },
   {
-    label: "Artist Resources",
+    label: "Resources",
     mobileLabel: "Resources",
     href: "/resources",
   },
