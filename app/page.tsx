@@ -185,14 +185,6 @@ export default function Home() {
                   <span className="relative z-10">Hear the Work</span>
                   <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Link>
-
-                <Link
-                  href="/artist-development"
-                  className="group relative px-8 py-4 border border-white/15 text-white font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:border-[#ff0040] hover:text-white"
-                >
-                  <span className="relative z-10">Artist Development</span>
-                  <div className="absolute inset-0 bg-[#ff0040]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                </Link>
               </div>
 
               <div className="mt-16 flex gap-12 text-sm">
