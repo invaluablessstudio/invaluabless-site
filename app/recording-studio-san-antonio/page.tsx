@@ -231,97 +231,64 @@ export default function RecordingStudioSanAntonioPage() {
       <div className="relative z-20">
         <section className="relative flex min-h-screen items-center pt-20">
           <div className="mx-auto w-full max-w-7xl px-6 md:px-16">
-            <div
-              className={`grid items-center gap-10 transition-all duration-1000 ease-out lg:grid-cols-[1.1fr_0.9fr] ${
-                showHero ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              }`}
-            >
-              <div>
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="h-[1px] w-12 bg-[#ff0040]" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#00f0ff]">
-                    Recording Studio • San Antonio • Invaluabless Productions
-                  </p>
-                </div>
+          <div
+  className={`mx-auto max-w-5xl transition-all duration-1000 ease-out ${
+    showHero ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`}
+>
+  <div className="mb-6 flex items-center gap-4">
+    <div className="h-[1px] w-12 bg-[#ff0040]" />
+    <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#00f0ff]">
+      Recording Studio • San Antonio • Invaluabless Productions
+    </p>
+  </div>
 
-                <h1 className="font-urban text-6xl leading-[0.85] uppercase tracking-tighter md:text-8xl lg:text-9xl">
-                  <span className="block text-white">Recording</span>
-                  <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">
-                    Studio
-                  </span>
-                  <span className="block text-white/90">San Antonio</span>
-                </h1>
+  <h1 className="font-urban text-6xl leading-[0.85] uppercase tracking-tighter md:text-8xl lg:text-9xl">
+    <span className="block text-white">Recording</span>
+    <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">
+      Studio
+    </span>
+    <span className="block text-white/90">San Antonio</span>
+  </h1>
 
-                <div
-                  className="street-card street-hover mt-8 max-w-2xl p-6"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-                  <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
-                    Invaluabless Productions is a professional recording studio in San Antonio, TX
-                    specializing in reggaeton, Latin, rap, trap, urban, and Christian music.
-                    Book recording sessions, mixing, mastering, beat production, and artist support.
-                  </p>
-                </div>
+  <div
+    className="street-card street-hover mt-8 max-w-3xl p-6"
+    onMouseMove={handleCardMouseMove}
+    onMouseLeave={handleCardMouseLeave}
+  >
+    <div className="mouse-glow" />
+    <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
+      Invaluabless Productions is a professional recording studio in San Antonio, TX
+      specializing in recording sessions, mixing, mastering, beat production, and artist support.
+      Artists across reggaeton, Latin, rap, trap, urban, Christian, and vocal-driven music can book
+      a serious studio environment built for clean takes, strong performances, and release-ready sound.
+    </p>
+  </div>
 
-                <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/book"
-                    className="group relative overflow-hidden bg-[#ff0040] px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-all hover:glow-red"
-                  >
-                    <span className="relative z-10">Book Studio Session</span>
-                    <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
-                  </Link>
+  <div className="mt-10 flex flex-wrap gap-4">
+    <Link
+      href="/book"
+      className="group relative overflow-hidden bg-[#ff0040] px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-all hover:glow-red"
+    >
+      <span className="relative z-10">Book Studio Session</span>
+      <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
+    </Link>
 
-                  <Link
-                    href="/contact"
-                    className="group relative overflow-hidden border border-[#00f0ff] px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
-                  >
-                    <span className="relative z-10">Contact Studio</span>
-                    <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
-                  </Link>
-                </div>
-              </div>
+    <Link
+      href="/contact"
+      className="group relative overflow-hidden border border-[#00f0ff] px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
+    >
+      <span className="relative z-10">Contact Studio</span>
+      <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
+    </Link>
+  </div>
 
-              <div
-                className="street-card street-hover p-8"
-                onMouseMove={handleCardMouseMove}
-                onMouseLeave={handleCardMouseLeave}
-              >
-                <div className="mouse-glow" />
-                <p className="mb-6 text-white font-bold uppercase tracking-wider text-sm">
-                  Why this page matters
-                </p>
-
-                <div className="space-y-4">
-                  {[
-                    "Recording studio in San Antonio",
-                    "Reggaeton and Latin artist support",
-                    "Professional mixing and mastering",
-                    "Booking-ready local studio page",
-                  ].map((item, i) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 border border-white/10 bg-white/[0.03] px-4 py-4"
-                    >
-                      <span
-                        className={`h-2.5 w-2.5 rounded-full ${
-                          i % 2 === 0 ? "bg-[#ff0040]" : "bg-[#00f0ff]"
-                        }`}
-                      />
-                      <span className="text-sm uppercase tracking-wider text-gray-300">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="mt-6 text-xs uppercase tracking-[0.25em] text-gray-500">
-                  Built to rank. Built to convert.
-                </p>
-              </div>
-            </div>
+  <div className="sr-only">
+    Recording studio in San Antonio. Professional mixing and mastering.
+    Reggaeton, Latin, rap, trap, urban, Christian, and vocal recording support.
+    Local booking-ready studio page for San Antonio artists.
+  </div>
+</div>
           </div>
         </section>
 
