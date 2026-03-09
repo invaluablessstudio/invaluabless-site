@@ -70,8 +70,30 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "MusicRecordingStudio",
+    name: "Invaluabless Productions",
+    image: "https://www.invaluablessproduction.com/images/studio-wide-led.jpeg",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "3200 Wright Carpenter Rd",
+      addressLocality: "San Antonio",
+      addressRegion: "TX",
+      postalCode: "78221",
+      addressCountry: "US",
+    },
+    url: "https://www.invaluablessproduction.com",
+    telephone: "+1-210-608-6422",
+  };
+
   return (
     <main className="relative min-h-screen text-white bg-transparent">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
       {/* ===== BACKGROUND STACK (fixed, behind everything) ===== */}
       <div className="fixed inset-0 -z-20 pointer-events-none">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
@@ -599,6 +621,58 @@ export default function Home() {
           </FadeInSection>
         </section>
 
+        {/* ================= TESTIMONIALS ================= */}
+        <section className="py-20 border-t border-white/5">
+          <FadeInSection>
+            <div className="max-w-7xl mx-auto px-6 md:px-16">
+              <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4 text-center">
+                Artist Feedback
+              </p>
+
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase text-center mb-16">
+                What Artists <span className="text-[#ff0040]">Say</span>
+              </h2>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    quote:
+                      "Observing Jeovanne Díaz's work, I recognized the caliber of content I sought. Exiting the studio today, his professionalism and expertise not only fulfilled my expectations but exceeded them by miles!",
+                    artist: "QUIN7IN",
+                  },
+                  {
+                    quote:
+                      "Jeovanne understands reggaeton and Latin sound. He pushes you to record your best performance.",
+                    artist: "Xziel",
+                  },
+                  {
+                    quote:
+                      "Professional environment, great energy, and the final product always sounds industry ready.",
+                    artist: "Sammy D",
+                  },
+                ].map((t) => (
+                  <div
+                    key={t.artist}
+                    className="street-card street-hover p-8 border border-white/10 bg-white/[0.02]"
+                    onMouseMove={handleCardMouseMove}
+                    onMouseLeave={handleCardMouseLeave}
+                  >
+                    <div className="mouse-glow" />
+
+                    <p className="text-gray-300 leading-relaxed italic mb-6">
+                      "{t.quote}"
+                    </p>
+
+                    <p className="text-[#ff0040] text-sm uppercase tracking-wider font-bold">
+                      — {t.artist}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
+
         {/* ================= CONTACT ================= */}
         <section id="contact" className="py-20 relative">
           <FadeInSection>
@@ -634,6 +708,16 @@ export default function Home() {
                         <br />
                         San Antonio, Texas 78221
                       </p>
+
+                      <div className="mt-4 overflow-hidden rounded-lg border border-white/10">
+                        <iframe
+                          src="https://www.google.com/maps?q=3200+Wright+Carpenter+Rd+San+Antonio+TX&output=embed"
+                          width="100%"
+                          height="220"
+                          style={{ border: 0 }}
+                          loading="lazy"
+                        ></iframe>
+                      </div>
                     </div>
                   </div>
 
