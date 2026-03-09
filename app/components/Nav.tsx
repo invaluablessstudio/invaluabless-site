@@ -21,19 +21,18 @@ export default function Nav() {
   }, [pathname]);
 
   const navItems = [
-    { label: "Work", href: "/work" },
-    { label: "The Producer", mobileLabel: "Producer", href: "/producer" },
-    { label: "Services", href: "/services" },
-    { label: "Artists", href: "/artists" },
-    { label: "Studio", href: "/recording-studio-san-antonio" },
-    { label: "Contact", href: "/contact" },
-    {
-      label: "Artist Development",
-      mobileLabel: "Development",
-      href: "/artist-development",
-    },
-    { label: "Book", href: "/book", highlight: true },
-  ];
+  { label: "Work", href: "/work" },
+  { label: "Producer", mobileLabel: "Producer", href: "/producer" },
+  { label: "Services", href: "/services" },
+  { label: "Studio", href: "/recording-studio-san-antonio" },
+  { label: "Contact", href: "/contact" },
+  {
+    label: "Artist Development",
+    mobileLabel: "Development",
+    href: "/artist-development",
+  },
+  { label: "Book", href: "/book", highlight: true },
+];
 
   return (
     <>
@@ -73,10 +72,10 @@ export default function Nav() {
                   key={item.href}
                   href={item.href}
                   className={`relative text-sm font-medium uppercase tracking-wider transition-all ${
-                    item.highlight
-                      ? "bg-[#ff0040] px-6 py-2.5 text-black hover:glow-red"
-                      : "text-gray-300 hover:text-white"
-                  } ${pathname === item.href && !item.highlight ? "text-white" : ""}`}
+  item.highlight
+    ? "ml-4 bg-[#ff0040] px-6 py-2.5 text-black hover:glow-red"
+    : "text-gray-300 hover:text-white"
+} ${pathname === item.href && !item.highlight ? "text-white" : ""}`}
                 >
                   {item.label}
                   {!item.highlight && pathname === item.href && (
