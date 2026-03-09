@@ -147,7 +147,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Updated Hero Buttons */}
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="/book"
@@ -548,58 +547,53 @@ export default function Home() {
         <section id="san-antonio-studio" className="py-20">
           <FadeInSection>
             <div className="max-w-7xl mx-auto px-6 md:px-16">
-              <div className="grid md:grid-cols-2 gap-10 items-start">
-                <div>
-                  <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
-                    Recording Studio in San Antonio
-                  </p>
+              <div className="mx-auto max-w-4xl text-left">
+                <p className="text-[#00f0ff] text-xs uppercase tracking-[0.3em] mb-4">
+                  Recording Studio in San Antonio
+                </p>
 
-                  <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">
-                    Built for Artists in
-                    <br />
-                    <span className="text-[#ff0040]">San Antonio, TX</span>
-                  </h2>
+                <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">
+                  Built for Artists in
+                  <br />
+                  <span className="text-[#ff0040]">San Antonio, TX</span>
+                </h2>
 
-                  <p className="text-gray-400 mt-6 max-w-xl leading-relaxed">
-                    Invaluabless Productions is a San Antonio recording studio for artists
-                    who want clean vocals, hard-hitting mixes, and a professional recording
-                    experience. We work with reggaeton, Latin, rap, trap, urban, and
-                    Christian artists ready to take their sound seriously.
-                  </p>
+                <p className="text-gray-400 mt-6 max-w-2xl leading-relaxed">
+                  Invaluabless Productions is a San Antonio recording studio for artists
+                  who want clean vocals, hard-hitting mixes, and a professional recording
+                  experience. We work with reggaeton, Latin, rap, trap, urban, and
+                  Christian artists ready to take their sound seriously.
+                </p>
 
-                  <p className="text-gray-400 mt-4 max-w-xl leading-relaxed">
-                    Whether you need recording, mixing, mastering, beat production, or artist
-                    guidance, our studio is built to help you create music that sounds
-                    polished, confident, and ready for release.
-                  </p>
+                <p className="text-gray-400 mt-4 max-w-2xl leading-relaxed">
+                  Whether you need recording, mixing, mastering, beat production, or artist
+                  guidance, our studio is built to help you create music that sounds
+                  polished, confident, and ready for release.
+                </p>
 
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <Link
-                      href="/book"
-                      className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
-                    >
-                      <span className="relative z-10">Book San Antonio Session</span>
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                    </Link>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/book"
+                    className="group relative px-8 py-4 bg-[#ff0040] text-black font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-red"
+                  >
+                    <span className="relative z-10">Book San Antonio Session</span>
+                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  </Link>
 
-                    <Link
-                      href="/contact"
-                      className="group relative px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-cyan"
-                    >
-                      <span className="relative z-10">Contact the Studio</span>
-                      <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                    </Link>
-                  </div>
-
-                  {/* SEO keywords kept invisible */}
-                  <div className="sr-only">
-                    Recording Studio San Antonio. Reggaeton Studio San Antonio. Latin
-                    Recording Studio San Antonio. Rap Studio San Antonio. Mixing and
-                    Mastering San Antonio. Music Production San Antonio.
-                  </div>
+                  <Link
+                    href="/contact"
+                    className="group relative px-8 py-4 border border-[#00f0ff] text-[#00f0ff] font-bold uppercase tracking-wider text-sm overflow-hidden transition-all hover:glow-cyan"
+                  >
+                    <span className="relative z-10">Contact the Studio</span>
+                    <div className="absolute inset-0 bg-[#00f0ff]/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  </Link>
                 </div>
 
-                <div className="hidden md:block" aria-hidden="true" />
+                <div className="sr-only">
+                  Recording Studio San Antonio. Reggaeton Studio San Antonio. Latin
+                  Recording Studio San Antonio. Rap Studio San Antonio. Mixing and
+                  Mastering San Antonio. Music Production San Antonio.
+                </div>
               </div>
             </div>
           </FadeInSection>
