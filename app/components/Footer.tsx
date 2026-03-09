@@ -4,7 +4,7 @@ const navLinks = [
   { label: "Work", href: "/work" },
   { label: "Producer", href: "/producer" },
   { label: "Services", href: "/services" },
-  { label: "Artists", href: "/artists" },
+  { label: "Rsources", href: "/resources" },
   { label: "Studio", href: "/recording-studio-san-antonio" },
   { label: "Contact", href: "/contact" },
   { label: "Artist Development", href: "/artist-development" },
