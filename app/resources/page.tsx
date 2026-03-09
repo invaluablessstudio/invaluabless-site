@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ArtistDownloads from "../components/ArtistDownloads";
+import ResourceDownloads from "../components/ResourceDownloads";
 import {
   Mic2,
   Music3,
@@ -199,7 +199,7 @@ function SectionHeading({
   );
 }
 
-export default function ArtistsPage() {
+export default function ResourcesPage() {
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -285,7 +285,7 @@ export default function ArtistsPage() {
                 >
                   <div className="mouse-glow" />
                   <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
-                    Everything your artists need before the session, during the recording process,
+                    Everything artists need before the session, during the recording process,
                     and after the music is done so they move with more confidence and professionalism.
                   </p>
                 </div>
@@ -360,9 +360,9 @@ export default function ArtistsPage() {
                 </div>
 
                 <div className="absolute -bottom-6 -right-6 bg-[#ff0040] p-6 font-mono text-black">
-                  <p className="text-3xl font-bold">INV</p>
-                  <p className="text-sm uppercase tracking-wider">Resources</p>
-                </div>
+  <p className="text-2xl font-bold">Artist</p>
+  <p className="text-xs uppercase tracking-[0.3em]">Resources</p>
+</div>
               </div>
             </div>
           </div>
@@ -493,7 +493,7 @@ export default function ArtistsPage() {
                     Useful next steps
                   </h2>
                   <p className="mt-5 text-sm leading-7 text-gray-400">
-                    Download these tools to help your artists prepare, organize ownership, and release music more professionally.
+                    Download these tools to help you prepare, organize ownership, and release music more professionally.
                   </p>
 
                   <div className="mt-8 space-y-4">
@@ -607,9 +607,12 @@ export default function ArtistsPage() {
                       <li>Creative direction</li>
                       <li>Release strategy support</li>
                     </ul>
-                    <div className="relative mt-8 inline-block overflow-hidden border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white/70">
-  <span className="relative z-10">Artist Development — Coming Soon</span>
-</div>
+                    <Link
+  href="/artist-development"
+  className="group relative mt-8 inline-block overflow-hidden border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all hover:border-[#ff0040] hover:text-white"
+>
+  <span className="relative z-10">Explore Artist Development</span>
+</Link>
                   </div>
                 </div>
               </div>
@@ -697,7 +700,7 @@ export default function ArtistsPage() {
           </FadeInSection>
         </section>
       </div>
-      <ArtistDownloads />
+      <ResourceDownloads />
     </main>
   );
 }

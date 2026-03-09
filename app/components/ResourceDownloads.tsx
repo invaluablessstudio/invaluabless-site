@@ -18,7 +18,7 @@ const downloads = [
   },
 ];
 
-export default function ArtistDownloads() {
+export default function ResourceDownloads() {
   return (
     <section className="relative border-t border-white/10 py-20">
 

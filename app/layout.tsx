@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import ArtistDownloads from "./components/ArtistDownloads";
+import ArtistDownloads from "./components/ResourceDownloads";
 import PageTransition from "./components/PageTransition";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";

@@ -24,6 +24,11 @@ export default function Nav() {
   { label: "Work", href: "/work" },
   { label: "Producer", mobileLabel: "Producer", href: "/producer" },
   { label: "Services", href: "/services" },
+  {
+    label: "Artist Resources",
+    mobileLabel: "Resources",
+    href: "/resources",
+  },
   { label: "Studio", href: "/recording-studio-san-antonio" },
   { label: "Contact", href: "/contact" },
   {
