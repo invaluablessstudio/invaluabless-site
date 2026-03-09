@@ -359,9 +359,8 @@ export default function ResourcesPage() {
                   </div>
                 </div>
 
-                <div className="absolute -bottom-6 -right-6 bg-[#ff0040] p-6 font-mono text-black">
-  <p className="text-2xl font-bold">Artist</p>
-  <p className="text-xs uppercase tracking-[0.3em]">Resources</p>
+                <div className="absolute -bottom-4 right-0 sm:-bottom-6 sm:-right-6 bg-[#ff0040] px-4 py-3 sm:p-6 font-mono text-black">
+  <p className="text-xl sm:text-2xl font-bold leading-none uppercase">Resources</p>
 </div>
               </div>
             </div>
