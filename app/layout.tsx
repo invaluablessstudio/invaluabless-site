@@ -5,8 +5,10 @@ import type { Metadata } from "next";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import ArtistDownloads from "./components/ResourceDownloads";
+import ResourcesDownloads from "./components/ResourceDownloads";
 import PageTransition from "./components/PageTransition";
+import { BeatPlayerProvider } from "./components/BeatPlayerProvider";
+import GlobalBeatPlayer from "./components/GlobalBeatPlayer";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
     default: "Invaluabless Productions | Recording Studio San Antonio",
     template: "%s • Invaluabless Productions",
   },
- description:
-  "Invaluabless Productions is a professional recording studio in San Antonio, TX specializing in reggaeton, Latin, rap, trap, and Christian music. Book recording sessions, mixing, mastering, and beat production.",
+  description:
+    "Invaluabless Productions is a professional recording studio in San Antonio, TX specializing in reggaeton, Latin, rap, trap, and Christian music. Book recording sessions, mixing, mastering, and beat production.",
   applicationName: "Invaluabless Productions",
   icons: {
     icon: "/logo.png",
@@ -74,8 +76,8 @@ const structuredData = {
     addressCountry: "US",
   },
   areaServed: "San Antonio, TX",
-keywords:
-  "recording studio San Antonio, music studio San Antonio, reggaeton studio San Antonio, Latin recording studio, rap studio San Antonio, mixing mastering San Antonio",
+  keywords:
+    "recording studio San Antonio, music studio San Antonio, reggaeton studio San Antonio, Latin recording studio, rap studio San Antonio, mixing mastering San Antonio",
 };
 
 export default function RootLayout({
@@ -99,7 +101,6 @@ export default function RootLayout({
         />
       </head>
 
-      {/* IMPORTANT: body must be transparent so page-level backgrounds can show */}
       <body className="bg-transparent text-white antialiased">
         {GA_ID && (
           <>
@@ -119,18 +120,23 @@ export default function RootLayout({
           </>
         )}
 
-        {/* Nav + footer must sit above any fixed overlays inside pages */}
-        <div className="relative z-50">
-          <Nav />
-        </div>
+        <BeatPlayerProvider>
+          <div className="relative z-50">
+            <Nav />
+          </div>
 
-        <PageTransition>{children}</PageTransition>
+          <div className="pb-32
+          ">
+            <PageTransition>{children}</PageTransition>
+          </div>
 
-        <div className="relative z-50">
-          <Footer />
-        </div>
+          <div className="relative z-50">
+            <Footer />
+          </div>
 
-        {/* Vercel Speed Insights */}
+          <GlobalBeatPlayer />
+        </BeatPlayerProvider>
+
         <SpeedInsights />
         <Analytics />
       </body>

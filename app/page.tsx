@@ -135,7 +135,7 @@ export default function Home() {
       {/* ===== CONTENT WRAPPER ===== */}
       <div className="relative z-20">
         {/* ================= HERO ================= */}
-        <section className="h-screen flex items-center relative pt-20">
+        <section className="min-h-screen flex items-center relative pt-24 md:pt-28">
           <div className="max-w-7xl mx-auto px-6 md:px-16 w-full">
             <div
               className={`transition-all duration-1000 ease-out ${
