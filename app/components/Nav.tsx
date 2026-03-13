@@ -49,7 +49,7 @@ export default function Nav() {
   };
 
   const desktopPrimaryItems: NavItem[] = [
-    { label: "Producer", href: "/producer" },
+    { label: "The Producer", href: "/producer" },
     { label: "Artist Development", href: "/artist-development" },
   ];
 
