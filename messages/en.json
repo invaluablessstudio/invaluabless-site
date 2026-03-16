@@ -1,0 +1,706 @@
+{
+  "Nav": {
+    "producer": "The Producer",
+    "artistDevelopment": "Artist Development",
+    "work": "Work",
+    "services": "Services",
+    "resources": "Resources",
+    "studio": "Studio",
+    "contact": "Contact",
+    "book": "Book",
+    "menu": "Menu",
+    "toggleMenu": "Toggle menu",
+    "language": "Language"
+  },
+  "Footer": {
+    "navigate": "Navigate",
+    "contact": "Contact",
+    "brandDescription": "Professional recording studio in San Antonio, Texas. Specializing in reggaeton, Latin, rap, trap, urban music production, and artist development.",
+    "nowBooking": "Now Booking",
+    "copyright": "Invaluabless Productions"
+  },
+  "Home": {
+    "heroBadge": "San Antonio, TX • Since 2021",
+    "heroLine1": "Make",
+    "heroLine2": "Noise",
+    "heroLine3": "That Hits",
+    "heroIntro": "Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean vocals. Industry-ready mixes that slap.",
+    "ctaBook": "Book Session",
+    "ctaWork": "Hear the Work",
+
+    "statTracks": "Tracks Mixed",
+    "statArtists": "Artists",
+    "statYears": "Years",
+
+    "producerEyebrow": "The Producer",
+    "producerRole": "Founder • Recording Engineer • Producer",
+    "producerStory1": "Started in Puerto Rico in '09. Just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers.",
+    "producerStory2": "2010: La Caldera Records. Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH).",
+    "producerStory3": "2013: Propiedad Urbana & Unstopable Studios. San Juan was the next level. Sessions with YOMO, El Larax, Nencho el León Salvaje, Bimbo El Oso Mañoso, and more.",
+    "producerStory4": "NOW: Based in San Antonio — focused on clean, heavy, release-ready records.",
+    "producerQuote": "Clean vocals. Heavy low end — if it doesn’t hit in the car at night, it’s not done.",
+    "producerTagline": "Play it loud. That's the test.",
+
+    "creditsEyebrow": "Selected Credits",
+    "creditsTitle": "Heavy Hitters",
+    "creditsPuertoRico": "Puerto Rico",
+    "creditsUsaTexas": "USA / Texas",
+    "creditsStudios": "Studios",
+    "creditsCertification": "Certification",
+    "creditsStudiosText": "La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)",
+    "creditsCertificationText": "Recording Engineer — CCAT, Bayamón, Puerto Rico",
+
+    "studioEyebrow": "The Studio",
+    "studioTitle1": "Built for Sound.",
+    "studioTitle2": "Designed for Sessions.",
+    "studioCard1Title": "Recording",
+    "studioCard1Desc": "Vocals, instruments, full bands. Clean signal chain, pro environment.",
+    "studioCard2Title": "Mix & Master",
+    "studioCard2Desc": "Radio-ready, club-tested, headphone-approved. Your sound, elevated.",
+    "studioCard3Title": "Beats",
+    "studioCard3Desc": "Original production. Reggaeton, trap, rap, Latin. Custom or licensed.",
+    "studioCard4Title": "Artist Development",
+    "studioCard4Desc": "Structured support for artists who want direction, accountability, release strategy, and long-term growth.",
+    "learnMore": "Learn More →",
+
+    "seoEyebrow": "Recording Studio in San Antonio",
+    "seoTitle1": "Built for Artists in",
+    "seoTitle2": "San Antonio, TX",
+    "seoParagraph1": "Invaluabless Productions is a San Antonio recording studio for artists who want clean vocals, hard-hitting mixes, and a professional recording experience. We work with reggaeton, Latin, rap, trap, urban, and Christian artists ready to take their sound seriously.",
+    "seoParagraph2": "Whether you need recording, mixing, mastering, beat production, or artist guidance, our studio is built to help you create music that sounds polished, confident, and ready for release.",
+    "seoCtaBook": "Book San Antonio Session",
+    "seoCtaContact": "Contact the Studio",
+
+    "testimonialsEyebrow": "Artist Feedback",
+    "testimonialsTitle1": "What Artists",
+    "testimonialsTitle2": "Say",
+
+    "contactEyebrow": "Get In Touch",
+    "contactTitle": "Let's Work",
+    "contactIntro": "Ready to make records that last? Let's build your sound.",
+    "contactStudio": "Studio",
+    "contactEmail": "Email",
+    "contactFollow": "Follow the Work",
+    "contactBookings": "Bookings:",
+    "contactBeats": "Beats:",
+    "contactGeneral": "General:",
+    "contactCta": "Book Your Session"
+  },
+  "Book": {
+    "eyebrow": "Lock Your Slot",
+    "title": "Book",
+    "intro": "Choose an available session time. Real-time updates.",
+    "trust1": "Secure booking",
+    "trust2": "Deposit confirms slot",
+    "trust3": "Live availability",
+    "depositBannerTitle": "Deposit required to lock session",
+    "payDeposit": "Pay Deposit",
+    "iframeTitle": "Book a session",
+    "textButton": "Text",
+    "studioLabel": "InvaluaBless Studio",
+    "studioImageAlt": "Studio microphone",
+    "reviewsTitle": "Google Reviews",
+    "close": "Close",
+    "depositModalSubtitle": "Choose a method. Booking confirmed after deposit received.",
+    "openCashApp": "Open Cash App link",
+    "openPayPal": "Open PayPal link",
+    "sendToPhone": "Send to this phone number",
+    "receiptNote": "Keep receipt screenshot. Text us if you need help.",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "Services": {
+    "eyebrow": "What We Do",
+    "title": "Services",
+    "ctaBook": "Book Session",
+    "intro": "Heavy 808s. Clean vocals. Industry-ready mixes that slap. Built for reggaeton, trap, and Latin artists.",
+
+    "recordingTitle": "Recording",
+    "recordingDesc": "Professional recording for vocals and instruments with clean takes, strong performance coaching, and a serious studio workflow.",
+    "recordingNote": "2 hour minimum",
+
+    "mixingTitle": "Mixing",
+    "mixingDesc": "808s that hit. Vocals that cut. Radio-ready balance with clarity and punch that translates everywhere.",
+    "mixingNote": "Per song",
+
+    "masteringTitle": "Mastering",
+    "masteringDesc": "Final polish and platform-ready loudness. Clean dynamics optimized for streaming services.",
+    "masteringNote": "Per song",
+
+    "beatsTitle": "Beat Production",
+    "beatsDesc": "Original production for reggaeton, trap, rap, Latin, and urban artists. Built to match your sound and direction.",
+    "beatsNote": "Custom production",
+
+    "podcastTitle": "Podcast Recording",
+    "podcastDesc": "Clean, professional spoken-word recording for podcasts, interviews, and voice content.",
+    "podcastNote": "Per session",
+
+    "vocalCoachingTitle": "Vocal Coaching",
+    "vocalCoachingDesc": "Performance guidance during recording to help artists improve delivery, confidence, and vocal execution.",
+    "vocalCoachingNote": "Included with recording",
+    "includedPrice": "Included",
+
+    "processTitle": "How It Works",
+    "processIntro": "Real-time calendar booking. Deposit locks the time. Automated confirmations handle the rest.",
+    "openCalendar": "Open Calendar",
+
+    "step1Title": "Book on Calendar",
+    "step1Desc": "Choose an available time directly on our live calendar — no back-and-forth.",
+    "step1Tag": "Live availability",
+
+    "step2Title": "Pay Deposit",
+    "step2Desc": "Follow the deposit instructions on the booking page. Deposit locks your session time.",
+    "step2Tag": "No deposit = not locked",
+
+    "step3Title": "Auto Confirm",
+    "step3Desc": "Once payment is received, you’ll get automated confirmation and session instructions.",
+    "step3Tag": "Email confirmation",
+
+    "processFooter": "Choose your time on the calendar → pay the deposit → receive automatic confirmation and instructions."
+  },
+  "StudioPage": {
+    "hero": {
+      "eyebrow": "Recording Studio • San Antonio • Invaluabless Productions",
+      "line1": "Recording",
+      "line2": "Studio",
+      "line3": "San Antonio",
+      "description": "Invaluabless Productions is a professional recording studio in San Antonio, TX specializing in recording sessions, mixing, mastering, beat production, and artist support. Artists across reggaeton, Latin, rap, trap, urban, Christian, and vocal-driven music can book a serious studio environment built for clean takes, strong performances, and release-ready sound.",
+      "ctaBook": "Book Studio Session",
+      "ctaContact": "Contact Studio",
+      "srOnly": "Recording studio in San Antonio. Professional mixing and mastering. Reggaeton, Latin, rap, trap, urban, Christian, and vocal recording support. Local booking-ready studio page for San Antonio artists."
+    },
+    "servicesSection": {
+      "eyebrow": "Studio Services",
+      "title": "What we offer",
+      "description": "Clear service signals help both artists and Google understand exactly what your studio does."
+    },
+    "services": {
+      "recording": {
+        "title": "Recording Sessions",
+        "description": "Professional vocal recording for artists who want clean takes, better performances, and a serious studio workflow."
+      },
+      "mixing": {
+        "title": "Mixing",
+        "description": "Balanced, polished mixes built to hit on headphones, in the car, and across streaming platforms."
+      },
+      "mastering": {
+        "title": "Mastering",
+        "description": "Final loudness, clarity, and consistency so your track feels release-ready and competitive."
+      },
+      "beats": {
+        "title": "Beat Production",
+        "description": "Original production for reggaeton, rap, trap, Latin, and urban artists who need a stronger sound."
+      },
+      "podcast": {
+        "title": "Podcast Recording",
+        "description": "Clean, professional audio recording for podcasters and spoken-word projects."
+      },
+      "vocalCoaching": {
+        "title": "Vocal Coaching",
+        "description": "Guidance during the session to help artists improve delivery, confidence, and performance."
+      }
+    },
+    "whySection": {
+      "eyebrow": "Why Artists Record Here",
+      "title": "Built for real sessions"
+    },
+    "reasons": [
+      "Professional vocal recording environment",
+      "Mixing and mastering support",
+      "Guidance during the session",
+      "Comfortable, artist-focused workflow",
+      "Built for serious independent artists",
+      "Release-ready sound approach"
+    ],
+    "areasSection": {
+      "eyebrow": "Serving Local Artists",
+      "title": "San Antonio and surrounding areas",
+      "description": "This section strengthens local relevance for search and helps artists know you serve their area.",
+      "label": "Areas We Serve"
+    },
+    "areas": [
+      "South San Antonio",
+      "Downtown San Antonio",
+      "Alamo Heights",
+      "Stone Oak",
+      "Universal City",
+      "Converse",
+      "Live Oak",
+      "Nearby Texas artists"
+    ],
+    "faqSection": {
+      "eyebrow": "FAQ",
+      "title": "Questions artists ask",
+      "description": "Helpful for visitors and useful for search engines."
+    },
+    "faqs": [
+      {
+        "question": "How much does a recording session cost?",
+        "answer": "Recording sessions are $75 per hour with a 2 hour minimum. Reach out if you need mixing, mastering, beat production, or podcast pricing."
+      },
+      {
+        "question": "Do you work with beginner artists?",
+        "answer": "Yes. Invaluabless Productions works with both beginners and experienced artists, and vocal coaching is included during recording sessions."
+      },
+      {
+        "question": "Do you mix and master music?",
+        "answer": "Yes. Mixing and mastering services are available for artists who want a polished, release-ready final sound."
+      },
+      {
+        "question": "What genres do you record?",
+        "answer": "We work with reggaeton, Latin, rap, trap, urban, singers, and Christian artists in San Antonio and beyond."
+      }
+    ],
+    "cta": {
+      "eyebrow": "Book Your Session",
+      "title": "Ready To Record",
+      "description": "Book your studio session in San Antonio and let’s create something that hits.",
+      "bookButton": "Book Studio Session",
+      "contactButton": "Contact Studio"
+    }
+  },
+  "ContactPage": {
+    "heroEyebrow": "Contact • Bookings • Studio Info",
+    "heroLine1": "Let's",
+    "heroLine2": "Work",
+    "heroLine3": "Together",
+    "heroIntro": "Ready to book a session, ask a question, or talk about your next project? Reach out and let’s build something that hits the right way.",
+    "bookButton": "Book Session",
+    "emailButton": "Email Studio",
+    "locationTitle": "Studio Location",
+    "hoursTitle": "Booking Hours",
+    "hoursLine1": "Sessions by appointment.",
+    "hoursLine2": "Book in advance to lock in your preferred time.",
+    "detailsEyebrow": "Contact Details",
+    "detailsTitle": "Reach The Studio",
+    "bookingsTitle": "Bookings",
+    "beatsTitle": "Beats",
+    "generalTitle": "General",
+    "followEyebrow": "Follow The Work",
+    "followTitle": "Stay Connected",
+    "ctaEyebrow": "Lock In",
+    "ctaTitle": "Ready To Record",
+    "ctaDescription": "Book your time, come prepared, and let’s create something powerful.",
+    "ctaBookButton": "Book Your Session",
+    "ctaEmailButton": "Email Studio"
+  },
+  "ProducerPage": {
+    "eyebrow": "The Producer",
+    "photoAlt": "Jeovanne Diaz - Invaluabless Productions Music Producer",
+    "photoTitle": "Clean Vocals. Heavy Low End.",
+    "photoSubtitle": "Play it loud. That's the test.",
+    "years": "Years",
+    "statTracks": "Tracks Mixed",
+    "statArtists": "Artists",
+    "statYears": "Years",
+    "intro1": "Started in Puerto Rico in",
+    "intro2": "'09",
+    "intro3": "Built through real rooms, real pressure, and real records — now based in",
+    "intro4": "San Antonio",
+    "intro5": "focused on one thing: making mixes that sound clean, heavy, and ready for release.",
+    "storyEyebrow": "The Story",
+    "story1": "Started with just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers.",
+    "story2Title": "2010: La Caldera Records.",
+    "story2": "Built inside a barber shop in Quebradillas with my friend Josue Tosado (MR KUSH). Artists came in, records got made, and the sound kept improving.",
+    "story3Title": "2013: Propiedad Urbana & Unstopable Studios.",
+    "story3a": "San Juan was the next level. Sessions with",
+    "story3b": "and more. I earned my certification as a Recording Engineer — but more importantly, I earned trust in the room.",
+    "story4Title": "NOW:",
+    "story4": "Based in San Antonio — focused on clean, heavy, release-ready records.",
+    "quote": "Clean vocals. Heavy low end — If it don’t hit in the car at night, it’s not done.",
+    "tagline": "Play it loud. That's the test.",
+    "creditsTitle": "Selected Credits",
+    "creditsTag": "PR • Texas • Worldwide",
+    "creditsPR": "Puerto Rico",
+    "creditsTX": "USA / Texas",
+    "studiosTitle": "Studios",
+    "studiosText": "La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)",
+    "certTitle": "Certification",
+    "certText": "Recording Engineer — CCAT, Bayamón, Puerto Rico",
+    "workTitle": "Let's Work",
+    "studioTitle": "Studio",
+    "emailTitle": "Email",
+    "bookingsLabel": "Bookings:",
+    "beatsLabel": "Beats:",
+    "generalLabel": "General:",
+    "followTitle": "Follow the Work",
+    "ctaBook": "Book Your Session"
+  },
+  "WorkPage": {
+    "eyebrow": "Recent Drops",
+    "title": "Work",
+    "bookButton": "Book Session",
+    "intro": "Play it loud. That's the test.",
+    "ctaTitle1": "Ready to",
+    "ctaTitle2": "Create",
+    "ctaDescription": "Stop waiting. Start recording. Your sound is waiting.",
+    "ctaButton": "Lock In Your Session",
+    "close": "Close",
+    "videoPlayerTitle": "YouTube video player"
+  },
+  "ResourcesPage": {
+    "heroEyebrow": "Artist Resources • Session Prep • Release Strategy",
+    "heroLine1": "Move",
+    "heroLine2": "Smarter",
+    "heroLine3": "Create Better",
+    "heroIntro": "Everything artists need before the session, during the recording process, and after the music is done so they move with more confidence and professionalism.",
+    "heroBookButton": "Book Session",
+    "heroResourcesButton": "Explore Resources",
+    "heroImageAlt": "Artist recording in studio",
+    "heroBadgeEyebrow": "Studio Standard",
+    "heroBadgeText": "Come prepared. Record clean. Release right.",
+    "heroSticker": "Resources",
+    "stats": {
+      "sessionMinimum": "Session Minimum",
+      "workflow": "Workflow",
+      "readyValue": "Ready",
+      "readyLabel": "To Release"
+    },
+    "beforeSession": {
+      "eyebrow": "Before Your Session",
+      "title": "Show up ready",
+      "description": "These basics save time, help you sound better, and make the most of every paid hour in the studio."
+    },
+    "prepCards": [
+      {
+        "title": "Prepare Your Song",
+        "description": "Practice your lyrics before arriving. Know your flow, timing, ad-libs, and structure so your session moves faster."
+      },
+      {
+        "title": "Bring Your Beat",
+        "description": "Bring your instrumental in WAV preferred or high-quality MP3. Send it ahead of time or bring it on a USB."
+      },
+      {
+        "title": "Hydrate Your Voice",
+        "description": "Drink water, avoid dairy before recording, and warm up your voice if you are singing or recording melodic vocals."
+      }
+    ],
+    "policies": {
+      "eyebrow": "Studio Policies",
+      "title": "Respect the process",
+      "description": "Clear expectations protect the session, the workflow, and the final quality of the music."
+    },
+    "policyCards": [
+      {
+        "title": "Deposit Required",
+        "description": "A deposit is required to confirm and hold your booking."
+      },
+      {
+        "title": "2 Hour Minimum",
+        "description": "Recording sessions start at a 2 hour minimum."
+      },
+      {
+        "title": "No Split = No Release",
+        "description": "All collaborators should complete split sheet information before release when applicable."
+      }
+    ],
+    "releaseSection": {
+      "eyebrow": "Release Checklist",
+      "title": "From session to drop",
+      "description": "Use this as your simple release roadmap so finished songs do not stay sitting on your hard drive."
+    },
+    "releaseChecklist": [
+      "Record your song",
+      "Mix and master your final track",
+      "Finalize your cover artwork",
+      "Complete split sheet information",
+      "Register your song with your PRO if needed",
+      "Upload to Spotify, Apple Music, and other DSPs",
+      "Promote your release on Instagram, TikTok, and YouTube"
+    ],
+    "toolsSection": {
+      "eyebrow": "Free Artist Tools",
+      "title": "Useful next steps",
+      "description": "Download these tools to help you prepare, organize ownership, and release music more professionally."
+    },
+    "resourceLinks": [
+      {
+        "title": "Studio Session Checklist",
+        "description": "A simple guide to help artists show up prepared and ready to record."
+      },
+      {
+        "title": "Split Sheet Template",
+        "description": "Make sure everyone involved in the song agrees on ownership before release."
+      },
+      {
+        "title": "Song Release Checklist",
+        "description": "Use this checklist to move from recording to distribution with more confidence."
+      },
+      {
+        "title": "Vocal Recording Guide",
+        "description": "Simple tips to help artists record stronger vocals in the studio."
+      }
+    ],
+    "developmentSection": {
+      "eyebrow": "Artist Development",
+      "title": "More than one session?",
+      "description": "Ask about artist development support for artists who want consistency, direction, and a better release process from song to song."
+    },
+    "developmentCard": {
+      "title": "Artist Development Program",
+      "items": [
+        "Recording support",
+        "Mix and master guidance",
+        "Creative direction",
+        "Release strategy support"
+      ],
+      "button": "Explore Artist Development"
+    },
+    "faqSection": {
+      "eyebrow": "FAQ",
+      "title": "Questions artists ask",
+      "description": "This helps answer common concerns before somebody reaches out or books."
+    },
+    "faqs": [
+      {
+        "question": "How long does it take to record a song?",
+        "answer": "Most songs take around 2 to 4 hours depending on preparation, performance, and how many layers you want to record."
+      },
+      {
+        "question": "Do you provide beats?",
+        "answer": "Yes. Beat production is available if you need an original sound built for your project."
+      },
+      {
+        "question": "Can beginners record here?",
+        "answer": "Yes. We work with beginners and experienced artists, and vocal coaching is included during recording sessions."
+      },
+      {
+        "question": "Can I record Christian, urban, reggaeton, or Latin music here?",
+        "answer": "Absolutely. InvaluaBless Productions works with Latin, urban, reggaeton, singers, rappers, and Christian artists."
+      }
+    ],
+    "ctaSection": {
+      "eyebrow": "Lock In",
+      "title": "Ready To Work",
+      "description": "Book your session, come prepared, and let’s create records that hit the right way.",
+      "bookButton": "Book Your Session",
+      "contactButton": "Contact Studio"
+    }
+  },
+  "ArtistDevelopmentPage": {
+    "heroEyebrow": "Artist Growth • San Antonio, TX",
+    "heroLine1": "Build",
+    "heroLine2": "Momentum",
+    "heroLine3": "With Direction",
+    "heroIntro": "The InvaluaBless Artist Development Growth Program helps independent artists create stronger music, release with more strategy, and grow with consistency, accountability, and creative direction.",
+    "heroSubtext": "13+ years of recording and production experience",
+    "heroApplyButton": "Apply for the Program",
+    "heroBookButton": "Book Studio Session",
+    "stats": {
+      "packageLevels": "Package Levels",
+      "monthCommitment": "Month Commitment",
+      "artistSupport": "Artist Support"
+    },
+    "problemSection": {
+      "eyebrow": "The Problem",
+      "title": "Talent Isn't Enough"
+    },
+    "problemCards": [
+      {
+        "title": "Inconsistent Recording",
+        "desc": "Songs get started but never fully finished. Momentum fades, releases get delayed, and progress slows down."
+      },
+      {
+        "title": "No Release Strategy",
+        "desc": "Music gets dropped randomly without a plan, which makes it harder to build attention and long-term growth."
+      },
+      {
+        "title": "Lack of Direction",
+        "desc": "Many artists need honest feedback, song selection help, branding direction, and accountability to move forward."
+      }
+    ],
+    "whatItIs": {
+      "eyebrow": "What This Is",
+      "title1": "Structured Artist",
+      "title2": "Development",
+      "paragraph1": "This program combines professional recording support, creative direction, release strategy guidance, and accountability to help artists grow with structure and intention.",
+      "paragraph2": "It is not a label deal and not empty motivation. It is real development support designed for artists who are serious about improving their music, strengthening their brand, and building long-term momentum."
+    },
+    "transformation": {
+      "eyebrow": "Artist Transformation",
+      "title1": "From Random",
+      "title2": "To Strategic"
+    },
+    "before": {
+      "title": "Before Development",
+      "items": [
+        "Random recording sessions",
+        "Unfinished songs",
+        "No release plan",
+        "Weak artist branding",
+        "No accountability",
+        "Slow growth and lost momentum"
+      ]
+    },
+    "after": {
+      "title": "After Development",
+      "items": [
+        "Consistent recording output",
+        "Stronger song selection",
+        "Structured release planning",
+        "Clear artist identity",
+        "Strategic music releases",
+        "Long-term artist momentum"
+      ]
+    },
+    "roadmapSection": {
+      "eyebrow": "3-Month Growth Roadmap",
+      "title1": "Direction. Development.",
+      "title2": "Momentum."
+    },
+    "roadmapCards": [
+      {
+        "title": "Month 1 — Direction",
+        "desc": "We evaluate your sound, strengths, and goals. Recording begins while identifying your strongest songs and creative lane."
+      },
+      {
+        "title": "Month 2 — Development",
+        "desc": "Songs are refined, stronger records are created, and we begin shaping your next releases and artist branding."
+      },
+      {
+        "title": "Month 3 — Momentum",
+        "desc": "Your best records move toward release while we build a stronger long-term strategy for more consistent output."
+      }
+    ],
+    "fitSection": {
+      "eyebrow": "Who This Is For",
+      "title1": "Built for Serious",
+      "title2": "Artists"
+    },
+    "fitForYou": {
+      "eyebrow": "Why This Is For You",
+      "title": "You're a Strong Fit If You:",
+      "items": [
+        "Are actively creating music and want more structure",
+        "Want help finishing stronger songs",
+        "Need consistent recording and accountability",
+        "Want guidance on release strategy and branding",
+        "Are open to honest feedback and direction",
+        "Want long-term growth, not random sessions"
+      ]
+    },
+    "notForYou": {
+      "eyebrow": "Why This Is Not For You",
+      "title": "This Program May Not Be For You If:",
+      "items": [
+        "You only want one quick session with no long-term plan",
+        "You are not ready to record consistently",
+        "You do not want feedback or creative direction",
+        "You are looking for instant results without real work",
+        "You are not ready for a 3-month commitment",
+        "You want management or label services instead of development support"
+      ]
+    },
+    "processSection": {
+      "eyebrow": "Application Process",
+      "title1": "What Happens",
+      "title2": "After You Apply"
+    },
+    "processCards": [
+      {
+        "title": "Step 1",
+        "desc": "Your application is reviewed to understand your music, goals, and current stage as an artist."
+      },
+      {
+        "title": "Step 2",
+        "desc": "If the program looks like a strong fit, we schedule a short call to discuss your music and development goals."
+      },
+      {
+        "title": "Step 3",
+        "desc": "If accepted, we begin building your recording plan, creative direction, and release strategy."
+      }
+    ],
+    "packagesSection": {
+      "eyebrow": "Program Packages",
+      "title1": "Choose Your",
+      "title2": "Level"
+    },
+    "packages": {
+      "popular": "Most Popular",
+      "momentum": {
+        "title": "Momentum",
+        "desc": "For artists who need consistency and recording support.",
+        "items": [
+          "Recording for 1 full song",
+          "Vocal coaching during session",
+          "Song feedback & improvement guidance",
+          "Basic release guidance",
+          "Monthly development check-in",
+          "Priority booking access"
+        ]
+      },
+      "elevation": {
+        "title": "Elevation",
+        "desc": "For artists ready to actively build their catalog and brand.",
+        "items": [
+          "Recording for 2 songs",
+          "1 original beat included",
+          "1 mix & master included",
+          "Creative direction during recording",
+          "Song selection guidance",
+          "Release strategy guidance",
+          "Song registration help",
+          "Branding & rollout feedback",
+          "Monthly development session"
+        ]
+      },
+      "partner": {
+        "title": "Artist Partner",
+        "desc": "Premium development tier for serious artists.",
+        "items": [
+          "Recording for 4 songs",
+          "2 original beats included",
+          "2 mix & masters included",
+          "Song selection guidance",
+          "Release calendar planning",
+          "Song registration assistance",
+          "Branding & rollout guidance",
+          "Monthly strategy session",
+          "Priority booking"
+        ]
+      }
+    },
+    "cta": {
+      "eyebrow": "Apply Now",
+      "title1": "Build With",
+      "title2": "Intent.",
+      "description": "This program is for artists serious about growth, consistency, and long-term momentum.",
+      "subtext": "Applications are reviewed manually to ensure the program is the right fit.",
+      "button": "Submit Application",
+      "minimum": "Minimum Commitment • 3 Months",
+      "limited": "Limited artist slots available"
+    }
+  },
+  "ArtistDevelopmentApplyPage": {
+    "backButton": "← Back to Artist Development",
+    "eyebrow": "InvaluaBless Productions • Application",
+    "titleLine1": "Artist",
+    "titleLine2": "Development",
+    "titleLine3": "Application",
+    "intro": "Fill out the quick pre-application below, then continue to the full application.",
+    "sectionBasic": "Basic Information",
+    "artistNameLabel": "Artist Name",
+    "artistNamePlaceholder": "Your artist name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Your phone number",
+    "socialLabel": "Instagram / Social Media",
+    "musicLinkLabel": "Music Link",
+    "sectionProfile": "Artist Profile",
+    "genreLabel": "What genre best describes your music?",
+    "genrePlaceholder": "Reggaeton, Latin Rap, Urban, Christian, Singer, etc.",
+    "packageLabel": "Which package are you most interested in?",
+    "packagePlaceholder": "Select a package",
+    "notSureValue": "Not sure yet",
+    "notSureText": "Not sure yet",
+    "goalsLabel": "What are your goals for the next 6 months?",
+    "goalsPlaceholder": "Tell us what you want to accomplish with your music.",
+    "whyJoinLabel": "Why do you want to join the Artist Development Program?",
+    "whyJoinPlaceholder": "Tell us why this program feels like the right next step.",
+    "commitmentLabel": "Are you ready for a minimum 3-month commitment?",
+    "commitmentYes": "Yes",
+    "commitmentQuestions": "I have questions first",
+    "minimumCommitment": "Minimum Commitment • 3 Months",
+    "submitButton": "Continue to Application"
+  }
+}

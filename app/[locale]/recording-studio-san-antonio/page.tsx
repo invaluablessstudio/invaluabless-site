@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "../../../i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   Mic2,
   Music3,
@@ -61,94 +62,6 @@ function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
   el.style.setProperty("--my", "50%");
 }
 
-const services = [
-  {
-    title: "Recording Sessions",
-    description:
-      "Professional vocal recording for artists who want clean takes, better performances, and a serious studio workflow.",
-    icon: Mic2,
-    accent: "red",
-  },
-  {
-    title: "Mixing",
-    description:
-      "Balanced, polished mixes built to hit on headphones, in the car, and across streaming platforms.",
-    icon: SlidersHorizontal,
-    accent: "cyan",
-  },
-  {
-    title: "Mastering",
-    description:
-      "Final loudness, clarity, and consistency so your track feels release-ready and competitive.",
-    icon: Disc3,
-    accent: "red",
-  },
-  {
-    title: "Beat Production",
-    description:
-      "Original production for reggaeton, rap, trap, Latin, and urban artists who need a stronger sound.",
-    icon: Music3,
-    accent: "cyan",
-  },
-  {
-    title: "Podcast Recording",
-    description:
-      "Clean, professional audio recording for podcasters and spoken-word projects.",
-    icon: Radio,
-    accent: "red",
-  },
-  {
-    title: "Vocal Coaching",
-    description:
-      "Guidance during the session to help artists improve delivery, confidence, and performance.",
-    icon: Headphones,
-    accent: "cyan",
-  },
-] as const;
-
-const reasons = [
-  "Professional vocal recording environment",
-  "Mixing and mastering support",
-  "Guidance during the session",
-  "Comfortable, artist-focused workflow",
-  "Built for serious independent artists",
-  "Release-ready sound approach",
-];
-
-const areas = [
-  "South San Antonio",
-  "Downtown San Antonio",
-  "Alamo Heights",
-  "Stone Oak",
-  "Universal City",
-  "Converse",
-  "Live Oak",
-  "Nearby Texas artists",
-];
-
-const faqs = [
-  {
-    question: "How much does a recording session cost?",
-    answer:
-      "Recording sessions are $75 per hour with a 2 hour minimum. Reach out if you need mixing, mastering, beat production, or podcast pricing.",
-  },
-  {
-    question: "Do you work with beginner artists?",
-    answer:
-      "Yes. Invaluabless Productions works with both beginners and experienced artists, and vocal coaching is included during recording sessions.",
-  },
-  {
-    question: "Do you mix and master music?",
-    answer:
-      "Yes. Mixing and mastering services are available for artists who want a polished, release-ready final sound.",
-  },
-  {
-    question: "What genres do you record?",
-    answer:
-      "We work with reggaeton, Latin, rap, trap, urban, singers, and Christian artists in San Antonio and beyond.",
-  },
-];
-
 function SectionHeading({
   eyebrow,
   title,
@@ -167,19 +80,22 @@ function SectionHeading({
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base">{description}</p>
+        <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base">
+          {description}
+        </p>
       ) : null}
     </div>
   );
 }
 
 export default function RecordingStudioSanAntonioPage() {
+  const t = useTranslations("StudioPage");
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const t = setTimeout(() => setShowHero(true), 100);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setShowHero(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -191,9 +107,87 @@ export default function RecordingStudioSanAntonioPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  const services = [
+    {
+      title: t("services.recording.title"),
+      description: t("services.recording.description"),
+      icon: Mic2,
+      accent: "red",
+    },
+    {
+      title: t("services.mixing.title"),
+      description: t("services.mixing.description"),
+      icon: SlidersHorizontal,
+      accent: "cyan",
+    },
+    {
+      title: t("services.mastering.title"),
+      description: t("services.mastering.description"),
+      icon: Disc3,
+      accent: "red",
+    },
+    {
+      title: t("services.beats.title"),
+      description: t("services.beats.description"),
+      icon: Music3,
+      accent: "cyan",
+    },
+    {
+      title: t("services.podcast.title"),
+      description: t("services.podcast.description"),
+      icon: Radio,
+      accent: "red",
+    },
+    {
+      title: t("services.vocalCoaching.title"),
+      description: t("services.vocalCoaching.description"),
+      icon: Headphones,
+      accent: "cyan",
+    },
+  ] as const;
+
+  const reasons = [
+    t("reasons.0"),
+    t("reasons.1"),
+    t("reasons.2"),
+    t("reasons.3"),
+    t("reasons.4"),
+    t("reasons.5"),
+  ];
+
+  const areas = [
+    t("areas.0"),
+    t("areas.1"),
+    t("areas.2"),
+    t("areas.3"),
+    t("areas.4"),
+    t("areas.5"),
+    t("areas.6"),
+    t("areas.7"),
+  ];
+
+  const faqs = [
+    {
+      question: t("faqs.0.question"),
+      answer: t("faqs.0.answer"),
+    },
+    {
+      question: t("faqs.1.question"),
+      answer: t("faqs.1.answer"),
+    },
+    {
+      question: t("faqs.2.question"),
+      answer: t("faqs.2.answer"),
+    },
+    {
+      question: t("faqs.3.question"),
+      answer: t("faqs.3.answer"),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen bg-transparent text-white">
-      <div className="fixed inset-0 -z-20 pointer-events-none">
+      <div className="pointer-events-none fixed inset-0 -z-20">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
 
         <div
@@ -220,7 +214,7 @@ export default function RecordingStudioSanAntonioPage() {
       <div className="scanlines" />
 
       <div
-        className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none"
+        className="pointer-events-none fixed inset-0 -z-10 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -231,64 +225,57 @@ export default function RecordingStudioSanAntonioPage() {
       <div className="relative z-20">
         <section className="relative flex min-h-screen items-center pt-20">
           <div className="mx-auto w-full max-w-7xl px-6 md:px-16">
-          <div
-  className={`mx-auto max-w-5xl transition-all duration-1000 ease-out ${
-    showHero ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-  }`}
->
-  <div className="mb-6 flex items-center gap-4">
-    <div className="h-[1px] w-12 bg-[#ff0040]" />
-    <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#00f0ff]">
-      Recording Studio • San Antonio • Invaluabless Productions
-    </p>
-  </div>
+            <div
+              className={`mx-auto max-w-5xl transition-all duration-1000 ease-out ${
+                showHero ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+            >
+              <div className="mb-6 flex items-center gap-4">
+                <div className="h-[1px] w-12 bg-[#ff0040]" />
+                <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#00f0ff]">
+                  {t("hero.eyebrow")}
+                </p>
+              </div>
 
-  <h1 className="font-urban text-6xl leading-[0.85] uppercase tracking-tighter md:text-8xl lg:text-9xl">
-    <span className="block text-white">Recording</span>
-    <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">
-      Studio
-    </span>
-    <span className="block text-white/90">San Antonio</span>
-  </h1>
+              <h1 className="font-urban text-6xl uppercase tracking-tighter leading-[0.85] md:text-8xl lg:text-9xl">
+                <span className="block text-white">{t("hero.line1")}</span>
+                <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">
+                  {t("hero.line2")}
+                </span>
+                <span className="block text-white/90">{t("hero.line3")}</span>
+              </h1>
 
-  <div
-    className="street-card street-hover mt-8 max-w-3xl p-6"
-    onMouseMove={handleCardMouseMove}
-    onMouseLeave={handleCardMouseLeave}
-  >
-    <div className="mouse-glow" />
-    <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
-      Invaluabless Productions is a professional recording studio in San Antonio, TX
-      specializing in recording sessions, mixing, mastering, beat production, and artist support.
-      Artists across reggaeton, Latin, rap, trap, urban, Christian, and vocal-driven music can book
-      a serious studio environment built for clean takes, strong performances, and release-ready sound.
-    </p>
-  </div>
+              <div
+                className="street-card street-hover mt-8 max-w-3xl p-6"
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
+              >
+                <div className="mouse-glow" />
+                <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
+                  {t("hero.description")}
+                </p>
+              </div>
 
-  <div className="mt-10 flex flex-wrap gap-4">
-    <Link
-      href="/book"
-      className="group relative overflow-hidden bg-[#ff0040] px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-all hover:glow-red"
-    >
-      <span className="relative z-10">Book Studio Session</span>
-      <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
-    </Link>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="/book"
+                  className="group relative overflow-hidden bg-[#ff0040] px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-all hover:glow-red"
+                >
+                  <span className="relative z-10">{t("hero.ctaBook")}</span>
+                  <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
+                </Link>
 
-    <Link
-      href="/contact"
-      className="group relative overflow-hidden border border-[#00f0ff] px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
-    >
-      <span className="relative z-10">Contact Studio</span>
-      <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
-    </Link>
-  </div>
+                <Link
+                  href="/contact"
+                  className="group relative overflow-hidden border border-[#00f0ff] px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
+                >
+                  <span className="relative z-10">{t("hero.ctaContact")}</span>
+                  <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
+                </Link>
+              </div>
 
-  <div className="sr-only">
-    Recording studio in San Antonio. Professional mixing and mastering.
-    Reggaeton, Latin, rap, trap, urban, Christian, and vocal recording support.
-    Local booking-ready studio page for San Antonio artists.
-  </div>
-</div>
+              <div className="sr-only">{t("hero.srOnly")}</div>
+            </div>
           </div>
         </section>
 
@@ -296,15 +283,16 @@ export default function RecordingStudioSanAntonioPage() {
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
-                eyebrow="Studio Services"
-                title="What we offer"
-                description="Clear service signals help both artists and Google understand exactly what your studio does."
+                eyebrow={t("servicesSection.eyebrow")}
+                title={t("servicesSection.title")}
+                description={t("servicesSection.description")}
               />
 
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {services.map((service) => {
                   const Icon = service.icon;
-                  const accent = service.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
+                  const accent =
+                    service.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
 
                   return (
                     <div
@@ -342,10 +330,10 @@ export default function RecordingStudioSanAntonioPage() {
                 >
                   <div className="mouse-glow" />
                   <p className="text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                    Why Artists Record Here
+                    {t("whySection.eyebrow")}
                   </p>
                   <h2 className="font-urban mt-4 text-4xl uppercase tracking-tight text-white md:text-5xl">
-                    Built for real sessions
+                    {t("whySection.title")}
                   </h2>
                   <div className="mt-8 space-y-4">
                     {reasons.map((item, index) => (
@@ -372,9 +360,9 @@ export default function RecordingStudioSanAntonioPage() {
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
-                eyebrow="Serving Local Artists"
-                title="San Antonio and surrounding areas"
-                description="This section strengthens local relevance for search and helps artists know you serve their area."
+                eyebrow={t("areasSection.eyebrow")}
+                title={t("areasSection.title")}
+                description={t("areasSection.description")}
               />
 
               <div
@@ -386,7 +374,7 @@ export default function RecordingStudioSanAntonioPage() {
                 <div className="mb-6 flex items-center gap-3">
                   <MapPin className="h-6 w-6 text-[#ff0040]" />
                   <p className="text-sm font-bold uppercase tracking-wider text-white">
-                    Areas We Serve
+                    {t("areasSection.label")}
                   </p>
                 </div>
 
@@ -413,9 +401,9 @@ export default function RecordingStudioSanAntonioPage() {
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
-                eyebrow="FAQ"
-                title="Questions artists ask"
-                description="Helpful for visitors and useful for search engines."
+                eyebrow={t("faqSection.eyebrow")}
+                title={t("faqSection.title")}
+                description={t("faqSection.description")}
               />
 
               <div className="grid gap-6 md:grid-cols-2">
@@ -447,7 +435,7 @@ export default function RecordingStudioSanAntonioPage() {
 
         <section className="relative py-20">
           <FadeInSection>
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
 
             <div className="mx-auto max-w-5xl px-6 md:px-16">
               <div
@@ -458,13 +446,14 @@ export default function RecordingStudioSanAntonioPage() {
                 <div className="mouse-glow" />
 
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                  Book Your Session
+                  {t("cta.eyebrow")}
                 </p>
                 <h2 className="font-urban mb-6 text-6xl uppercase tracking-tighter md:text-8xl">
-                  Ready To Record<span className="text-[#ff0040]">?</span>
+                  {t("cta.title")}
+                  <span className="text-[#ff0040]">?</span>
                 </h2>
                 <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-400">
-                  Book your studio session in San Antonio and let&apos;s create something that hits.
+                  {t("cta.description")}
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-4">
@@ -472,7 +461,7 @@ export default function RecordingStudioSanAntonioPage() {
                     href="/book"
                     className="group relative inline-block overflow-hidden bg-[#ff0040] px-12 py-5 text-sm font-bold uppercase tracking-[0.2em] text-black transition-all hover:glow-red"
                   >
-                    <span className="relative z-10">Book Studio Session</span>
+                    <span className="relative z-10">{t("cta.bookButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
 
@@ -480,7 +469,7 @@ export default function RecordingStudioSanAntonioPage() {
                     href="/contact"
                     className="group relative inline-block overflow-hidden border border-[#00f0ff] px-12 py-5 text-sm font-bold uppercase tracking-[0.2em] text-[#00f0ff] transition-all hover:glow-cyan"
                   >
-                    <span className="relative z-10">Contact Studio</span>
+                    <span className="relative z-10">{t("cta.contactButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
                 </div>

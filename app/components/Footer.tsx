@@ -1,34 +1,36 @@
-import Link from "next/link";
+"use client";
 
-const navLinks = [
-  { label: "Work", href: "/work" },
-  { label: "Producer", href: "/producer" },
-  { label: "Services", href: "/services" },
-  { label: "Resources", href: "/resources" },
-  { label: "Studio", href: "/recording-studio-san-antonio" },
-  { label: "Contact", href: "/contact" },
-  { label: "Artist Development", href: "/artist-development" },
-  { label: "Book", href: "/book" },
-];
+import { useTranslations } from "next-intl";
+import { Link } from "../../i18n/navigation";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const navT = useTranslations("Nav");
+
+  const navLinks = [
+    { label: navT("work"), href: "/work" },
+    { label: navT("producer"), href: "/producer" },
+    { label: navT("services"), href: "/services" },
+    { label: navT("resources"), href: "/resources" },
+    { label: navT("studio"), href: "/recording-studio-san-antonio" },
+    { label: navT("contact"), href: "/contact" },
+    { label: navT("artistDevelopment"), href: "/artist-development" },
+    { label: navT("book"), href: "/book" },
+  ];
+
   return (
-    <footer className="relative z-50 border-t border-white/10 bg-transparent pt-20 pb-10">
-      {/* glass overlay */}
+    <footer className="relative z-50 border-t border-white/10 bg-transparent pb-10 pt-20">
       <div className="supports-[backdrop-filter]:bg-black/10 absolute inset-0 -z-10 bg-black/25 backdrop-blur" />
 
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <div className="mb-16 grid gap-12 md:grid-cols-4">
-          {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="font-urban mb-4 text-4xl uppercase">
               Invaluabless Productions<span className="text-[#ff0040]">.</span>
             </h3>
 
             <p className="max-w-md leading-relaxed text-gray-400">
-              Professional recording studio in San Antonio, Texas. Specializing
-              in reggaeton, Latin, rap, trap, urban music production, and artist
-              development.
+              {t("brandDescription")}
             </p>
 
             <div className="mt-6 flex gap-4">
@@ -36,12 +38,10 @@ export default function Footer() {
                 href="https://instagram.com/invaluablessproduction"
                 label="IG"
               />
-
               <SocialLink
                 href="https://youtube.com/@InvaluaBlessProductions"
                 label="YT"
               />
-
               <SocialLink
                 href="mailto:bookings@invaluablessproduction.com"
                 label="Email"
@@ -49,10 +49,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
             <h4 className="mb-6 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-              Navigate
+              {t("navigate")}
             </h4>
 
             <ul className="space-y-3">
@@ -69,10 +68,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="mb-6 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-              Contact
+              {t("contact")}
             </h4>
 
             <ul className="space-y-3 text-sm text-gray-400">
@@ -96,15 +94,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
           <p className="text-xs uppercase tracking-widest text-gray-600">
-            © {new Date().getFullYear()} Invaluabless Productions
+            © 2025 {t("copyright")}
           </p>
 
           <div className="flex items-center gap-2 text-xs text-gray-600">
             <span className="h-2 w-2 animate-pulse rounded-full bg-[#ff0040]" />
-            <span className="uppercase tracking-widest">Now Booking</span>
+            <span className="uppercase tracking-widest">{t("nowBooking")}</span>
           </div>
         </div>
       </div>

@@ -1,10 +1,11 @@
 // next.config.ts
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   // Uncomment if deploying to static hosting (Vercel handles this automatically)
-  // output: 'export',
-  // distDir: 'dist',
+  // output: "export",
+  // distDir: "dist",
 
   trailingSlash: true,
 
@@ -27,7 +28,6 @@ const nextConfig: NextConfig = {
     // unoptimized: true,
   },
 
-  // Security headers
   async headers() {
     return [
       {
@@ -50,7 +50,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Redirects for SEO (optional)
   async redirects() {
     return [
       {
@@ -62,4 +61,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);

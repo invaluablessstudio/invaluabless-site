@@ -2,8 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import ResourceDownloads from "../components/ResourceDownloads";
+import { Link } from "../../../i18n/navigation";
+import { useTranslations } from "next-intl";
+import ResourceDownloads from "../../components/ResourceDownloads";
 import {
   Mic2,
   Music3,
@@ -65,116 +66,6 @@ function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
   el.style.setProperty("--my", "50%");
 }
 
-const prepCards = [
-  {
-    title: "Prepare Your Song",
-    description:
-      "Practice your lyrics before arriving. Know your flow, timing, ad-libs, and structure so your session moves faster.",
-    icon: Music3,
-    accent: "red",
-  },
-  {
-    title: "Bring Your Beat",
-    description:
-      "Bring your instrumental in WAV preferred or high-quality MP3. Send it ahead of time or bring it on a USB.",
-    icon: Headphones,
-    accent: "cyan",
-  },
-  {
-    title: "Hydrate Your Voice",
-    description:
-      "Drink water, avoid dairy before recording, and warm up your voice if you are singing or recording melodic vocals.",
-    icon: Mic2,
-    accent: "red",
-  },
-] as const;
-
-const policyCards = [
-  {
-    title: "Deposit Required",
-    description: "A deposit is required to confirm and hold your booking.",
-    icon: BadgeDollarSign,
-    accent: "red",
-  },
-  {
-    title: "2 Hour Minimum",
-    description: "Recording sessions start at a 2 hour minimum.",
-    icon: ClipboardList,
-    accent: "cyan",
-  },
-  {
-    title: "No Split = No Release",
-    description:
-      "All collaborators should complete split sheet information before release when applicable.",
-    icon: ShieldCheck,
-    accent: "red",
-  },
-] as const;
-
-const releaseChecklist = [
-  "Record your song",
-  "Mix and master your final track",
-  "Finalize your cover artwork",
-  "Complete split sheet information",
-  "Register your song with your PRO if needed",
-  "Upload to Spotify, Apple Music, and other DSPs",
-  "Promote your release on Instagram, TikTok, and YouTube",
-];
-
-const resourceLinks = [
-  {
-    title: "Studio Session Checklist",
-    description: "A simple guide to help artists show up prepared and ready to record.",
-    href: "/downloads/studio-session-checklist.pdf",
-    accent: "red",
-    external: true,
-  },
-  {
-    title: "Split Sheet Template",
-    description: "Make sure everyone involved in the song agrees on ownership before release.",
-    href: "/downloads/split-sheet-template.pdf",
-    accent: "cyan",
-    external: true,
-  },
-  {
-    title: "Song Release Checklist",
-    description: "Use this checklist to move from recording to distribution with more confidence.",
-    href: "/downloads/song-release-checklist.pdf",
-    accent: "red",
-    external: true,
-  },
-  {
-    title: "Vocal Recording Guide",
-    description: "Simple tips to help artists record stronger vocals in the studio.",
-    href: "/downloads/vocal-recording-guide.pdf",
-    accent: "cyan",
-    external: true,
-  },
-] as const;
-
-const faqs = [
-  {
-    question: "How long does it take to record a song?",
-    answer:
-      "Most songs take around 2 to 4 hours depending on preparation, performance, and how many layers you want to record.",
-  },
-  {
-    question: "Do you provide beats?",
-    answer:
-      "Yes. Beat production is available if you need an original sound built for your project.",
-  },
-  {
-    question: "Can beginners record here?",
-    answer:
-      "Yes. We work with beginners and experienced artists, and vocal coaching is included during recording sessions.",
-  },
-  {
-    question: "Can I record Christian, urban, reggaeton, or Latin music here?",
-    answer:
-      "Absolutely. InvaluaBless Productions works with Latin, urban, reggaeton, singers, rappers, and Christian artists.",
-  },
-];
-
 function SectionHeading({
   eyebrow,
   title,
@@ -193,19 +84,22 @@ function SectionHeading({
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base">{description}</p>
+        <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base">
+          {description}
+        </p>
       ) : null}
     </div>
   );
 }
 
 export default function ResourcesPage() {
+  const t = useTranslations("ResourcesPage");
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const t = setTimeout(() => setShowHero(true), 100);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setShowHero(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -217,9 +111,111 @@ export default function ResourcesPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  const prepCards = [
+    {
+      title: t("prepCards.0.title"),
+      description: t("prepCards.0.description"),
+      icon: Music3,
+      accent: "red",
+    },
+    {
+      title: t("prepCards.1.title"),
+      description: t("prepCards.1.description"),
+      icon: Headphones,
+      accent: "cyan",
+    },
+    {
+      title: t("prepCards.2.title"),
+      description: t("prepCards.2.description"),
+      icon: Mic2,
+      accent: "red",
+    },
+  ] as const;
+
+  const policyCards = [
+    {
+      title: t("policyCards.0.title"),
+      description: t("policyCards.0.description"),
+      icon: BadgeDollarSign,
+      accent: "red",
+    },
+    {
+      title: t("policyCards.1.title"),
+      description: t("policyCards.1.description"),
+      icon: ClipboardList,
+      accent: "cyan",
+    },
+    {
+      title: t("policyCards.2.title"),
+      description: t("policyCards.2.description"),
+      icon: ShieldCheck,
+      accent: "red",
+    },
+  ] as const;
+
+  const releaseChecklist = [
+    t("releaseChecklist.0"),
+    t("releaseChecklist.1"),
+    t("releaseChecklist.2"),
+    t("releaseChecklist.3"),
+    t("releaseChecklist.4"),
+    t("releaseChecklist.5"),
+    t("releaseChecklist.6"),
+  ];
+
+  const resourceLinks = [
+    {
+      title: t("resourceLinks.0.title"),
+      description: t("resourceLinks.0.description"),
+      href: "/downloads/studio-session-checklist.pdf",
+      accent: "red",
+      external: true,
+    },
+    {
+      title: t("resourceLinks.1.title"),
+      description: t("resourceLinks.1.description"),
+      href: "/downloads/split-sheet-template.pdf",
+      accent: "cyan",
+      external: true,
+    },
+    {
+      title: t("resourceLinks.2.title"),
+      description: t("resourceLinks.2.description"),
+      href: "/downloads/song-release-checklist.pdf",
+      accent: "red",
+      external: true,
+    },
+    {
+      title: t("resourceLinks.3.title"),
+      description: t("resourceLinks.3.description"),
+      href: "/downloads/vocal-recording-guide.pdf",
+      accent: "cyan",
+      external: true,
+    },
+  ] as const;
+
+  const faqs = [
+    {
+      question: t("faqs.0.question"),
+      answer: t("faqs.0.answer"),
+    },
+    {
+      question: t("faqs.1.question"),
+      answer: t("faqs.1.answer"),
+    },
+    {
+      question: t("faqs.2.question"),
+      answer: t("faqs.2.answer"),
+    },
+    {
+      question: t("faqs.3.question"),
+      answer: t("faqs.3.answer"),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen bg-transparent text-white">
-      <div className="fixed inset-0 -z-20 pointer-events-none">
+      <div className="pointer-events-none fixed inset-0 -z-20">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
 
         <div
@@ -246,7 +242,7 @@ export default function ResourcesPage() {
       <div className="scanlines" />
 
       <div
-        className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none"
+        className="pointer-events-none fixed inset-0 -z-10 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -266,16 +262,16 @@ export default function ResourcesPage() {
                 <div className="mb-6 flex items-center gap-4">
                   <div className="h-[1px] w-12 bg-[#ff0040]" />
                   <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#00f0ff]">
-                    Artist Resources • Session Prep • Release Strategy
+                    {t("heroEyebrow")}
                   </p>
                 </div>
 
-                <h1 className="font-urban text-6xl leading-[0.85] uppercase tracking-tighter md:text-8xl lg:text-9xl">
-                  <span className="block text-white">Move</span>
+                <h1 className="font-urban text-6xl uppercase tracking-tighter leading-[0.85] md:text-8xl lg:text-9xl">
+                  <span className="block text-white">{t("heroLine1")}</span>
                   <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">
-                    Smarter
+                    {t("heroLine2")}
                   </span>
-                  <span className="block text-white/90">Create Better</span>
+                  <span className="block text-white/90">{t("heroLine3")}</span>
                 </h1>
 
                 <div
@@ -285,8 +281,7 @@ export default function ResourcesPage() {
                 >
                   <div className="mouse-glow" />
                   <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
-                    Everything artists need before the session, during the recording process,
-                    and after the music is done so they move with more confidence and professionalism.
+                    {t("heroIntro")}
                   </p>
                 </div>
 
@@ -295,7 +290,7 @@ export default function ResourcesPage() {
                     href="/book"
                     className="group relative overflow-hidden bg-[#ff0040] px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-all hover:glow-red"
                   >
-                    <span className="relative z-10">Book Session</span>
+                    <span className="relative z-10">{t("heroBookButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
 
@@ -303,7 +298,7 @@ export default function ResourcesPage() {
                     href="#resources"
                     className="group relative overflow-hidden border border-[#00f0ff] px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
                   >
-                    <span className="relative z-10">Explore Resources</span>
+                    <span className="relative z-10">{t("heroResourcesButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
                 </div>
@@ -312,19 +307,21 @@ export default function ResourcesPage() {
                   <div>
                     <div className="text-3xl font-bold text-[#ff0040]">2 HR</div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-gray-500">
-                      Session Minimum
+                      {t("stats.sessionMinimum")}
                     </div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#00f0ff]">Pro</div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-gray-500">
-                      Workflow
+                      {t("stats.workflow")}
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-white">Ready</div>
+                    <div className="text-3xl font-bold text-white">
+                      {t("stats.readyValue")}
+                    </div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-gray-500">
-                      To Release
+                      {t("stats.readyLabel")}
                     </div>
                   </div>
                 </div>
@@ -339,7 +336,7 @@ export default function ResourcesPage() {
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80"
-                    alt="Artist recording in studio"
+                    alt={t("heroImageAlt")}
                     fill
                     className="object-cover transition-transform duration-700"
                     priority
@@ -351,17 +348,19 @@ export default function ResourcesPage() {
                 <div className="absolute bottom-6 left-6 right-6 z-10">
                   <div className="street-card p-5">
                     <p className="text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                      Studio Standard
+                      {t("heroBadgeEyebrow")}
                     </p>
                     <p className="mt-2 text-lg font-bold uppercase tracking-wide text-white">
-                      Come prepared. Record clean. Release right.
+                      {t("heroBadgeText")}
                     </p>
                   </div>
                 </div>
 
-                <div className="absolute -bottom-4 right-0 sm:-bottom-6 sm:-right-6 bg-[#ff0040] px-4 py-3 sm:p-6 font-mono text-black">
-  <p className="text-xl sm:text-2xl font-bold leading-none uppercase">Resources</p>
-</div>
+                <div className="absolute -bottom-4 right-0 bg-[#ff0040] px-4 py-3 font-mono text-black sm:-bottom-6 sm:-right-6 sm:p-6">
+                  <p className="text-xl font-bold leading-none uppercase sm:text-2xl">
+                    {t("heroSticker")}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -375,15 +374,16 @@ export default function ResourcesPage() {
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
-                eyebrow="Before Your Session"
-                title="Show up ready"
-                description="These basics save time, help you sound better, and make the most of every paid hour in the studio."
+                eyebrow={t("beforeSession.eyebrow")}
+                title={t("beforeSession.title")}
+                description={t("beforeSession.description")}
               />
 
               <div className="grid gap-6 md:grid-cols-3">
                 {prepCards.map((card) => {
                   const Icon = card.icon;
-                  const accentClasses = card.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
+                  const accentClasses =
+                    card.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
 
                   return (
                     <div
@@ -399,7 +399,9 @@ export default function ResourcesPage() {
                       <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
                         {card.title}
                       </h3>
-                      <p className="mt-4 text-sm leading-7 text-gray-400">{card.description}</p>
+                      <p className="mt-4 text-sm leading-7 text-gray-400">
+                        {card.description}
+                      </p>
                     </div>
                   );
                 })}
@@ -412,15 +414,16 @@ export default function ResourcesPage() {
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
-                eyebrow="Studio Policies"
-                title="Respect the process"
-                description="Clear expectations protect the session, the workflow, and the final quality of the music."
+                eyebrow={t("policies.eyebrow")}
+                title={t("policies.title")}
+                description={t("policies.description")}
               />
 
               <div className="grid gap-6 md:grid-cols-3">
                 {policyCards.map((card) => {
                   const Icon = card.icon;
-                  const accentClasses = card.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
+                  const accentClasses =
+                    card.accent === "red" ? "text-[#ff0040]" : "text-[#00f0ff]";
 
                   return (
                     <div
@@ -436,7 +439,9 @@ export default function ResourcesPage() {
                       <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
                         {card.title}
                       </h3>
-                      <p className="mt-4 text-sm leading-7 text-gray-400">{card.description}</p>
+                      <p className="mt-4 text-sm leading-7 text-gray-400">
+                        {card.description}
+                      </p>
                     </div>
                   );
                 })}
@@ -455,12 +460,14 @@ export default function ResourcesPage() {
                   onMouseLeave={handleCardMouseLeave}
                 >
                   <div className="mouse-glow" />
-                  <p className="text-xs uppercase tracking-[0.3em] text-[#00f0ff]">Release Checklist</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
+                    {t("releaseSection.eyebrow")}
+                  </p>
                   <h2 className="font-urban mt-4 text-4xl uppercase tracking-tight text-white md:text-5xl">
-                    From session to drop
+                    {t("releaseSection.title")}
                   </h2>
                   <p className="mt-5 text-sm leading-7 text-gray-400">
-                    Use this as your simple release roadmap so finished songs do not stay sitting on your hard drive.
+                    {t("releaseSection.description")}
                   </p>
 
                   <div className="mt-8 space-y-4">
@@ -487,12 +494,14 @@ export default function ResourcesPage() {
                   onMouseLeave={handleCardMouseLeave}
                 >
                   <div className="mouse-glow" />
-                  <p className="text-xs uppercase tracking-[0.3em] text-[#ff0040]">Free Artist Tools</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-[#ff0040]">
+                    {t("toolsSection.eyebrow")}
+                  </p>
                   <h2 className="font-urban mt-4 text-4xl uppercase tracking-tight text-white md:text-5xl">
-                    Useful next steps
+                    {t("toolsSection.title")}
                   </h2>
                   <p className="mt-5 text-sm leading-7 text-gray-400">
-                    Download these tools to help you prepare, organize ownership, and release music more professionally.
+                    {t("toolsSection.description")}
                   </p>
 
                   <div className="mt-8 space-y-4">
@@ -582,14 +591,13 @@ export default function ResourcesPage() {
                 <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                      Artist Development
+                      {t("developmentSection.eyebrow")}
                     </p>
                     <h2 className="font-urban mt-4 text-4xl uppercase tracking-tight text-white md:text-6xl">
-                      More than one session?
+                      {t("developmentSection.title")}
                     </h2>
                     <p className="mt-5 max-w-2xl text-sm leading-8 text-gray-400 sm:text-base">
-                      Ask about artist development support for artists who want consistency,
-                      direction, and a better release process from song to song.
+                      {t("developmentSection.description")}
                     </p>
                   </div>
 
@@ -598,20 +606,20 @@ export default function ResourcesPage() {
                       <Rocket className="h-7 w-7" />
                     </div>
                     <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
-                      Artist Development Program
+                      {t("developmentCard.title")}
                     </h3>
                     <ul className="mt-5 space-y-3 text-sm leading-7 text-gray-300">
-                      <li>Recording support</li>
-                      <li>Mix and master guidance</li>
-                      <li>Creative direction</li>
-                      <li>Release strategy support</li>
+                      <li>{t("developmentCard.items.0")}</li>
+                      <li>{t("developmentCard.items.1")}</li>
+                      <li>{t("developmentCard.items.2")}</li>
+                      <li>{t("developmentCard.items.3")}</li>
                     </ul>
                     <Link
-  href="/artist-development"
-  className="group relative mt-8 inline-block overflow-hidden border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all hover:border-[#ff0040] hover:text-white"
->
-  <span className="relative z-10">Explore Artist Development</span>
-</Link>
+                      href="/artist-development"
+                      className="group relative mt-8 inline-block overflow-hidden border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all hover:border-[#ff0040] hover:text-white"
+                    >
+                      <span className="relative z-10">{t("developmentCard.button")}</span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -623,9 +631,9 @@ export default function ResourcesPage() {
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
               <SectionHeading
-                eyebrow="FAQ"
-                title="Questions artists ask"
-                description="This helps answer common concerns before somebody reaches out or books."
+                eyebrow={t("faqSection.eyebrow")}
+                title={t("faqSection.title")}
+                description={t("faqSection.description")}
               />
 
               <div className="grid gap-6 md:grid-cols-2">
@@ -657,7 +665,7 @@ export default function ResourcesPage() {
 
         <section className="relative py-20">
           <FadeInSection>
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
 
             <div className="mx-auto max-w-5xl px-6 md:px-16">
               <div
@@ -668,13 +676,14 @@ export default function ResourcesPage() {
                 <div className="mouse-glow" />
 
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                  Lock In
+                  {t("ctaSection.eyebrow")}
                 </p>
                 <h2 className="font-urban mb-6 text-6xl uppercase tracking-tighter md:text-8xl">
-                  Ready To Work<span className="text-[#ff0040]">?</span>
+                  {t("ctaSection.title")}
+                  <span className="text-[#ff0040]">?</span>
                 </h2>
                 <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-400">
-                  Book your session, come prepared, and let’s create records that hit the right way.
+                  {t("ctaSection.description")}
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-4">
@@ -682,7 +691,7 @@ export default function ResourcesPage() {
                     href="/book"
                     className="group relative inline-block overflow-hidden bg-[#ff0040] px-12 py-5 text-sm font-bold uppercase tracking-[0.2em] text-black transition-all hover:glow-red"
                   >
-                    <span className="relative z-10">Book Your Session</span>
+                    <span className="relative z-10">{t("ctaSection.bookButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
 
@@ -690,7 +699,7 @@ export default function ResourcesPage() {
                     href="/contact"
                     className="group relative inline-block overflow-hidden border border-[#00f0ff] px-12 py-5 text-sm font-bold uppercase tracking-[0.2em] text-[#00f0ff] transition-all hover:glow-cyan"
                   >
-                    <span className="relative z-10">Contact Studio</span>
+                    <span className="relative z-10">{t("ctaSection.contactButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
                 </div>
@@ -699,6 +708,7 @@ export default function ResourcesPage() {
           </FadeInSection>
         </section>
       </div>
+
       <ResourceDownloads />
     </main>
   );

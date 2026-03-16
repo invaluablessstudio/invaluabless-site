@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "../../../i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   Instagram,
   Youtube,
@@ -61,12 +62,13 @@ function handleCardMouseLeave(e: React.MouseEvent<HTMLElement>) {
 }
 
 export default function ContactPage() {
+  const t = useTranslations("ContactPage");
   const [showHero, setShowHero] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const t = setTimeout(() => setShowHero(true), 100);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setShowHero(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -80,7 +82,7 @@ export default function ContactPage() {
 
   return (
     <main className="relative min-h-screen bg-transparent text-white">
-      <div className="fixed inset-0 -z-20 pointer-events-none">
+      <div className="pointer-events-none fixed inset-0 -z-20">
         <div className="absolute inset-0 bg-[#0a0a0f]" />
 
         <div
@@ -107,7 +109,7 @@ export default function ContactPage() {
       <div className="scanlines" />
 
       <div
-        className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none"
+        className="pointer-events-none fixed inset-0 -z-10 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -126,16 +128,16 @@ export default function ContactPage() {
               <div className="mb-6 flex items-center gap-4">
                 <div className="h-[1px] w-12 bg-[#ff0040]" />
                 <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#00f0ff]">
-                  Contact • Bookings • Studio Info
+                  {t("heroEyebrow")}
                 </p>
               </div>
 
               <h1 className="font-urban text-6xl leading-[0.85] uppercase tracking-tighter md:text-8xl lg:text-9xl">
-                <span className="block text-white">Let&apos;s</span>
+                <span className="block text-white">{t("heroLine1")}</span>
                 <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.5)]">
-                  Work
+                  {t("heroLine2")}
                 </span>
-                <span className="block text-white/90">Together</span>
+                <span className="block text-white/90">{t("heroLine3")}</span>
               </h1>
 
               <div
@@ -145,8 +147,7 @@ export default function ContactPage() {
               >
                 <div className="mouse-glow" />
                 <p className="relative z-10 border-l-2 border-[#ff0040] pl-6 text-lg leading-relaxed text-gray-300">
-                  Ready to book a session, ask a question, or talk about your next project?
-                  Reach out and let&apos;s build something that hits the right way.
+                  {t("heroIntro")}
                 </p>
               </div>
 
@@ -155,7 +156,7 @@ export default function ContactPage() {
                   href="/book"
                   className="group relative overflow-hidden bg-[#ff0040] px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-all hover:glow-red"
                 >
-                  <span className="relative z-10">Book Session</span>
+                  <span className="relative z-10">{t("bookButton")}</span>
                   <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
                 </Link>
 
@@ -163,7 +164,7 @@ export default function ContactPage() {
                   href="mailto:bookings@invaluablessproduction.com"
                   className="group relative overflow-hidden border border-[#00f0ff] px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#00f0ff] transition-all hover:glow-cyan"
                 >
-                  <span className="relative z-10">Email Studio</span>
+                  <span className="relative z-10">{t("emailButton")}</span>
                   <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
                 </a>
               </div>
@@ -185,7 +186,7 @@ export default function ContactPage() {
                     <MapPin className="h-7 w-7" />
                   </div>
                   <h2 className="text-2xl font-bold uppercase tracking-wide text-white">
-                    Studio Location
+                    {t("locationTitle")}
                   </h2>
                   <p className="mt-4 text-sm leading-7 text-gray-400">
                     3200 Wright Carpenter Rd
@@ -204,12 +205,12 @@ export default function ContactPage() {
                     <Clock3 className="h-7 w-7" />
                   </div>
                   <h2 className="text-2xl font-bold uppercase tracking-wide text-white">
-                    Booking Hours
+                    {t("hoursTitle")}
                   </h2>
                   <p className="mt-4 text-sm leading-7 text-gray-400">
-                    Sessions by appointment.
+                    {t("hoursLine1")}
                     <br />
-                    Book in advance to lock in your preferred time.
+                    {t("hoursLine2")}
                   </p>
                 </div>
               </div>
@@ -220,12 +221,12 @@ export default function ContactPage() {
         <section className="border-y border-white/5 py-20">
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
-              <div className="text-center mb-12">
+              <div className="mb-12 text-center">
                 <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#00f0ff]">
-                  Contact Details
+                  {t("detailsEyebrow")}
                 </p>
                 <h2 className="font-urban text-4xl uppercase tracking-tight text-white sm:text-5xl md:text-6xl">
-                  Reach The Studio
+                  {t("detailsTitle")}
                 </h2>
               </div>
 
@@ -241,9 +242,9 @@ export default function ContactPage() {
                     <Mail className="h-7 w-7" />
                   </div>
                   <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
-                    Bookings
+                    {t("bookingsTitle")}
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-gray-400 break-all">
+                  <p className="mt-4 break-all text-sm leading-7 text-gray-400">
                     bookings@invaluablessproduction.com
                   </p>
                 </a>
@@ -259,9 +260,9 @@ export default function ContactPage() {
                     <Mic2 className="h-7 w-7" />
                   </div>
                   <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
-                    Beats
+                    {t("beatsTitle")}
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-gray-400 break-all">
+                  <p className="mt-4 break-all text-sm leading-7 text-gray-400">
                     beats@invaluablessproduction.com
                   </p>
                 </a>
@@ -277,9 +278,9 @@ export default function ContactPage() {
                     <Mail className="h-7 w-7" />
                   </div>
                   <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
-                    General
+                    {t("generalTitle")}
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-gray-400 break-all">
+                  <p className="mt-4 break-all text-sm leading-7 text-gray-400">
                     support@invaluablessproduction.com
                   </p>
                 </a>
@@ -291,12 +292,12 @@ export default function ContactPage() {
         <section className="py-20">
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
-              <div className="text-center mb-12">
+              <div className="mb-12 text-center">
                 <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#00f0ff]">
-                  Follow The Work
+                  {t("followEyebrow")}
                 </p>
                 <h2 className="font-urban text-4xl uppercase tracking-tight text-white sm:text-5xl md:text-6xl">
-                  Stay Connected
+                  {t("followTitle")}
                 </h2>
               </div>
 
@@ -332,7 +333,7 @@ export default function ContactPage() {
 
         <section className="relative py-20">
           <FadeInSection>
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#ff0040]/5 to-transparent" />
 
             <div className="mx-auto max-w-5xl px-6 md:px-16">
               <div
@@ -343,13 +344,14 @@ export default function ContactPage() {
                 <div className="mouse-glow" />
 
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
-                  Lock In
+                  {t("ctaEyebrow")}
                 </p>
                 <h2 className="font-urban mb-6 text-6xl uppercase tracking-tighter md:text-8xl">
-                  Ready To Record<span className="text-[#ff0040]">?</span>
+                  {t("ctaTitle")}
+                  <span className="text-[#ff0040]">?</span>
                 </h2>
                 <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-400">
-                  Book your time, come prepared, and let&apos;s create something powerful.
+                  {t("ctaDescription")}
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-4">
@@ -357,7 +359,7 @@ export default function ContactPage() {
                     href="/book"
                     className="group relative inline-block overflow-hidden bg-[#ff0040] px-12 py-5 text-sm font-bold uppercase tracking-[0.2em] text-black transition-all hover:glow-red"
                   >
-                    <span className="relative z-10">Book Your Session</span>
+                    <span className="relative z-10">{t("ctaBookButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
                   </Link>
 
@@ -365,7 +367,7 @@ export default function ContactPage() {
                     href="mailto:bookings@invaluablessproduction.com"
                     className="group relative inline-block overflow-hidden border border-[#00f0ff] px-12 py-5 text-sm font-bold uppercase tracking-[0.2em] text-[#00f0ff] transition-all hover:glow-cyan"
                   >
-                    <span className="relative z-10">Email Studio</span>
+                    <span className="relative z-10">{t("ctaEmailButton")}</span>
                     <div className="absolute inset-0 translate-y-full bg-[#00f0ff]/15 transition-transform duration-300 group-hover:translate-y-0" />
                   </a>
                 </div>
