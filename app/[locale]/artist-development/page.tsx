@@ -537,7 +537,7 @@ export default function ArtistDevelopmentPage() {
                       <li>• {t("packages.momentum.items.5")}</li>
                     </ul>
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$349 / month</p>
+                    <p className="text-3xl font-bold text-[#ff0040]">$475 / month</p>
                   </div>
                 </div>
 
@@ -568,7 +568,7 @@ export default function ArtistDevelopmentPage() {
                       <li>• {t("packages.elevation.items.8")}</li>
                     </ul>
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$699 / month</p>
+                    <p className="text-3xl font-bold text-[#ff0040]">$849 / month</p>
                   </div>
                 </div>
 
@@ -594,7 +594,7 @@ export default function ArtistDevelopmentPage() {
                       <li>• {t("packages.partner.items.8")}</li>
                     </ul>
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$1,050 / month</p>
+                    <p className="text-3xl font-bold text-[#ff0040]">$1,200 / month</p>
                   </div>
                 </div>
               </div>
