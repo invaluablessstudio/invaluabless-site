@@ -554,7 +554,7 @@ export default function ArtistDevelopmentPage() {
                       <li>• Priority booking access</li>
                     </ul>
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$349 / month</p>
+                    <p className="text-3xl font-bold text-[#ff0040]">$475 / month</p>
                   </div>
                 </div>
 
@@ -587,7 +587,7 @@ export default function ArtistDevelopmentPage() {
       <li>• Monthly development session</li>
     </ul>
 
-    <p className="text-3xl font-bold text-[#ff0040]">$699 / month</p>
+    <p className="text-3xl font-bold text-[#ff0040]">$849 / month</p>
   </div>
 </div>
 
@@ -615,7 +615,7 @@ export default function ArtistDevelopmentPage() {
                       <li>• Priority booking</li>
                     </ul>
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$1,050 / month</p>
+                    <p className="text-3xl font-bold text-[#ff0040]">$1,250 / month</p>
                   </div>
                 </div>
               </div>
