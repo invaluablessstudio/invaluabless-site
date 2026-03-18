@@ -124,6 +124,86 @@ export default function ArtistDevelopmentPage() {
     },
   ] as const;
 
+  const packages = [
+    {
+      title: t("packages.momentum.title"),
+      bestFor: t("packages.momentum.bestFor"),
+      desc: t("packages.momentum.desc"),
+      price: "$475",
+      commitment: "$1,425",
+      outcome: t("packages.momentum.outcome"),
+      items: [
+        t("packages.momentum.items.0"),
+        t("packages.momentum.items.1"),
+        t("packages.momentum.items.2"),
+        t("packages.momentum.items.3"),
+        t("packages.momentum.items.4"),
+        t("packages.momentum.items.5"),
+      ],
+      featured: false,
+      buttonStyle:
+        "border border-white/15 text-white hover:border-[#ff0040] hover:text-[#ff0040]",
+      descStyle: "text-gray-400",
+      listStyle: "text-gray-300",
+      noteStyle: "text-gray-400",
+      commitmentStyle: "text-gray-400",
+      bestForStyle: "text-[#00f0ff]",
+    },
+    {
+      title: t("packages.elevation.title"),
+      bestFor: t("packages.elevation.bestFor"),
+      desc: t("packages.elevation.desc"),
+      price: "$849",
+      commitment: "$2,547",
+      outcome: t("packages.elevation.outcome"),
+      items: [
+        t("packages.elevation.items.0"),
+        t("packages.elevation.items.1"),
+        t("packages.elevation.items.2"),
+        t("packages.elevation.items.3"),
+        t("packages.elevation.items.4"),
+        t("packages.elevation.items.5"),
+        t("packages.elevation.items.6"),
+        t("packages.elevation.items.7"),
+        t("packages.elevation.items.8"),
+      ],
+      featured: true,
+      buttonStyle: "bg-[#ff0040] text-black hover:glow-red",
+      descStyle: "text-gray-300",
+      listStyle: "text-gray-200",
+      noteStyle: "text-gray-300",
+      commitmentStyle: "text-gray-300",
+      bestForStyle: "text-[#00f0ff]",
+    },
+    {
+      title: t("packages.partner.title"),
+      bestFor: t("packages.partner.bestFor"),
+      desc: t("packages.partner.desc"),
+      price: "$1,250",
+      commitment: "$3,750",
+      outcome: t("packages.partner.outcome"),
+      items: [
+        t("packages.partner.items.0"),
+        t("packages.partner.items.1"),
+        t("packages.partner.items.2"),
+        t("packages.partner.items.3"),
+        t("packages.partner.items.4"),
+        t("packages.partner.items.5"),
+        t("packages.partner.items.6"),
+        t("packages.partner.items.7"),
+        t("packages.partner.items.8"),
+      ],
+      featured: false,
+      buttonStyle:
+        "border border-white/15 text-white hover:border-[#00f0ff] hover:text-[#00f0ff]",
+      descStyle: "text-gray-400",
+      listStyle: "text-gray-300",
+      noteStyle: "text-gray-400",
+      commitmentStyle: "text-gray-400",
+      bestForStyle: "text-[#00f0ff]",
+    },
+  ] as const;
+
   return (
     <main className="relative min-h-screen bg-transparent text-white">
       <div className="pointer-events-none fixed inset-0 -z-20">
@@ -168,7 +248,7 @@ export default function ArtistDevelopmentPage() {
                 </p>
               </div>
 
-              <h1 className="text-5xl font-black uppercase tracking-tighter leading-[0.88] md:text-7xl lg:text-8xl">
+              <h1 className="text-5xl font-black leading-[0.88] uppercase tracking-tighter md:text-7xl lg:text-8xl">
                 <span className="block text-white">{t("heroLine1")}</span>
                 <span className="block text-[#ff0040] drop-shadow-[0_0_15px_rgba(255,0,64,0.45)]">
                   {t("heroLine2")}
@@ -507,7 +587,7 @@ export default function ArtistDevelopmentPage() {
         <section className="py-20">
           <FadeInSection>
             <div className="mx-auto max-w-7xl px-6 md:px-16">
-              <div className="mb-14 text-center">
+              <div className="mb-6 text-center">
                 <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#00f0ff]">
                   {t("packagesSection.eyebrow")}
                 </p>
@@ -517,86 +597,97 @@ export default function ArtistDevelopmentPage() {
                 </h2>
               </div>
 
-              <div className="grid gap-8 md:grid-cols-3">
-                <div
-                  className="street-card street-hover p-8"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-                  <div className="relative z-10">
-                    <h3 className="mb-4 text-2xl font-bold uppercase">{t("packages.momentum.title")}</h3>
-                    <p className="mb-6 text-gray-400">{t("packages.momentum.desc")}</p>
+              <div className="mx-auto mb-12 max-w-3xl text-center">
+                <p className="text-base leading-relaxed text-gray-400 md:text-lg">
+                  {t("packagesSection.intro")}
+                </p>
+                <p className="mt-4 text-xs uppercase tracking-[0.25em] text-gray-500">
+                  {t("packagesSection.commitmentNote")}
+                </p>
+              </div>
 
-                    <ul className="mb-8 space-y-3 text-sm text-gray-300">
-                      <li>• {t("packages.momentum.items.0")}</li>
-                      <li>• {t("packages.momentum.items.1")}</li>
-                      <li>• {t("packages.momentum.items.2")}</li>
-                      <li>• {t("packages.momentum.items.3")}</li>
-                      <li>• {t("packages.momentum.items.4")}</li>
-                      <li>• {t("packages.momentum.items.5")}</li>
-                    </ul>
+              <div className="grid items-stretch gap-8 md:grid-cols-3">
+                {packages.map((pkg) => (
+                  <div
+                    key={pkg.title}
+                    className={`street-card street-hover relative flex h-full flex-col p-8 ${
+                      pkg.featured
+                        ? "border border-[#ff0040]/60 bg-white/[0.02] pt-14 shadow-[0_0_35px_rgba(255,0,64,0.12)]"
+                        : ""
+                    }`}
+                    onMouseMove={handleCardMouseMove}
+                    onMouseLeave={handleCardMouseLeave}
+                  >
+                    <div className="mouse-glow" />
 
-                    <p className="text-3xl font-bold text-[#ff0040]">$475 / month</p>
+                    {pkg.featured && (
+                      <span className="absolute left-1/2 top-2 z-20 -translate-x-1/2 whitespace-nowrap bg-[#ff0040] px-4 py-1 text-xs font-bold uppercase tracking-wider text-black">
+                        {t("packages.popular")}
+                      </span>
+                    )}
+
+                    <div className="relative z-10 flex h-full flex-col">
+                      <p
+                        className={`mb-3 text-xs uppercase tracking-[0.25em] ${pkg.bestForStyle}`}
+                      >
+                        {pkg.bestFor}
+                      </p>
+
+                      <h3 className="mb-3 text-2xl font-bold uppercase text-white">
+                        {pkg.title}
+                      </h3>
+
+                      <p className={`mb-6 text-sm leading-relaxed ${pkg.descStyle}`}>
+                        {pkg.desc}
+                      </p>
+
+                      <div className="mb-6">
+                        <p className="text-4xl font-black text-[#ff0040]">
+                          {pkg.price}
+                        </p>
+                        <p className="mt-1 text-sm uppercase tracking-wider text-gray-500">
+                          {t("packages.perMonth")}
+                        </p>
+                        <p className={`mt-3 text-sm ${pkg.commitmentStyle}`}>
+                          {t("packages.minimumCommitment")}:{" "}
+                          <span className="font-semibold text-white">
+                            {pkg.commitment}
+                          </span>
+                        </p>
+                      </div>
+
+                      <ul className={`mb-8 flex-1 space-y-3 text-sm ${pkg.listStyle}`}>
+                        {pkg.items.map((item) => (
+                          <li key={item}>• {item}</li>
+                        ))}
+                      </ul>
+
+                      <div className="border-t border-white/10 pt-6">
+                        <p className={`mb-5 text-sm leading-relaxed ${pkg.noteStyle}`}>
+                          {pkg.outcome}
+                        </p>
+
+                        <Link
+                          href="/artist-development/apply"
+                          className={`group relative inline-block w-full overflow-hidden px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.18em] transition-all ${pkg.buttonStyle}`}
+                        >
+                          <span className="relative z-10">
+                            {t("packages.applyButton")}
+                          </span>
+                          {pkg.featured && (
+                            <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 group-hover:translate-y-0" />
+                          )}
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                <div
-                  className="street-card street-hover relative border border-[#ff0040]/50 p-8 pt-14"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-
-                  <span className="absolute left-1/2 top-2 z-20 -translate-x-1/2 whitespace-nowrap bg-[#ff0040] px-4 py-1 text-xs font-bold uppercase tracking-wider text-black">
-                    {t("packages.popular")}
-                  </span>
-
-                  <div className="relative z-10">
-                    <h3 className="mb-4 text-2xl font-bold uppercase">{t("packages.elevation.title")}</h3>
-                    <p className="mb-6 text-gray-300">{t("packages.elevation.desc")}</p>
-
-                    <ul className="mb-8 space-y-3 text-sm text-gray-200">
-                      <li>• {t("packages.elevation.items.0")}</li>
-                      <li>• {t("packages.elevation.items.1")}</li>
-                      <li>• {t("packages.elevation.items.2")}</li>
-                      <li>• {t("packages.elevation.items.3")}</li>
-                      <li>• {t("packages.elevation.items.4")}</li>
-                      <li>• {t("packages.elevation.items.5")}</li>
-                      <li>• {t("packages.elevation.items.6")}</li>
-                      <li>• {t("packages.elevation.items.7")}</li>
-                      <li>• {t("packages.elevation.items.8")}</li>
-                    </ul>
-
-                    <p className="text-3xl font-bold text-[#ff0040]">$849 / month</p>
-                  </div>
-                </div>
-
-                <div
-                  className="street-card street-hover p-8"
-                  onMouseMove={handleCardMouseMove}
-                  onMouseLeave={handleCardMouseLeave}
-                >
-                  <div className="mouse-glow" />
-                  <div className="relative z-10">
-                    <h3 className="mb-4 text-2xl font-bold uppercase">{t("packages.partner.title")}</h3>
-                    <p className="mb-6 text-gray-400">{t("packages.partner.desc")}</p>
-
-                    <ul className="mb-8 space-y-3 text-sm text-gray-300">
-                      <li>• {t("packages.partner.items.0")}</li>
-                      <li>• {t("packages.partner.items.1")}</li>
-                      <li>• {t("packages.partner.items.2")}</li>
-                      <li>• {t("packages.partner.items.3")}</li>
-                      <li>• {t("packages.partner.items.4")}</li>
-                      <li>• {t("packages.partner.items.5")}</li>
-                      <li>• {t("packages.partner.items.6")}</li>
-                      <li>• {t("packages.partner.items.7")}</li>
-                      <li>• {t("packages.partner.items.8")}</li>
-                    </ul>
-
-                    <p className="text-3xl font-bold text-[#ff0040]">$1,200 / month</p>
-                  </div>
-                </div>
+              <div className="mx-auto mt-10 max-w-4xl text-center">
+                <p className="text-sm leading-relaxed text-gray-500">
+                  {t("packagesSection.footerNote")}
+                </p>
               </div>
             </div>
           </FadeInSection>

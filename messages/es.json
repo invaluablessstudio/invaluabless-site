@@ -107,48 +107,37 @@
     "title": "Servicios",
     "ctaBook": "Reservar Sesión",
     "intro": "808s pesados. Voces limpias. Mezclas listas para la industria. Hecho para artistas de reggaetón, trap y música latina.",
-
     "recordingTitle": "Grabación",
     "recordingDesc": "Grabación profesional para voces e instrumentos con tomas limpias, dirección de performance y un flujo serio de estudio.",
     "recordingNote": "Mínimo 2 horas",
-
     "mixingTitle": "Mezcla",
     "mixingDesc": "808s que pegan. Voces que cortan. Balance listo para radio con claridad y fuerza que se traduce en todos lados.",
     "mixingNote": "Por canción",
-
     "masteringTitle": "Masterización",
     "masteringDesc": "Pulido final y volumen listo para plataformas. Dinámica limpia optimizada para streaming.",
     "masteringNote": "Por canción",
-
     "beatsTitle": "Producción de Beats",
     "beatsDesc": "Producción original para artistas de reggaetón, trap, rap, latino y urbano. Hecha para tu sonido y dirección.",
     "beatsNote": "Producción personalizada",
-
     "podcastTitle": "Grabación de Podcast",
     "podcastDesc": "Grabación profesional y limpia para podcasts, entrevistas y contenido de voz.",
     "podcastNote": "Por sesión",
-
     "vocalCoachingTitle": "Coaching Vocal",
     "vocalCoachingDesc": "Guía durante la grabación para ayudar al artista a mejorar interpretación, seguridad y ejecución vocal.",
     "vocalCoachingNote": "Incluido con grabación",
     "includedPrice": "Incluido",
-
     "processTitle": "Cómo Funciona",
     "processIntro": "Reserva en calendario en tiempo real. El depósito asegura el horario. Las confirmaciones automáticas se encargan del resto.",
     "openCalendar": "Abrir Calendario",
-
     "step1Title": "Reserva en el Calendario",
     "step1Desc": "Elige un horario disponible directamente en nuestro calendario en vivo — sin ida y vuelta.",
     "step1Tag": "Disponibilidad en vivo",
-
     "step2Title": "Paga el Depósito",
     "step2Desc": "Sigue las instrucciones del depósito en la página de reservas. El depósito asegura tu sesión.",
     "step2Tag": "Sin depósito = no queda asegurado",
-
     "step3Title": "Confirmación Automática",
     "step3Desc": "Una vez recibido el pago, recibirás confirmación automática e instrucciones para la sesión.",
     "step3Tag": "Confirmación por correo",
-
     "processFooter": "Elige tu horario en el calendario → paga el depósito → recibe confirmación automática e instrucciones."
   },
   "StudioPage": {
@@ -606,13 +595,21 @@
     "packagesSection": {
       "eyebrow": "Paquetes del Programa",
       "title1": "Elige Tu",
-      "title2": "Nivel"
+      "title2": "Nivel",
+      "intro": "Elige el nivel de apoyo que mejor encaja con tu etapa actual, tus metas de producción y tu compromiso con el crecimiento a largo plazo.",
+      "commitmentNote": "Todos los paquetes requieren un compromiso mínimo de 3 meses",
+      "footerNote": "Las solicitudes se revisan manualmente para asegurar que el programa sea la opción correcta tanto para el artista como para el proceso de desarrollo."
     },
     "packages": {
-      "popular": "Más Popular",
+      "popular": "Mas Popular",
+      "perMonth": "Por Mes",
+      "minimumCommitment": "Compromiso Mínimo de 3 Meses",
+      "applyButton": "Solicitar Ahora",
       "momentum": {
         "title": "Momentum",
-        "desc": "Para artistas que necesitan consistencia y apoyo de grabación.",
+        "bestFor": "Ideal para artistas que necesitan consistencia",
+        "desc": "Para artistas que necesitan responsabilidad, estructura y apoyo para terminar música más fuerte con constancia.",
+        "outcome": "Un punto de partida sólido para artistas que quieren progreso constante, mejores canciones y más dirección sin entrar todavía en un plan de mayor volumen.",
         "items": [
           "Grabación de 1 canción completa",
           "Coaching vocal durante la sesión",
@@ -624,7 +621,9 @@
       },
       "elevation": {
         "title": "Elevation",
-        "desc": "Para artistas listos para construir activamente su catálogo y su marca.",
+        "bestFor": "Ideal para artistas que están construyendo activamente su catálogo",
+        "desc": "Para artistas listos para crear mejores discos, afinar su identidad y avanzar con una estrategia real de lanzamiento.",
+        "outcome": "El mejor balance entre creación musical, apoyo de desarrollo y estrategia para artistas serios que quieren construir impulso real.",
         "items": [
           "Grabación de 2 canciones",
           "1 beat original incluido",
@@ -639,7 +638,9 @@
       },
       "partner": {
         "title": "Artist Partner",
-        "desc": "Nivel premium de desarrollo para artistas serios.",
+        "bestFor": "Ideal para artistas listos para un impulso serio",
+        "desc": "Desarrollo premium para artistas que quieren mayor producción, estrategia más profunda y apoyo más cercano a largo plazo.",
+        "outcome": "Un paquete de apoyo más completo para artistas serios listos para moverse agresivamente con mejor música, mejor planificación y más consistencia.",
         "items": [
           "Grabación de 4 canciones",
           "2 beats originales incluidos",
@@ -657,7 +658,7 @@
       "eyebrow": "Aplica Ahora",
       "title1": "Construye Con",
       "title2": "Intención.",
-      "description": "Este programa es para artistas serios sobre crecer, mantenerse consistentes y construir impulso a largo plazo.",
+      "description": "Este programa es para artistas serios que quieren crecer, mantenerse consistentes y construir impulso a largo plazo.",
       "subtext": "Las solicitudes se revisan manualmente para asegurar que el programa sea la opción correcta.",
       "button": "Enviar Solicitud",
       "minimum": "Compromiso Mínimo • 3 Meses",

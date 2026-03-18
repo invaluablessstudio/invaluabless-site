@@ -27,11 +27,9 @@
     "heroIntro": "Studio-level recording for reggaeton, trap, and Latin artists. Heavy 808s. Clean vocals. Industry-ready mixes that slap.",
     "ctaBook": "Book Session",
     "ctaWork": "Hear the Work",
-
     "statTracks": "Tracks Mixed",
     "statArtists": "Artists",
     "statYears": "Years",
-
     "producerEyebrow": "The Producer",
     "producerRole": "Founder • Recording Engineer • Producer",
     "producerStory1": "Started in Puerto Rico in '09. Just speakers, hunger, and an ear for low-end that had to translate everywhere — cars, clubs, phone speakers.",
@@ -40,7 +38,6 @@
     "producerStory4": "NOW: Based in San Antonio — focused on clean, heavy, release-ready records.",
     "producerQuote": "Clean vocals. Heavy low end — if it doesn’t hit in the car at night, it’s not done.",
     "producerTagline": "Play it loud. That's the test.",
-
     "creditsEyebrow": "Selected Credits",
     "creditsTitle": "Heavy Hitters",
     "creditsPuertoRico": "Puerto Rico",
@@ -49,7 +46,6 @@
     "creditsCertification": "Certification",
     "creditsStudiosText": "La Caldera Records (Quebradillas, PR) • Propiedad Urbana (San Juan, PR) • Unstopable Studio (San Juan, PR) • Invaluabless Productions (San Antonio, TX)",
     "creditsCertificationText": "Recording Engineer — CCAT, Bayamón, Puerto Rico",
-
     "studioEyebrow": "The Studio",
     "studioTitle1": "Built for Sound.",
     "studioTitle2": "Designed for Sessions.",
@@ -62,7 +58,6 @@
     "studioCard4Title": "Artist Development",
     "studioCard4Desc": "Structured support for artists who want direction, accountability, release strategy, and long-term growth.",
     "learnMore": "Learn More →",
-
     "seoEyebrow": "Recording Studio in San Antonio",
     "seoTitle1": "Built for Artists in",
     "seoTitle2": "San Antonio, TX",
@@ -70,11 +65,9 @@
     "seoParagraph2": "Whether you need recording, mixing, mastering, beat production, or artist guidance, our studio is built to help you create music that sounds polished, confident, and ready for release.",
     "seoCtaBook": "Book San Antonio Session",
     "seoCtaContact": "Contact the Studio",
-
     "testimonialsEyebrow": "Artist Feedback",
     "testimonialsTitle1": "What Artists",
     "testimonialsTitle2": "Say",
-
     "contactEyebrow": "Get In Touch",
     "contactTitle": "Let's Work",
     "contactIntro": "Ready to make records that last? Let's build your sound.",
@@ -114,48 +107,37 @@
     "title": "Services",
     "ctaBook": "Book Session",
     "intro": "Heavy 808s. Clean vocals. Industry-ready mixes that slap. Built for reggaeton, trap, and Latin artists.",
-
     "recordingTitle": "Recording",
     "recordingDesc": "Professional recording for vocals and instruments with clean takes, strong performance coaching, and a serious studio workflow.",
     "recordingNote": "2 hour minimum",
-
     "mixingTitle": "Mixing",
     "mixingDesc": "808s that hit. Vocals that cut. Radio-ready balance with clarity and punch that translates everywhere.",
     "mixingNote": "Per song",
-
     "masteringTitle": "Mastering",
     "masteringDesc": "Final polish and platform-ready loudness. Clean dynamics optimized for streaming services.",
     "masteringNote": "Per song",
-
     "beatsTitle": "Beat Production",
     "beatsDesc": "Original production for reggaeton, trap, rap, Latin, and urban artists. Built to match your sound and direction.",
     "beatsNote": "Custom production",
-
     "podcastTitle": "Podcast Recording",
     "podcastDesc": "Clean, professional spoken-word recording for podcasts, interviews, and voice content.",
     "podcastNote": "Per session",
-
     "vocalCoachingTitle": "Vocal Coaching",
     "vocalCoachingDesc": "Performance guidance during recording to help artists improve delivery, confidence, and vocal execution.",
     "vocalCoachingNote": "Included with recording",
     "includedPrice": "Included",
-
     "processTitle": "How It Works",
     "processIntro": "Real-time calendar booking. Deposit locks the time. Automated confirmations handle the rest.",
     "openCalendar": "Open Calendar",
-
     "step1Title": "Book on Calendar",
     "step1Desc": "Choose an available time directly on our live calendar — no back-and-forth.",
     "step1Tag": "Live availability",
-
     "step2Title": "Pay Deposit",
     "step2Desc": "Follow the deposit instructions on the booking page. Deposit locks your session time.",
     "step2Tag": "No deposit = not locked",
-
     "step3Title": "Auto Confirm",
     "step3Desc": "Once payment is received, you’ll get automated confirmation and session instructions.",
     "step3Tag": "Email confirmation",
-
     "processFooter": "Choose your time on the calendar → pay the deposit → receive automatic confirmation and instructions."
   },
   "StudioPage": {
@@ -613,13 +595,21 @@
     "packagesSection": {
       "eyebrow": "Program Packages",
       "title1": "Choose Your",
-      "title2": "Level"
+      "title2": "Level",
+      "intro": "Pick the level of support that matches your current stage, output goals, and commitment to long-term growth.",
+      "commitmentNote": "All packages require a 3-month minimum commitment",
+      "footerNote": "Applications are reviewed manually to make sure the program is the right fit for both the artist and the development process."
     },
     "packages": {
       "popular": "Most Popular",
+      "perMonth": "Per Month",
+      "minimumCommitment": "3-Month Minimum",
+      "applyButton": "Apply Now",
       "momentum": {
         "title": "Momentum",
-        "desc": "For artists who need consistency and recording support.",
+        "bestFor": "Best for artists who need consistency",
+        "desc": "For artists who need accountability, structure, and support finishing stronger music consistently.",
+        "outcome": "A strong starting point for artists who want regular progress, better songs, and more direction without jumping into a higher-volume plan.",
         "items": [
           "Recording for 1 full song",
           "Vocal coaching during session",
@@ -631,7 +621,9 @@
       },
       "elevation": {
         "title": "Elevation",
-        "desc": "For artists ready to actively build their catalog and brand.",
+        "bestFor": "Best for artists actively building their catalog",
+        "desc": "For artists ready to build stronger records, sharpen their identity, and move with a real release strategy.",
+        "outcome": "The best balance of music creation, development support, and strategy for artists serious about building momentum.",
         "items": [
           "Recording for 2 songs",
           "1 original beat included",
@@ -646,7 +638,9 @@
       },
       "partner": {
         "title": "Artist Partner",
-        "desc": "Premium development tier for serious artists.",
+        "bestFor": "Best for artists ready for serious momentum",
+        "desc": "Premium development for artists who want higher output, deeper strategy, and more hands-on long-term support.",
+        "outcome": "A higher-touch package built for serious artists ready to move aggressively with better music, better planning, and stronger consistency.",
         "items": [
           "Recording for 4 songs",
           "2 original beats included",
