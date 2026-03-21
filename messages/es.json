@@ -24,7 +24,7 @@
     "heroLine1": "Haz",
     "heroLine2": "Ruido",
     "heroLine3": "Que Pegue",
-    "heroIntro": "Grabación de nivel profesional para artistas de reggaetón, trap y música latina. 808s pesados. Voces limpias. Mezclas listas para la industria.",
+    "heroIntro": "Grabación de nivel profesional para artistas de reggaetón, trap y música latina. 808s pesados. Voces limpias. Mezclas listas para la industria que pegan duro.",
     "ctaBook": "Reservar Sesión",
     "ctaWork": "Escuchar Trabajos",
     "statTracks": "Temas Mezclados",
@@ -32,11 +32,11 @@
     "statYears": "Años",
     "producerEyebrow": "El Productor",
     "producerRole": "Fundador • Ingeniero de Grabación • Productor",
-    "producerStory1": "Comencé en Puerto Rico en el 2009. Solo bocinas, hambre y un oído entrenado para que el bajo se escuchara bien en cualquier lugar — carros, clubes y teléfonos.",
+    "producerStory1": "Comencé en Puerto Rico en el 2009. Solo bocinas, hambre y un oído para los graves que tenían que traducirse en todos lados — carros, clubes y bocinas de teléfono.",
     "producerStory2": "2010: La Caldera Records. Construido dentro de una barbería en Quebradillas junto a mi amigo Josue Tosado (MR KUSH).",
     "producerStory3": "2013: Propiedad Urbana & Unstopable Studios. San Juan fue el siguiente nivel. Sesiones con YOMO, El Larax, Nencho el León Salvaje, Bimbo El Oso Mañoso y más.",
-    "producerStory4": "AHORA: Basado en San Antonio — enfocado en grabaciones limpias, graves fuertes y canciones listas para lanzamiento.",
-    "producerQuote": "Voces limpias. Bajo pesado — si no suena bien en el carro de noche, no está terminado.",
+    "producerStory4": "AHORA: Basado en San Antonio — enfocado en discos limpios, graves pesados y canciones listas para lanzar.",
+    "producerQuote": "Voces limpias. Graves pesados — si no pega en el carro de noche, no está terminado.",
     "producerTagline": "Súbelo duro. Esa es la prueba.",
     "creditsEyebrow": "Créditos Seleccionados",
     "creditsTitle": "Pesos Pesados",
@@ -50,18 +50,18 @@
     "studioTitle1": "Hecho para el Sonido.",
     "studioTitle2": "Diseñado para Sesiones.",
     "studioCard1Title": "Grabación",
-    "studioCard1Desc": "Voces, instrumentos y bandas completas. Cadena limpia y ambiente profesional.",
+    "studioCard1Desc": "Voces, instrumentos y bandas completas. Cadena de señal limpia y ambiente profesional.",
     "studioCard2Title": "Mezcla y Master",
-    "studioCard2Desc": "Sonido listo para radio, club y audífonos. Tu sonido, elevado.",
+    "studioCard2Desc": "Listo para radio, probado en club y aprobado en audífonos. Tu sonido, elevado.",
     "studioCard3Title": "Beats",
     "studioCard3Desc": "Producción original. Reggaetón, trap, rap y música latina. Personalizados o licenciados.",
     "studioCard4Title": "Desarrollo Artístico",
-    "studioCard4Desc": "Apoyo estructurado para artistas que quieren dirección, disciplina, estrategia de lanzamiento y crecimiento a largo plazo.",
+    "studioCard4Desc": "Apoyo estructurado para artistas que quieren dirección, responsabilidad, estrategia de lanzamiento y crecimiento a largo plazo.",
     "learnMore": "Ver Más →",
     "seoEyebrow": "Estudio de Grabación en San Antonio",
     "seoTitle1": "Hecho para Artistas en",
     "seoTitle2": "San Antonio, TX",
-    "seoParagraph1": "Invaluabless Productions es un estudio de grabación en San Antonio para artistas que buscan voces limpias, mezclas con fuerza y una experiencia profesional. Trabajamos con reggaetón, música latina, rap, trap, urbano y artistas cristianos listos para tomar su sonido en serio.",
+    "seoParagraph1": "Invaluabless Productions es un estudio de grabación en San Antonio para artistas que buscan voces limpias, mezclas contundentes y una experiencia profesional de grabación. Trabajamos con reggaetón, música latina, rap, trap, urbano y artistas cristianos listos para tomarse su sonido en serio.",
     "seoParagraph2": "Ya sea que necesites grabación, mezcla, mastering, producción de beats o guía artística, nuestro estudio está diseñado para ayudarte a crear música pulida, segura y lista para lanzar.",
     "seoCtaBook": "Reservar Sesión en San Antonio",
     "seoCtaContact": "Contactar al Estudio",
@@ -70,7 +70,7 @@
     "testimonialsTitle2": "Los Artistas",
     "contactEyebrow": "Ponte en Contacto",
     "contactTitle": "Trabajemos",
-    "contactIntro": "¿Listo para crear música que dure? Construyamos tu sonido.",
+    "contactIntro": "¿Listo para hacer música que dure? Construyamos tu sonido.",
     "contactStudio": "Estudio",
     "contactEmail": "Correo",
     "contactFollow": "Sigue el Trabajo",
@@ -82,14 +82,14 @@
   "Book": {
     "eyebrow": "Asegura Tu Horario",
     "title": "Reservar",
-    "intro": "Elige un horario disponible. La disponibilidad se actualiza en tiempo real.",
+    "intro": "Elige un horario disponible. Actualizaciones en tiempo real.",
     "trust1": "Reserva segura",
     "trust2": "El depósito asegura tu espacio",
     "trust3": "Disponibilidad en vivo",
     "depositBannerTitle": "Se requiere depósito para asegurar la sesión",
     "payDeposit": "Pagar Depósito",
     "iframeTitle": "Reservar una sesión",
-    "textButton": "Texto",
+    "textButton": "Mensaje",
     "studioLabel": "InvaluaBless Studio",
     "studioImageAlt": "Micrófono del estudio",
     "reviewsTitle": "Reseñas de Google",
@@ -98,7 +98,7 @@
     "openCashApp": "Abrir enlace de Cash App",
     "openPayPal": "Abrir enlace de PayPal",
     "sendToPhone": "Enviar a este número de teléfono",
-    "receiptNote": "Guarda captura del recibo. Escríbenos si necesitas ayuda.",
+    "receiptNote": "Guarda una captura del recibo. Escríbenos si necesitas ayuda.",
     "copy": "Copiar",
     "copied": "Copiado"
   },
@@ -106,24 +106,24 @@
     "eyebrow": "Lo Que Hacemos",
     "title": "Servicios",
     "ctaBook": "Reservar Sesión",
-    "intro": "808s pesados. Voces limpias. Mezclas listas para la industria. Hecho para artistas de reggaetón, trap y música latina.",
+    "intro": "808s pesados. Voces limpias. Mezclas listas para la industria que pegan duro. Hecho para artistas de reggaetón, trap y música latina.",
     "recordingTitle": "Grabación",
     "recordingDesc": "Grabación profesional para voces e instrumentos con tomas limpias, dirección de performance y un flujo serio de estudio.",
     "recordingNote": "Mínimo 2 horas",
     "mixingTitle": "Mezcla",
-    "mixingDesc": "808s que pegan. Voces que cortan. Balance listo para radio con claridad y fuerza que se traduce en todos lados.",
+    "mixingDesc": "808s que pegan. Voces que cortan. Balance listo para radio con claridad y pegada que se traduce en todos lados.",
     "mixingNote": "Por canción",
     "masteringTitle": "Masterización",
-    "masteringDesc": "Pulido final y volumen listo para plataformas. Dinámica limpia optimizada para streaming.",
+    "masteringDesc": "Pulido final y volumen listo para plataformas. Dinámica limpia optimizada para servicios de streaming.",
     "masteringNote": "Por canción",
     "beatsTitle": "Producción de Beats",
-    "beatsDesc": "Producción original para artistas de reggaetón, trap, rap, latino y urbano. Hecha para tu sonido y dirección.",
+    "beatsDesc": "Producción original para artistas de reggaetón, trap, rap, latino y urbano. Hecha para tu sonido y tu dirección.",
     "beatsNote": "Producción personalizada",
     "podcastTitle": "Grabación de Podcast",
-    "podcastDesc": "Grabación profesional y limpia para podcasts, entrevistas y contenido de voz.",
+    "podcastDesc": "Grabación limpia y profesional de voz para podcasts, entrevistas y contenido hablado.",
     "podcastNote": "Por sesión",
     "vocalCoachingTitle": "Coaching Vocal",
-    "vocalCoachingDesc": "Guía durante la grabación para ayudar al artista a mejorar interpretación, seguridad y ejecución vocal.",
+    "vocalCoachingDesc": "Guía durante la grabación para ayudar a los artistas a mejorar su entrega, confianza y ejecución vocal.",
     "vocalCoachingNote": "Incluido con grabación",
     "includedPrice": "Incluido",
     "processTitle": "Cómo Funciona",
@@ -133,7 +133,7 @@
     "step1Desc": "Elige un horario disponible directamente en nuestro calendario en vivo — sin ida y vuelta.",
     "step1Tag": "Disponibilidad en vivo",
     "step2Title": "Paga el Depósito",
-    "step2Desc": "Sigue las instrucciones del depósito en la página de reservas. El depósito asegura tu sesión.",
+    "step2Desc": "Sigue las instrucciones del depósito en la página de reservas. El depósito asegura tu horario de sesión.",
     "step2Tag": "Sin depósito = no queda asegurado",
     "step3Title": "Confirmación Automática",
     "step3Desc": "Una vez recibido el pago, recibirás confirmación automática e instrucciones para la sesión.",
@@ -146,10 +146,10 @@
       "line1": "Estudio",
       "line2": "de Grabación",
       "line3": "San Antonio",
-      "description": "Invaluabless Productions es un estudio de grabación profesional en San Antonio, TX especializado en sesiones de grabación, mezcla, masterización, producción de beats y apoyo artístico. Artistas de reggaetón, música latina, rap, trap, urbano, cristiano y música centrada en la voz pueden reservar un ambiente serio de estudio diseñado para tomas limpias, mejores interpretaciones y sonido listo para lanzamiento.",
+      "description": "Invaluabless Productions es un estudio de grabación profesional en San Antonio, TX especializado en sesiones de grabación, mezcla, masterización, producción de beats y apoyo artístico. Artistas de reggaetón, música latina, rap, trap, urbano, cristiano y música centrada en la voz pueden reservar un ambiente serio de estudio diseñado para tomas limpias, interpretaciones fuertes y sonido listo para lanzamiento.",
       "ctaBook": "Reservar Sesión de Estudio",
       "ctaContact": "Contactar al Estudio",
-      "srOnly": "Estudio de grabación en San Antonio. Mezcla y masterización profesional. Apoyo para grabación de reggaetón, música latina, rap, trap, urbano, cristiano y voces. Página local optimizada para artistas en San Antonio."
+      "srOnly": "Estudio de grabación en San Antonio. Mezcla y masterización profesional. Apoyo para grabación de reggaetón, música latina, rap, trap, urbano, cristiano y voces. Página local lista para reservas de artistas en San Antonio."
     },
     "servicesSection": {
       "eyebrow": "Servicios del Estudio",
@@ -163,11 +163,11 @@
       },
       "mixing": {
         "title": "Mezcla",
-        "description": "Mezclas balanceadas y pulidas diseñadas para sonar bien en audífonos, en el carro y en plataformas de streaming."
+        "description": "Mezclas balanceadas y pulidas diseñadas para pegar en audífonos, en el carro y en plataformas de streaming."
       },
       "mastering": {
         "title": "Masterización",
-        "description": "Volumen final, claridad y consistencia para que tu tema se sienta listo para lanzamiento y competitivo."
+        "description": "Volumen final, claridad y consistencia para que tu tema se sienta listo para lanzar y competitivo."
       },
       "beats": {
         "title": "Producción de Beats",
@@ -179,7 +179,7 @@
       },
       "vocalCoaching": {
         "title": "Coaching Vocal",
-        "description": "Guía durante la sesión para ayudar al artista a mejorar interpretación, confianza y performance."
+        "description": "Guía durante la sesión para ayudar a los artistas a mejorar su entrega, confianza e interpretación."
       }
     },
     "whySection": {
@@ -197,7 +197,7 @@
     "areasSection": {
       "eyebrow": "Sirviendo a Artistas Locales",
       "title": "San Antonio y áreas cercanas",
-      "description": "Esta sección fortalece la relevancia local en búsqueda y ayuda a los artistas a saber qué zonas atiendes.",
+      "description": "Esta sección fortalece la relevancia local en búsqueda y ayuda a los artistas a saber que atiendes su área.",
       "label": "Áreas que Atendemos"
     },
     "areas": [
@@ -235,7 +235,7 @@
     ],
     "cta": {
       "eyebrow": "Reserva Tu Sesión",
-      "title": "¿Listo Para Grabar",
+      "title": "Listo para grabar",
       "description": "Reserva tu sesión de estudio en San Antonio y hagamos algo que pegue.",
       "bookButton": "Reservar Sesión de Estudio",
       "contactButton": "Contactar al Estudio"
@@ -246,30 +246,30 @@
     "heroLine1": "Vamos",
     "heroLine2": "a Trabajar",
     "heroLine3": "Juntos",
-    "heroIntro": "¿Listo para reservar una sesión, hacer una pregunta o hablar sobre tu próximo proyecto? Escríbenos y hagamos algo que pegue de la manera correcta.",
+    "heroIntro": "¿Listo para reservar una sesión, hacer una pregunta o hablar sobre tu próximo proyecto? Escríbenos y construyamos algo que pegue de la manera correcta.",
     "bookButton": "Reservar Sesión",
-    "emailButton": "Enviar Correo",
+    "emailButton": "Correo al Estudio",
     "locationTitle": "Ubicación del Estudio",
     "hoursTitle": "Horario de Reservas",
     "hoursLine1": "Sesiones por cita.",
     "hoursLine2": "Reserva con anticipación para asegurar el horario que prefieres.",
     "detailsEyebrow": "Detalles de Contacto",
-    "detailsTitle": "Conecta con el Estudio",
+    "detailsTitle": "Contacta al Estudio",
     "bookingsTitle": "Reservas",
     "beatsTitle": "Beats",
     "generalTitle": "General",
     "followEyebrow": "Sigue el Trabajo",
     "followTitle": "Mantente Conectado",
     "ctaEyebrow": "Asegura Tu Espacio",
-    "ctaTitle": "¿Listo Para Grabar",
+    "ctaTitle": "Listo para grabar",
     "ctaDescription": "Reserva tu tiempo, llega preparado y creemos algo poderoso.",
     "ctaBookButton": "Reserva Tu Sesión",
-    "ctaEmailButton": "Enviar Correo"
+    "ctaEmailButton": "Correo al Estudio"
   },
   "ProducerPage": {
     "eyebrow": "El Productor",
     "photoAlt": "Jeovanne Diaz - Productor musical de Invaluabless Productions",
-    "photoTitle": "Voces Limpias. Bajo Pesado.",
+    "photoTitle": "Voces Limpias. Graves Pesados.",
     "photoSubtitle": "Súbelo duro. Esa es la prueba.",
     "years": "Años",
     "statTracks": "Temas Mezclados",
@@ -277,19 +277,19 @@
     "statYears": "Años",
     "intro1": "Comenzó en Puerto Rico en",
     "intro2": "'09",
-    "intro3": "Formado en cuartos reales, presión real y discos reales — ahora basado en",
+    "intro3": "Forjado en cuartos reales, presión real y discos reales — ahora basado en",
     "intro4": "San Antonio",
     "intro5": "enfocado en una sola cosa: hacer mezclas que suenen limpias, pesadas y listas para lanzar.",
     "storyEyebrow": "La Historia",
-    "story1": "Todo empezó con solo bocinas, hambre y un oído para el low-end que tenía que traducirse en todas partes — carros, clubes y teléfonos.",
+    "story1": "Empezó con solo bocinas, hambre y un oído para los graves que tenían que traducirse en todos lados — carros, clubes y bocinas de teléfono.",
     "story2Title": "2010: La Caldera Records.",
-    "story2": "Construido dentro de una barbería en Quebradillas junto a mi amigo Josue Tosado (MR KUSH). Los artistas llegaban, se hacían discos y el sonido seguía subiendo de nivel.",
+    "story2": "Construido dentro de una barbería en Quebradillas junto a mi amigo Josue Tosado (MR KUSH). Los artistas llegaban, se hacían discos y el sonido seguía mejorando.",
     "story3Title": "2013: Propiedad Urbana & Unstopable Studios.",
     "story3a": "San Juan fue el siguiente nivel. Sesiones con",
     "story3b": "y más. Obtuve mi certificación como Ingeniero de Grabación — pero más importante todavía, me gané la confianza dentro del cuarto.",
     "story4Title": "AHORA:",
     "story4": "Basado en San Antonio — enfocado en discos limpios, pesados y listos para lanzamiento.",
-    "quote": "Voces limpias. Bajo pesado — si no pega en el carro de noche, no está listo.",
+    "quote": "Voces limpias. Graves pesados — si no pega en el carro de noche, no está terminado.",
     "tagline": "Súbelo duro. Esa es la prueba.",
     "creditsTitle": "Créditos Seleccionados",
     "creditsTag": "PR • Texas • Mundial",
@@ -312,8 +312,8 @@
     "eyebrow": "Lanzamientos Recientes",
     "title": "Trabajos",
     "bookButton": "Reservar Sesión",
-    "intro": "Subele el Volumen. Esa es la prueba.",
-    "ctaTitle1": "¿Listo para",
+    "intro": "Súbelo duro. Esa es la prueba.",
+    "ctaTitle1": "Listo para",
     "ctaTitle2": "Crear",
     "ctaDescription": "Deja de esperar. Empieza a grabar. Tu sonido está esperando.",
     "ctaButton": "Asegura Tu Sesión",
@@ -324,7 +324,7 @@
     "heroEyebrow": "Recursos para Artistas • Preparación de Sesión • Estrategia de Lanzamiento",
     "heroLine1": "Muévete",
     "heroLine2": "Mejor",
-    "heroLine3": "Crea Más Fuerte",
+    "heroLine3": "Crea Mejor",
     "heroIntro": "Todo lo que un artista necesita antes de la sesión, durante el proceso de grabación y después de terminar la música para avanzar con más confianza y profesionalismo.",
     "heroBookButton": "Reservar Sesión",
     "heroResourcesButton": "Explorar Recursos",
@@ -334,7 +334,7 @@
     "heroSticker": "Recursos",
     "stats": {
       "sessionMinimum": "Mínimo de Sesión",
-      "workflow": "Flujo Pro",
+      "workflow": "Flujo",
       "readyValue": "Listo",
       "readyLabel": "Para Lanzar"
     },
@@ -350,7 +350,7 @@
       },
       {
         "title": "Trae Tu Beat",
-        "description": "Trae tu instrumental preferiblemente en WAV o en MP3 de alta calidad. Envíalo antes o tráelo en USB."
+        "description": "Trae tu instrumental preferiblemente en WAV o en MP3 de alta calidad. Envíalo antes de tiempo o tráelo en una USB."
       },
       {
         "title": "Hidrata Tu Voz",
@@ -365,7 +365,7 @@
     "policyCards": [
       {
         "title": "Depósito Requerido",
-        "description": "Se requiere un depósito para confirmar y apartar tu reserva."
+        "description": "Se requiere un depósito para confirmar y asegurar tu reserva."
       },
       {
         "title": "Mínimo de 2 Horas",
@@ -378,13 +378,13 @@
     ],
     "releaseSection": {
       "eyebrow": "Checklist de Lanzamiento",
-      "title": "De la sesión al estreno",
+      "title": "De la sesión al lanzamiento",
       "description": "Úsalo como una guía simple de lanzamiento para que las canciones terminadas no se queden guardadas en tu disco duro."
     },
     "releaseChecklist": [
       "Graba tu canción",
       "Haz la mezcla y masterización final",
-      "Finaliza el arte de portada",
+      "Finaliza tu arte de portada",
       "Completa la información del split sheet",
       "Registra tu canción con tu PRO si hace falta",
       "Súbela a Spotify, Apple Music y otras plataformas",
@@ -393,7 +393,7 @@
     "toolsSection": {
       "eyebrow": "Herramientas Gratis para Artistas",
       "title": "Próximos pasos útiles",
-      "description": "Descarga estas herramientas para prepararte mejor, organizar la propiedad de tus canciones y lanzar música de forma más profesional."
+      "description": "Descarga estas herramientas para prepararte mejor, organizar la propiedad y lanzar música de forma más profesional."
     },
     "resourceLinks": [
       {
@@ -416,7 +416,7 @@
     "developmentSection": {
       "eyebrow": "Desarrollo Artístico",
       "title": "¿Más que una sola sesión?",
-      "description": "Pregunta por el apoyo de desarrollo artístico para quienes quieren consistencia, dirección y un mejor proceso de lanzamiento de canción en canción."
+      "description": "Pregunta por el apoyo de desarrollo artístico para artistas que quieren consistencia, dirección y un mejor proceso de lanzamiento de canción en canción."
     },
     "developmentCard": {
       "title": "Programa de Desarrollo Artístico",
@@ -453,7 +453,7 @@
     ],
     "ctaSection": {
       "eyebrow": "Asegura Tu Espacio",
-      "title": "¿Listo Para Trabajar",
+      "title": "Listo para trabajar",
       "description": "Reserva tu sesión, llega preparado y creemos discos que peguen de la manera correcta.",
       "bookButton": "Reserva Tu Sesión",
       "contactButton": "Contactar al Estudio"
@@ -480,11 +480,11 @@
     "problemCards": [
       {
         "title": "Grabación Inconsistente",
-        "desc": "Las canciones se empiezan pero nunca se terminan. El impulso baja, los lanzamientos se atrasan y el progreso se frena."
+        "desc": "Las canciones se empiezan pero nunca se terminan por completo. El impulso se pierde, los lanzamientos se retrasan y el progreso se frena."
       },
       {
         "title": "Sin Estrategia de Lanzamiento",
-        "desc": "La música se publica al azar y sin plan, lo que hace más difícil llamar la atención y crecer a largo plazo."
+        "desc": "La música se lanza al azar sin un plan, lo que hace más difícil construir atención y crecimiento a largo plazo."
       },
       {
         "title": "Falta de Dirección",
@@ -533,15 +533,15 @@
     "roadmapCards": [
       {
         "title": "Mes 1 — Dirección",
-        "desc": "Evaluamos tu sonido, fortalezas y metas. La grabación comienza mientras identificamos tus canciones más fuertes y tu carril creativo."
+        "desc": "Evaluamos tu sonido, tus fortalezas y tus metas. La grabación comienza mientras identificamos tus canciones más fuertes y tu carril creativo."
       },
       {
         "title": "Mes 2 — Desarrollo",
-        "desc": "Las canciones se refinan, se crean mejores discos y comenzamos a dar forma a tus próximos lanzamientos y tu marca artística."
+        "desc": "Las canciones se refinan, se crean mejores discos y comenzamos a dar forma a tus próximos lanzamientos y a tu marca artística."
       },
       {
         "title": "Mes 3 — Impulso",
-        "desc": "Tus mejores canciones avanzan hacia el lanzamiento mientras construimos una estrategia más fuerte para mantener producción constante."
+        "desc": "Tus mejores canciones avanzan hacia el lanzamiento mientras construimos una estrategia más fuerte para mantener una producción más consistente."
       }
     ],
     "fitSection": {
@@ -556,7 +556,7 @@
         "Estás creando música activamente y quieres más estructura",
         "Quieres ayuda para terminar canciones más fuertes",
         "Necesitas grabación constante y responsabilidad",
-        "Quieres guía en estrategia de lanzamiento y marca",
+        "Quieres guía en estrategia de lanzamiento y branding",
         "Estás abierto a retroalimentación honesta y dirección",
         "Quieres crecimiento a largo plazo, no sesiones al azar"
       ]
@@ -565,12 +565,12 @@
       "eyebrow": "Por Qué Esto No Es Para Ti",
       "title": "Este Programa Puede No Ser Para Ti Si:",
       "items": [
-        "Solo quieres una sesión rápida sin plan a largo plazo",
+        "Solo quieres una sesión rápida sin un plan a largo plazo",
         "No estás listo para grabar con consistencia",
         "No quieres retroalimentación ni dirección creativa",
         "Buscas resultados instantáneos sin trabajo real",
         "No estás listo para un compromiso mínimo de 3 meses",
-        "Quieres manejo o servicios de sello en lugar de apoyo de desarrollo"
+        "Quieres management o servicios de sello en lugar de apoyo de desarrollo"
       ]
     },
     "processSection": {
@@ -596,61 +596,69 @@
       "eyebrow": "Paquetes del Programa",
       "title1": "Elige Tu",
       "title2": "Nivel",
-      "intro": "Elige el nivel de apoyo que mejor encaja con tu etapa actual, tus metas de producción y tu compromiso con el crecimiento a largo plazo.",
-      "commitmentNote": "Todos los paquetes requieren un compromiso mínimo de 3 meses",
-      "footerNote": "Las solicitudes se revisan manualmente para asegurar que el programa sea la opción correcta tanto para el artista como para el proceso de desarrollo."
+      "intro": "Cada paquete incluye entregables mensuales diseñados para construir impulso real con el tiempo. Elige el nivel de apoyo que encaje con tus metas de producción y tu compromiso con el crecimiento.",
+      "commitmentNote": "Todos los paquetes son mensuales y requieren un compromiso mínimo de 3 meses",
+      "commitmentReframe": "El crecimiento real no ocurre en una sola sesión — este programa está diseñado para desarrollar impulso con el tiempo.",
+      "footerNote": "Basado en más de 13 años trabajando con artistas en sesiones reales — no en teoría. Las solicitudes se revisan manualmente para asegurar la compatibilidad correcta."
     },
     "packages": {
-      "popular": "Mas Popular",
+      "popular": "Más Popular",
       "perMonth": "Por Mes",
       "minimumCommitment": "Compromiso Mínimo de 3 Meses",
-      "applyButton": "Solicitar Ahora",
+      "applyButton": "Ver si calificas",
+      "applySubtext": "No todos los artistas son aceptados",
       "momentum": {
         "title": "Momentum",
         "bestFor": "Ideal para artistas que necesitan consistencia",
         "desc": "Para artistas que necesitan responsabilidad, estructura y apoyo para terminar música más fuerte con constancia.",
+        "microSummary": "Construye consistencia y empieza a terminar música de la manera correcta.",
         "outcome": "Un punto de partida sólido para artistas que quieren progreso constante, mejores canciones y más dirección sin entrar todavía en un plan de mayor volumen.",
+        "threeMonthValue": "En 3 meses: 3 canciones completadas + estructura + dirección real",
         "items": [
-          "Grabación de 1 canción completa",
-          "Coaching vocal durante la sesión",
-          "Retroalimentación y guía para mejorar la canción",
-          "Guía básica de lanzamiento",
-          "Check-in mensual de desarrollo",
-          "Acceso prioritario para reservar"
+          "Grabación guiada de 1 canción completa (enfocada en resultados listos para lanzar)",
+          "Coaching vocal en tiempo real para mejorar entrega y confianza",
+          "Retroalimentación directa para fortalecer estructura, flow y ejecución",
+          "Guía simple de lanzamiento para que las canciones no se queden sin salir",
+          "Check-in mensual de desarrollo para mantener dirección y consistencia",
+          "Acceso prioritario a reservas para mantener tu flujo avanzando"
         ]
       },
       "elevation": {
         "title": "Elevation",
         "bestFor": "Ideal para artistas que están construyendo activamente su catálogo",
         "desc": "Para artistas listos para crear mejores discos, afinar su identidad y avanzar con una estrategia real de lanzamiento.",
+        "microSummary": "Construye tu catálogo con intención y empieza a moverte estratégicamente.",
         "outcome": "El mejor balance entre creación musical, apoyo de desarrollo y estrategia para artistas serios que quieren construir impulso real.",
+        "threeMonthValue": "En 3 meses: hasta 6 canciones + estrategia + catálogo en crecimiento",
         "items": [
-          "Grabación de 2 canciones",
-          "1 beat original incluido",
-          "1 mezcla y master incluidos",
-          "Dirección creativa durante la grabación",
-          "Guía de selección de canciones",
-          "Guía de estrategia de lanzamiento",
-          "Ayuda con registro de canciones",
-          "Retroalimentación de marca y rollout",
-          "Sesión mensual de desarrollo"
+          "Grabación de 2 canciones con enfoque en calidad y consistencia",
+          "1 beat original adaptado a tu sonido y dirección",
+          "1 mezcla y master listos para lanzamiento profesional",
+          "Dirección creativa durante las sesiones para mejorar decisiones musicales",
+          "Selección estratégica de canciones (enfocada en qué debe lanzarse)",
+          "Guía paso a paso de estrategia de lanzamiento",
+          "Apoyo con registro de canciones para proteger tu trabajo",
+          "Retroalimentación de branding y rollout para mayor impacto",
+          "Sesión mensual de desarrollo para mantener progreso real"
         ]
       },
       "partner": {
         "title": "Artist Partner",
         "bestFor": "Ideal para artistas listos para un impulso serio",
         "desc": "Desarrollo premium para artistas que quieren mayor producción, estrategia más profunda y apoyo más cercano a largo plazo.",
-        "outcome": "Un paquete de apoyo más completo para artistas serios listos para moverse agresivamente con mejor música, mejor planificación y más consistencia.",
+        "microSummary": "Muévete como un artista serio con volumen, dirección y planificación real.",
+        "outcome": "Un paquete de alto nivel diseñado para artistas serios listos para moverse agresivamente con mejor música, mejor planificación y más consistencia.",
+        "threeMonthValue": "En 3 meses: hasta 12 canciones + planificación + impulso serio",
         "items": [
-          "Grabación de 4 canciones",
-          "2 beats originales incluidos",
-          "2 mezclas y masters incluidos",
-          "Guía de selección de canciones",
-          "Planificación del calendario de lanzamientos",
-          "Asistencia con registro de canciones",
-          "Guía de marca y rollout",
-          "Sesión mensual de estrategia",
-          "Reserva prioritaria"
+          "Grabación de 4 canciones enfocadas en crecimiento de catálogo y consistencia",
+          "2 beats originales diseñados alrededor de tu identidad artística",
+          "2 mezclas y masters listos para competir en plataformas de streaming",
+          "Selección estratégica de canciones para maximizar el impacto de lanzamiento",
+          "Planificación estructurada de calendario de lanzamientos",
+          "Apoyo con registro y organización de canciones",
+          "Dirección de marca y estrategia de rollout para una presencia más fuerte",
+          "Sesión mensual de estrategia enfocada en crecimiento a largo plazo",
+          "Acceso completo prioritario a reservas y flujo de trabajo"
         ]
       }
     },
@@ -685,8 +693,8 @@
     "genrePlaceholder": "Reggaetón, Rap Latino, Urbano, Cristiano, Cantante, etc.",
     "packageLabel": "¿Qué paquete te interesa más?",
     "packagePlaceholder": "Selecciona un paquete",
-    "notSureValue": "Aún no estoy seguro(a)",
-    "notSureText": "Aún no estoy seguro(a)",
+    "notSureValue": "Aún no lo sé",
+    "notSureText": "Aún no lo sé",
     "goalsLabel": "¿Cuáles son tus metas para los próximos 6 meses?",
     "goalsPlaceholder": "Cuéntanos lo que quieres lograr con tu música.",
     "whyJoinLabel": "¿Por qué quieres unirte al Programa de Desarrollo Artístico?",

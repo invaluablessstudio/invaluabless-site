@@ -596,61 +596,69 @@
       "eyebrow": "Program Packages",
       "title1": "Choose Your",
       "title2": "Level",
-      "intro": "Pick the level of support that matches your current stage, output goals, and commitment to long-term growth.",
-      "commitmentNote": "All packages require a 3-month minimum commitment",
-      "footerNote": "Applications are reviewed manually to make sure the program is the right fit for both the artist and the development process."
+      "intro": "Each package includes monthly deliverables designed to build real momentum over time. Choose the level of support that matches your output goals and commitment to growth.",
+      "commitmentNote": "All packages are monthly and require a 3-month minimum commitment",
+      "commitmentReframe": "Real growth doesn’t happen in one session — this program is built to develop momentum over time.",
+      "footerNote": "Based on 13+ years working with artists in real sessions — not theory. Applications are reviewed manually to ensure the right fit."
     },
     "packages": {
       "popular": "Most Popular",
       "perMonth": "Per Month",
       "minimumCommitment": "3-Month Minimum",
-      "applyButton": "Apply Now",
+      "applyButton": "See If You Qualify",
+      "applySubtext": "Not every artist is accepted",
       "momentum": {
         "title": "Momentum",
         "bestFor": "Best for artists who need consistency",
-        "desc": "For artists who need accountability, structure, and support finishing stronger music consistently.",
-        "outcome": "A strong starting point for artists who want regular progress, better songs, and more direction without jumping into a higher-volume plan.",
+        "desc": "For artists who need accountability, structure, and support to consistently finish stronger music.",
+        "microSummary": "Build consistency and start finishing music the right way.",
+        "outcome": "A strong starting point for artists who want steady progress, better songs, and more direction without jumping into a higher-volume plan.",
+        "threeMonthValue": "In 3 months: 3 completed songs + structure + real direction",
         "items": [
-          "Recording for 1 full song",
-          "Vocal coaching during session",
-          "Song feedback & improvement guidance",
-          "Basic release guidance",
-          "Monthly development check-in",
-          "Priority booking access"
+          "Guided recording for 1 full song (focused on release-ready results)",
+          "Real-time vocal coaching to improve delivery and confidence",
+          "Direct feedback to strengthen structure, flow, and execution",
+          "Simple release guidance so songs don’t stay unreleased",
+          "Monthly development check-in to maintain direction and consistency",
+          "Priority booking access to keep your workflow moving"
         ]
       },
       "elevation": {
         "title": "Elevation",
         "bestFor": "Best for artists actively building their catalog",
         "desc": "For artists ready to build stronger records, sharpen their identity, and move with a real release strategy.",
-        "outcome": "The best balance of music creation, development support, and strategy for artists serious about building momentum.",
+        "microSummary": "Build your catalog with intention and start moving strategically.",
+        "outcome": "The best balance of music creation, development support, and strategy for artists serious about building real momentum.",
+        "threeMonthValue": "In 3 months: up to 6 songs + strategy + growing catalog",
         "items": [
-          "Recording for 2 songs",
-          "1 original beat included",
-          "1 mix & master included",
-          "Creative direction during recording",
-          "Song selection guidance",
-          "Release strategy guidance",
-          "Song registration help",
-          "Branding & rollout feedback",
-          "Monthly development session"
+          "Recording for 2 songs with a focus on quality and consistency",
+          "1 original beat tailored to your sound and direction",
+          "1 mix & master ready for professional release",
+          "Creative direction during sessions to improve musical decisions",
+          "Strategic song selection (focused on what should be released)",
+          "Step-by-step release strategy guidance",
+          "Song registration support to protect your work",
+          "Branding and rollout feedback for stronger impact",
+          "Monthly development session to keep real progress"
         ]
       },
       "partner": {
         "title": "Artist Partner",
         "bestFor": "Best for artists ready for serious momentum",
         "desc": "Premium development for artists who want higher output, deeper strategy, and more hands-on long-term support.",
-        "outcome": "A higher-touch package built for serious artists ready to move aggressively with better music, better planning, and stronger consistency.",
+        "microSummary": "Move like a serious artist with volume, direction, and real planning.",
+        "outcome": "A high-touch package built for serious artists ready to move aggressively with better music, better planning, and stronger consistency.",
+        "threeMonthValue": "In 3 months: up to 12 songs + planning + serious momentum",
         "items": [
-          "Recording for 4 songs",
-          "2 original beats included",
-          "2 mix & masters included",
-          "Song selection guidance",
-          "Release calendar planning",
-          "Song registration assistance",
-          "Branding & rollout guidance",
-          "Monthly strategy session",
-          "Priority booking"
+          "Recording for 4 songs focused on catalog growth and consistency",
+          "2 original beats designed around your artistic identity",
+          "2 mix & masters ready to compete on streaming platforms",
+          "Strategic song selection to maximize release impact",
+          "Structured release calendar planning",
+          "Song registration and organization support",
+          "Brand direction and rollout strategy for stronger presence",
+          "Monthly strategy session focused on long-term growth",
+          "Full priority booking and workflow access"
         ]
       }
     },
