@@ -270,3 +270,12 @@ body {
   border-bottom: 2px solid var(--neon-red);
   box-shadow: 0 0 14px rgba(255, 0, 64, 0.35);
 }
+/* Ticker animation for homepage */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-\[ticker_22s_linear_infinite\] {
+  animation: ticker 22s linear infinite;
+}

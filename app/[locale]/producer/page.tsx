@@ -104,8 +104,8 @@ export default function ProducerPage() {
             </p>
           </div>
 
-          <h1 className="font-urban text-6xl uppercase leading-[0.85] md:text-8xl">
-            Jeovanne Diaz<span className="text-[#ff0040] text-glow-red">.</span>
+          <h1 className="font-['Bebas_Neue'] text-6xl uppercase leading-[0.85] md:text-8xl">
+            Jeovanne Diaz<span className="text-[#ff0040]">.</span>
           </h1>
         </div>
 
@@ -129,7 +129,7 @@ export default function ProducerPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/10" />
 
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="font-urban text-3xl uppercase text-white">
+                  <p className="font-['Bebas_Neue'] text-3xl uppercase text-white">
                     {t("photoTitle")}
                   </p>
                   <p className="mt-2 text-xs uppercase tracking-widest text-[#00f0ff]">
@@ -137,8 +137,8 @@ export default function ProducerPage() {
                   </p>
                 </div>
 
-                <div className="absolute -bottom-4 right-6 bg-[#ff0040] p-5 font-mono text-black shadow-[0_30px_120px_rgba(0,0,0,0.8)]">
-                  <p className="text-3xl font-bold leading-none">13+</p>
+                <div className="absolute -bottom-4 right-6 bg-[#ff0040] p-5 font-['Bebas_Neue'] text-black shadow-[0_30px_120px_rgba(0,0,0,0.8)]">
+                  <p className="text-3xl leading-none">16+</p>
                   <p className="mt-2 text-sm uppercase tracking-wider">{t("years")}</p>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function ProducerPage() {
               <div className="flex items-end justify-between gap-6">
                 <Stat value="300+" label={t("statTracks")} color="text-[#ff0040]" />
                 <Stat value="20+" label={t("statArtists")} color="text-[#00f0ff]" />
-                <Stat value="13+" label={t("statYears")} color="text-white" />
+                <Stat value="16+" label={t("statYears")} color="text-white" />
               </div>
             </div>
           </div>
@@ -220,7 +220,7 @@ export default function ProducerPage() {
           onMouseLeave={handleCardMouseLeave}
         >
           <div className="mouse-glow" />
-          <p className="text-lg font-bold text-white md:text-xl">“{t("quote")}”</p>
+          <p className="text-lg font-bold text-white md:text-xl">"{t("quote")}"</p>
           <p className="mt-4 font-mono text-sm uppercase tracking-widest text-[#ff0040]">
             {t("tagline")}
           </p>
@@ -233,7 +233,7 @@ export default function ProducerPage() {
         >
           <div className="mouse-glow" />
           <div className="flex flex-wrap items-center justify-between gap-6">
-            <h2 className="text-3xl font-black uppercase tracking-tight md:text-4xl">
+            <h2 className="font-['Bebas_Neue'] text-3xl uppercase tracking-tight md:text-4xl">
               {t("creditsTitle")}<span className="text-[#ff0040]">.</span>
             </h2>
             <p className="text-xs uppercase tracking-[0.4em] text-gray-500">
@@ -300,7 +300,7 @@ export default function ProducerPage() {
 
           <div className="mb-8 inline-flex items-center gap-3">
             <span className="h-2 w-2 animate-pulse bg-[#ff0040]" />
-            <p className="font-urban text-2xl uppercase tracking-wider md:text-3xl">
+            <p className="font-['Bebas_Neue'] text-2xl uppercase tracking-wider md:text-3xl">
               {t("workTitle")}
             </p>
           </div>
