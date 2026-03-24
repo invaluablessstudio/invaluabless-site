@@ -556,7 +556,8 @@ export default function Home() {
                     </div>
                     <div className="space-y-4 leading-relaxed text-gray-300">
                       <p>{t("producerStory1")}</p>
-                      <p>{t("producerStory2")} {t("producerStory3")}</p>
+                      <p>{t("producerStory2")}</p> 
+                      <p>{t("producerStory3")}</p>
                       <p>{t("producerStory4")}</p>
                     </div>
                     <div className="border-l-4 border-[#ff0040] py-1 pl-6">
