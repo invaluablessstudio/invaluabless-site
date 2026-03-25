@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Search,
@@ -13,9 +13,10 @@ import {
   BadgeDollarSign,
   Music3,
   ArrowRight,
+  Loader2,
 } from "lucide-react";
 import BeatCard from "@/app/components/BeatCard";
-import { beats } from "@/data/beats";
+import { supabase } from "@/lib/supabase";
 
 const genreOptions = [
   "ALL",
@@ -27,26 +28,71 @@ const genreOptions = [
   "CHRISTIAN URBAN",
 ];
 
+type Beat = {
+  id: string;
+  title: string;
+  genre: string;
+  mood: string;
+  bpm: number;
+  key: string;
+  price: number | null;
+  audio_url: string | null;
+  description: string | null;
+  status: string;
+  producer_name: string | null;
+  // keep these for BeatCard compatibility
+  slug?: string;
+  priceStandard?: number;
+  priceCustom?: number;
+  audioUrl?: string;
+};
+
 export default function BeatStorePage() {
   const [search, setSearch] = useState("");
   const [activeGenre, setActiveGenre] = useState("ALL");
+  const [beats, setBeats] = useState<Beat[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // ─── Fetch only published beats from Supabase ───
+useEffect(() => {
+  const fetchBeats = async () => {
+    setLoading(true);
+    const { data, error } = await supabase 
+      .from("beats")
+      .select("*")
+      .eq("status", "published")
+      .order("created_at", { ascending: false });
+
+    if (!error && data) {
+        // Map Supabase fields to match BeatCard's expected props
+        const mapped = data.map((b) => ({
+          ...b,
+          slug: b.id,
+          priceStandard: b.price ?? 100,
+          priceCustom: 250,
+          audioUrl: b.audio_url ?? "",
+        }));
+        setBeats(mapped);
+      }
+      setLoading(false);
+    };
+
+    fetchBeats();
+  }, []);
 
   const filteredBeats = useMemo(() => {
     return beats.filter((beat) => {
       const query = search.toLowerCase();
-
       const matchesSearch =
         beat.title.toLowerCase().includes(query) ||
         beat.genre.toLowerCase().includes(query) ||
-        beat.mood.toLowerCase().includes(query) ||
+        beat.mood?.toLowerCase().includes(query) ||
         beat.key.toLowerCase().includes(query);
-
       const matchesGenre =
         activeGenre === "ALL" ? true : beat.genre === activeGenre;
-
       return matchesSearch && matchesGenre;
     });
-  }, [search, activeGenre]);
+  }, [search, activeGenre, beats]);
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#0a0a0f] text-white">
@@ -86,7 +132,6 @@ export default function BeatStorePage() {
                 >
                   Browse Beats
                 </a>
-
                 <Link
                   href="/custom-beats"
                   className="inline-flex items-center justify-center rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-cyan-200 transition hover:shadow-[0_0_25px_rgba(0,240,255,0.25)]"
@@ -164,100 +209,68 @@ export default function BeatStorePage() {
       <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {[
-            {
-              icon: Disc3,
-              title: "Studio-Level Production",
-              text: "Premium beat quality for artists preparing real releases.",
-            },
-            {
-              icon: AudioLines,
-              title: "Quick Previews",
-              text: "Listen directly from mobile or desktop before choosing.",
-            },
-            {
-              icon: Headphones,
-              title: "Artist-Focused Sound",
-              text: "Built for Latin, urban, rap, reggaeton, and Christian artists.",
-            },
-            {
-              icon: ShoppingBag,
-              title: "Beat Options",
-              text: "Choose a standard beat or request a custom exclusive beat.",
-            },
+            { icon: Disc3, title: "Studio-Level Production", text: "Premium beat quality for artists preparing real releases." },
+            { icon: AudioLines, title: "Quick Previews", text: "Listen directly from mobile or desktop before choosing." },
+            { icon: Headphones, title: "Artist-Focused Sound", text: "Built for Latin, urban, rap, reggaeton, and Christian artists." },
+            { icon: ShoppingBag, title: "Beat Options", text: "Choose a standard beat or request a custom exclusive beat." },
           ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-cyan-400/25 hover:shadow-[0_0_24px_rgba(0,240,255,0.10)]"
-            >
+            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-cyan-400/25 hover:shadow-[0_0_24px_rgba(0,240,255,0.10)]">
               <item.icon className="h-5 w-5 text-[#00f0ff]" />
-              <h2 className="mt-4 text-sm font-black uppercase tracking-[0.12em] text-white">
-                {item.title}
-              </h2>
-              <p className="mt-2 text-sm leading-6 text-white/65">
-                {item.text}
-              </p>
+              <h2 className="mt-4 text-sm font-black uppercase tracking-[0.12em] text-white">{item.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-white/65">{item.text}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* BEAT GRID */}
-      <section
-        id="beats"
-        className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8"
-      >
+      <section id="beats" className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#00f0ff]">
-              Beat Catalog
-            </p>
-            <h2 className="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
-              Find Your Sound
-            </h2>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#00f0ff]">Beat Catalog</p>
+            <h2 className="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">Find Your Sound</h2>
           </div>
-
           <p className="text-sm text-white/60">
-            {filteredBeats.length} beat
-            {filteredBeats.length !== 1 ? "s" : ""} available
+            {loading ? "Loading..." : `${filteredBeats.length} beat${filteredBeats.length !== 1 ? "s" : ""} available`}
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {filteredBeats.map((beat) => (
-            <BeatCard key={beat.id} beat={beat} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex items-center justify-center py-24">
+            <Loader2 className="h-10 w-10 animate-spin text-cyan-300" />
+          </div>
+        ) : filteredBeats.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-3xl border border-white/10 bg-white/[0.03] py-24 text-center">
+            <Music3 className="h-12 w-12 text-white/20" />
+            <p className="mt-4 text-sm font-bold uppercase tracking-[0.14em] text-white/40">
+              {beats.length === 0 ? "No beats available yet" : "No beats match your search"}
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {filteredBeats.map((beat) => (
+              <BeatCard key={beat.id} beat={beat as any} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* CUSTOM BEATS CTA */}
       <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,0,64,0.12),rgba(0,240,255,0.08),rgba(255,255,255,0.02))] p-8 md:p-10">
           <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">
-              Need Something Custom?
-            </p>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">Need Something Custom?</p>
             <h2 className="mt-2 text-3xl font-black uppercase tracking-tight sm:text-5xl">
               Get A Beat Built Around Your Sound
             </h2>
             <p className="mt-4 text-sm leading-7 text-white/70 sm:text-base">
-              If none of these beats match your exact style, request a custom
-              exclusive beat built around your voice, genre, message, and
-              musical direction.
+              If none of these beats match your exact style, request a custom exclusive beat built around your voice, genre, message, and musical direction.
             </p>
-
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/custom-beats"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-cyan-200 transition hover:shadow-[0_0_25px_rgba(0,240,255,0.25)]"
-              >
-                Explore Custom Beats
-                <ArrowRight className="h-4 w-4" />
+              <Link href="/custom-beats" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-cyan-200 transition hover:shadow-[0_0_25px_rgba(0,240,255,0.25)]">
+                Explore Custom Beats <ArrowRight className="h-4 w-4" />
               </Link>
-
-              <Link
-                href="/book"
-                className="inline-flex items-center justify-center rounded-2xl border border-[#ff0040]/40 bg-[#ff0040]/15 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition hover:shadow-[0_0_25px_rgba(255,0,64,0.35)]"
-              >
+              <Link href="/book" className="inline-flex items-center justify-center rounded-2xl border border-[#ff0040]/40 bg-[#ff0040]/15 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-white transition hover:shadow-[0_0_25px_rgba(255,0,64,0.35)]">
                 Book Custom Beat
               </Link>
             </div>
@@ -269,56 +282,21 @@ export default function BeatStorePage() {
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#ff0040]">
-              Beat Options
-            </p>
-            <h2 className="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">
-              Clear Pricing. Simple Choices.
-            </h2>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#ff0040]">Beat Options</p>
+            <h2 className="mt-2 text-3xl font-black uppercase tracking-tight sm:text-4xl">Clear Pricing. Simple Choices.</h2>
             <p className="mt-4 text-sm leading-7 text-white/65 sm:text-base">
-              Choose between a standard pre-made beat or a custom exclusive beat
-              tailored to your sound, style, and release goals.
+              Choose between a standard pre-made beat or a custom exclusive beat tailored to your sound, style, and release goals.
             </p>
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             {[
-              {
-                title: "Standard Beat",
-                price: "$100",
-                points: [
-                  "Pre-made beat",
-                  "Ready for recording",
-                  "Great for artists who want a fast option",
-                ],
-                featured: false,
-              },
-              {
-                title: "Custom Exclusive Beat",
-                price: "Starting at $250",
-                points: [
-                  "Built specifically for your song",
-                  "Tailored to your voice and style",
-                  "Exclusive custom production",
-                ],
-                featured: true,
-              },
+              { title: "Standard Beat", price: "$100", points: ["Pre-made beat", "Ready for recording", "Great for artists who want a fast option"], featured: false },
+              { title: "Custom Exclusive Beat", price: "Starting at $250", points: ["Built specifically for your song", "Tailored to your voice and style", "Exclusive custom production"], featured: true },
             ].map((tier) => (
-              <div
-                key={tier.title}
-                className={`rounded-3xl border p-6 ${
-                  tier.featured
-                    ? "border-cyan-400/30 bg-cyan-400/10"
-                    : "border-white/10 bg-black/20"
-                }`}
-              >
-                <h3 className="text-xl font-black uppercase text-white">
-                  {tier.title}
-                </h3>
-                <p className="mt-3 text-2xl font-black text-white">
-                  {tier.price}
-                </p>
-
+              <div key={tier.title} className={`rounded-3xl border p-6 ${tier.featured ? "border-cyan-400/30 bg-cyan-400/10" : "border-white/10 bg-black/20"}`}>
+                <h3 className="text-xl font-black uppercase text-white">{tier.title}</h3>
+                <p className="mt-3 text-2xl font-black text-white">{tier.price}</p>
                 <ul className="mt-5 space-y-3 text-sm text-white/70">
                   {tier.points.map((point) => (
                     <li key={point} className="flex items-start gap-2">

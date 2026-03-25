@@ -12,8 +12,19 @@ type BeatCardProps = {
 export default function BeatCard({ beat }: BeatCardProps) {
   const { currentBeat, isPlaying, playBeat } = useBeatPlayer();
 
-  const isCurrentBeat = currentBeat?.slug === beat.slug;
+  // Support both slug (static) and id (Supabase) as beat identity
+  const beatId = beat.slug || beat.id;
+  const currentId = currentBeat ? (currentBeat.slug || currentBeat.id) : null;
+
+  const isCurrentBeat = currentId === beatId;
   const showPause = isCurrentBeat && isPlaying;
+
+  // Support both priceStandard (static) and price (Supabase)
+  const standardPrice = beat.priceStandard ?? (beat as any).price ?? 100;
+  const customPrice = beat.priceCustom ?? 250;
+
+  // Support both audioUrl (static) and audio_url (Supabase)
+  const hasAudio = !!(beat.audioUrl || (beat as any).audio_url);
 
   return (
     <article className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-[#ff0040]/30 hover:shadow-[0_0_30px_rgba(255,0,64,0.14)]">
@@ -45,9 +56,11 @@ export default function BeatCard({ beat }: BeatCardProps) {
           <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/60">
             {beat.key}
           </span>
-          <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-200">
-            Preview Ready
-          </span>
+          {hasAudio && (
+            <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-200">
+              Preview Ready
+            </span>
+          )}
         </div>
 
         {beat.description && (
@@ -63,8 +76,9 @@ export default function BeatCard({ beat }: BeatCardProps) {
           </div>
 
           <button
-            onClick={() => playBeat(beat)}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm font-black uppercase tracking-[0.12em] text-cyan-200 transition hover:shadow-[0_0_22px_rgba(0,240,255,0.22)]"
+            onClick={() => hasAudio && playBeat(beat)}
+            disabled={!hasAudio}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm font-black uppercase tracking-[0.12em] text-cyan-200 transition hover:shadow-[0_0_22px_rgba(0,240,255,0.22)] disabled:cursor-not-allowed disabled:opacity-40"
           >
             {showPause ? (
               <>
@@ -86,7 +100,7 @@ export default function BeatCard({ beat }: BeatCardProps) {
               Standard Beat
             </p>
             <p className="mt-2 text-2xl font-black text-white">
-              ${beat.priceStandard}
+              ${standardPrice}
             </p>
           </div>
 
@@ -95,7 +109,7 @@ export default function BeatCard({ beat }: BeatCardProps) {
               Custom Exclusive
             </p>
             <p className="mt-2 text-2xl font-black text-white">
-              From ${beat.priceCustom}
+              From ${customPrice}
             </p>
           </div>
         </div>
@@ -103,14 +117,14 @@ export default function BeatCard({ beat }: BeatCardProps) {
         <div className="mt-5 grid gap-3">
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
-              href={`/checkout?beat=${beat.slug}&license=standard`}
+              href={`/checkout?beat=${beatId}&license=standard`}
               className="inline-flex items-center justify-center rounded-2xl border border-[#ff0040]/40 bg-[#ff0040]/15 px-4 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:shadow-[0_0_22px_rgba(255,0,64,0.28)]"
             >
               Buy Standard
             </Link>
 
             <Link
-              href={`/checkout?beat=${beat.slug}&license=custom`}
+              href={`/checkout?beat=${beatId}&license=custom`}
               className="inline-flex items-center justify-center rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm font-black uppercase tracking-[0.12em] text-cyan-200 transition hover:shadow-[0_0_22px_rgba(0,240,255,0.22)]"
             >
               Request Custom

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -101,7 +102,7 @@ export default async function LocaleLayout({
   const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
-    <>
+    <ClerkProvider>
       {GA_ID && (
         <>
           <Script
@@ -140,6 +141,6 @@ export default async function LocaleLayout({
 
       <SpeedInsights />
       <Analytics />
-    </>
+    </ClerkProvider>
   );
 }
