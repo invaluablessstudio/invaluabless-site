@@ -54,7 +54,7 @@ type Beat = {
 
 export default function BeatMakersDashboard() {
   const { user, isLoaded } = useUser();
-  const { signOut } = useClerk();
+const { signOut, openUserProfile } = useClerk();
 
   const [tab, setTab] = useState("upload");
   const [profileOpen, setProfileOpen] = useState(false);
@@ -252,7 +252,7 @@ export default function BeatMakersDashboard() {
                 </div>
                 <div className="my-1 border-t border-white/10" />
                 <button
-  onClick={() => window.location.href = "https://accounts.clerk.dev/user"}
+  onClick={() => openUserProfile()}
   className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm text-white/60 transition hover:bg-white/[0.04] hover:text-white"
 >
   <User className="h-4 w-4" /> Profile Settings
