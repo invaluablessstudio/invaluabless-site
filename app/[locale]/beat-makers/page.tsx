@@ -251,9 +251,12 @@ export default function BeatMakersDashboard() {
                   </p>
                 </div>
                 <div className="my-1 border-t border-white/10" />
-                <button className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm text-white/60 transition hover:bg-white/[0.04] hover:text-white">
-                  <User className="h-4 w-4" /> Profile Settings
-                </button>
+                <button
+  onClick={() => window.location.href = "https://accounts.clerk.dev/user"}
+  className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm text-white/60 transition hover:bg-white/[0.04] hover:text-white"
+>
+  <User className="h-4 w-4" /> Profile Settings
+</button>
                 <button
                   onClick={() => signOut({ redirectUrl: "/" })}
                   className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm text-[#ff0040]/70 transition hover:bg-[#ff0040]/10 hover:text-[#ff0040]"
