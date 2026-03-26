@@ -279,3 +279,34 @@ body {
 .animate-\[ticker_22s_linear_infinite\] {
   animation: ticker 22s linear infinite;
 }
+/* ── Clerk Sign In Text Fixes ── */
+.cl-formFieldLabel {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.cl-footerActionText {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1 !important;
+}
+
+.cl-footerAction p,
+.cl-footer p,
+.cl-footer span {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1 !important;
+}
+
+.cl-internal-b3fm6y {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.cl-powered-by span,
+.cl-powered-by p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.cl-signIn-root *,
+.cl-signUp-root * {
+  opacity: 1 !important;
+}
